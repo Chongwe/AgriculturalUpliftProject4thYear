@@ -11,8 +11,8 @@ export default function Example() {
             <Typography
               as="a"
               href="#"
-              color="blue-gray"
-              className="font-normal transition-colors hover:text-green-500 focus:text-green-500"
+              color="gray"
+              className=" transition-colors hover:text-green-500 focus:text-green-500"
             >
               About Us
             </Typography>
@@ -23,7 +23,7 @@ export default function Example() {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-green-500 focus:text-green-500"
+              className="transition-colors hover:text-green-500 focus:text-green-500"
             >
               Contribute
             </Typography>
@@ -33,7 +33,7 @@ export default function Example() {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-green-500 focus:text-green-500"
+              className=" transition-colors hover:text-green-500 focus:text-green-500"
             >
               Contact Us
             </Typography>
