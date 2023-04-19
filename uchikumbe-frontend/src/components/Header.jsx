@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import logo from "../assets/logo.svg"
 import Search from "../utils/Search";
-
+// import {Link} from 'react-router-dom'
 import {
-    Input,
+  Input,
   Navbar,
   MobileNav,
   Typography,
@@ -27,13 +27,18 @@ export default function Fun() {
 
     <div className=" gap-5 ">
     <a href="#" className="mr-2 hover:text-gray-400">Login</a>
-    <a href="#" className="bg-green-600 text-white rounded-full py-1 px-2 hover:bg-green-600">Sign Up</a>
+    <a href="#" className="bg-green-600 text-white rounded-full py-1 px-2 hover:bg-green-600">
+
+      {/* <Link to="/signIn"></Link>  */}
+      
+      Sign Up
+     </a>
   </div>
 
   );
  
   const navList = (
-    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0  lg:flex-row lg:items-center lg:gap-6">
+    <ul className=" flex gap-10 lg:mb-0 lg:mt-0  lg:flex-row lg:items-center lg:gap-20">
       <Typography
         as="li"
         variant="small"
@@ -76,7 +81,7 @@ export default function Fun() {
  
   return (
     <Navbar className="mx-auto sticky p-0 top-0 z-50 max-w-screen-xl
-    bg-opacity-70 backdrop-filter backdrop-blur-md
+    bg-opacity-80 backdrop-filter backdrop-blur-md
     bg-green-900 text-white px-8 lg:px-8 lg:py-4">
       <div className="container mx-auto flex items-center justify-between text-white">
 
@@ -98,8 +103,7 @@ export default function Fun() {
             <Search />
             {navList}
             
-        <div className="flex flex-col w-72 gap-6">
-    </div>
+       
 
 
         </div>
@@ -120,11 +124,11 @@ export default function Fun() {
         </IconButton>
       </div>
       <MobileNav open={openNav}>
-        <div className="container  items-center mx-auto">
-          {navList}
-          <div className="ml-auto space-y-4 text-center">
+        <div className="container p-3 text-center mx-auto">
+          <span className="p-3">  {navList} </span>
+          <div className="ml-auto  ">
            
-             {signInSignUp}
+            <span className="p-3"> {signInSignUp} </span> 
              
               <Search />
           </div>
