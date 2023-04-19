@@ -44,7 +44,7 @@ export default function Fun() {
         variant="small"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex  hover:text-green-100 focus:border-b focus:border-green-500 focus:text-white">
+        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-green-500 focus:text-white">
           Home
         </a>
       </Typography>
@@ -53,7 +53,7 @@ export default function Fun() {
         variant="small"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex  hover:text-green-100 focus:border-b focus:border-green-500 focus:text-white">
+        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-green-500 focus:text-white">
           People
         </a>
       </Typography>
@@ -62,7 +62,7 @@ export default function Fun() {
         variant="small"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex  hover:text-green-100 focus:border-b focus:border-green-500 focus:text-white">
+        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-green-500 focus:text-white">
           News
         </a>
       </Typography>
@@ -71,7 +71,7 @@ export default function Fun() {
         variant="small"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex  hover:text-green-100 focus:border-b focus:border-green-500 focus:text-white">
+        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-green-500 focus:text-white">
          Forum
         </a>
       </Typography>
