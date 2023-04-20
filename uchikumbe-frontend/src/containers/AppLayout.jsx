@@ -8,7 +8,6 @@ const AppLayout = () => {
       
       <div className="flex-grow bg-gray-100">
 
-        <Test/>
         <div className="p-4">
           <h1 className="text-lg font-semibold">Cards</h1>
           <p>olor, sit amet consectetur adipisicing elit. 
