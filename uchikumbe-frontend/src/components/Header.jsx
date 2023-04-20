@@ -27,7 +27,7 @@ export default function Fun() {
 
     <div className=" gap-5 ">
     <a href="#" className="mr-2 hover:text-gray-400">Login</a>
-    <a href="#" className="bg-green-600 text-white rounded-full py-1 px-2 hover:bg-green-600">
+    <a href="#" className="bg-green-600 text-white rounded-full py-1 px-2 hover:bg-green-400">
 
       {/* <Link to="/signIn"></Link>  */}
       
@@ -42,36 +42,36 @@ export default function Fun() {
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-normal"
+        className="mt-1 font-normal"
       >
-        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-green-500 focus:text-white">
+        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-white focus:text-white">
           Home
         </a>
       </Typography>
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-normal"
+        className="mt-1 font-normal"
       >
-        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-green-500 focus:text-white">
+        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-white focus:text-white">
           People
         </a>
       </Typography>
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-normal"
+        className="mt-1 font-normal"
       >
-        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-green-500 focus:text-white">
+        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-white focus:text-white">
           News
         </a>
       </Typography>
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-normal"
+        className="mt-1 font-normal"
       >
-        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-green-500 focus:text-white">
+        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-white focus:text-white">
          Forum
         </a>
       </Typography>
@@ -82,7 +82,7 @@ export default function Fun() {
   return (
     <Navbar className="mx-auto sticky p-0 top-0 z-50 max-w-screen-xl
     bg-opacity-80 backdrop-filter backdrop-blur-md
-    bg-green-900 text-white px-8 lg:px-8 lg:py-4">
+    bg-green-900 text-white px-8 lg:px-8 lg:py-0">
       <div className="container mx-auto flex items-center justify-between text-white">
 
         <Typography
