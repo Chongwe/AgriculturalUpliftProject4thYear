@@ -1,12 +1,10 @@
-import React from "react";
-import Test from "../utils/Test"
-import SignUp from "../utils/SignUp"
 
-const AppLayout = () => {
+
+const Home= () => {
   return (
     <div className="p-4 flex">
       
-      <div className="flex-grow bg-gray-100">
+      <div className="flex-grow rou bg-gray-100">
 
         <div className="p-4">
           <h1 className="text-lg font-semibold">Cards</h1>
@@ -87,4 +85,4 @@ const AppLayout = () => {
   );
 };
 
-export default AppLayout;
+export default Home;

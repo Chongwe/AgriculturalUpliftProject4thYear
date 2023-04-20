@@ -1,30 +1,30 @@
-import React from 'react';
-import Header from './components/Header';
-import AppLayout from './containers/AppLayout';
-import Footer from './components/Footer';
-// import SignUp from './utils/SignUp';
-import { BrowserRouter,  Routes, Route,  } from 'react-router-dom';
-// import NotFoundPage from './others/NotFound';
 
+//PAGES
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+//ROUTES 
+import { 
+  createBrowserRouter,  
+  Route,
+  createRoutesFromElements,
+  RouterProvider,  } from 'react-router-dom';
+
+  //LAYOUTS
+import RootLayout from './Layout/RootLayout';
+
+  const router = createBrowserRouter(
+     createRoutesFromElements(
+        <Route path='/' element={<RootLayout />}>
+          <Route> </Route>
+        </Route>
+     )
+  )
 
 function App() {
-  return <div className="App">
-   
-    <Header/>
-    <AppLayout />
-    <Footer />
-
-    {/* <Router>
-      <Switch>
-        <Route exact path='/' component={AppLayout} />  
-        <Route path='/signIn' component={SignUp}/>
-        <Route Component={NotFoundPage}/>
-      </Switch>
-    </Router> */}
-
-  </div>;
+  return (
+    <RouterProvider router={router} />
+  );
 }
-
-
 
 export default App;

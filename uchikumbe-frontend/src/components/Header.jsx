@@ -99,7 +99,7 @@ export default function Fun() {
             className="object-center t mr-2 h-12 "
             src={logo}
             />
-          <span className="text-2xl ">Uchikumbe</span>
+          <span className="text-2xl  ">Uchikumbe</span>
         </Typography>
         <div className="hidden lg:block">
             
