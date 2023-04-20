@@ -11,7 +11,7 @@ import {
 } from '@material-tailwind/react'
 
 
-export default function Login() {
+function Login() {
   return (
     <Card className="w-full m-3 max-w-[18rem]">
       <CardHeader 
@@ -79,4 +79,5 @@ export default function Login() {
 
     </Card>
   )
-}
+};
+ export default Login;

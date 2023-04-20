@@ -3,7 +3,7 @@ import Header from './components/Header';
 import AppLayout from './containers/AppLayout';
 import Footer from './components/Footer';
 // import SignUp from './utils/SignUp';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter,  Routes, Route,  } from 'react-router-dom';
 // import NotFoundPage from './others/NotFound';
 
 
