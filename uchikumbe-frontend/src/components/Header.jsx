@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 import logo from "../assets/logo.svg"
 import Search from "../utils/Search";
 // import {Link} from 'react-router-dom'
@@ -26,7 +26,10 @@ export default function Fun() {
   const signInSignUp = (
 
     <div className=" gap-5 ">
-    <a href="#" className="mr-2 hover:text-gray-400">Login</a>
+    <a href="#" className="mr-2 hover:text-green-900">
+      <FontAwesomeIcon icon={faUser} className="h-4 w-4 space-x-1 mr-2 text-white"/> 
+      
+      Login</a>
     <a href="#" className="bg-green-600 text-white rounded-full py-1 px-2 hover:bg-green-400">
 
       {/* <Link to="/signIn"></Link>  */}
@@ -81,7 +84,7 @@ export default function Fun() {
  
   return (
     <Navbar className="mx-auto sticky p-0 top-0 z-50 max-w-screen-xl
-    bg-opacity-80 backdrop-filter backdrop-blur-md
+    bg-opacity-80 backdrop-filter backdrop-blur-md pt-2
     bg-green-900 text-white px-8 lg:px-8 lg:py-0">
       <div className="container mx-auto flex items-center justify-between text-white">
 
