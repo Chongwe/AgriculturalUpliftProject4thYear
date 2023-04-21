@@ -11,7 +11,7 @@ import {
 } from '@material-tailwind/react'
 
 
-function SignUp() {
+function Login() {
   return (
     <Card className="w-full m-3 max-w-[18rem]">
       <CardHeader 
@@ -27,51 +27,28 @@ function SignUp() {
 
       <div className="mt-8 mb-2 m-3 place-items-center text-center ">
          <Typography variant="h4" className="text-green-900">
-            Sign Up
+            Login
           </Typography>
-          <Typography color="gray" className="mt-1 font-normal">
-            Enter your details to register.
-          </Typography>
+          
       </div>
       
       <form className="mt-8 mb-2 m-3 place-items-center
        text-center max-w-[16rem]  sm:w-96">
         <div className="mb-4 flex flex-col gap-6">
           <Input color="green" size="lg" label="Name" />
-          <Input color="green" size="lg" label="Email" />
           <Input color="green" type="password" size="lg" label="Password" />
         </div>
-        <Checkbox
-        color='green'
-          label={
-            (
-              <Typography
-                variant="small"
-                color="gray"
-                className="flex items-center font-normal"
-              >
-                I agree the
-                <a
-                  href="#"
-                  className="font-medium transition-colors hover:text-green-500"
-                >
-                  &nbsp;Terms and Conditions
-                </a>
-              </Typography>
-            )
-          }
-          containerProps={{ className: "-ml-2.5" }}
-        />
+       
         <Button className="mt-6 bg-green-900" fullWidth>
-          Register
+          Login
         </Button>
         <Typography color="gray" className="mt-4 text-center font-normal">
-          Already have an account?{" "}
+          You Don't ahve an account?{" "}
           <a
             href="#"
             className="font-medium text-green-900 transition-colors hover:text-green-500"
           >
-            SignUp
+            Sign Up
           </a>
         </Typography>
       </form>
@@ -80,4 +57,4 @@ function SignUp() {
     </Card>
   )
 };
- export default SignUp;
+ export default Login;
