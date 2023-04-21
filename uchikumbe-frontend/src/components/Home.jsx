@@ -2,6 +2,7 @@ import Posts from "./Posts";
 const Home= () => {
   return (
     <div className="p-4 flex">
+
       
       <div className="flex-grow rou bg-gray-100">
         
