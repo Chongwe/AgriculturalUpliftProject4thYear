@@ -24,6 +24,22 @@ export default {
       type: 'text',
     },
     {
+      name: 'userId',
+      title: 'UserID',
+      type: 'string',
+    },
+    {
+      name: 'postedBy',
+      title: 'PostedBy',
+      type: 'postedBy',
+    },
+    {
+      name: 'memberOf',
+      title: 'MemberOf',
+      type: 'array',
+      of: [{type: 'memberOf'}],
+    },
+    {
       name: 'animals',
       title: 'Animals',
       type: 'array',
