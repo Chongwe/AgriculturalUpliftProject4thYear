@@ -1,10 +1,10 @@
-
+import Posts from "./Posts";
 const Home= () => {
   return (
     <div className="p-4 flex">
       
       <div className="flex-grow rou bg-gray-100">
-
+        
         <div className="p-4">
           <h1 className="text-lg font-semibold">Cards</h1>
           <p>olor, sit amet consectetur adipisicing elit. 
