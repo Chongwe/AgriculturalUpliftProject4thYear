@@ -30,19 +30,14 @@ export default function Fun() {
 
 
     
-    <div className=" gap-5 ">
-      
-    <a href="#" className="mr-2 hover:text-green-900">
-      <FontAwesomeIcon icon={faUser} className="h-4 w-4 space-x-1 mr-2 text-white"/> 
-      
-      Login</a>
-    <a href="#" className="bg-green-600 text-white rounded-full py-1 px-2 hover:bg-green-400">
+    <div className=" flex gap-5 ">
 
-      {/* <Link to="/signIn"></Link>  */}
+      <Button  variant="text" className="flex gap-2 hover:bg-green-400 rounded-full text-white">
+        <FontAwesomeIcon icon={faUser} className="h-4 w-4 space-x-1 mr-2 "/> Login 
+      </Button>
       
-      Sign Up
-     </a>
-  </div>
+   <Button variant="filled" color="green" className="text-green-900 rounded-full text-white hover:bg-green-400"> Sign UP</Button>
+   </div>
 
   );
 
@@ -52,7 +47,7 @@ export default function Fun() {
  
  
   return (
-    <Navbar className="mx-auto sticky p-0 top-0 z-50 max-w-screen-xl
+    <Navbar className="mx-auto sticky dulation-75 p-0 top-0 z-50 max-w-screen-xl
     bg-opacity-70 backdrop-filter backdrop-blur-md pt-2
     bg-green-900 text-white px-8 lg:px-8 lg:py-0">
       <div className="container mx-auto flex items-center justify-between text-white">
