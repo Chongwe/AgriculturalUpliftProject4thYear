@@ -10,7 +10,11 @@ import {
   export default function  Sidebar() {
     return (
       <Card className="w-50 bg-light-green-700">
+<<<<<<< Updated upstream
         <CardHeader floated={false} className="h-80">
+=======
+        <CardHeader floated={false} className="h-50">
+>>>>>>> Stashed changes
           
         </CardHeader>
         <CardBody className="text-center">
