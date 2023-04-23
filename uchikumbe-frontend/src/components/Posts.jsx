@@ -20,7 +20,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Posts() {
     return (
         <Card className= "m-8 h-screen flex min-w-[300px] w-96"> 
-            <CardHeader floated={false} className = "shadow-none h-15 min-h-auto">
+            <CardHeader floated={false} className = "shadow-none justify-between space-x-4 flex h-full h-15 min-h-auto">
                 <div className="flex space-x-2">
                     <Avatar src={Avata} alt = "avatar" variant="circular"></Avatar>
                     <div className=" ">
@@ -33,7 +33,7 @@ export default function Posts() {
                     </div>
 
                     <div className="justify-end mr-8">
-                          <IconButton variant="text" >
+                          <IconButton variant="text" size="lg">
                     <FontAwesomeIcon icon={faEnvelope} />
                     </IconButton>
                     </div>
@@ -45,9 +45,11 @@ export default function Posts() {
             <CardBody className="h-80 min-h-auto">
                 <div>
                     <p>Lorem ip. Itaque lnam accusamus, ea repellat inventore facere quisquam sit?</p>
-                    <img src={Picture} className="flex"/>
+                    <img src={Picture} className="flex h-[50%]"/>
                 </div>
             </CardBody>
+
+          
         </Card>
     )
 }

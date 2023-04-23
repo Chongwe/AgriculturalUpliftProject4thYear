@@ -47,7 +47,7 @@ export default function Fun() {
  
  
   return (
-    <Navbar className="mx-auto sticky dulation-75 p-0 top-0 z-50 max-w-screen-xl
+    <Navbar className="mx-auto sticky  dulation-75 p-0 top-0 z-50 max-w-screen-xl
     bg-opacity-70 backdrop-filter backdrop-blur-md pt-2
     bg-green-900 text-white px-8 lg:px-8 lg:py-0">
       <div className="container mx-auto flex items-center justify-between text-white">
