@@ -16,7 +16,7 @@ const Home= () => {
       </div>
       
       {/* Left Section */}
-      <div className="flex-shrink-0 w-1/4 w-80 hidden md:block rounded-xl">
+      <div className="flex-shrink-0 w-1/4  hidden md:block rounded-xl">
 
        
       
