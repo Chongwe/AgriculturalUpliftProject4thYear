@@ -30,7 +30,7 @@ export default function Fun() {
 
 
     
-    <div className=" flex gap-5 ">
+    <div className=" flex justify-end gap-5 ">
 
       <Button  variant="text" className="flex gap-2 hover:bg-green-400 rounded-full text-white">
         <FontAwesomeIcon icon={faUser} className="h-4 w-4 space-x-1 mr-2 "/> Login 
@@ -69,9 +69,6 @@ export default function Fun() {
             
             <Search />
             {navList}
-            
-       
-
 
         </div>
        
@@ -91,11 +88,11 @@ export default function Fun() {
         </IconButton>
       </div>
       <MobileNav open={openNav}>
-        <div className="container p-3 text-center mx-auto">
+        <div className="container items-center p-3  mx-auto">
           <span className="p-3">  {navList} </span>
-          <div className="ml-auto  ">
+          <div className="ml-auto justify-end ">
            
-            <span className="p-3"> {signInSignUp} </span> 
+            <span className="p-3 justify-right text-right"> {signInSignUp} </span> 
              
               <Search />
           </div>

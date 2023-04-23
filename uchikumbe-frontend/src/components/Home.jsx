@@ -1,11 +1,13 @@
 import Posts from "./Posts";
 const Home= () => {
   return (
-    <div className="p-4 flex">
+    <div className="p-4 gap-2  flex">
 
       
-      <div className="flex-grow rou bg-gray-100">
+      <div className="flex-grow rounded-xl rou bg-green-100">
         
+      <Posts/>
+
         <div className="p-4">
           <h1 className="text-lg font-semibold">Cards</h1>
           <p>olor, sit amet consectetur adipisicing elit. 
@@ -49,7 +51,9 @@ const Home= () => {
       </div>
       
       {/* Left Section */}
-      <div className="flex-shrink-0 w-1/4 bg-gray-300">
+      <div className="flex-shrink-0 w-1/4 w-80 rounded-xl">
+
+       
         <div className="p-4">
           <h1 className="text-lg font-semibold">(Whats new Recommendations)</h1>
           <p>Content for the left Lorem ipsum dolor, sit amet consectetur adipisicing elit. 

@@ -17,7 +17,7 @@ import Avata from "../assets/avatar.png"
 
 export default function Posts() {
     return (
-        <Card className= " min-h-auto w-96"> 
+        <Card className= " min-h-auto flex w-96"> 
             <CardHeader floated={false} className = "shadow-none h-15 min-h-auto">
                     <div className="flex space-x-2">
                         <Avatar src={Avata} alt = "avatar" variant="circular"></Avatar>
