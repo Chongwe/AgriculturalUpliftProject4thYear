@@ -3,21 +3,32 @@ import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 import logo from "../assets/logo.svg"
 import Search from "../utils/Search";
 import NavLinks from "./NavLinks";
+import React, {useRef} from "react";
+import SignUp from "../utils/SignUp"
 
 
 
 import {
-  Input,
   Navbar,
   MobileNav,
   Typography,
   Button,
   IconButton,
+  Dialog
 } from "@material-tailwind/react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
  
 export default function Fun() {
   const [openNav, setOpenNav] = useState(false);
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen((cur) => !cur);
+
+  // const dialogRef = () => useRef()
+  // const handleClose = (e) => {
+  //   e.stopPropagation()
+  // } 
  
   useEffect(() => {
     window.addEventListener(
@@ -32,11 +43,29 @@ export default function Fun() {
     
     <div className=" flex justify-end gap-5 ">
 
-      <Button  variant="text" className="flex gap-2 hover:bg-green-400 rounded-full text-white">
+       <Button  variant="text" className="flex gap-2 hover:bg-green-400 rounded-full text-white">
         <FontAwesomeIcon icon={faUser} className="h-4 w-4 space-x-1 mr-2 "/> Login 
       </Button>
+
+        <React.Fragment>
+            <Button  onClick={handleOpen} variant="filled" color="green" className="rounded-full text-white hover:bg-green-400"> Sign UP</Button>
+            <Dialog
+
+              shouldCloseOnOverlayClick={true}
+
+              size="xs"
+              open={open}
+              handler={handleOpen}
+              
+              className="bg-transparent shadow-none"
+            >
+            <SignUp />
+            </Dialog>
+        </React.Fragment>
+
+   
       
-   <Button variant="filled" color="green" className="text-green-900 rounded-full text-white hover:bg-green-400"> Sign UP</Button>
+   
    </div>
 
   );
@@ -47,7 +76,9 @@ export default function Fun() {
  
  
   return (
-    <Navbar className="mx-auto sticky  dulation-75 p-0 top-0 z-50 max-w-screen-xl
+
+    
+    <Navbar className="mx-auto sticky min-w-[500px] dulation-75 p-0 top-0 z-50 max-w-screen-xl
     bg-opacity-70 backdrop-filter backdrop-blur-md pt-2
     bg-green-900 text-white px-8 lg:px-8 lg:py-0">
       <div className="container mx-auto flex items-center justify-between text-white">
@@ -69,6 +100,10 @@ export default function Fun() {
             
             <Search />
             {navList}
+
+
+
+         
 
         </div>
        

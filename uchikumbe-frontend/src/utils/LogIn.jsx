@@ -11,9 +11,14 @@ import {
 } from '@material-tailwind/react'
 
 
+const handleInsideClick = (e) => {
+  e.stopPropagation();
+};
+
+
 function Login() {
   return (
-    <Card className="w-full m-3 max-w-[18rem]">
+    <Card onClick={handleInsideClick} className="w-full m-3 max-w-[18rem]">
       <CardHeader 
         floated={false}
         shadow={false}
