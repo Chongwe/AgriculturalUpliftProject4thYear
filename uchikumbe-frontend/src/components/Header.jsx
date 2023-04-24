@@ -3,8 +3,9 @@ import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 import logo from "../assets/logo.svg"
 import Search from "../utils/Search";
 import NavLinks from "./NavLinks";
-import React, {useRef} from "react";
 import SignUp from "../utils/SignUp"
+import LogIn from "../utils/LogIn";
+import React from "react";
 
 
 
@@ -22,13 +23,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Fun() {
   const [openNav, setOpenNav] = useState(false);
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen((cur) => !cur);
-
-  // const dialogRef = () => useRef()
-  // const handleClose = (e) => {
-  //   e.stopPropagation()
-  // } 
  
   useEffect(() => {
     window.addEventListener(
@@ -37,34 +31,28 @@ export default function Fun() {
     );
   }, []);
 
+  
+    const [open, setOpen] = React.useState(false);
+     const handleOpen = () => setOpen((cur) => !cur);
+
+    const [openLogin, setLoginOpen] = React.useState(false);
+    const handleOpenLogin = () => setLoginOpen((cur) => !cur)
+
+
   const signInSignUp = (
 
 
-    
     <div className=" flex justify-end gap-5 ">
 
-       <Button  variant="text" className="flex gap-2 hover:bg-green-400 rounded-full text-white">
+      <Button onClick={handleOpenLogin} variant="text" className="flex gap-2 hover:bg-green-400 rounded-full text-white">
         <FontAwesomeIcon icon={faUser} className="h-4 w-4 space-x-1 mr-2 "/> Login 
       </Button>
 
-        <React.Fragment>
-            <Button  onClick={handleOpen} variant="filled" color="green" className="rounded-full text-white hover:bg-green-400"> Sign UP</Button>
-            <Dialog
-
-              shouldCloseOnOverlayClick={true}
-
-              size="xs"
-              open={open}
-              handler={handleOpen}
-              
-              className="bg-transparent shadow-none"
-            >
-            <SignUp />
-            </Dialog>
-        </React.Fragment>
+      <Button  onClick={handleOpen} variant="filled" color="green" className="rounded-full text-white hover:bg-green-400"> Sign UP</Button>
+            
 
    
-      
+    
    
    </div>
 
@@ -102,7 +90,27 @@ export default function Fun() {
             {navList}
 
 
+            <Dialog
+              size="md"
+              
+              open={open}
+              handler={handleOpen}
+              
+              className="bg-transparent shadow-none"
+            >
+             {handleOpen && <SignUp />}
+            </Dialog>
 
+            <Dialog
+              size="md"
+              
+              open={openLogin}
+              handler={handleOpenLogin}
+              
+              className="bg-transparent shadow-none"
+            >
+             {handleOpen && <LogIn />}
+            </Dialog>
          
 
         </div>

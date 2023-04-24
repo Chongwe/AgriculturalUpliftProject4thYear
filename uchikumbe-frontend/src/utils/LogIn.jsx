@@ -1,12 +1,13 @@
 import React from 'react'
 import logo from "../assets/logo.svg"
+import SignUp from './SignUp';
 import { 
   CardHeader,
   Card,
   Typography,
   Input,
   Button,
-  Checkbox
+  Dialog
 
 } from '@material-tailwind/react'
 
@@ -16,7 +17,12 @@ const handleInsideClick = (e) => {
 };
 
 
-function Login() {
+function LogIn() {
+
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen((cur) => !cur);
+
   return (
     <Card onClick={handleInsideClick} className="w-full m-3 max-w-[18rem]">
       <CardHeader 
@@ -30,14 +36,14 @@ function Login() {
         </Typography>
       </CardHeader>
 
-      <div className="mt-8 mb-2 m-3 place-items-center text-center ">
+      <div className="mt-2 mb-2 m-3 place-items-center text-center ">
          <Typography variant="h4" className="text-green-900">
             Login
           </Typography>
           
       </div>
       
-      <form className="mt-8 mb-2 m-3 place-items-center
+      <form className="mt-2 mb-2 m-3 place-items-center
        text-center max-w-[16rem]  sm:w-96">
         <div className="mb-4 flex flex-col gap-6">
           <Input color="green" size="lg" label="Name" />
@@ -47,11 +53,24 @@ function Login() {
         <Button className="mt-6 bg-green-900" fullWidth>
           Login
         </Button>
-        <Typography color="gray" className="mt-4 text-center font-normal">
-          You Don't ahve an account?{" "}
+
+        <Dialog
+              size="md"
+              
+              open={open}
+              handler={handleOpen}
+              
+              className="bg-transparent shadow-none"
+            >
+            <SignUp />
+            </Dialog>
+
+        <Typography color="gray" variant="small" className="mt-2 text-center font-normal">
+          Don't have an account yet?{" "}
           <a
             href="#"
             className="font-medium text-green-900 transition-colors hover:text-green-500"
+            onClick={handleOpen}
           >
             Sign Up
           </a>
@@ -62,4 +81,4 @@ function Login() {
     </Card>
   )
 };
- export default Login;
+ export default LogIn;

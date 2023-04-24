@@ -1,17 +1,23 @@
 import React from 'react'
 import logo from "../assets/logo.svg"
+import LogIn from './LogIn';
 import { 
   CardHeader,
   Card,
   Typography,
   Input,
   Button,
-  Checkbox
+  Checkbox,
+  Dialog
 
 } from '@material-tailwind/react'
 
 
 function SignUp() {
+
+  const [openLogin, setLoginOpen] = React.useState(false);
+    const handleOpenLogin = () => setLoginOpen((cur) => !cur)
+
   return (
     <Card className="w-full m-3 max-w-[18rem]">
       <CardHeader 
@@ -25,7 +31,7 @@ function SignUp() {
         </Typography>
       </CardHeader>
 
-      <div className="mt-8 mb-2 m-3 place-items-center text-center ">
+      <div className="mt-1 mb-2 m-3 place-items-center text-center ">
          <Typography variant="h4" className="text-green-900">
             Sign Up
           </Typography>
@@ -34,14 +40,14 @@ function SignUp() {
           </Typography>
       </div>
       
-      <form className="mt-8 mb-2 m-3 place-items-center
+      <form className="mt-1 mb-2 m-3 place-items-center
        text-center max-w-[16rem]  sm:w-96">
         <div className="mb-4 flex flex-col gap-6">
           <Input color="green" size="lg" label="Name" />
           <Input color="green" size="lg" label="Email" />
           <Input color="green" type="password" size="lg" label="Password" />
         </div>
-        <Checkbox
+        {/* <Checkbox
         color='green'
           label={
             (
@@ -61,15 +67,28 @@ function SignUp() {
             )
           }
           containerProps={{ className: "-ml-2.5" }}
-        />
-        <Button className="mt-6 bg-green-900" fullWidth>
+        /> */}
+        <Button  className="mt-2 bg-green-900" fullWidth>
           Register
         </Button>
-        <Typography color="gray" className="mt-4 text-center font-normal">
+
+        <Dialog
+              size="md"
+              
+              open={openLogin}
+              handler={handleOpenLogin}
+              
+              className="bg-transparent shadow-none"
+            >
+             <LogIn />
+            </Dialog>
+
+        <Typography color="gray" variant="small" className="mt-2 text-center font-normal">
           Already have an account?{" "}
           <a
             href="#"
             className="font-medium text-green-900 transition-colors hover:text-green-500"
+            onClick={handleOpenLogin}
           >
             SignUp
           </a>

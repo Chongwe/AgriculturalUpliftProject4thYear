@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import {
  
     Typography,
@@ -29,9 +29,14 @@ export default function NavLinks() {
         variant="small"
         className="mt-1 font-normal"
       >
-        <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-white focus:text-white">
+        {/* <a href="#" className="flex  hover:text-green-100 focus:border-b-2 focus:border-white focus:text-white">
           People
-        </a>
+        </a> */}
+
+        <NavLink to="people" className="flex  hover:text-green-100 focus:border-b-2 focus:border-white focus:text-white" > 
+        
+        People </NavLink>
+
       </Typography>
       <Typography
         as="li"
