@@ -1,10 +1,11 @@
 import { Typography } from "@material-tailwind/react";
 import logo from "../assets/logo.svg"
+import bg from "../assets/insect.jpg"
  
 export default function Example() {
   return (
-    <footer className="w-full bg-white p-8">
-      <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-white text-center md:justify-between">
+    <footer className="w-full rounded-t-2xl bg-image bg-white p-8">
+      <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 text-center md:justify-between">
         <img src={logo} alt="Uchikumbe logo" className="w-12 text-center" />
         <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
           <li>

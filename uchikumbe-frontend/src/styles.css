@@ -1,0 +1,5 @@
+.bg-image {
+    background-image: url('./assets/insect.jpg');
+    background-size: cover;
+    background-position: center center;
+  }
