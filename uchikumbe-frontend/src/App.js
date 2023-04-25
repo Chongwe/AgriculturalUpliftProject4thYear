@@ -24,13 +24,14 @@ import RootLayout from './Layout/RootLayout';
 
   const router = createBrowserRouter(
      createRoutesFromElements(
-      <RootLayout>
-        <Route path='/' element={<RootLayout />}/>
-        <Route index element={<Home />} >
-           <Route path="people" element={<People />}/>
+        <Route path='/' element={<RootLayout />}>
+            <Route index element={<Home />} />
+            <Route path="people" element={<People />}/>
+            <Route path="news" element={<News />}/>
+            <Route path="forum" element={<Forum />}/>
+
+
         </Route>
-       
-      </RootLayout>
         
      )
   )
