@@ -1,6 +1,5 @@
 import React from 'react';
 import Img from "../assets/Img.svg"
-import RootLayout from '../Layout/RootLayout';
 
 const NotFoundPage = () => {
   return (
