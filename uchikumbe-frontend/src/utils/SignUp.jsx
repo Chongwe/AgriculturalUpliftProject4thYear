@@ -90,7 +90,7 @@ function SignUp() {
             className="font-medium text-green-900 transition-colors hover:text-green-500"
             onClick={handleOpenLogin}
           >
-            SignUp
+            LogIn
           </a>
         </Typography>
       </form>
