@@ -1,22 +1,15 @@
 
-
-import {
-    Button,
-    CardFotter,
-    Typography,
-    IconButton,
-    Avatar
-
-} from"@material-tailwind/react";
-
 import Picture from "../assets/insect.jpg"
 import Avata from "../assets/avatar.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    Typography,
+    IconButton,
+    Avatar} from"@material-tailwind/react";
 import { 
     faComment, 
-    faUser,
     faEnvelope, 
     faThumbsUp} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Posts() {
     return (
@@ -31,15 +24,13 @@ export default function Posts() {
                         <Typography color="gray" className="text-xs  " textGradient>
                                 33m ago
                         </Typography>
-                    </div>  
-                   
+                    </div>                     
                 </div>
                 <div className="">
                     <IconButton variant="text" color="green" size="lg">
                     <FontAwesomeIcon icon={faEnvelope} />
                     </IconButton>
-                    </div>
-
+                </div>
             </div>
             <div className="">
                 <div className="mt-2">
@@ -53,22 +44,18 @@ export default function Posts() {
                     <img src={Picture} className="flex mt-2"/>
                 </div>
             </div>
-
             <div className=" flex mt-4 gap-8 justify-center"> 
                 <div className="flex-1">
                     <button class=" bg-green-500 hover:bg-green-600 py-2 px-4  text-white  rounded-full focus:outline-none">
-                    <FontAwesomeIcon icon={faComment} />  Comment...
-                </button>
+                        <FontAwesomeIcon icon={faComment} />  Comment...
+                    </button>
                 </div>
                 <div className=" justify-end">
-                   <IconButton  variant="text" size="lg" color="green">
-                   <FontAwesomeIcon icon={faThumbsUp} />
+                    <IconButton  variant="text" size="lg" color="green">
+                    <FontAwesomeIcon icon={faThumbsUp} />
                     </IconButton> 
-                </div>
-                
-            </div>
-           
-
+                </div> 
+            </div>           
         </div>
     )
 }

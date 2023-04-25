@@ -1,6 +1,5 @@
 import { Typography } from "@material-tailwind/react";
 import logo from "../assets/logo.svg"
-import bg from "../assets/insect.jpg"
  
 export default function Example() {
   return (
