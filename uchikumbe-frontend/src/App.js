@@ -29,10 +29,7 @@ import RootLayout from './Layout/RootLayout';
             <Route path="people" element={<People />}/>
             <Route path="news" element={<News />}/>
             <Route path="forum" element={<Forum />}/>
-
-
         </Route>
-        
      )
   )
 
@@ -40,17 +37,18 @@ function App() {
   return (
     <RouterProvider router={router} />
 
-
-    // <BrowserRouter>
-    //   <RootLayout>
-    //     <Routes>
-    //       <Route exact path="/" component={<Home />} />
-    //       <Route path="/people" component={<People />} />
-    //       <Route path="/news" component={<News/>} />
-    //       <Route path='/forum' Component={<Forum />} />
-    //     </Routes>
-    //   </RootLayout>
-    // </BrowserRouter>
+    // <div className='App'>
+    //   <Router>
+    //     <Header />
+    //       <Routes>
+    //         <Route path='/' element={<Home />} />
+    //         <Route path="/people" element={<People />}/>
+    //         <Route path="/news" element={<News />}/>
+    //         <Route path="/forum" element={<Forum />}/>
+    //       </Routes>
+    //     <Footer />
+    //   </Router>
+    // </div>
 
   );
 }
