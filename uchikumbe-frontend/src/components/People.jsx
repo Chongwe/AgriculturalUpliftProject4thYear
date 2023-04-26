@@ -1,6 +1,4 @@
-import React from "@material-tailwind/react";
-import avatar from "../assets/avatar.png";
-import { Avatar } from "@material-tailwind/react";
+import React from "react";
 import {
   CardHeader,
   Section,
@@ -11,6 +9,8 @@ import {
   Icon,
   IconButton,
 } from "@material-tailwind/react";
+import { Avatar } from "@material-tailwind/react";
+import avatar from "../assets/avatar.png";
 import {
   faComment,
   faUser,
@@ -21,73 +21,42 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function People() {
   return (
-    <div className="bg-white shadow rounded-lg p-4">
-      <div className="flex items-center justify-between mb-2">
-        <h3 className="text-lg font-sans font-semibold text-green-900 space-y-4 px-40">Admins</h3>
-       </div>
-       <div className="space-y-4 px-40 ">
-        <div className="flex items-center space-x-4 border-t border-b">
-          <Avatar src={avatar} size="sm" />
-          <div className="flex-1">
-            <h4 className="text-sm font-medium text-gray-900">Jimmy Maloya</h4>
-            <p className="text-sm text-gray-500">Pig farmer in Mulanje</p>
-          </div>
-          <div className="ml-auto">
-            <IconButton variant="text" color="green" size="xl">
-              <FontAwesomeIcon icon={faEnvelope} />
-            </IconButton>
-          </div>
-        </div>
+    <Card className="p-4">
+      <div>
+        <h1 className="text-3xl font-large text-green-900 pr-10">Members</h1>
+        <div className=" w-50 h-1/2 ">
+          <div className="bg-white overflow-hidden shadow rounded-lg ">
+            <div className="sm:p-6 w-full border-0 bg-white shadow-md rounded-md p-4 border-t border-b ">
+              <div className="flex items-center space-x-2">
+                <Avatar src={avatar} size="sm" />
+                <span className="text-lg leading-6 font-medium text-gray-900">
+                  Jimmy Maloya {}
+                </span>
+              </div>
+              <div className=" flex justify-end p-1/2">
+                <IconButton variant="text" color="green" size="sm">
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </IconButton>
+              </div>
+            </div>
 
-        <div className="flex items-center space-x-4 border-t border-b">
-          <Avatar src={avatar} size="sm" />
-          <div className="flex-1">
-            <h4 className="text-sm font-medium text-gray-900">
-              Dalitso Chongwe
-            </h4>
-            <p className="text-sm text-gray-500">Bee farmer in Salima</p>
-          </div>
-          <div className="ml-auto">
-            <IconButton variant="text" color="green" size="xl">
-              <FontAwesomeIcon icon={faEnvelope} />
-            </IconButton>
+            <div className="sm:p-6 w-full border-0 bg-white shadow-md rounded-md p-4 border-t border-b ">
+              <div className="flex items-center space-x-2">
+                <Avatar src={avatar} size="sm" />
+                <span className="text-lg leading-6 font-medium text-gray-900">
+                  Jimmy Maloya {}
+                </span>
+              </div>
+              <div className=" flex justify-end p-1/2">
+                <IconButton variant="text" color="green" size="sm">
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </IconButton>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div className="flex items-center justify-between mb-2 pt-5">
-        <h3 className="text-lg font-sans font-semibold text-green-900 space-y-4 px-40">Members</h3>
-       </div>
-       <div className="space-y-4 px-40 ">
-        <div className="flex items-center space-x-4 border-t border-b">
-          <Avatar src={avatar} size="sm" />
-          <div className="flex-1">
-            <h4 className="text-sm font-medium text-gray-900">Emma Limbe</h4>
-            <p className="text-sm text-gray-500">Sugarcane famer in Bangwe</p>
-          </div>
-          <div className="ml-auto">
-            <IconButton variant="text" color="green" size="xl">
-              <FontAwesomeIcon icon={faEnvelope} />
-            </IconButton>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-4 border-t border-b">
-          <Avatar src={avatar} size="sm" />
-          <div className="flex-1">
-            <h4 className="text-sm font-medium text-gray-900">
-              Howard Kaila
-            </h4>
-            <p className="text-sm text-gray-500">Chicken farmer in Zomba</p>
-          </div>
-          <div className="ml-auto">
-            <IconButton variant="text" color="green" size="xl">
-              <FontAwesomeIcon icon={faEnvelope} />
-            </IconButton>
-          </div>
-        </div>
-      </div>
-    </div>
+    </Card>
   );
 }
 
