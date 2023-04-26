@@ -52,21 +52,8 @@ const AppLayout = () => {
 
       </div>
       <SideBar/>
-      {/* Left Section */}
-<<<<<<< Updated upstream
+      
      
-=======
-      <div className="flex-shrink-0 w-1/4 bg-gray-300 rounded-md">
-        
-
-        <div className="p-4">
-          <SideBar/>
-        </div>
-
-       
-
-      </div>
->>>>>>> Stashed changes
     </div>
   );
 };
