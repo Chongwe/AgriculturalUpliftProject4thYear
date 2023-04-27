@@ -9,6 +9,12 @@ function People() {
       <Person name="Dalitso Chongwe"  description="Pig farmer" />
       <Person name="Jimmy Maloya" title="Admin" description="Maize farmer" />
       <Person name="Howard Kaira" title="Admin" description="Soya farmer" />
+      <Person name="Howard Kaira" title="Admin" description="Soya farmer" />
+      <Person name="Howard Kaira" title="Admin" description="Soya farmer" />
+      <Person name="Howard Kaira"  description="Soya farmer" />
+      <Person name="Howard Kaira"  description="Soya farmer" />
+      <Person name="Howard Kaira" title="Admin" description="Soya farmer" />
+
     </div>
   );
 }
