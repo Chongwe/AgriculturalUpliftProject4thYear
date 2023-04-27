@@ -15,6 +15,19 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
+/*
+  This is the sign up logic for sanity client we are sending the user credentials to our sanity database where
+  a unique user is being generate off of a user password combination 
+
+  One issue is the fact that the uuidv4 generates a unique idenitifier each time meaning that the same email address can be registered 
+  multiple time 
+
+  possible solutions is swithcing completely to google sign in and sign up with google this way we can use the unique sub as the 
+  users ID that way each account will have one unique email address leading a reduced redundency on users 
+  
+  this change will be implemented soon there after 
+  and will lead to the merging of the signup an sign in page as simply login page component 
+*/
 const SignUp = () => {
   // State variables
   const [firstName, setFirstName] = useState("");
