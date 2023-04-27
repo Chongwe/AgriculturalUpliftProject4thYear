@@ -47,7 +47,7 @@ export default function Posts(props) {
                         <FontAwesomeIcon icon={faComment} />  Comment...
                     </button>
                 </div>
-                <div className=" justify-end">
+                <div className=" rounded-full justify-end">
                     <Link to="/message">
                         <IconButton  variant="text" size="lg" color="green">
                         <FontAwesomeIcon icon={faThumbsUp} />
