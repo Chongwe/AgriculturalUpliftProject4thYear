@@ -142,31 +142,10 @@ const SignUp = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        {/* <Checkbox
-        color='green'
-          label={
-            (
-              <Typography
-                variant="small"
-                color="gray"
-                className="flex items-center font-normal"
-              >
-                I agree the
-                <a
-                  href="#"
-                  className="font-medium transition-colors hover:text-green-500"
-                >
-                  &nbsp;Terms and Conditions
-                </a>
-              </Typography>
-            )
-          }
-          containerProps={{ className: "-ml-2.5" }}
-        /> */}
         <Button className="mt-2 bg-green-900" fullWidth onClick={createUser}>
           Register
         </Button>
-
+        
         <Dialog
           size="md"
           open={openLogin}

@@ -5,7 +5,7 @@ import {Typography,} from "@material-tailwind/react";
 export default function NavLinks() {
   return (
     <div>
-    <ul className=" flex gap-10 lg:mb-0 lg:mt-0  lg:flex-row lg:items-center lg:gap-20">
+    <ul className=" flex gap-10 lg:mb-0 lg:mt-0 duration-200 lg:flex-row lg:items-center lg:gap-20">
       <Typography
         as="li"
         variant="small"

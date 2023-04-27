@@ -1,5 +1,21 @@
-.bg-image {
+/* .bg-image {
     background-image: url('./assets/insect.jpg');
     background-size: cover;
     background-position: center center;
+    filter: blur(5px);
+  } */
+
+  .parent {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-flow: row wrap;
   }
+  
+  .child {
+    width: 200px;
+    margin: 10px;
+    background-color: #f0f0f0;
+  }
+  

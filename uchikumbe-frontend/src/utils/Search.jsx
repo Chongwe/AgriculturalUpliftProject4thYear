@@ -15,7 +15,7 @@ const SearchField = () => {
       <div className='flex  items-center rounded-full h-7 w-7 mt-1 p-1'> 
         
         <button className="flex-shrink-0 focus:outline-none">
-        <FontAwesomeIcon icon={faSearch} className="h-4 w-4 text-green-900 hover:text-green-600 " />
+        <FontAwesomeIcon icon={faSearch} className="h-4 w-4 text-goldenrod hover:text-green-600 " />
         </button> 
       </div>
       
