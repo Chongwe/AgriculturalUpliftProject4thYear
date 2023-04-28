@@ -1,5 +1,5 @@
 import React from "@material-tailwind/react";
-import Person from "../utils/Person"
+import Person from "./Person"
 
 
 function People() {
