@@ -18,6 +18,7 @@ import {
   faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 function People() {
   return (
@@ -33,9 +34,11 @@ function People() {
             <p className="text-sm text-gray-500">Pig farmer in Mulanje</p>
           </div>
           <div className="ml-auto">
-            <IconButton variant="text" color="green" size="xl">
-              <FontAwesomeIcon icon={faEnvelope} />
-            </IconButton>
+            <Link to="/">
+              <IconButton variant="text" color="green" size="xl">
+                <FontAwesomeIcon icon={faEnvelope} />
+              </IconButton>
+            </Link>
           </div>
         </div>
 
@@ -48,9 +51,11 @@ function People() {
             <p className="text-sm text-gray-500">Bee farmer in Salima</p>
           </div>
           <div className="ml-auto">
-            <IconButton variant="text" color="green" size="xl">
-              <FontAwesomeIcon icon={faEnvelope} />
-            </IconButton>
+            <Link to="/">
+              <IconButton variant="text" color="green" size="xl">
+                <FontAwesomeIcon icon={faEnvelope} />
+              </IconButton>
+            </Link>
           </div>
         </div>
       </div>
@@ -66,29 +71,35 @@ function People() {
             <p className="text-sm text-gray-500">Sugarcane famer in Bangwe</p>
           </div>
           <div className="ml-auto">
-            <IconButton variant="text" color="green" size="xl">
-              <FontAwesomeIcon icon={faEnvelope} />
-            </IconButton>
+            <Link to="/sendSMS">
+              <IconButton variant="text" color="green" size="xl">
+                <FontAwesomeIcon icon={faEnvelope} />
+              </IconButton>
+            </Link>
           </div>
         </div>
 
         <div className="flex items-center space-x-4 border-t border-b">
           <Avatar src={avatar} size="sm" />
           <div className="flex-1">
-            <h4 className="text-sm font-medium text-gray-900">
-              Howard Kaila
-            </h4>
-            <p className="text-sm text-gray-500">Chicken farmer in Zomba</p>
+            <h4 className="text-sm font-medium text-gray-900">Howard Kaira</h4>
+            <p className="text-sm text-gray-500">Sheep Farmer in zomba</p>
           </div>
           <div className="ml-auto">
-            <IconButton variant="text" color="green" size="xl">
-              <FontAwesomeIcon icon={faEnvelope} />
-            </IconButton>
+            <Link to="/sendSMS">
+              <IconButton variant="text" color="green" size="xl">
+                <FontAwesomeIcon icon={faEnvelope} />
+              </IconButton>
+            </Link>
           </div>
         </div>
-      </div>
+
+        </div>
+        
     </div>
   );
 }
 
 export default People;
+       
+
