@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import bcrypt from "bcryptjs";
 import logo from "../assets/logo.svg";
 import LogIn from "./LogIn";
@@ -14,6 +15,7 @@ import {
 } from "@material-tailwind/react";
 
 import { useNavigate } from "react-router-dom";
+import { createOrGetUser } from ".";
 
 /*
   This is the sign up logic for sanity client we are sending the user credentials to our sanity database where
@@ -145,7 +147,7 @@ const SignUp = () => {
         <Button className="mt-2 bg-green-900" fullWidth onClick={createUser}>
           Register
         </Button>
-        
+
         <Dialog
           size="md"
           open={openLogin}
@@ -162,7 +164,7 @@ const SignUp = () => {
         >
           Already have an account?{" "}
           <a
-            href="#"
+            href="/"
             className="font-medium text-green-900 transition-colors hover:text-green-500"
             onClick={handleOpenLogin}
           >
@@ -170,6 +172,16 @@ const SignUp = () => {
           </a>
         </Typography>
       </form>
+      <GoogleLogin
+        onSuccess={(response) =>
+          createOrGetUser(response).then(() => {
+            navigate("/");
+          })
+        }
+        onError={() => {
+          console.log("Login Failed");
+        }}
+      />
     </Card>
   );
 };
