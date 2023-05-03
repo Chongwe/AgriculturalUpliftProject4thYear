@@ -4,6 +4,7 @@ import People from "./components/People";
 import Forum from "./components/Forum";
 import RootLayout from "./Layout/RootLayout";
 import NotFound from "./others/NotFound";
+import CreatePost from "./components/CreatePost";
 
 //ROUTES
 import {
@@ -17,7 +18,8 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route index element={<Home />} />
+      <Route index element={<Home />}/>
+      <Route path="post" element={<CreatePost />}/>
       <Route path="people" element={<People />} />
       <Route path="news" element={<News />} />
       <Route path="forum" element={<Forum />} />

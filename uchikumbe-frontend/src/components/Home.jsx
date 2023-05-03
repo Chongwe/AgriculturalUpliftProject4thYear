@@ -3,20 +3,22 @@ import Sidebar from "./Sidebar";
 import Avata from "../assets/avatar.png"
 import "../styles.css"
 import { Avatar } from "@material-tailwind/react";
+import CreatePost from "./CreatePost";
+import { NavLink } from "react-router-dom";
 const Home= () => {
   return (
     <div className="p-4 gap-2 flex">
 
-      
       {/* Posts Section */}
-
       <div className="  ">
             <div className="justify-center flex  mb-4  ">
               <div className="items-center p-2"> 
                   <Avatar src={Avata} alt = "avatar" variant="circular"></Avatar>
-                  <button class=" bg-green-500 hover:bg-goldenrod py-2  px-4 ml-4  text-white  rounded-full focus:outline-none">
+                  <NavLink to="post">
+                    <button class=" bg-green-500 hover:bg-goldenrod py-2  px-4 ml-4  text-white  rounded-full focus:outline-none">
                     Create a post
                   </button>
+                  </NavLink>
                 </div> 
             </div >
 
