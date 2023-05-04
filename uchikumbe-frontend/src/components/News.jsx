@@ -5,7 +5,7 @@ import weeds from "../assets/weeds.jpg"
 
 const NewsPage = () => {
   return (
-    <div className="flex flex-col gap-12 md:flex-row bg-green-100">
+    <div className="flex flex-col mt-6 gap-12 md:flex-row bg-green-100">
 
       <div className="md:w-full  p-4">
         <h1 className="text-3xl font-bold mb-4">Latest News</h1>

@@ -96,19 +96,23 @@ const SignUp = () => {
         <Typography variant="h4" className="text-green-900">
           Sign Up
         </Typography>
-        <Typography color="gray" className="mt-1 font-normal">
+        <Typography color="gray" className="mt-1 mb-4 font-normal">
           Sign In with your Gmail account
         </Typography>
-          <GoogleLogin
-                  onSuccess={(response) =>
-                    createOrGetUser(response).then(() => {
-                      navigate("/");
-                    })
-                  }
-                  onError={() => {
-                    console.log("Login Failed");
-                  }}
-                /> 
+          <div className="items-center">
+
+            <GoogleLogin
+              onSuccess={(response) =>
+                createOrGetUser(response).then(() => {
+                  navigate("/");
+                })
+              }
+              onError={() => {
+                console.log("Login Failed");
+              }}
+            /> 
+          </div>
+          
 
       </div>
 

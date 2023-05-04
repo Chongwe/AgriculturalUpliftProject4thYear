@@ -9,7 +9,7 @@ const Home= () => {
 
       {/* Posts Section */}
       <div className="  ">
-            <div className="justify-end flex  mb-4  ">
+            {/* <div className="justify-end flex  mb-4  ">
               <div className="items-center p-2"> 
                   <NavLink to="post">
                     <button class=" bg-green-500 hover:bg-goldenrod py-2  px-4 ml-4  text-white  rounded-full focus:outline-none">
@@ -17,7 +17,7 @@ const Home= () => {
                   </button>
                   </NavLink>
                 </div> 
-            </div >
+            </div > */}
 
         <div className="flex-wrap relative parent  justify-center  flex rounded-xl  bg-green-50">
             <Posts 

@@ -29,35 +29,28 @@ export default function Fun() {
     );
   }, []);
 
-  const [openPopover, setOpenPopover] = React.useState(false);
-  const triggers = {
-    onMouseEnter: () => setOpenPopover(true),
-    onMouseLeave: () => setOpenPopover(false),
-  };
-
-    // const [open, setOpen] = React.useState(false);
-    // const handleOpen = () => setOpen((cur) => !cur);
-
-    // const [openLogin, setLoginOpen] = React.useState(false);
-    // const handleOpenLogin = () => setLoginOpen((cur) => !cur)
+  
 
   const signInSignUp = (
     <div className=" flex justify-end gap-5 ">
-       <Popover open={openPopover} handler={setOpenPopover}> 
-       <PopoverHandler {...triggers}>
 
-      <Button variant="text" className="flex gap-2 hover:bg-green-400 rounded-full text-white">
-        <FontAwesomeIcon icon={faUser} className="h-4 w-4 space-x-1 mr-2 "/> Login 
+    <Popover
+      animate={{
+        mount: { scale: 1, y: 0 },
+        unmount: { scale: 0, y: 25 },
+      }}
+    >
+      <PopoverHandler>
+        <Button  color="green" className="flex gap-2 hover:bg-green-900 rounded-full text-white">
+        <FontAwesomeIcon icon={faUser} className="h-4 w-4 space-x-1 mr-2 "/> Sign Up 
       </Button>
-      </PopoverHandler>
-      <PopoverContent {...triggers} className="max-w-[24rem]">
 
-        <SignUp />
+      </PopoverHandler>
+      <PopoverContent>
+       <SignUp />
       </PopoverContent>
-      {/* <Button  onClick={handleOpen} variant="filled" color="green" className="rounded-full text-white hover:bg-green-400"> 
-      Sign UP
-      </Button> */}
-      </Popover>
+    </Popover>
+   
    </div>
   );
   const navList = (

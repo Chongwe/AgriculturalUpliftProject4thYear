@@ -1,5 +1,6 @@
 import { Typography } from "@material-tailwind/react";
 import logo from "../assets/logo.svg"
+import { NavLink } from "react-router-dom";
  
 export default function Example() {
   return (
@@ -29,14 +30,15 @@ export default function Example() {
             </Typography>
           </li>
           <li>
-            <Typography
-              as="a"
-              href="#"
-              color="blue-gray"
-              className=" transition-colors text-goldenrod hover:text-green-500 focus:text-green-500"
-            >
-              Contact Us
-            </Typography>
+            <NavLink to="/contact"> 
+              <Typography
+                as="a"
+                color="blue-gray"
+                className=" transition-colors text-goldenrod hover:text-green-500 focus:text-green-500"
+              >
+                Contact Us
+              </Typography>
+            </NavLink>
           </li>
         </ul>
       </div>
