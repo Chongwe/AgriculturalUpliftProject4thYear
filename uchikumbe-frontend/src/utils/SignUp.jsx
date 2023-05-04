@@ -1,16 +1,7 @@
-import React, { useState } from "react";
-import { GoogleLogin, googleLogout } from "@react-oauth/google";
+import React from "react";
+import { GoogleLogin } from "@react-oauth/google";
 import logo from "../assets/logo.svg";
-import {
-  CardHeader,
-  Card,
-  Typography,
-  Input,
-  Button,
-  Dialog,
-} from "@material-tailwind/react";
-
-import { useNavigate } from "react-router-dom";
+import { CardHeader, Card, Typography } from "@material-tailwind/react";
 import { createOrGetUser } from ".";
 
 /*
@@ -27,12 +18,6 @@ import { createOrGetUser } from ".";
   and will lead to the merging of the signup an sign in page as simply login page component 
 */
 const SignUp = () => {
-  // navigate
-  const navigate = useNavigate();
-
-  const [openLogin, setLoginOpen] = React.useState(false);
-  const handleOpenLogin = () => setLoginOpen((cur) => !cur);
-
   return (
     <Card className="w-full m-3 max-w-[18rem]">
       <CardHeader

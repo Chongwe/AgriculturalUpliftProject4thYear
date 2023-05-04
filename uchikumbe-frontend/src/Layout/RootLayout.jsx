@@ -18,7 +18,7 @@ export default function RootLayout({ is404 }) {
     client.fetch(query).then((data) => {
       setUser(data[0]);
     });
-  }, []);
+  });
 
   return (
     <>

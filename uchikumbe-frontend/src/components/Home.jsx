@@ -1,10 +1,7 @@
 import Posts from "./Posts";
 import Sidebar from "./Sidebar";
-import { AiOutlineLogout } from "react-icons/ai";
-import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import "../styles.css";
 
-import { NavLink } from "react-router-dom";
 const Home = () => {
   return (
     <div className="p-4 gap-2 flex">
