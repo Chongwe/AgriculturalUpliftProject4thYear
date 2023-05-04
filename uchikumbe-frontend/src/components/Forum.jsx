@@ -4,15 +4,18 @@ import JoinedGroups from './JoinedGroups';
 const Forum = () => {
   return (
     <div className=''>
-      <div className='m-4 justify-end'>
-        <button class=" bg-green-500 hover:bg-goldenrod py-2  px-4 ml-4  text-white  rounded-full focus:outline-none">
-          Create a Group
+      <div className="m-4 text-center ">
+        <button class=" bg-green-500 hover:bg-goldenrod py-2 justify-center px-4 ml-4  text-white  rounded-full focus:outline-none">
+          Create a Forum
         </button>
+        <hr className="my-4 border-goldenrod" />
+
       </div>
-     <div className="p-4 gap-2 flex ">
+     <div className="p-4 lg:flex-row  justify-center gap-24 lg:flex flex-col mx-12 ">
       
-        <div className="flex-wrap  min-w-[300px] w-96 justify-center  flex rounded-xl ">
-            <h1 className="text-4xl  text-green-900">Your Groups</h1>
+        <div className="  max-w-[500px] w-[600px] items-center p-4 bg-green-50 rounded-xl ">
+            <h1 className="text-4xl mb-4  text-green-900">Your Forums</h1>
+            <hr className="my-4 border-green-500 border-1" />
 
             <JoinedGroups name ="Maize Pests " members ="70 Member"/>
             <JoinedGroups name ="Maize Pests " members ="70 Member"/>
@@ -22,9 +25,10 @@ const Forum = () => {
             <JoinedGroups name ="Maize Pests " members ="70 Member"/>
         </div>
         
-          <div>
-            <h1 className="text-4xl  text-green-900">Other Groups</h1>
-            <div className="flex-shrink w-1/4 min-w-auto   md:block rounded-xl">
+          <div className='p-4'>
+            <h1 className="text-4xl mb-4  text-green-900">Other Forums</h1>
+            <hr className="my-4 border-green-500 border-1" />
+            <div className="  max-w-[500px] rounded-xl">
               <Group name ="Maize Pests " members ="70 Member"/>
               <Group name ="Chicken Feed " members ="70 Member"/>
               <Group name ="Foot and Mouth disease (Cattle) " members ="70 Member"/>

@@ -11,6 +11,9 @@ import {
   Navbar,
   MobileNav,
   Typography,
+  Popover,
+  PopoverHandler,
+  PopoverContent,
   Button,
   IconButton,
   Dialog
@@ -26,18 +29,35 @@ export default function Fun() {
     );
   }, []);
 
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen((cur) => !cur);
+  const [openPopover, setOpenPopover] = React.useState(false);
+  const triggers = {
+    onMouseEnter: () => setOpenPopover(true),
+    onMouseLeave: () => setOpenPopover(false),
+  };
 
-    const [openLogin, setLoginOpen] = React.useState(false);
-    const handleOpenLogin = () => setLoginOpen((cur) => !cur)
+    // const [open, setOpen] = React.useState(false);
+    // const handleOpen = () => setOpen((cur) => !cur);
+
+    // const [openLogin, setLoginOpen] = React.useState(false);
+    // const handleOpenLogin = () => setLoginOpen((cur) => !cur)
 
   const signInSignUp = (
     <div className=" flex justify-end gap-5 ">
-      <Button onClick={handleOpenLogin} variant="text" className="flex gap-2 hover:bg-green-400 rounded-full text-white">
+       <Popover open={openPopover} handler={setOpenPopover}> 
+       <PopoverHandler {...triggers}>
+
+      <Button variant="text" className="flex gap-2 hover:bg-green-400 rounded-full text-white">
         <FontAwesomeIcon icon={faUser} className="h-4 w-4 space-x-1 mr-2 "/> Login 
       </Button>
-      <Button  onClick={handleOpen} variant="filled" color="green" className="rounded-full text-white hover:bg-green-400"> Sign UP</Button>
+      </PopoverHandler>
+      <PopoverContent {...triggers} className="max-w-[24rem]">
+
+        <SignUp />
+      </PopoverContent>
+      {/* <Button  onClick={handleOpen} variant="filled" color="green" className="rounded-full text-white hover:bg-green-400"> 
+      Sign UP
+      </Button> */}
+      </Popover>
    </div>
   );
   const navList = (
@@ -64,7 +84,7 @@ export default function Fun() {
         <div className="hidden lg:block">
             <Search />
             {navList}
-            <Dialog
+            {/* <Dialog
               size="md"             
               open={open}
               handler={handleOpen}             
@@ -79,7 +99,7 @@ export default function Fun() {
               className="bg-transparent shadow-none"
             >
              {handleOpen && <LogIn />}
-            </Dialog>
+            </Dialog> */}
         </div>      
        <div className="hidden lg:block ">
         {signInSignUp}

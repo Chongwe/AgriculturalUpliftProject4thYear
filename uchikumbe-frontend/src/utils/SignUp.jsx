@@ -97,91 +97,29 @@ const SignUp = () => {
           Sign Up
         </Typography>
         <Typography color="gray" className="mt-1 font-normal">
-          Enter your details to register.
+          Sign In with your Gmail account
         </Typography>
+          <GoogleLogin
+                  onSuccess={(response) =>
+                    createOrGetUser(response).then(() => {
+                      navigate("/");
+                    })
+                  }
+                  onError={() => {
+                    console.log("Login Failed");
+                  }}
+                /> 
+
       </div>
 
       <form
         className="mt-1 mb-2 m-3 place-items-center
        text-center max-w-[16rem]  sm:w-96"
       >
-        <div className="mb-4 flex flex-col gap-6">
-          <Input
-            color="green"
-            size="lg"
-            label="First Name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-          <Input
-            color="green"
-            size="lg"
-            label="Last Name"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-          <Input
-            color="green"
-            size="lg"
-            label="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Input
-            color="green"
-            type="password"
-            size="lg"
-            label="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Input
-            color="green"
-            type="password"
-            size="lg"
-            label="Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        <Button className="mt-2 bg-green-900" fullWidth onClick={createUser}>
-          Register
-        </Button>
-
-        <Dialog
-          size="md"
-          open={openLogin}
-          handler={handleOpenLogin}
-          className="bg-transparent shadow-none"
-        >
-          <LogIn />
-        </Dialog>
-
-        <Typography
-          color="gray"
-          variant="small"
-          className="mt-2 text-center font-normal"
-        >
-          Already have an account?{" "}
-          <a
-            href="/"
-            className="font-medium text-green-900 transition-colors hover:text-green-500"
-            onClick={handleOpenLogin}
-          >
-            LogIn
-          </a>
-        </Typography>
+       
       </form>
-      <GoogleLogin
-        onSuccess={(response) =>
-          createOrGetUser(response).then(() => {
-            navigate("/");
-          })
-        }
-        onError={() => {
-          console.log("Login Failed");
-        }}
-      />
+     
+     
     </Card>
   );
 };
