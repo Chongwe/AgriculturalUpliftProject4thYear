@@ -1,6 +1,7 @@
 import Posts from "./Posts";
 import Sidebar from "./Sidebar";
 import "../styles.css"
+
 import { NavLink } from "react-router-dom";
 const Home= () => {
   return (
