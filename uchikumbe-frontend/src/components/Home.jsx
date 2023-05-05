@@ -1,6 +1,7 @@
 import Posts from "./Posts";
 import Sidebar from "./Sidebar";
 import "../styles.css";
+// import Corousel from "./Corousel"
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
             </div > */}
 
         <div className="flex-wrap relative parent  justify-center  flex rounded-xl  bg-green-50">
+            {/* <Corousel /> */}
           <Posts
             name="Howard Kaira"
             content="Lorem ipsum dolor, in debitisautem impedit ipsa vero illo maxime sautem impedit ipsa vero illo masautem impedit ipsa vero illo ma illum, facere cum dolore dolores soluta voluptatibus?"

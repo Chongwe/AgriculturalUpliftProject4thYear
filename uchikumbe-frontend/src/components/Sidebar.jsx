@@ -1,6 +1,5 @@
-
-   
-  export default function  Sidebar() {
+import { Carousel, Typography, Button } from "@material-tailwind/react";
+ function  Sidebar() {
     return (
         <div  className="h-80 fixed shadow-none"   >
           <div className="container m-2 mx-auto pt-10">
@@ -10,6 +9,9 @@
                  necessitatibus eligendi praesentium voluptatibus molestiae,
                   aperiam error illo deserunt obcaecati aspernatur itaque.</p>
           </div>
+ 
         </div>
     );
+   
   }
+   export default Sidebar;
