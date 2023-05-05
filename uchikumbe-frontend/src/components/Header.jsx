@@ -16,6 +16,7 @@ import {
   PopoverContent,
   Button,
   IconButton,
+  Tooltip,
 } from "@material-tailwind/react";
 
 export default function Fun({ user = null }) {
@@ -62,7 +63,7 @@ export default function Fun({ user = null }) {
     bg-opacity-70 backdrop-filter backdrop-blur-md pt-2
     bg-green-900 text-white px-8 lg:px-8 lg:py-0"
     >
-      <div className="container mx-auto flex items-center justify-between text-white">
+      <div className="container mx-auto flex items-center  justify-between text-white">
         <Typography
           as="a"
           href="#"
@@ -79,32 +80,26 @@ export default function Fun({ user = null }) {
         <div className="hidden lg:block">
           <Search />
           {navList}
-          {/* <Dialog
-              size="md"             
-              open={open}
-              handler={handleOpen}             
-              className="bg-transparent shadow-none"
-            >
-             {handleOpen && <SignUp />}
-            </Dialog>
-            <Dialog
-              size="md"              
-              open={openLogin}
-              handler={handleOpenLogin}             
-              className="bg-transparent shadow-none"
-            >
-             {handleOpen && <LogIn />}
-            </Dialog> */}
+        
         </div>
         <>
           {user !== null && user !== undefined && (
             <div>
+
               <Link to={`user-profile/${user._id}`} className="hidden md:block">
+                <Tooltip content={user.userName}
+                 animate={{
+                  mount: { scale: 1, y: 0 },
+                  unmount: { scale: 0, y: 25 },
+                }}
+                className="bg-goldenrod md:text-center mt-2 mr-4 rounded-full"
+                > 
                 <img
                   src={user.image}
                   alt="user"
-                  className="w-12 h-12 rounded-full"
+                  className="w-12 items-center sm:ml-32 h-12 rounded-full "
                 />
+                </Tooltip>
               </Link>
             </div>
           )}
@@ -112,7 +107,6 @@ export default function Fun({ user = null }) {
             <div className="hidden lg:block ">{signInSignUp}</div>
           )}
         </>
-        {/* <div className="hidden lg:block ">{signInSignUp}</div> */}
         <IconButton
           variant="text"
           className="ml-auto h-10 w-10 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"

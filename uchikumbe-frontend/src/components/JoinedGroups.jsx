@@ -1,5 +1,5 @@
 import React from "@material-tailwind/react";
-import avatar from "../assets/GIcon.png";
+import avatar from "../assets/GIcon.svg";
 import { Avatar } from "@material-tailwind/react";
 
 function JoinedGroups(props){
