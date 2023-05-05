@@ -63,12 +63,12 @@ const UserProfile = () => {
               src={user.image}
               alt=""
             />
-            <h1 className="font-bold text-3xl text-center mt-3 ">
+            <h1 className="font-bold text-3xl text-green-900 text-center mt-3 ">
               {user.userName}
             </h1>
             <div className="absolute top-0 z-1 right-0 p-5">
               {userId === user._id && (
-                <Tooltip content="Log Out" placement="bottom">
+                <Tooltip content="Log Out" className="rounded-full" placement="bottom">
                   <button
                     className="bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
                     onClick={() => {

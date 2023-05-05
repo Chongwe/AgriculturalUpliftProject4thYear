@@ -21,10 +21,10 @@ export default function ProfileCard(props) {
     <Link to={props.link}>
       <Card className="mt-6 w-96">
         <CardBody className="flex  gap-3 ">
-          <Typography>
-            <FontAwesomeIcon classname="h-10" icon={props.icon} />
-          </Typography>
-          <Typography variant="h5" color="blue-gray" className="mb-2">
+            
+            <FontAwesomeIcon classname="text-3xl" icon={props.icon} />
+         
+          <Typography variant="h5" color="blue-gray" className="mb-2 text-xl">
             {props.name}
           </Typography>
         </CardBody>
