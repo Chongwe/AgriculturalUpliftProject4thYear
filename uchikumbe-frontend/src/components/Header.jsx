@@ -103,7 +103,7 @@ export default function Fun({ user = null }) {
                 <img
                   src={user.image}
                   alt="user"
-                  className="w-14 h-12 rounded-lg"
+                  className="w-12 h-12 rounded-full"
                 />
               </Link>
             </div>
