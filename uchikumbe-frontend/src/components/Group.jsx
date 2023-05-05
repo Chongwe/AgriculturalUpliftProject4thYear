@@ -1,5 +1,5 @@
 import React from "@material-tailwind/react";
-import avatar from "../assets/avatar.png";
+import avatar from "../assets/GIcon.png";
 import { Avatar } from "@material-tailwind/react";
 import {
   Button,
