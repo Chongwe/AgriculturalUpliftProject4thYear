@@ -80,25 +80,24 @@ export default function Fun({ user = null }) {
         <div className="hidden lg:block">
           <Search />
           {navList}
-        
         </div>
         <>
           {user !== null && user !== undefined && (
             <div>
-
               <Link to={`user-profile/${user._id}`} className="hidden md:block">
-                <Tooltip content={user.userName}
-                 animate={{
-                  mount: { scale: 1, y: 0 },
-                  unmount: { scale: 0, y: 25 },
-                }}
-                className="bg-goldenrod md:text-center mt-2 mr-4 rounded-full"
-                > 
-                <img
-                  src={user.image}
-                  alt="user"
-                  className="w-12 items-center sm:ml-32 h-12 rounded-full "
-                />
+                <Tooltip
+                  content={user.userName}
+                  animate={{
+                    mount: { scale: 1, y: 0 },
+                    unmount: { scale: 0, y: 25 },
+                  }}
+                  className="bg-goldenrod md:text-center mt-2 mr-4 rounded-full"
+                >
+                  <img
+                    src={user.image}
+                    alt="user"
+                    className="w-12 items-center sm:ml-32 h-12 rounded-full "
+                  />
                 </Tooltip>
               </Link>
             </div>
@@ -120,10 +119,7 @@ export default function Fun({ user = null }) {
         <div className="container items-center p-3  mx-auto">
           <span className="p-3"> {navList} </span>
           <div className="ml-auto justify-end ">
-            <span className="p-3 justify-right text-right">
-              {" "}
-              {signInSignUp}{" "}
-            </span>
+            <span className="p-3 justify-right text-right">{signInSignUp}</span>
             <Search />
           </div>
         </div>
