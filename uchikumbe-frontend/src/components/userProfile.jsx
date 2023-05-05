@@ -15,8 +15,9 @@ import { userQuery } from "../utils/data";
 import { client } from "../client";
 import Spinner from "./Spinner";
 import ProfileCard from "./profileCard";
+import { Tooltip } from "@material-tailwind/react";
 
-const randomImage = "https://source.unsplash.com/1280x720/?nature,animals";
+const randomImage = "https://source.unsplash.com/800x600/?farm,farm-animals";
 const activeBtnStyles =
   "bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none";
 const notActiveBtnStyles =
@@ -54,7 +55,7 @@ const UserProfile = () => {
           <div className="flex flex-col justify-center items-center">
             <img
               src={randomImage}
-              className="w-full h-300 2xl:h-510 shadow-lg object-cover"
+              className="w-full h-200 2xl:h-510 shadow-lg object-cover"
               alt="banner-pic"
             />
             <img
@@ -65,17 +66,19 @@ const UserProfile = () => {
             <h1 className="font-bold text-3xl text-center mt-3 ">
               {user.userName}
             </h1>
-            <div className="absolute top-0 z-1 right-0 p-2">
+            <div className="absolute top-0 z-1 right-0 p-5">
               {userId === user._id && (
-                <button
-                  className="bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
-                  onClick={() => {
-                    googleLogout();
-                    logout();
-                  }}
-                >
-                  <AiOutlineLogout color="red" fontSize={21} />
-                </button>
+                <Tooltip content="Log Out" placement="bottom">
+                  <button
+                    className="bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
+                    onClick={() => {
+                      googleLogout();
+                      logout();
+                    }}
+                  >
+                    <AiOutlineLogout color="red" fontSize={21} />
+                  </button>
+                </Tooltip>
               )}
             </div>
           </div>
