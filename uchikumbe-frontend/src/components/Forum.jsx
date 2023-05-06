@@ -7,7 +7,7 @@ const Forum = () => {
   return (
     <div className=''>
       <div className="m-4 text-center ">
-        <NavLink to="/createForum"> 
+        <NavLink to="/edit-profile"> 
         <button class=" bg-green-500 hover:bg-goldenrod py-2 justify-center px-4 ml-4  text-white  rounded-full focus:outline-none">
           Create a Forum
         </button>

@@ -29,7 +29,7 @@ export default function Posts(props) {
                 </div>
                 <div className="">
                     <IconButton variant="text" color="green" size="lg">
-                    <FontAwesomeIcon icon={faEnvelope} />
+                    <FontAwesomeIcon size="2x" icon={faEnvelope} />
                     </IconButton>
                 </div>
             </div>
@@ -44,13 +44,13 @@ export default function Posts(props) {
             <div className=" flex mt-4 gap-8 justify-center"> 
                 <div className="flex-1">
                     <button class=" bg-green-500 hover:bg-goldenrod py-2 px-4  text-white  rounded-full focus:outline-none">
-                        <FontAwesomeIcon icon={faComment} />  Comment...
+                        <FontAwesomeIcon size="lg" icon={faComment} />  Comment...
                     </button>
                 </div>
                 <div className=" rounded-full justify-end">
                     <Link to="/message">
-                        <IconButton  variant="text" size="lg" color="green">
-                        <FontAwesomeIcon icon={faThumbsUp} />
+                        <IconButton  variant="text"  color="green">
+                        <FontAwesomeIcon size="2x" color="goldenrod" icon={faThumbsUp} />
                         </IconButton> 
                     </Link>
                 </div> 

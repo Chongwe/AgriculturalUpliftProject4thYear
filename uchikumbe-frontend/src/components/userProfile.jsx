@@ -88,7 +88,7 @@ const UserProfile = () => {
               link="edit-profile"
               icon={faUserEdit}
             />
-            <ProfileCard name="Add Farm" link="add-farm" icon={faPlusCircle} />
+            <ProfileCard name="Add Farm" link="add-farm"  icon={faPlusCircle} />
             <ProfileCard name="Messages" link="messages" icon={faMessage} />
             <ProfileCard name="Posts" link="posts" icon={faNoteSticky} />
           </div>

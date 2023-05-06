@@ -15,6 +15,7 @@ import {
 } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import UserProfile from "./components/userProfile";
+import EditProfile from "./config-pages/EditProfile";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +25,10 @@ const router = createBrowserRouter(
       <Route path="people" element={<People />} />
       <Route path="news" element={<News />} />
       <Route path="forum" element={<Forum />} />
-      <Route path="user-profile/:userId" element={<UserProfile />} />
+      <Route path="edit-profile" element={<EditProfile />}/>
+      <Route path="user-profile/:userId" element={<UserProfile />} >
+       
+      </Route>
       <Route path="*" element={<NotFound />} />
     </Route>
   )

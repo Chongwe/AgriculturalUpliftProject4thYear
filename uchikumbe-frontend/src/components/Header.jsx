@@ -96,7 +96,7 @@ export default function Fun({ user = null }) {
                   <img
                     src={user.image}
                     alt="user"
-                    className="w-12 items-center sm:ml-32 h-12 rounded-full "
+                    className="w-10 items-center sm:ml-32 h-10 rounded-full "
                   />
                 </Tooltip>
               </Link>
