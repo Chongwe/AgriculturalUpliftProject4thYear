@@ -85,7 +85,7 @@ const UserProfile = () => {
           <div className="flex flex-wrap relative parent justify-center gap-4">
             <ProfileCard
               name="Edit Profile"
-              link="edit-profile"
+              link="/edit-profile"
               icon={faUserEdit}
             />
             <ProfileCard name="Add Farm" link="add-farm"  icon={faPlusCircle} />

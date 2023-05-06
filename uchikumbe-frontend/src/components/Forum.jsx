@@ -14,6 +14,7 @@ const Forum = () => {
         <hr className="my-4 border-goldenrod" />
         </NavLink>
       </div>
+      
      <div className="p-4 lg:flex-row  justify-center gap-24 lg:flex flex-col mx-12 ">
       
         <div className="  max-w-[500px] w-[600px] items-center p-4 bg-green-50 rounded-xl ">

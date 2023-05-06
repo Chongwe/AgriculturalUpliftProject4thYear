@@ -10,7 +10,7 @@ import {
    
   function EditProfile() {
     return (
-        <div className=" p-4 lg:flex-row shadow-lg rounded-3xl mt-4 justify-center gap-24 lg:flex flex-col mx-12 items-center h-screen"> 
+        <div className=" p-4 lg:flex-row shadow-lg rounded-3xl my-4 min-w-[400px] justify-center gap-24 lg:flex flex-col  mx-12 items-center"> 
             
                 <div className="">
                     <div className=" flex flex-wrap gap-4"> 

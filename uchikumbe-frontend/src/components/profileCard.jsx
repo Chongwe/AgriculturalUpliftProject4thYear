@@ -5,20 +5,13 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faHistory,
-  faMessage,
-  faNoteSticky,
-  faPlusCircle,
-  faUserEdit,
-} from "@fortawesome/free-solid-svg-icons";
+
 
 export default function ProfileCard(props) {
   return (
-    <NavLink to={props.link}>
+    <Link to={props.link}>
       <div className="mt-6 border-green-100 hover:shadow-sm hover:bg-green-50 rounded-xl border shadow-xl  w-96">
         <div className="flex p-4 items-center gap-4 ">
             
@@ -29,6 +22,6 @@ export default function ProfileCard(props) {
           </Typography>
         </div>
       </div>
-    </NavLink>
+    </Link>
   );
 }
