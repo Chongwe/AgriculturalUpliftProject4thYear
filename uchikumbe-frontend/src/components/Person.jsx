@@ -27,7 +27,7 @@ function Person(props){
                         <p className="text-goldenrod mr-2">{props.title}</p>
                         <Link to="/message">
                             <IconButton variant="text" color="green" size="xl" className="">
-                                <FontAwesomeIcon icon={faEnvelope} />
+                                <FontAwesomeIcon size="2x" icon={faEnvelope} />
                             </IconButton>
                         </Link>
                     </div>
