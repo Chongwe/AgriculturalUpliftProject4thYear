@@ -16,6 +16,7 @@ import {
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import UserProfile from "./components/userProfile";
 import EditProfile from "./config-pages/EditProfile";
+import AddFarm from "./config-pages/AddFarm";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path="people" element={<People />} />
       <Route path="news" element={<News />} />
       <Route path="forum" element={<Forum />} />
+      <Route path="add-farm" element={<AddFarm/>}/>
         <Route path="edit-profile" element={<EditProfile />}/>
       <Route path="user-profile/:userId" element={<UserProfile />} >
      
