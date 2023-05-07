@@ -10,7 +10,7 @@ function Person(props) {
   return (
     <div className="bg-white  rounded-lg p-2">
       <div className="flex items-center justify-between mb-2"></div>
-      <div className=" px-40 ">
+      <div className="md:px-40 sm:ml-8 sm:px-8 ">
         <div className="flex items-center my-2 space-x-4 border-b border-grey-500">
           <Avatar
             src={props.avatar}
@@ -26,7 +26,7 @@ function Person(props) {
             {/* <p className="text-goldenrod mr-2">{props.title}</p> */}
             <Link to="/message">
               <IconButton variant="text" color="green" size="xl" className="">
-                <FontAwesomeIcon icon={faEnvelope} />
+                <FontAwesomeIcon size="2x" icon={faEnvelope} />
               </IconButton>
             </Link>
           </div>
