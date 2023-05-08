@@ -18,9 +18,9 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'user_id',
+      name: 'userId',
       type: 'string',
-      title: 'User ID',
+      title: 'UserID',
       validation: (Rule) => Rule.required(),
     },
     {
