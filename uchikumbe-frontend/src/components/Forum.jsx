@@ -1,50 +1,79 @@
-import React from 'react';
-import  Group from "./Group"
-import JoinedGroups from './JoinedGroups';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import Group from "./Group";
+import { fetchUser } from "../utils/fetchUser";
+import {
+  forumQuery,
+  userCreatedForums,
+  userCreatedForumsQuery,
+  userQuery,
+} from "../utils/data";
+import { client } from "../client";
+import JoinedGroups from "./JoinedGroups";
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Forum = () => {
+  const [user, setUser] = useState(null);
+  const [createdForums, setCreatedForums] = useState(null);
+  const [forums, setForums] = useState(null);
+
+  const userInfo = fetchUser();
+
+  useEffect(() => {
+    const query = userQuery(userInfo?.sub);
+
+    client.fetch(query).then((data) => {
+      setUser(data[0]);
+    });
+  });
+
+  useEffect(() => {
+    const createdForumsQuery = userCreatedForumsQuery(userInfo?.sub);
+
+    client.fetch(createdForumsQuery).then((data) => {
+      setCreatedForums(data);
+    });
+  });
+
+  useEffect(() => {
+    client.fetch(forumQuery).then((data) => {
+      setForums(data);
+    });
+  }, []);
+
   return (
-    <div className=''>
-      <div className="m-4 text-center ">
-        <NavLink to="/forums"> 
-        <button class=" bg-green-500 hover:bg-goldenrod py-2 justify-center px-4 ml-4  text-white  rounded-full focus:outline-none">
-          Create a Forum
-        </button>
-        <hr className="my-4 border-goldenrod" />
-        </NavLink>
-      </div>
+    <div className="">
+      {user !== null && user !== undefined && (
+        <div className="m-4 text-center ">
+          <Link to={`/create-forum/${user?._id}`}>
+            <button class=" bg-green-500 hover:bg-goldenrod py-2 justify-center px-4 ml-4  text-white  rounded-full focus:outline-none">
+              Create a Forum
+            </button>
+            <hr className="my-4 border-goldenrod" />
+          </Link>
+        </div>
+      )}
 
-     <div className="p-4 lg:flex-row  justify-center gap-24 lg:flex flex-col mx-12 ">
-      
+      <div className="p-4 lg:flex-row  justify-center gap-24 lg:flex flex-col mx-12 ">
         <div className="  max-w-[500px] w-[600px] items-center p-4 bg-green-50 rounded-xl ">
-            <h1 className="text-4xl mb-4  text-green-900">Your Forums</h1>
-            <hr className="my-4 border-green-500 border-1" />
-
-            <JoinedGroups name ="Maize Pests " members ="70 Member"/>
-            <JoinedGroups name ="Maize Pests " members ="70 Member"/>
-            <JoinedGroups name ="Maize Pests " members ="70 Member"/>
-            <JoinedGroups name ="Maize Pests " members ="70 Member"/>
-            <JoinedGroups name ="Maize Pests " members ="70 Member"/>
-            <JoinedGroups name ="Maize Pests " members ="70 Member"/>
-        </div>
-        
-          <div className='p-4'>
-            <h1 className="text-4xl mb-4  text-green-900">Other Forums</h1>
-            <hr className="my-4 border-green-500 border-1" />
-            <div className="  max-w-[500px] rounded-xl">
-              <Group name ="Maize Pests " members ="70 Member"/>
-              <Group name ="Chicken Feed " members ="70 Member"/>
-              <Group name ="Foot and Mouth disease (Cattle) " members ="70 Member"/>
-              <Group name ="Maize Pests " members ="70 Member"/>
-              <Group name ="Maize Pests " members ="70 Member"/>
-              <Group name ="Maize Pests " members ="70 Member"/>
-            </div>
+          <h1 className="text-4xl mb-4  text-green-900">Your Forums</h1>
+          <hr className="my-4 border-green-500 border-1" />
+          {createdForums?.map((forum) => (
+            <JoinedGroups name={forum.title} members="70 Member" />
+          ))}
         </div>
 
+        <div className="p-4">
+          <h1 className="text-4xl mb-4  text-green-900">Other Forums</h1>
+          <hr className="my-4 border-green-500 border-1" />
+          <div className="  max-w-[500px] rounded-xl">
+            {forums?.map((forum) => (
+              <Group name={forum.title} members="70 Member" />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-   
   );
 };
 

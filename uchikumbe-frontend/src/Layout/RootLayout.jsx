@@ -10,8 +10,6 @@ export default function RootLayout({ is404 }) {
 
   const userInfo = fetchUser();
 
-  console.log(userInfo?.sub);
-
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
 
