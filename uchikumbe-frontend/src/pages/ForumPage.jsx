@@ -1,13 +1,25 @@
-import Posts from "./Posts";
-import Sidebar from "./Sidebar";
+import Posts from "../components/Posts";
 import "../styles.css";
-// import Corousel from "./Corousel"
-
-const Home = () => {
+const ForumPage = () => {
   return (
     <div className="p-4 gap-2 flex">
+
+      {/* Sidebar Section */}
+      <div  className="h-80 w-[500px]  shadow-none"   >
+            <div className="container m-2 mx-auto pt-10">
+              <h1 className="text-2xl font-bold text-green-900 ml-2 ">Whats new?</h1>
+                <p className="border-l-2 p-4 m-3 border-goldenrod">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ut magni 
+                  inventore quidem eius corrupti repudiandae nisi nostrum
+                  necessitatibus eligendi praesentium voluptatibus molestiae,
+                    aperiam error illo deserunt obcaecati aspernatur itaque.</p>
+            </div>
+  
+          </div>
       {/* Posts Section */}
       <div className="  ">
+      <div className="flex-shrink-0 w-1/4   md:block rounded-xl">
+        
+      </div>
      
         <div className="flex-wrap relative parent  justify-center  flex rounded-xl  bg-green-50">
             {/* <Corousel /> */}
@@ -29,12 +41,10 @@ const Home = () => {
           />
         </div>
       </div>
-      {/* Sidebar Section */}
-      <div className="flex-shrink-0 w-1/4    hidden md:block rounded-xl">
-        <Sidebar />
-      </div>
+      
+     
     </div>
   );
 };
 
-export default Home;
+export default ForumPage;

@@ -2,6 +2,7 @@ import React from "react";
 import cow from "../assets/cow.jpg"
 import fertilizer from "../assets/fertilizer.jpg"
 import weeds from "../assets/weeds.jpg"
+import ForumPage from "../pages/ForumPage";
 
 const NewsPage = () => {
   return (
@@ -9,6 +10,7 @@ const NewsPage = () => {
 
       <div className="md:w-full  p-4">
         <h1 className="text-3xl font-bold mb-4">Latest News</h1>
+        <ForumPage />
         <div className="flex flex-col md:flex-row">
 
           <div className="w-full md:w-1/2 md:pr-4 mb-4">
