@@ -18,11 +18,13 @@ import UserProfile from "./components/userProfile";
 import EditProfile from "./config-pages/EditProfile";
 import AddFarm from "./config-pages/AddFarm";
 import CreateForum from "./components/createForum";
+import ForumPage from "./pages/ForumPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
+      <Route path="forum-page" element={<ForumPage/>}/>
       <Route path="post" element={<CreatePost />} />
       <Route path="people" element={<People />} />
       <Route path="news" element={<News />} />

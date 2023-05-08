@@ -42,6 +42,7 @@ const Forum = () => {
   }, []);
 
   return (
+
     <div className="">
       {user !== null && user !== undefined && (
         <div className="m-4 text-center ">
@@ -59,7 +60,9 @@ const Forum = () => {
           <h1 className="text-4xl mb-4  text-green-900">Your Forums</h1>
           <hr className="my-4 border-green-500 border-1" />
           {createdForums?.map((forum) => (
-            <JoinedGroups name={forum.title} members="70 Member" />
+            <Link to="/forum-page">
+                 <JoinedGroups name={forum.title} members="70 Member" />
+            </Link>
           ))}
         </div>
 
