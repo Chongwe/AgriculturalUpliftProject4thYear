@@ -78,7 +78,7 @@ function CreateForum() {
         <div className="mb-4 flex flex-col gap-6">
           <Textarea
             color="green"
-            label="Tell us about your farm"
+            label="Tell us about your Forum"
             onChange={(e) => setDesc(e.target.value)}
           />
           <Button
