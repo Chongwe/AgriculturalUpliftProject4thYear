@@ -5,11 +5,11 @@ import "../styles.css";
 
 const Home = () => {
   return (
-    <div className="p-4 gap-2 flex">
+    <div className="p-4 bg-green-100 gap-2 rounded-2xl  duration-75 ease-out flex">
       {/* Posts Section */}
       <div className="  ">
      
-        <div className="flex-wrap relative parent  justify-center  flex rounded-xl  bg-green-50">
+        <div className="flex-wrap relative parent  justify-center mt-8 flex rounded-xl  bg-green-50">
             {/* <Corousel /> */}
           <Posts
             name="Howard Kaira"
