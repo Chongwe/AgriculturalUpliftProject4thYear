@@ -24,7 +24,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
-      <Route path="forum-page" element={<ForumPage/>}/>
+      <Route path="forum-page/:forumId" element={<ForumPage />} />
       <Route path="post" element={<CreatePost />} />
       <Route path="people" element={<People />} />
       <Route path="news" element={<News />} />

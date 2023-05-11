@@ -22,3 +22,8 @@ export const forumQuery = `*[_type == "subforum"] | order(title asc) {
   title,
   description
 }`;
+
+export const forumDetailsQuery = (forumId) => {
+  const query = `*[_type == "subforum" && _id == '${forumId}']`;
+  return query;
+};
