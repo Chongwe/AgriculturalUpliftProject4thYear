@@ -117,7 +117,7 @@ return (
         </Typography>
       </CardBody>
       <CardFooter className="pt-0">
-        <Button className="bg-green-600"><link>Read More</link></Button >
+        <Button className="bg-green-600">Read More</Button >
       </CardFooter>
     </Card>
     <Card className="mt-6 w-45">
