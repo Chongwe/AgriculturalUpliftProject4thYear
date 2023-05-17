@@ -1,67 +1,143 @@
-import React from "react";
-import cow from "../assets/cow.jpg"
-import fertilizer from "../assets/fertilizer.jpg"
-import weeds from "../assets/weeds.jpg"
+import {
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+  
+} from "@material-tailwind/react";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button 
+} from "@material-tailwind/react";
+ 
+export default function News() {
+  const data = [
+    {
+      label: "Crops",
+      value: "crops",
+      desc: `It really matters and then like it really doesn't matter.
+      What matters is the people who are sparked by it. And the people 
+      who are like offended by it, it doesn't matter.`,
+    },
+    {
+      label: "Livestock and Poultry",
+      value: "Livestock and Poultry",
+      desc: `Because it's about motivating the doers. Because I'm here
+      to follow my dreams and inspire other people to follow their dreams, too.`,
+    },
+    {
+      label: "Agribusiness and Markets",
+      value: "Agribusiness and Markets",
+      desc: `We're not always in the position that we want to be at.
+      We're constantly growing. We're constantly making mistakes. We're
+      constantly trying to express ourselves and actualize our dreams.`,
+    },
+    {
+      label: "AgriTechology",
+      value: "AgriTechnology",
+      desc: `Because it's about motivating the doers. Because I'm here
+      to follow my dreams and inspire other people to follow their dreams, too.`,
+    },
+    {
+      label: "AgriPolicy",
+      value: "AgriPolicy",
+      desc: `We're not always in the position that we want to be at.
+      We're constantly growing. We're constantly making mistakes. We're
+      constantly trying to express ourselves and actualize our dreams.`,
+    },
+  ];
+ 
+return (
+ 
+<Tabs value="html">
+  <TabsHeader className="bg-transparent pt-4">
+    {data.map(({ label, value }) => (
+      <Tab key={value} value={value}>
+        {label}
+      </Tab>
+    ))}
+  </TabsHeader>
+  <TabsBody >
+    {data.map(({ value, desc }) => (
+      <TabPanel key={value} value={value}>
+       
+        
+       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1">
 
-const NewsPage = () => {
-  return (
-    <div className="flex flex-col mt-6 gap-12 md:flex-row bg-green-100">
+    <Card className="mt-6 w-45">
+      <CardBody>
+        <Typography variant="h5" color="blue-gray" className="mb-2">
+          UI/UX Review Check
+        </Typography>
+        <Typography>
+          {desc}
+        </Typography>
+      </CardBody>
+      <CardFooter className="pt-0 hover:bg-none">
+        <Button className="bg-green-600">Read More</Button >
+      </CardFooter>
+    </Card>
+    <Card className="mt-6 w-45">
+      <CardBody>
+        <Typography variant="h5" color="blue-gray"  className="mb-2">
+          UI/UX Review Check
+        </Typography>
+        <Typography>
+          {desc}
+        </Typography>
+      </CardBody>
+      <CardFooter className="pt-0">
+        <Button className="bg-green-600">Read More</Button >
+      </CardFooter>
+    </Card>
+    <Card className="mt-6 w-45">
+      <CardBody>
+        <Typography variant="h5" color="blue-gray" className="mb-2">
+          UI/UX Review Check
+        </Typography>
+        <Typography>
+          {desc}
+        </Typography>
+      </CardBody>
+      <CardFooter className="pt-0">
+        <Button className="bg-green-600">Read More</Button>
+      </CardFooter>
+    </Card>
+    <Card className="mt-6 w-45">
+      <CardBody>
+        <Typography variant="h5" color="blue-gray" className="mb-2">
+          UI/UX Review Check
+        </Typography>
+        <Typography>
+          {desc}
+        </Typography>
+      </CardBody>
+      <CardFooter className="pt-0">
+        <Button className="bg-green-600"><link>Read More</link></Button >
+      </CardFooter>
+    </Card>
+    <Card className="mt-6 w-45">
+      <CardBody>
+        <Typography variant="h5" color="blue-gray" className="mb-2">
+          UI/UX Review Check
+        </Typography>
+        <Typography>
+          {desc}
+        </Typography>
+      </CardBody>
+      <CardFooter className="pt-0">
+        <Button className="bg-green-600">Read More</Button>
+      </CardFooter>
+    </Card>
 
-      <div className="md:w-full  p-4">
-        <h1 className="text-3xl font-bold mb-4">Latest News</h1>
-        <div className="flex flex-col md:flex-row">
-
-          <div className="w-full md:w-1/2 md:pr-4 mb-4">
-            <img
-              src={weeds}
-              alt="News Article"
-              className="w-full h-48 object-cover"
-            />
-            <h2 className="text-lg font-bold mt-2 mb-1">
-            Dolor sit amet, consectetur adipiscing elit
-            </h2>
-            <p className="text-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel
-              neque sed lectus aliquam ultricies eget eu elit. Proin suscipit
-              aliquet lectus, sed malesuada augue mattis id.
-            </p>
-          </div>
-
-          <div className="w-full md:w-1/2 md:pr-4 mb-4">
-            <img
-              src={fertilizer}
-              alt="News Article"
-              className="w-full h-48 object-cover"
-            />
-            <h2 className="text-lg font-bold mt-2 mb-1">
-              Tipsum dolor sit amet, consectetur adipiscing elit.
-            </h2>
-            <p className="text-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel
-              neque sed lectus aliquam ultricies eget eu elit. Proin suscipit
-              aliquet lectus, sed malesuada augue mattis id.
-            </p>
-          </div>
-
-          <div className="w-full md:w-1/2 md:pl-4 mb-4">
-            <img
-              src={cow}
-              alt="News Article"
-              className="w-full h-48 object-cover"
-            />
-            <h2 className="text-lg font-bold mt-2 mb-1">
-              Taliquam ultricies eget eu elit. Proin suscipi
-            </h2>
-            <p className="text-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel
-              neque sed lectus aliquam ultricies eget eu elit. Proin suscipit
-              aliquet lectus, sed malesuada augue mattis id.
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
-  );
-};
-
-export default NewsPage;
+      </TabPanel>
+    ))}
+  </TabsBody>
+</Tabs>
+); }
+ 
