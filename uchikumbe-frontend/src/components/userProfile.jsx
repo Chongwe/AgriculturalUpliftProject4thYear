@@ -42,7 +42,7 @@ const UserProfile = () => {
 
   const logout = () => {
     localStorage.clear();
-    navigate("/login");
+    navigate("/");
   };
 
   if (!user) {
@@ -68,7 +68,11 @@ const UserProfile = () => {
             </h1>
             <div className="absolute top-0 z-1 right-0 p-5">
               {userId === user._id && (
-                <Tooltip content="Log Out" className="rounded-full" placement="bottom">
+                <Tooltip
+                  content="Log Out"
+                  className="rounded-full"
+                  placement="bottom"
+                >
                   <button
                     className="bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
                     onClick={() => {
@@ -88,7 +92,7 @@ const UserProfile = () => {
               link="/edit-profile"
               icon={faUserEdit}
             />
-            <ProfileCard name="Add Farm" link="/add-farm"  icon={faPlusCircle} />
+            <ProfileCard name="Add Farm" link="/add-farm" icon={faPlusCircle} />
             <ProfileCard name="Messages" link="messages" icon={faMessage} />
             <ProfileCard name="Posts" link="posts" icon={faNoteSticky} />
           </div>
