@@ -27,3 +27,19 @@ export const forumDetailsQuery = (forumId) => {
   const query = `*[_type == "subforum" && _id == '${forumId}']`;
   return query;
 };
+
+export const postsQuery = `*[_type == "post"] | order(_createAt desc) {
+  image{
+    asset -> {
+      url
+    }
+  },
+  _id,
+  title,
+  content,
+  postedBy -> {
+    _id,
+    userName,
+    image
+  },
+}`

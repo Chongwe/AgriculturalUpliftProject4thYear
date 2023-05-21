@@ -11,16 +11,23 @@ import {
     faEnvelope, 
     faThumbsUp} from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
+import { urlFor, client  } from "../client";
+//  
 
-export default function Posts(props) {
+const Posts = ( { post:{ image, content, title, _id, postedBy}} ) => {
+    
     return (
         <div className= "m-8  p-4 bg-white rounded-xl flex-wrap min-w-[300px] w-96"> 
             <div  className = "shadow-none justify-between space-x-4 flex  ">
                 <div className="flex space-x-2">
-                    <Avatar src={Avata} alt = "avatar" variant="circular"></Avatar>
+                    <img 
+                    className="w-10 h-10 rounded-full object-cover"
+                    src={postedBy?.image}
+                    alt="posted-by"
+                    />
                     <div className=" ">
                         <Typography  className="mb-2 text-lg  text-goldenrod">
-                                {props.name}
+                                {postedBy?.userName}
                         </Typography>
                         <Typography color="gray" className="text-xs  " textGradient>
                                 33m ago
@@ -35,10 +42,11 @@ export default function Posts(props) {
             </div>
             <div className="">
                 <div className="mt-2">
-                    <p className="border-l duration-75 p-2 border-spacing-2 border-goldenrod">
-                       {props.content}
+                    <h3 className="text-green-900"> {title}</h3>
+                    <p  className="border-l duration-75 p-2 border-spacing-2 border-goldenrod">
+                       {content}
                     </p>
-                    <img src={Picture} className="flex mt-2"/>
+                    <img src={urlFor(image).url() } className="flex  w-full mt-2"/>
                 </div>
             </div>
             <div className=" flex mt-4 gap-8 justify-center"> 
@@ -58,6 +66,7 @@ export default function Posts(props) {
         </div>
     )
 }
+export default Posts
 
 
 
