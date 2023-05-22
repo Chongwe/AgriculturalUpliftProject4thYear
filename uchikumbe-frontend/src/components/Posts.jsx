@@ -46,7 +46,7 @@ const Posts = ( { post:{ image, content, title, _id, postedBy}} ) => {
                     <p  className="border-l duration-75 p-2 border-spacing-2 border-goldenrod">
                        {content}
                     </p>
-                    <img src={urlFor(image).url() } className="flex  w-full mt-2"/>
+                    {image && <img src={urlFor(image).url() } className="flex  w-full mt-2"/>}
                 </div>
             </div>
             <div className=" flex mt-4 gap-8 justify-center"> 
