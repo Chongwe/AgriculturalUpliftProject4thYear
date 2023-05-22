@@ -29,6 +29,8 @@ const Home = () => {
    }, [])
    if(loading) return <Spinner message="Loading Posts"/>
    if (!posts?.length) return <h2>No posts found</h2>;
+   
+
 
   return (
   <div className="p-4 bg-green-100 gap-2 rounded-2xl  duration-75 ease-out flex">
