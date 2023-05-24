@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { userQuery } from "../utils/data";
-import { fetchUser } from "../utils/fetchUser";
 import { client } from "../client";
 import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,7 +20,6 @@ function CreateForum() {
   const { userId } = useParams();
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
-  const userInfo = fetchUser();
 
   const navigate = useNavigate();
 
