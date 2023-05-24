@@ -30,6 +30,7 @@ const router = createBrowserRouter(
       <Route path="news" element={<News />} />
       <Route path="forum" element={<Forum />} />
       <Route path="create-forum/:userId" element={<CreateForum />} />
+      <Route path="create-post/:userId" element={<CreatePost />} />
       <Route path="add-farm" element={<AddFarm />} />
       <Route path="edit-profile" element={<EditProfile />} />
       <Route path="user-profile/:userId" element={<UserProfile />}></Route>

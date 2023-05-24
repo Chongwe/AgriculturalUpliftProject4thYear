@@ -52,7 +52,7 @@ export default function News() {
  
 return (
  
-<Tabs value="html">
+<Tabs value="html" className="h-screen  ">
   <TabsHeader className="bg-transparent pt-4 ">
     {data.map(({ label, value }) => (
       <Tab key={value} value={value}>

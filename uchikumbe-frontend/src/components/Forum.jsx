@@ -11,11 +11,15 @@ import { client } from "../client";
 import JoinedGroups from "./JoinedGroups";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Spinner from "./Spinner";
+
 
 const Forum = () => {
   const [user, setUser] = useState(null);
   const [createdForums, setCreatedForums] = useState(null);
   const [forums, setForums] = useState(null);
+  const [loading, setLoading] = useState(false);
+
 
   const userInfo = fetchUser();
 
@@ -29,20 +33,23 @@ const Forum = () => {
 
   useEffect(() => {
     const createdForumsQuery = userCreatedForumsQuery(userInfo?.sub);
-
+     
     client.fetch(createdForumsQuery).then((data) => {
       setCreatedForums(data);
     });
   });
 
   useEffect(() => {
+     setLoading(true)
     client.fetch(forumQuery).then((data) => {
       setForums(data);
+      setLoading(false)
     });
   }, []);
+  if (loading) return <Spinner message="Looking for Forums" />;
 
   return (
-    <div className="">
+    <div className=" h-screen ">
       {user !== null && user !== undefined && (
         <div className="m-4 text-center ">
           <Link to={`/create-forum/${user?._id}`}>
@@ -67,7 +74,7 @@ const Forum = () => {
           </div>
         )}
         <div className="p-4">
-          <h1 className="text-4xl mb-4  text-green-900">Forums</h1>
+          <h1 className="text-4xl mb-4  text-green-900">Other Forums</h1>
           <hr className="my-4 border-green-500 border-1" />
           <div className="  max-w-[500px] rounded-xl">
             {forums?.map((forum) => (

@@ -23,7 +23,7 @@ function People() {
   if (!listUser?.length) return <h2>No users found</h2>;
 
   return (
-    <div className="mt-8 min-w-[400px]">
+    <div className="mt-8 h-screen min-w-[400px]">
       {listUser?.map((user) => (
         <Person name={user.userName} avatar={user.image} />
       ))}
