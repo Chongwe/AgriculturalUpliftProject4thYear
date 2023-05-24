@@ -15,6 +15,7 @@ import animalchoice from './animalChoice'
 import cropChoice from './cropChoice'
 import pestsChoice from './pestsChoice'
 import equipmentChoice from './equipmentChoice'
+import news from './news'
 
 export const schemaTypes = [
   user,
@@ -26,6 +27,7 @@ export const schemaTypes = [
   subforum,
   posts,
   animals,
+  news,
   crops,
   equipment,
   farms,
