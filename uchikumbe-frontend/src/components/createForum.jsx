@@ -5,14 +5,13 @@ import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { fetchUser } from "../utils/fetchUser";
 import {
-  Card,
   Input,
   Button,
   Typography,
   Textarea,
-  Select,
-  Option,
+
 } from "@material-tailwind/react";
 
 function CreateForum() {
@@ -20,6 +19,7 @@ function CreateForum() {
   const { userId } = useParams();
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
+  const userInfo = fetchUser();
 
   const navigate = useNavigate();
 
@@ -47,9 +47,12 @@ function CreateForum() {
     }
   };
 
+  
+
   return (
     <div className=" p-4 lg:flex-row shadow-lg rounded-3xl my-4 min-w-[400px] justify-center gap-24 lg:flex flex-col  mx-12 items-center">
       <div className="">
+        
         <div className=" flex flex-wrap gap-4">
           <FontAwesomeIcon
             icon={faUserEdit}

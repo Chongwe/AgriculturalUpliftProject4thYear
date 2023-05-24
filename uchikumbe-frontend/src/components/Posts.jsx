@@ -1,6 +1,5 @@
 
-import Picture from "../assets/insect.jpg"
-import Avata from "../assets/avatar.png"
+import Avata from "../assets/avata.jpg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     Typography,
@@ -48,11 +47,21 @@ const Posts = ( { post:{ image, content, _createdAt, title, _id, postedBy}} ) =>
         <div className= "m-8  p-4 bg-white rounded-xl flex-wrap max-w-[350px] w-96"> 
             <div  className = "shadow-none justify-between space-x-4 flex  ">
                 <div className="flex items-center space-x-2">
-                    <img 
-                    className="w-10 h-10 rounded-full object-cover"
-                    src={postedBy?.image}
-                    alt="posted-by"
+
+                    {postedBy?.image ? (
+                    <img
+                        className="w-10 h-10 rounded-full object-cover"
+                        src={postedBy?.image}
+                        alt="posted-by"
                     />
+                    ) : (
+                    <img
+                        className="w-10 h-10 rounded-full object-cover"
+                        src={Avata}
+                        alt="general-avatar"
+                    />
+                    )}
+                    
                     <div className=" ">
                         <Typography  className="mb-2 text-lg  text-goldenrod">
                             {postedBy?.userName}
