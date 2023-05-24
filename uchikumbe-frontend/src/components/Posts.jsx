@@ -12,14 +12,42 @@ import {
     faThumbsUp} from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
 import { urlFor, client  } from "../client";
+import React, { useEffect, useState } from 'react';
+import { formatDistanceToNow, parseISO, isYesterday } from 'date-fns';
+
 //  
 
-const Posts = ( { post:{ image, content, title, _id, postedBy}} ) => {
-    
+const Posts = ( { post:{ image, content, _createdAt, title, _id, postedBy}} ) => {
+
+    const [postCreatedAt, setPostCreatedAt] = useState(null);
+    const [timeDifference, setTimeDifference] = useState(null);
+
+    useEffect(() => {
+        setPostCreatedAt(parseISO(_createdAt));
+        }, [_createdAt]);
+        
+        useEffect(() => {
+            if (postCreatedAt) {
+            const currentTime = new Date();
+        
+            if (isYesterday(postCreatedAt)) {
+                setTimeDifference('Yesterday');
+            } else {
+                const difference = formatDistanceToNow(postCreatedAt, {
+                addSuffix: true,
+                });
+        
+                setTimeDifference(difference);
+            }
+            }
+        }, [postCreatedAt]);
+
+
+
     return (
-        <div className= "m-8  p-4 bg-white rounded-xl flex-wrap max-w-[300px] w-96"> 
+        <div className= "m-8  p-4 bg-white rounded-xl flex-wrap max-w-[350px] w-96"> 
             <div  className = "shadow-none justify-between space-x-4 flex  ">
-                <div className="flex space-x-2">
+                <div className="flex items-center space-x-2">
                     <img 
                     className="w-10 h-10 rounded-full object-cover"
                     src={postedBy?.image}
@@ -27,10 +55,12 @@ const Posts = ( { post:{ image, content, title, _id, postedBy}} ) => {
                     />
                     <div className=" ">
                         <Typography  className="mb-2 text-lg  text-goldenrod">
-                                {postedBy?.userName}
+                            {postedBy?.userName}
                         </Typography>
-                        <Typography color="gray" className="text-xs  " textGradient>
-                                33m ago
+                        <Typography color="gray" className="text-xs -mt-2  " textGradient>
+                            {timeDifference !== null && (
+                                <p>{timeDifference}</p>
+                            )}
                         </Typography>
                     </div>                     
                 </div>
