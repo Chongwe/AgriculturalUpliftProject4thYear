@@ -40,7 +40,7 @@ const Home = () => {
         {user !== null && user !== undefined && (
         <div className="m-4 text-center ">
           <Link to={`/create-post/${user?._id}`}>
-            <button class=" bg-green-500 hover:bg-goldenrod py-2 justify-center px-4 ml-4  text-white  rounded-full focus:outline-none">
+            <button class=" bg-green-500 hover:bg-goldenrod transition-all duration-100 hover:scale-95 py-2 justify-center px-4 ml-4  text-white  rounded-full focus:outline-none">
               Create a Post
             </button>
             <hr className="my-4 border-goldenrod" />

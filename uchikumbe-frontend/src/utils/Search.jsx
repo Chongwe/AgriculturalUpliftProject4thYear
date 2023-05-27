@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SearchField = () => {
   return (
-    <div className="flex items-center h-7 mt-1 w-3/4 mx-auto p-1 bg-white rounded-full shadow-md">
+    <div className="flex items-center transition-all duration-500 hover:scale-95 h-7 mt-1 w-3/4 mx-auto p-1 bg-white rounded-full shadow-md">
       
       <input
         type="text"

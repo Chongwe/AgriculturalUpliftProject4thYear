@@ -1,5 +1,6 @@
 
 import Avata from "../assets/avata.jpg"
+import LikeButton from "../utils/LikeButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     Typography,
@@ -20,6 +21,7 @@ const Posts = ( { post:{ image, content, _createdAt, title, _id, postedBy}} ) =>
 
     const [postCreatedAt, setPostCreatedAt] = useState(null);
     const [timeDifference, setTimeDifference] = useState(null);
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
         setPostCreatedAt(parseISO(_createdAt));
