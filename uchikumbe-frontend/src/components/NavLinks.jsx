@@ -5,13 +5,13 @@ import {Typography,} from "@material-tailwind/react";
 export default function NavLinks() {
   return (
     <div>
-    <ul className=" flex gap-10 lg:mb-0 lg:mt-0 duration-200 lg:flex-row lg:items-center lg:gap-20">
+    <ul className=" flex gap-10 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-20">
       <Typography
         as="li"
         variant="small"
         className="mt-1 font-normal"
       >
-        <NavLink to="/" className="flex  hover:text-green-100 focus:border-b-2 focus:border-white focus:text-white" > 
+        <NavLink to="/" className="flex  hover:text-green-100 transition-all duration-200 hover:scale-105  focus:border-b-2 focus:border-white focus:text-white" > 
         Home </NavLink>
       </Typography>
       <Typography
@@ -19,7 +19,7 @@ export default function NavLinks() {
         variant="small"
         className="mt-1 font-normal"
       >
-        <NavLink to="people" className="flex  hover:text-green-100 focus:border-b-2 focus:border-white focus:text-white" > 
+        <NavLink to="people" className="flex  hover:text-green-100 transition-all duration-200 hover:scale-105 focus:border-b-2 focus:border-white focus:text-white" > 
         People </NavLink>
       </Typography>
       <Typography
@@ -27,7 +27,7 @@ export default function NavLinks() {
         variant="small"
         className="mt-1 font-normal"
       >
-        <NavLink to="news" className="flex  hover:text-green-100 focus:border-b-2 focus:border-white focus:text-white" > 
+        <NavLink to="news" className="flex  hover:text-green-100 transition-all duration-200 hover:scale-105 focus:border-b-2 focus:border-white focus:text-white" > 
         News </NavLink>
       </Typography>
       <Typography
@@ -35,7 +35,7 @@ export default function NavLinks() {
         variant="small"
         className="mt-1 font-normal"
       >
-        <NavLink to="forum" className="flex  hover:text-green-100 focus:border-b-2 focus:border-white focus:text-white" > 
+        <NavLink to="forum" className="flex  hover:text-green-100 transition-all duration-200 hover:scale-105 focus:border-b-2 focus:border-white focus:text-white" > 
         Forum </NavLink>
       </Typography>
     </ul>
