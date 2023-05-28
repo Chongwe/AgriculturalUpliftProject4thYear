@@ -102,7 +102,7 @@ const CreatePost = () => {
 
                 <div className="flex flex-col items-center justify-center h-full">
                   <div className="flex flex-col justify-center items-center">
-                    <p className="font-bold mt-6 text-green-400 text-6xl">
+                    <p className="font-bold mt-6  text-green-400 text-6xl">
                       <AiOutlineCloudUpload />
                     </p>
                     <p className="text-green-400 text-3xl ">Click to upload</p>
@@ -157,7 +157,7 @@ const CreatePost = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Add title of your post"
-            className="outline-none text-2xl sm:text-2xl placeholder-green-200 font-bold border-b-2 transition-all duration-500 hover:scale-95 border-green-200 p-2"
+            className="outline-none text-2xl sm:text-2xl placeholder-green-100 font-bold border-b-2 active:border-b-green-800 transition-all duration-500 hover:scale-95 border-green-200 p-2"
           />
           
           <textarea
@@ -165,7 +165,7 @@ const CreatePost = () => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="Write content of your  post here"
-            className="outline-none transition-all placeholder-green-200 duration-500 hover:scale-95 text-base sm:text-lg border-b-2 border-green-200 p-2"
+            className="outline-none transition-all placeholder-green-100 active:border-b-green-800 duration-500 hover:scale-95 text-base sm:text-lg border-b-2 border-green-200 p-2"
           />
        
 
