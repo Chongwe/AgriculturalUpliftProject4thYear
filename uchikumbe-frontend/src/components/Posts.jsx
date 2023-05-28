@@ -93,13 +93,13 @@ const Posts = ( { post:{ image, content, _createdAt, like, title, _id, postedBy}
                         <p  className="border-l duration-75 p-2 border-spacing-2 border-goldenrod">
                         {content}
                         </p>
-                        {image && <img src={urlFor(image).url() } className="flex  w-full mt-2"/>}
+                        {image && <img src={urlFor(image).url() } className="flex rounded-b-2xl rounded-t-sm w-full mt-2"/>}
                     </div>
                 </div>
                 <div className=" flex mt-4 gap-8 justify-center"> 
                     <div className="flex-1">
                         <Link to="/comments">
-                            <button class=" bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-full focus:outline-none">
+                            <button class=" bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none">
                                 <FontAwesomeIcon size="lg" icon={faComment} />  Comment...
                             </button>
                         </Link>
