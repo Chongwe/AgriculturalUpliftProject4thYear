@@ -43,4 +43,12 @@ export const postsQuery = `*[_type == "post"] | order(_createdAt desc) {
     userName,
     image
   },
+  like[]{
+    _key,
+    postedBy->{
+      _id,
+      userName,
+      image
+    },
+  },
 }`

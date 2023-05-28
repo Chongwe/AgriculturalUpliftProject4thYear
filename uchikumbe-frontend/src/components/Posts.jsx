@@ -20,11 +20,12 @@ import CommentPage from "../pages/CommentPage";
 
 //  
 
-const Posts = ( { post:{ image, content, _createdAt, title, _id, postedBy}} ) => {
+const Posts = ( { post:{ image, content, _createdAt, like, title, _id, postedBy}} ) => {
 
     const [postCreatedAt, setPostCreatedAt] = useState(null);
     const [timeDifference, setTimeDifference] = useState(null);
     const [user, setUser] = useState(null)
+    // const alreadyLiked = !!(like?.filter((item)=>item.postedBy._id===user.googleId)).length;
 
     useEffect(() => {
         setPostCreatedAt(parseISO(_createdAt));
@@ -49,10 +50,7 @@ const Posts = ( { post:{ image, content, _createdAt, title, _id, postedBy}} ) =>
 
 
     return (
-        <>
-        <Routes>
-            <Route path="comments" element={<CommentPage />} />
-        </Routes>
+      
 
             <div className= "m-8 transition-all duration-500 hover:scale-105 p-4 bg-white rounded-xl  flex-wrap max-w-[350px] w-96"> 
                 <div  className = "shadow-none justify-between space-x-4 flex  ">
@@ -100,9 +98,11 @@ const Posts = ( { post:{ image, content, _createdAt, title, _id, postedBy}} ) =>
                 </div>
                 <div className=" flex mt-4 gap-8 justify-center"> 
                     <div className="flex-1">
-                        <button class=" bg-green-500 hover:bg-goldenrod py-2 px-4  text-white  rounded-full focus:outline-none">
-                            <FontAwesomeIcon size="lg" icon={faComment} />  Comment...
-                        </button>
+                        <Link to="/comments">
+                            <button class=" bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-full focus:outline-none">
+                                <FontAwesomeIcon size="lg" icon={faComment} />  Comment...
+                            </button>
+                        </Link>
                     </div>
                     <div className=" rounded-full justify-end">
                         <Link to="/message">
@@ -113,7 +113,6 @@ const Posts = ( { post:{ image, content, _createdAt, title, _id, postedBy}} ) =>
                     </div> 
                 </div>           
             </div>
-        </>
     )
 }
 export default Posts

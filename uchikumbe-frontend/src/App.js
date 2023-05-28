@@ -5,6 +5,7 @@ import Forum from "./components/Forum";
 import RootLayout from "./Layout/RootLayout";
 import NotFound from "./others/NotFound";
 import CreatePost from "./components/CreatePost";
+import CommentPage from "./pages/CommentPage";
 
 //ROUTES
 import {
@@ -25,7 +26,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="forum-page/:forumId" element={<ForumPage />} />
-      {/* <Route path="post" element={<CreatePost />} /> */}
+      <Route path="comments" element={<CommentPage />} />
       <Route path="people" element={<People />} />
       <Route path="news" element={<News />} />
       <Route path="forum" element={<Forum />} />
