@@ -3,10 +3,12 @@ import { AiOutlineCloudUpload } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../Layout/UserContext";
+import styles from "../index.css"
 
 
 import { client } from "../client";
 import Spinner from "./Spinner";
+import { isPast } from "date-fns";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -92,23 +94,25 @@ const CreatePost = () => {
       )} */}
       <div className=" flex lg:flex-row flex-col justify-center items-center bg-white lg:p-5 p-3 lg:w-4/5  w-full">
         <div className="bg-green-50 p-3 flex flex-0.7 rounded-2xl w-full">
-          <div className=" flex justify-center items-center transition-all duration-500 hover:scale-95  bg-green-100 ease-in-out flex-col border-2  rounded-xl  border-green-200 hover:border-dotted p-3 w-full h-420">
+          <div className=" flex justify-center items-center overflow-hidden transition-all duration-500 hover:scale-95  bg-green-100 ease-in-out flex-col border-2  rounded-xl  border-green-200 hover:border-dotted p-3 w-full h-420">
             {loading && <Spinner />}
             {wrongImageType && <p>Wrong file type. Select another one</p>}
             {!imageAsset ? (
               <label>
+
                 <div className="flex flex-col items-center justify-center h-full">
                   <div className="flex flex-col justify-center items-center">
-                    <p className="font-bold text-green-400 text-4xl">
+                    <p className="font-bold mt-6 text-green-400 text-6xl">
                       <AiOutlineCloudUpload />
                     </p>
-                    <p className="text-green-400 text-lg">Click to upload</p>
+                    <p className="text-green-400 text-3xl ">Click to upload</p>
                   </div>
-
-                  <p className="mt-32 text-green-200">
-                   Use high-quality JPG, JPEG, PNG, GIF or
-                    TIFF less than 20MB
-                  </p>
+                  <div className="">
+                    <p className="mt-32 bg-green-50 text-sm p-4 rounded-md m-2 text-green-600">
+                    Use high-quality JPG, JPEG, PNG, GIF or
+                      TIFF less than 20MB
+                    </p>
+                  </div>
                 </div>
                 <input
                   type="file"
@@ -126,10 +130,10 @@ const CreatePost = () => {
                 />
                 <button
                   type="button"
-                  className="absolute bottom-3 right-3 p-3  rounded-full bg-white text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out"
+                  className="absolute bottom-3 right-3 p-3  hover:scale-105 rounded-full bg-goldenrod text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out"
                   onClick={() => setImageAsset(null)}
                 >
-                  <MdDelete />
+                  <MdDelete className="text-white" />
                 </button>
               </div>
             )}
@@ -171,7 +175,7 @@ const CreatePost = () => {
               <button
                 type="button"
                 onClick={createPost}
-                className="bg-green-900 hover:bg-goldenrod transition-all duration-500 hover:scale-95 text-white  p-2 rounded-full w-28 outline-none"
+                className="bg-green-900 hover:bg-goldenrod transition-all duration-500 hover:scale-95 text-white  p-2 rounded-xl w-28 outline-none"
               >
                 Create Post
               </button>
