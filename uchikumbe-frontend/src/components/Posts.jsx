@@ -1,6 +1,7 @@
 
 import Avata from "../assets/avata.jpg"
 import LikeButton from "../utils/LikeButton";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     Typography,
@@ -14,6 +15,8 @@ import { Link, NavLink } from "react-router-dom";
 import { urlFor, client  } from "../client";
 import React, { useEffect, useState } from 'react';
 import { formatDistanceToNow, parseISO, isYesterday } from 'date-fns';
+import { Routes, Route, useNavigate } from "react-router-dom";
+import CommentPage from "../pages/CommentPage";
 
 //  
 
@@ -46,65 +49,71 @@ const Posts = ( { post:{ image, content, _createdAt, title, _id, postedBy}} ) =>
 
 
     return (
-        <div className= "m-8 transition-all duration-500 hover:scale-105 p-4 bg-white rounded-xl  flex-wrap max-w-[350px] w-96"> 
-            <div  className = "shadow-none justify-between space-x-4 flex  ">
-                <div className="flex items-center space-x-2">
+        <>
+        <Routes>
+            <Route path="comments" element={<CommentPage />} />
+        </Routes>
 
-                    {postedBy?.image ? (
-                    <img
-                        className="w-10 h-10 rounded-full object-cover"
-                        src={postedBy?.image}
-                        alt="posted-by"
-                    />
-                    ) : (
-                    <img
-                        className="w-10 h-10 rounded-full object-cover"
-                        src={Avata}
-                        alt="general-avatar"
-                    />
-                    )}
-                    
-                    <div className=" ">
-                        <Typography  className="mb-2 text-lg  text-goldenrod">
-                            {postedBy?.userName}
-                        </Typography>
-                        <Typography color="gray" className="text-xs -mt-2  " textGradient>
-                            {timeDifference !== null && (
-                                <p>{timeDifference}</p>
-                            )}
-                        </Typography>
-                    </div>                     
+            <div className= "m-8 transition-all duration-500 hover:scale-105 p-4 bg-white rounded-xl  flex-wrap max-w-[350px] w-96"> 
+                <div  className = "shadow-none justify-between space-x-4 flex  ">
+                    <div className="flex items-center space-x-2">
+
+                        {postedBy?.image ? (
+                        <img
+                            className="w-10 h-10 rounded-full object-cover"
+                            src={postedBy?.image}
+                            alt="posted-by"
+                        />
+                        ) : (
+                        <img
+                            className="w-10 h-10 rounded-full object-cover"
+                            src={Avata}
+                            alt="general-avatar"
+                        />
+                        )}
+                        
+                        <div className=" ">
+                            <Typography  className="mb-2 text-lg  text-goldenrod">
+                                {postedBy?.userName}
+                            </Typography>
+                            <Typography color="gray" className="text-xs -mt-2  " textGradient>
+                                {timeDifference !== null && (
+                                    <p>{timeDifference}</p>
+                                )}
+                            </Typography>
+                        </div>                     
+                    </div>
+                    <div className="">
+                        <IconButton variant="text" color="green" size="lg">
+                        <FontAwesomeIcon size="2x" icon={faEnvelope} />
+                        </IconButton>
+                    </div>
                 </div>
                 <div className="">
-                    <IconButton variant="text" color="green" size="lg">
-                    <FontAwesomeIcon size="2x" icon={faEnvelope} />
-                    </IconButton>
+                    <div className="mt-2">
+                        <h3 className="text-green-900"> {title}</h3>
+                        <p  className="border-l duration-75 p-2 border-spacing-2 border-goldenrod">
+                        {content}
+                        </p>
+                        {image && <img src={urlFor(image).url() } className="flex  w-full mt-2"/>}
+                    </div>
                 </div>
+                <div className=" flex mt-4 gap-8 justify-center"> 
+                    <div className="flex-1">
+                        <button class=" bg-green-500 hover:bg-goldenrod py-2 px-4  text-white  rounded-full focus:outline-none">
+                            <FontAwesomeIcon size="lg" icon={faComment} />  Comment...
+                        </button>
+                    </div>
+                    <div className=" rounded-full justify-end">
+                        <Link to="/message">
+                            <IconButton  variant="text"  color="green">
+                            <FontAwesomeIcon size="2x" color="goldenrod" icon={faThumbsUp} />
+                            </IconButton> 
+                        </Link>
+                    </div> 
+                </div>           
             </div>
-            <div className="">
-                <div className="mt-2">
-                    <h3 className="text-green-900"> {title}</h3>
-                    <p  className="border-l duration-75 p-2 border-spacing-2 border-goldenrod">
-                       {content}
-                    </p>
-                    {image && <img src={urlFor(image).url() } className="flex  w-full mt-2"/>}
-                </div>
-            </div>
-            <div className=" flex mt-4 gap-8 justify-center"> 
-                <div className="flex-1">
-                    <button class=" bg-green-500 hover:bg-goldenrod py-2 px-4  text-white  rounded-full focus:outline-none">
-                        <FontAwesomeIcon size="lg" icon={faComment} />  Comment...
-                    </button>
-                </div>
-                <div className=" rounded-full justify-end">
-                    <Link to="/message">
-                        <IconButton  variant="text"  color="green">
-                        <FontAwesomeIcon size="2x" color="goldenrod" icon={faThumbsUp} />
-                        </IconButton> 
-                    </Link>
-                </div> 
-            </div>           
-        </div>
+        </>
     )
 }
 export default Posts
