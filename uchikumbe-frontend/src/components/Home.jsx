@@ -54,7 +54,7 @@ const Home = () => {
               {posts && <MasonryLayout posts={posts}/>}
             </div>
           {/* Sidebar Section */}
-          <div className="   hidden md:block rounded-xl">
+          <div className=" items-center  hidden md:block rounded-xl">
             <Sidebar />
           </div>
       </div>

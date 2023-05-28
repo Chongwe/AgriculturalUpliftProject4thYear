@@ -15,10 +15,12 @@ import animalchoice from './animalChoice'
 import cropChoice from './cropChoice'
 import pestsChoice from './pestsChoice'
 import equipmentChoice from './equipmentChoice'
+import SideBar from './SideBar'
 
 export const schemaTypes = [
   user,
   postedBy,
+  SideBar,
   memberOf,
   comment,
   dislike,
