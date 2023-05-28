@@ -1,7 +1,7 @@
 export default {
-    name: 'sidebar',
+    name: 'news',
     type: 'document',
-    title: 'SideBar',
+    title: 'News',
     fields: [
         {
             name: 'title',
@@ -10,11 +10,18 @@ export default {
             validation: (Rule) => Rule.required(),
           },
           {
+            name: 'description',
+            type: 'text',
+            title: 'Short Description',
+            validation: (Rule) => Rule.required(),
+          },
+          {
             name: 'content',
             type: 'text',
             title: 'Content',
             validation: (Rule) => Rule.required(),
           },
+
           {
             name: 'image',
             type: 'image',

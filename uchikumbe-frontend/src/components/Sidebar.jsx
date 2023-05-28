@@ -13,9 +13,9 @@ const Carousel = () => {
     const fetchCarouselData = async () => {
       try {
         const response = await client.fetch(
-          `*[_type == "sidebar"]{
+          `*[_type == "news"]{
             title,
-            content,
+            description,
             image
           }`
         );
@@ -44,24 +44,24 @@ const Carousel = () => {
   }, [carouselData]);
 
   if (isLoading) {
-    return <Spinner message="Loading..." />;
+    return <Spinner  />;
   }
 
   if (carouselData.length === 0 || !carouselData[currentIndex]) {
-    return <p>No carousel data available.</p>;
+    return <p className=" fixed ml-9 text-goldenrod">No carousel data available.</p>;
   }
 
-  const { title, content, image } = carouselData[currentIndex];
+  const { title, description, image } = carouselData[currentIndex];
 
   return (
-    <div className="carousel  ml-9 max-w-[250px]  hover:scale-95 fixed p-2 items-center transition-all h-[350px] duration-500 rounded-xl shadow-sm">
+    <div className=" ml-9 max-w-[250px]  hover:scale-95 fixed p-2 items-center transition-all h-[350px] duration-500 rounded-xl shadow-sm">
       <div className=" ">
             {image && <img src={urlFor(image).url() } className="flex rounded-xl  w-full mt-4"/>}
 
       </div>
       <div className="">
-        <h2 className="text-goldenrod text-xl">{title}</h2>
-        <p className="carousel-description whitespace-normal overflow-ellipsis ">{content}</p>
+        <h2 className="text-goldenrod mt-2 text-2xl">{title}</h2>
+        <p className="carousel-description whitespace-normal overflow-ellipsis ">{description}</p>
       </div>
      
      

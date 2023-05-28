@@ -8,6 +8,7 @@ import subforum from './subforum'
 import posts from './post'
 import animals from './animals'
 import crops from './crops'
+import news from './news'
 import equipment from './equipment'
 import farms from './farms'
 import pests from './pests'
@@ -15,12 +16,11 @@ import animalchoice from './animalChoice'
 import cropChoice from './cropChoice'
 import pestsChoice from './pestsChoice'
 import equipmentChoice from './equipmentChoice'
-import SideBar from './SideBar'
 
 export const schemaTypes = [
   user,
   postedBy,
-  SideBar,
+  news,
   memberOf,
   comment,
   dislike,
