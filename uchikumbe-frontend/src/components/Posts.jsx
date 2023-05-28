@@ -1,12 +1,11 @@
 
 import Avata from "../assets/avata.jpg"
-import LikeButton from "../utils/LikeButton";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     Typography,
     IconButton,
-    Avatar} from"@material-tailwind/react";
+    } from"@material-tailwind/react";
 import { 
     faComment, 
     faEnvelope, 
@@ -15,7 +14,6 @@ import { Link, NavLink } from "react-router-dom";
 import { urlFor, client  } from "../client";
 import React, { useEffect, useState } from 'react';
 import { formatDistanceToNow, parseISO, isYesterday } from 'date-fns';
-import { Routes, Route, useNavigate } from "react-router-dom";
 import CommentPage from "../pages/CommentPage";
 
 //  
@@ -52,7 +50,7 @@ const Posts = ( { post:{ image, content, _createdAt, like, title, _id, postedBy}
     return (
       
 
-            <div className= "m-8 transition-all overflow-ellipsis duration-500 hover:scale-105 p-4 bg-white rounded-xl  flex-wrap max-w-[350px] w-96"> 
+            <div className= "m-8 transition-all overflow-wrap break-word  duration-500 hover:scale-105 p-4 bg-white rounded-xl  flex-wrap max-w-[350px] w-96"> 
                 <div  className = "shadow-none justify-between space-x-4 flex  ">
                     <div className="flex items-center space-x-2">
 
@@ -88,11 +86,13 @@ const Posts = ( { post:{ image, content, _createdAt, like, title, _id, postedBy}
                     </div>
                 </div>
                 <div className="">
-                    <div className="mt-2">
+                    <div className="mt-2   ">
+                        <div className="max-w-[340px] overflow-hidden ">
                         <h3 className="text-green-900"> {title}</h3>
-                        <p  className="border-l duration-75 p-2 border-spacing-2 border-goldenrod">
+                        <p  className="border-l   duration-75 p-2 border-spacing-2 border-goldenrod">
                         {content}
                         </p>
+                        </div>
                         {image && <img src={urlFor(image).url() } className="flex rounded-b-2xl rounded-t-sm w-full mt-2"/>}
                     </div>
                 </div>

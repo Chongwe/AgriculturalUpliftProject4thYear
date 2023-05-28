@@ -9,6 +9,7 @@ module.exports = withMT({
         goldenrod: "#A67D00",
         uchiGreen: "#428643",
       },
+      
       margin: {
         320: "320px",
       },
