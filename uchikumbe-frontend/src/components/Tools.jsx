@@ -1,28 +1,114 @@
 import React, { useState } from 'react';
 
+const SeedCalculator = () => {
+  const [landSize, setLandSize] = useState(0);
+  const [seedType, setSeedType] = useState('');
+  const [seedQuantity, setSeedQuantity] = useState(0);
+
+  const calculateSeedQuantity = () => {
+    let quantity = 0;
+
+    switch (seedType) {
+      case 'maize':
+        quantity = landSize * 25; // Assume 25 kg of maize seed per hectare
+        break;
+      case 'soybeans':
+        quantity = landSize * 50; // Assume 50 kg of soybean seed per hectare
+        break;
+      case 'pigeon peas':
+        quantity = landSize * 30; // Assume 30 kg of pigeon pea seed per hectare
+        break;
+      case 'beans':
+        quantity = landSize * 40; // Assume 40 kg of bean seed per hectare
+        break;
+      case 'groundnuts':
+        quantity = landSize * 35; // Assume 35 kg of groundnut seed per hectare
+        break;
+      case 'rice':
+        quantity = landSize * 60; // Assume 60 kg of rice seed per hectare
+        break;
+      default:
+        break;
+    }
+
+    setSeedQuantity(quantity);
+  };
+
+  return (
+    <div className="rounded-lg bg-gray-100 p-5">
+      <h1 className="text-2xl font-bold mb-5">Seed Planting Calculator</h1>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center">
+          <label className="w-40">Land Size (hectares):</label>
+          <input
+            type="number"
+            className="border p-1"
+            value={landSize}
+            onChange={(e) => setLandSize(parseFloat(e.target.value))}
+          />
+        </div>
+        <div className="flex items-center">
+          <label className="w-40">Select Seed Type:</label>
+          <select
+            className="border p-1"
+            value={seedType}
+            onChange={(e) => setSeedType(e.target.value)}
+          >
+            <option value="">-- Select --</option>
+            <option value="maize">Maize</option>
+            <option value="soybeans">Soybeans</option>
+            <option value="pigeon peas">Pigeon Peas</option>
+            <option value="beans">Beans</option>
+            <option value="groundnuts">Groundnuts</option>
+            <option value="rice">Rice</option>
+          </select>
+        </div>
+        {seedType && (
+          <div className="flex items-center">
+            <label className="w-40">Seed Quantity (kg):</label>
+            <input
+              type="number"
+              className="border p-1"
+              value={seedQuantity}
+              readOnly
+            />
+          </div>
+        )}
+        <button
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
+          onClick={calculateSeedQuantity}
+          disabled={!landSize || !seedType}
+        >
+          Calculate Seed Quantity
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const FeedCalculator = () => {
   const [animal, setAnimal] = useState('');
-  const [count, setCount] = useState(1==1);
+  const [count, setCount] = useState(0);
   const [totalFeed, setTotalFeed] = useState(0);
 
   const calculateTotalFeed = () => {
-    let feedQuantity = 1;
+    let feedQuantity = 0;
 
     switch (animal) {
       case 'goat':
-        feedQuantity = count * 2; // Assume 2 kg of feed per goat
+        feedQuantity = count * 2; // Assume 2 kg of feed per goat per day
         break;
       case 'cow':
-        feedQuantity = count * 10; // Assume 10 kg of feed per cow
+        feedQuantity = count * 10; // Assume 10 kg of feed per cow per day
         break;
       case 'pig':
-        feedQuantity = count * 5; // Assume 5 kg of feed per pig
+        feedQuantity = count * 5; // Assume 5 kg of feed per pig per day
         break;
       case 'chicken':
-        feedQuantity = count * 0.5; // Assume 0.5 kg of feed per chicken
+        feedQuantity = count * 0.5; // Assume 0.5 kg of feed per chicken per day
         break;
       case 'duck':
-        feedQuantity = count * 0.3; // Assume 0.3 kg of feed per duck
+        feedQuantity = count * 0.3; // Assume 0.3 kg of feed per duck per day
         break;
       default:
         break;
@@ -32,7 +118,7 @@ const FeedCalculator = () => {
   };
 
   return (
-    <div className="container mx-auto mt-5">
+    <div className="rounded-lg bg-gray-100 p-5">
       <h1 className="text-2xl font-bold mb-5">Livestock Feed Calculator</h1>
       <div className="flex flex-col gap-4">
         <div className="flex items-center">
@@ -46,8 +132,8 @@ const FeedCalculator = () => {
             <option value="goat">Goats</option>
             <option value="cow">Cows</option>
             <option value="pig">Pigs</option>
-            <option value="chickens">Chicken</option>
-            <option value="ducks">Duck</option>
+            <option value="chicken">Chicken</option>
+            <option value="duck">Duck</option>
           </select>
         </div>
         {animal && (
@@ -62,19 +148,30 @@ const FeedCalculator = () => {
           </div>
         )}
         <button
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 pl-30 pr-30 rounded"
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
           onClick={calculateTotalFeed}
           disabled={!animal || count === 0}
         >
-          Calculate Total Feed
+          Calculate Total Feed per Day
         </button>
-      </div>
-      <div className="mt-5">
-        <p className="text-lg font-bold">Total Feed Required:</p>
-        <p className="text-xl">{totalFeed} kg</p>
+        <div className="mt-5">
+          <p className="text-lg font-bold">Total Feed Required per Day:</p>
+          <p className="text-xl">{totalFeed} kg</p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default FeedCalculator;
+const App = () => {
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <div className="w-full max-w-3xl flex gap-4">
+        <SeedCalculator />
+        <FeedCalculator />
+      </div>
+    </div>
+  );
+};
+
+export default App;
