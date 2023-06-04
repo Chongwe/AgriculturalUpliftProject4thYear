@@ -6,6 +6,7 @@ import RootLayout from "./Layout/RootLayout";
 import NotFound from "./others/NotFound";
 import CreatePost from "./components/CreatePost";
 import CommentPage from "./pages/CommentPage";
+import Tools from "./components/Tools"
 
 //ROUTES
 import {
@@ -20,7 +21,6 @@ import EditProfile from "./config-pages/EditProfile";
 import AddFarm from "./config-pages/AddFarm";
 import CreateForum from "./components/createForum";
 import ForumPage from "./pages/ForumPage";
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
@@ -29,6 +29,7 @@ const router = createBrowserRouter(
       <Route path="comments" element={<CommentPage />} />
       <Route path="people" element={<People />} />
       <Route path="news" element={<News />} />
+      <Route path="tools" element={<Tools />} />
       <Route path="forum" element={<Forum />} />
       <Route path="create-forum/:userId" element={<CreateForum />} />
       <Route path="create-post/:userId" element={<CreatePost />} />

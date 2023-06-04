@@ -8,7 +8,7 @@ import MasonryLayout from "./MasonryLayout";
 import { fetchUser } from "../utils/fetchUser";
 import { Link } from "react-router-dom";
 import { userQuery,} from "../utils/data";
-
+import { Tooltip, Button } from "@material-tailwind/react";
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState(null);
@@ -58,8 +58,11 @@ const Home = () => {
             <Sidebar />
           </div>
       </div>
-  
+      <Tooltip content="Material Tailwind">
+      <Button>Show Tooltip</Button>
+    </Tooltip>
   </div>
+  
   );
 };
 
