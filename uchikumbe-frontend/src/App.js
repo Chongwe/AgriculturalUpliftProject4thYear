@@ -21,6 +21,8 @@ import EditProfile from "./config-pages/EditProfile";
 import AddFarm from "./config-pages/AddFarm";
 import CreateForum from "./components/createForum";
 import ForumPage from "./pages/ForumPage";
+import SendSMS from "./components/SendSMS"; 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
@@ -34,6 +36,7 @@ const router = createBrowserRouter(
       <Route path="create-forum/:userId" element={<CreateForum />} />
       <Route path="create-post/:userId" element={<CreatePost />} />
       <Route path="add-farm" element={<AddFarm />} />
+      <Route path="message/:userId" element={<SendSMS/>} />
       <Route path="edit-profile" element={<EditProfile />} />
       <Route path="user-profile/:userId" element={<UserProfile />}></Route>
       <Route path="*" element={<NotFound />} />

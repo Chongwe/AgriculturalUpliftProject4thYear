@@ -24,7 +24,7 @@ function Person(props) {
           </div>
           <div className=" flex items-center ml-auto">
             {/* <p className="text-goldenrod mr-2">{props.title}</p> */}
-            <Link to="/message">
+            <Link to={`/message/${props.user_id}`}>
               <IconButton variant="text" color="green" size="xl" className="">
                 <FontAwesomeIcon size="2x" icon={faEnvelope} />
               </IconButton>

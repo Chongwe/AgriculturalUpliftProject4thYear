@@ -79,11 +79,11 @@ const Posts = ( { post:{ image, content, _createdAt, like, title, _id, postedBy}
                             </Typography>
                         </div>                     
                     </div>
-                    <div className="">
-                        <IconButton variant="text" color="green" size="lg">
-                        <FontAwesomeIcon size="2x" icon={faEnvelope} />
-                        </IconButton>
-                    </div>
+                    <Link to={`/message/${postedBy._id}`}>
+              <IconButton variant="text" color="green" size="xl" className="">
+                <FontAwesomeIcon size="2x" icon={faEnvelope} />
+              </IconButton>
+            </Link>
                 </div>
                 <div className="">
                     <div className="mt-2   ">

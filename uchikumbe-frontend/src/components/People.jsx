@@ -25,7 +25,7 @@ function People() {
   return (
     <div className="mt-8 h-screen min-w-[400px]">
       {listUser?.map((user) => (
-        <Person name={user.userName} avatar={user.image} />
+        <Person name={user.userName} avatar={user.image} user_id={user._id} />
       ))}
     </div>
   );

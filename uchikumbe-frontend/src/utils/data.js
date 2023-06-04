@@ -5,8 +5,11 @@ export const userQuery = (userId) => {
 
 export const userListQuery = `*[_type == "user"] | order(userName asc) {
   userName,
-  image
+  image,
+  _id
 }`;
+
+export const messageListQuery = (senderId, receiverId) => `*[_type == "message" && ((sender.sub == "${senderId}" && receiver._id == "${receiverId}") || (sender.sub == "${receiverId}" && receiver._id == "${senderId}")) ] | order(_createdAt asc)`;
 
 export const userCreatedForumsQuery = (userId) => {
   const query = `*[_type == "subforum" && userId == '${userId}'] | order(title asc) {
