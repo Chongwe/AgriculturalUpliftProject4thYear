@@ -43,11 +43,11 @@ const FeedCalculator = () => {
             onChange={(e) => setAnimal(e.target.value)}
           >
             <option value="">-- Select --</option>
-            <option value="goat">Goat</option>
-            <option value="cow">Cow</option>
-            <option value="pig">Pig</option>
-            <option value="chicken">Chicken</option>
-            <option value="duck">Duck</option>
+            <option value="goat">Goats</option>
+            <option value="cow">Cows</option>
+            <option value="pig">Pigs</option>
+            <option value="chickens">Chicken</option>
+            <option value="ducks">Duck</option>
           </select>
         </div>
         {animal && (
