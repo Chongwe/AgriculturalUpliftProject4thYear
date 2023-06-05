@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const SeedCalculator = () => {
-  const [landSize, setLandSize] = useState(0);
+  const [landSize, setLandSize] = useState(1);
   const [seedType, setSeedType] = useState('');
   const [seedQuantity, setSeedQuantity] = useState(0);
 
@@ -63,6 +63,14 @@ const SeedCalculator = () => {
             <option value="rice">Rice</option>
           </select>
         </div>
+      
+        <button
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
+          onClick={calculateSeedQuantity}
+          disabled={!landSize || !seedType}
+        >
+          Calculate Seed Quantity
+        </button>
         {seedType && (
           <div className="flex items-center">
             <label className="w-40">Seed Quantity (kg):</label>
@@ -74,13 +82,6 @@ const SeedCalculator = () => {
             />
           </div>
         )}
-        <button
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
-          onClick={calculateSeedQuantity}
-          disabled={!landSize || !seedType}
-        >
-          Calculate Seed Quantity
-        </button>
       </div>
     </div>
   );
@@ -88,8 +89,8 @@ const SeedCalculator = () => {
 
 const FeedCalculator = () => {
   const [animal, setAnimal] = useState('');
-  const [count, setCount] = useState(0);
-  const [totalFeed, setTotalFeed] = useState(0);
+  const [count, setCount] = useState(1);
+  const [totalFeed, setTotalFeed] = useState();
 
   const calculateTotalFeed = () => {
     let feedQuantity = 0;
@@ -154,10 +155,18 @@ const FeedCalculator = () => {
         >
           Calculate Total Feed per Day
         </button>
-        <div className="mt-5">
-          <p className="text-lg font-bold">Total Feed Required per Day:</p>
-          <p className="text-xl">{totalFeed} kg</p>
-        </div>
+        
+        {animal && (
+          <div className="flex items-center">
+            <label className="w-40">Total Feed Required per Day:</label>
+            <input
+              type="number"
+              className="border p-1"
+              value= {totalFeed} kg
+              readOnly
+            />
+          </div>
+        )}
       </div>
     </div>
   );
