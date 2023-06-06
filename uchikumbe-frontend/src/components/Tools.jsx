@@ -11,11 +11,11 @@ import {
   UserCircleIcon,
   Cog6ToothIcon,
 } from "@heroicons/react/24/solid";
+import{
   FeedCalculator,
   SeedCalculator,
-
-
 } from "../utils/Calculators";
+
 const feedCalculator = <FeedCalculator/>
 const seedCalculator = <SeedCalculator />
  
