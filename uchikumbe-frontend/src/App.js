@@ -34,7 +34,7 @@ const router = createBrowserRouter(
       <Route path="tools" element={<Tools />} />
       <Route path="forum" element={<Forum />} />
       <Route path="create-forum/:userId" element={<CreateForum />} />
-      <Route path="create-post/:userId" element={<CreatePost />} />
+      <Route path="create-post/:forumId" element={<CreatePost />} />
       <Route path="add-farm" element={<AddFarm />} />
       <Route path="message/:userId" element={<SendSMS/>} />
       <Route path="edit-profile" element={<EditProfile />} />

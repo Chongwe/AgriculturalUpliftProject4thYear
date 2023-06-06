@@ -12,14 +12,16 @@ export default function RootLayout({ is404 }) {
 
   const userInfo = fetchUser();
 
+<<<<<<< Updated upstream
   ///console.log(userInfo?.sub);
 
+=======
+>>>>>>> Stashed changes
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
 
     client.fetch(query).then((data) => {
       setUser(data[0]);
-      
     });
   });
 
@@ -28,9 +30,9 @@ export default function RootLayout({ is404 }) {
       <div>
         <Header user={user} />
         <main>
-        <UserContext.Provider value={user}>
-          <Outlet />
-        </UserContext.Provider>
+          <UserContext.Provider value={user}>
+            <Outlet />
+          </UserContext.Provider>
         </main>
         <Footer />
       </div>

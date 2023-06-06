@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import UserContext from "../Layout/UserContext";
-import styles from "../index.css"
-
+import styles from "../index.css";
 
 import { client } from "../client";
 import Spinner from "./Spinner";
@@ -14,6 +14,7 @@ const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
+  const { forumId } = useParams();
   const [fields, setFields] = useState();
   const [imageAsset, setImageAsset] = useState();
   const [wrongImageType, setWrongImageType] = useState(false);
@@ -74,6 +75,11 @@ const CreatePost = () => {
         };
       }
 
+      // client
+      //   .patch(forumId)
+      //   .setIfMissing({ post: []})
+      //   ;
+
       client.create(doc).then(() => {
         navigate("/");
       });
@@ -99,7 +105,6 @@ const CreatePost = () => {
             {wrongImageType && <p>Wrong file type. Select another one</p>}
             {!imageAsset ? (
               <label>
-
                 <div className="flex flex-col items-center justify-center h-full">
                   <div className="flex flex-col justify-center items-center">
                     <p className="font-bold mt-6  text-green-400 text-6xl">
@@ -109,8 +114,8 @@ const CreatePost = () => {
                   </div>
                   <div className="">
                     <p className="mt-32 bg-green-50 text-sm p-4 rounded-md m-2 text-green-600">
-                    Use high-quality JPG, JPEG, PNG, GIF or
-                      TIFF less than 20MB
+                      Use high-quality JPG, JPEG, PNG, GIF or TIFF less than
+                      20MB
                     </p>
                   </div>
                 </div>
@@ -140,8 +145,7 @@ const CreatePost = () => {
           </div>
         </div>
         <div className="flex flex-1 flex-col gap-6 lg:pl-5 mt-5 w-full">
-            
-            {user && (
+          {user && (
             <div className="flex gap-2 mt-2 mb-2 items-center bg-white rounded-lg ">
               <img
                 src={user.image}
@@ -159,7 +163,7 @@ const CreatePost = () => {
             placeholder="Add title of your post"
             className="outline-none text-2xl sm:text-2xl placeholder-green-100 font-bold border-b-2 active:border-b-green-800 transition-all duration-500 hover:scale-95 border-green-200 p-2"
           />
-          
+
           <textarea
             type="text"
             value={content}
@@ -167,10 +171,8 @@ const CreatePost = () => {
             placeholder="Write content of your  post here"
             className="outline-none transition-all placeholder-green-100 active:border-b-green-800 duration-500 hover:scale-95 text-base sm:text-lg border-b-2 border-green-200 p-2"
           />
-       
 
           <div className="flex flex-col">
-           
             <div className="flex justify-end items-end mt-5">
               <button
                 type="button"
