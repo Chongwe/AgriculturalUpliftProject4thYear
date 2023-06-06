@@ -43,7 +43,7 @@ export default function Example() {
     },
   ];
   return (
-    <div className="h-screen m-4">
+    <div className="h-screen p-2 m-4">
         <Tabs value="dashboard" orientation="vertical">
           <TabsHeader className="w-60">
             {data.map(({ label, value, icon }) => (
