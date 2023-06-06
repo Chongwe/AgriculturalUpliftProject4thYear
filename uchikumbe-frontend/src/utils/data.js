@@ -31,6 +31,11 @@ export const forumDetailsQuery = (forumId) => {
   return query;
 };
 
+export const postDetailQuery =(postId) => {
+  const query = `*[_type =="post" && _id == '${postId}']`;
+  return query;
+};
+
 export const postsQuery = `*[_type == "post"] | order(_createdAt desc) {
   image{
     asset -> {
