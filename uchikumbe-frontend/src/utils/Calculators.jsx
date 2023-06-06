@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SeedCalculator = () => {
+export const SeedCalculator = () => {
   const [landSize, setLandSize] = useState(1);
   const [seedType, setSeedType] = useState('');
   const [seedQuantity, setSeedQuantity] = useState(0);
@@ -87,7 +87,7 @@ const SeedCalculator = () => {
   );
 };
 
-const FeedCalculator = () => {
+export const FeedCalculator = () => {
   const [animal, setAnimal] = useState('');
   const [count, setCount] = useState(1);
   const [totalFeed, setTotalFeed] = useState();
