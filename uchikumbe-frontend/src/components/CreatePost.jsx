@@ -3,6 +3,7 @@ import { AiOutlineCloudUpload } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import UserContext from "../Layout/UserContext";
 import styles from "../index.css";
 
@@ -75,14 +76,27 @@ const CreatePost = () => {
         };
       }
 
-      // client
-      //   .patch(forumId)
-      //   .setIfMissing({ post: []})
-      //   ;
+      client
+        .patch(forumId)
+        .setIfMissing({ post: [] })
+        .insert("after", "post[-1]", [
+          {
+            doc,
+            _key: uuidv4(),
+            postedBy: {
+              _type: "postedBy",
+              _ref: user._id,
+            },
+          },
+        ])
+        .commit()
+        .then(() => {
+          navigate(`/create-post/${forumId}`);
+        });
 
-      client.create(doc).then(() => {
-        navigate("/");
-      });
+      // client.create(doc).then(() => {
+      //   navigate("/");
+      // });
     } else {
       setFields(true);
 
