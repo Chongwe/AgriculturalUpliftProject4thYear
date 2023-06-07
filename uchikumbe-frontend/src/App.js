@@ -28,7 +28,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="forum-page/:forumId" element={<ForumPage />} />
-      <Route path="comments" element={<CommentPage />} />
+      <Route path="comments/:postId" element={<CommentPage />} />
       <Route path="people" element={<People />} />
       <Route path="news" element={<News />} />
       <Route path="tools" element={<Tools />} />

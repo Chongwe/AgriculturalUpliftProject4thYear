@@ -34,6 +34,13 @@ export const SeedCalculator = () => {
     setSeedQuantity(quantity);
   };
 
+  const handleLandSizeChange = (e) => {
+    const value = parseFloat(e.target.value);
+    if (value >= 0) {
+      setLandSize(value);
+    }
+  };
+
   return (
     <div className="rounded-lg bg-gray-100 p-5">
       <h1 className="text-2xl font-bold mb-5">Seed Planting Calculator</h1>
@@ -44,7 +51,7 @@ export const SeedCalculator = () => {
             type="number"
             className="border p-1"
             value={landSize}
-            onChange={(e) => setLandSize(parseFloat(e.target.value))}
+            onChange={handleLandSizeChange}
           />
         </div>
         <div className="flex items-center">
@@ -54,7 +61,7 @@ export const SeedCalculator = () => {
             value={seedType}
             onChange={(e) => setSeedType(e.target.value)}
           >
-            <option value="">-- Select --</option>
+            <option value=""> Select </option>
             <option value="maize">Maize</option>
             <option value="soybeans">Soybeans</option>
             <option value="pigeon peas">Pigeon Peas</option>
@@ -63,7 +70,7 @@ export const SeedCalculator = () => {
             <option value="rice">Rice</option>
           </select>
         </div>
-      
+
         <button
           className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
           onClick={calculateSeedQuantity}
@@ -71,6 +78,7 @@ export const SeedCalculator = () => {
         >
           Calculate Seed Quantity
         </button>
+
         {seedType && (
           <div className="flex items-center">
             <label className="w-40">Seed Quantity (kg):</label>
@@ -119,6 +127,13 @@ export const FeedCalculator = () => {
     setTotalFeed(feedQuantity);
   };
 
+  const handleCountChange = (e) => {
+    const value = parseInt(e.target.value);
+    if (value >= 0) {
+      setCount(value);
+    }
+  };
+
   return (
     <div className="rounded-lg bg-gray-100 p-5">
       <h1 className="text-2xl font-bold mb-5">Livestock Feed Calculator</h1>
@@ -130,7 +145,7 @@ export const FeedCalculator = () => {
             value={animal}
             onChange={(e) => setAnimal(e.target.value)}
           >
-            <option value="">-- Select --</option>
+            <option value=""> Select </option>
             <option value="goat">Goats</option>
             <option value="cow">Cows</option>
             <option value="pig">Pigs</option>
@@ -145,7 +160,7 @@ export const FeedCalculator = () => {
               type="number"
               className="border p-1"
               value={count}
-              onChange={(e) => setCount(parseInt(e.target.value))}
+              onChange={handleCountChange}
             />
           </div>
         )}
@@ -156,14 +171,14 @@ export const FeedCalculator = () => {
         >
           Calculate Total Feed per Day
         </button>
-        
+
         {animal && (
           <div className="flex items-center">
             <label className="w-40">Total Feed Required per Day:</label>
             <input
               type="number"
               className="border p-1"
-              value= {totalFeed} kg
+              value={totalFeed}
               readOnly
             />
           </div>

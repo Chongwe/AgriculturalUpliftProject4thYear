@@ -19,7 +19,7 @@ import CommentPage from "../pages/CommentPage";
 //  
 
 const Posts = ( { post:{ image, content, _createdAt, like, title, _id, postedBy}} ) => {
-
+    const postId = _id;
     const [postCreatedAt, setPostCreatedAt] = useState(null);
     const [timeDifference, setTimeDifference] = useState(null);
     const [user, setUser] = useState(null)
@@ -98,7 +98,7 @@ const Posts = ( { post:{ image, content, _createdAt, like, title, _id, postedBy}
                 </div>
                 <div className=" flex mt-4 gap-8 justify-center"> 
                     <div className="flex-1">
-                        <Link to="/comments">
+                        <Link to={`comments/${_id}`}>
                             <button class=" bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none">
                                 <FontAwesomeIcon size="lg" icon={faComment} />  Comment...
                             </button>
