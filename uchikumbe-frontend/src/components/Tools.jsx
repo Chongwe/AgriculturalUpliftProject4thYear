@@ -6,18 +6,25 @@ import {
   Tab,
   TabPanel,
 } from "@material-tailwind/react";
+
 import {
   Square3Stack3DIcon,
   UserCircleIcon,
   Cog6ToothIcon,
 } from "@heroicons/react/24/solid";
+
 import{
   FeedCalculator,
   SeedCalculator,
 } from "../utils/Calculators";
 
+import MaizeFertilizerCalculator from "../utils/MaizeFertilizerCalculator"
+import CompostCalculator from "../utils/CompostCalculator"
+
 const feedCalculator = <FeedCalculator/>
 const seedCalculator = <SeedCalculator />
+const maizeFertilizerCalculator = <MaizeFertilizerCalculator/>
+const compostCalculator = <CompostCalculator/>
  
 export default function Example() {
   const data = [
@@ -34,12 +41,16 @@ export default function Example() {
       desc: seedCalculator
     },
     {
-      label: "Settings",
-      value: "settings",
-      icon: Cog6ToothIcon,
-      desc: `We're not always in the position that we want to be at.
-      We're constantly growing. We're constantly making mistakes. We're
-      constantly trying to express ourselves and actualize our dreams.`,
+      label: "Maize Calculator",
+      value: "maize-calculator",
+      icon: Square3Stack3DIcon,
+      desc: maizeFertilizerCalculator
+    },
+    {
+      label: "Compost Calculator",
+      value: "compost-calculator",
+      icon: Square3Stack3DIcon,
+      desc: compostCalculator
     },
   ];
   return (

@@ -10,22 +10,22 @@ export const SeedCalculator = () => {
 
     switch (seedType) {
       case 'maize':
-        quantity = landSize * 25; // Assume 25 kg of maize seed per hectare
+        quantity = landSize * 10; // Assume 10 kg of maize seed per acre
         break;
       case 'soybeans':
-        quantity = landSize * 50; // Assume 50 kg of soybean seed per hectare
+        quantity = landSize * 30; // Assume 30 kg of soybean seed per acre
         break;
       case 'pigeon peas':
-        quantity = landSize * 30; // Assume 30 kg of pigeon pea seed per hectare
+        quantity = landSize * 30; // Assume 30 kg of pigeon pea seed per acre
         break;
       case 'beans':
-        quantity = landSize * 40; // Assume 40 kg of bean seed per hectare
+        quantity = landSize * 30; // Assume 30 kg of bean seed per acre
         break;
       case 'groundnuts':
-        quantity = landSize * 35; // Assume 35 kg of groundnut seed per hectare
+        quantity = landSize * 17; // Assume 35 kg of groundnut seed per acre
         break;
       case 'rice':
-        quantity = landSize * 60; // Assume 60 kg of rice seed per hectare
+        quantity = landSize * 25; // Assume 25 kg of rice seed per acre
         break;
       default:
         break;
@@ -87,6 +87,7 @@ export const SeedCalculator = () => {
   );
 };
 
+
 export const FeedCalculator = () => {
   const [animal, setAnimal] = useState('');
   const [count, setCount] = useState(1);
@@ -108,7 +109,7 @@ export const FeedCalculator = () => {
       case 'chicken':
         feedQuantity = count * 0.5; // Assume 0.5 kg of feed per chicken per day
         break;
-      case 'duck':
+      case 'sheep':
         feedQuantity = count * 0.3; // Assume 0.3 kg of feed per duck per day
         break;
       default:
@@ -171,6 +172,8 @@ export const FeedCalculator = () => {
     </div>
   );
 };
+
+
 
 const App = () => {
   return (
