@@ -10,22 +10,22 @@ export const SeedCalculator = () => {
 
     switch (seedType) {
       case 'maize':
-        quantity = landSize * 25; // Assume 25 kg of maize seed per hectare
+        quantity = landSize * 10; // Assume 10 kg of maize seed per acre
         break;
       case 'soybeans':
-        quantity = landSize * 50; // Assume 50 kg of soybean seed per hectare
+        quantity = landSize * 30; // Assume 30 kg of soybean seed per acre
         break;
       case 'pigeon peas':
-        quantity = landSize * 30; // Assume 30 kg of pigeon pea seed per hectare
+        quantity = landSize * 30; // Assume 30 kg of pigeon pea seed per acre
         break;
       case 'beans':
-        quantity = landSize * 40; // Assume 40 kg of bean seed per hectare
+        quantity = landSize * 30; // Assume 30 kg of bean seed per acre
         break;
       case 'groundnuts':
-        quantity = landSize * 35; // Assume 35 kg of groundnut seed per hectare
+        quantity = landSize * 17; // Assume 35 kg of groundnut seed per acre
         break;
       case 'rice':
-        quantity = landSize * 60; // Assume 60 kg of rice seed per hectare
+        quantity = landSize * 25; // Assume 25 kg of rice seed per acre
         break;
       default:
         break;
@@ -34,8 +34,15 @@ export const SeedCalculator = () => {
     setSeedQuantity(quantity);
   };
 
+  const handleLandSizeChange = (e) => {
+    const value = parseFloat(e.target.value);
+    if (value >= 0) {
+      setLandSize(value);
+    }
+  };
+
   return (
-    <div className="rounded-lg bg-gray-100 p-5">
+    <div className="rounded-lg p-5">
       <h1 className="text-2xl font-bold mb-5">Seed Planting Calculator</h1>
       <div className="flex flex-col gap-4">
         <div className="flex items-center">
@@ -45,7 +52,6 @@ export const SeedCalculator = () => {
             className="border p-1"
             value={landSize}
             onChange={(e) => setLandSize(parseFloat(e.target.value))}
-          min={0}
           />
         </div>
         <div className="flex items-center">
@@ -55,7 +61,7 @@ export const SeedCalculator = () => {
             value={seedType}
             onChange={(e) => setSeedType(e.target.value)}
           >
-            <option value="">-- Select --</option>
+            <option value=""> Select </option>
             <option value="maize">Maize</option>
             <option value="soybeans">Soybeans</option>
             <option value="pigeon peas">Pigeon Peas</option>
@@ -64,7 +70,7 @@ export const SeedCalculator = () => {
             <option value="rice">Rice</option>
           </select>
         </div>
-      
+
         <button
           className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
           onClick={calculateSeedQuantity}
@@ -72,6 +78,7 @@ export const SeedCalculator = () => {
         >
           Calculate Seed Quantity
         </button>
+
         {seedType && (
           <div className="flex items-center">
             <label className="w-40">Seed Quantity (kg):</label>
@@ -87,6 +94,7 @@ export const SeedCalculator = () => {
     </div>
   );
 };
+
 
 export const FeedCalculator = () => {
   const [animal, setAnimal] = useState('');
@@ -109,7 +117,7 @@ export const FeedCalculator = () => {
       case 'chicken':
         feedQuantity = count * 0.5; // Assume 0.5 kg of feed per chicken per day
         break;
-      case 'duck':
+      case 'sheep':
         feedQuantity = count * 0.3; // Assume 0.3 kg of feed per duck per day
         break;
       default:
@@ -119,8 +127,15 @@ export const FeedCalculator = () => {
     setTotalFeed(feedQuantity);
   };
 
+  const handleCountChange = (e) => {
+    const value = parseInt(e.target.value);
+    if (value >= 0) {
+      setCount(value);
+    }
+  };
+
   return (
-    <div className="rounded-lg bg-gray-100 p-5">
+    <div className="rounded-lg p-5">
       <h1 className="text-2xl font-bold mb-5">Livestock Feed Calculator</h1>
       <div className="flex flex-col gap-4">
         <div className="flex items-center">
@@ -130,7 +145,7 @@ export const FeedCalculator = () => {
             value={animal}
             onChange={(e) => setAnimal(e.target.value)}
           >
-            <option value="">-- Select --</option>
+            <option value=""> Select </option>
             <option value="goat">Goats</option>
             <option value="cow">Cows</option>
             <option value="pig">Pigs</option>
@@ -140,15 +155,14 @@ export const FeedCalculator = () => {
         </div>
         {animal && (
           <div className="flex items-center">
-          <label className="w-40">Number of {animal}s:</label>
-          <input
-            type="number"
-            className="border p-1"
-            value={count}
-            onChange={(e) => setCount(parseInt(e.target.value))}
-            min={0} // Add this line to set the minimum value to 0
-          />
-        </div>
+            <label className="w-40">Number of {animal}s:</label>
+            <input
+              type="number"
+              className="border p-1"
+              value={count}
+              onChange={(e) => setCount(parseInt(e.target.value))}
+            />
+          </div>
         )}
         <button
           className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
@@ -157,14 +171,14 @@ export const FeedCalculator = () => {
         >
           Calculate Total Feed per Day
         </button>
-        
+
         {animal && (
           <div className="flex items-center">
             <label className="w-40">Total Feed Required per Day:</label>
             <input
               type="number"
               className="border p-1"
-              value= {totalFeed} kg
+              value={totalFeed}
               readOnly
             />
           </div>
@@ -173,6 +187,8 @@ export const FeedCalculator = () => {
     </div>
   );
 };
+
+
 
 const App = () => {
   return (
