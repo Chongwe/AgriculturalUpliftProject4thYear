@@ -6,33 +6,30 @@ import {
   Tab,
   TabPanel,
 } from "@material-tailwind/react";
-
 import {
-   RssIcon,
-  BeakerIcon,
-  TrashIcon,
+  Square3Stack3DIcon,
+  UserCircleIcon,
+  Cog6ToothIcon,
 } from "@heroicons/react/24/solid";
-
-import{
+import {
   FeedCalculator,
   SeedCalculator,
 } from "../utils/Calculators";
-
+import CompostCalculator from "../utils/CompostCalculator";
 import MaizeFertilizerCalculator from "../utils/MaizeFertilizerCalculator"
-import CompostCalculator from "../utils/CompostCalculator"
 
-const feedCalculator = <FeedCalculator/>
-const seedCalculator = <SeedCalculator />
-const maizeFertilizerCalculator = <MaizeFertilizerCalculator/>
-const compostCalculator = <CompostCalculator/>
- 
+const feedCalculator = <FeedCalculator />;
+const seedCalculator = <SeedCalculator />;
+const maizeCalculator = <MaizeFertilizerCalculator/>
+const copostCalculator = <CompostCalculator />
+
 export default function Example() {
   const data = [
     {
-      label: "Feed Calculator",
+      label: "FeedCalculator",
       value: "feed-calculator",
-      icon:  RssIcon,
-      compontent: feedCalculator
+      icon: Square3Stack3DIcon,
+      desc: feedCalculator
     },
     {
       label: "Seed Calculator",
@@ -41,18 +38,17 @@ export default function Example() {
       desc: seedCalculator
     },
     {
-      label: "Maize Calculator",
-      value: "maize-calculator",
-      icon: Square3Stack3DIcon,
-      desc: maizeFertilizerCalculator
-    },
-    {
       label: "Compost Calculator",
       value: "compost-calculator",
-      icon: Square3Stack3DIcon,
-      desc: compostCalculator
+      icon: Cog6ToothIcon,
+      desc: copostCalculator
     },
-   
+    {
+      label: "Maize Calculator",
+      value: "maize-calculator",
+      icon: Cog6ToothIcon,
+      desc: maizeCalculator
+    },
   ];
 
   const initialValue = data[0].value; // Set the initial value to the value of the first tab
@@ -71,9 +67,9 @@ export default function Example() {
           ))}
         </TabsHeader>
         <TabsBody>
-          {data.map(({ value, compontent }) => (
+          {data.map(({ value, desc }) => (
             <TabPanel key={value} value={value} className="py-0">
-              {compontent}
+              {desc}
             </TabPanel>
           ))}
         </TabsBody>
