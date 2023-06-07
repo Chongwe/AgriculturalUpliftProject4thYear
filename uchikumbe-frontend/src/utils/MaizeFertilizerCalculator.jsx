@@ -31,7 +31,7 @@ const FertilizerCalculator = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container border rounded-md min-w-[300px] border-green-400 mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4"> Maize Fertilizer Calculator</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
