@@ -45,6 +45,7 @@ export const SeedCalculator = () => {
             className="border p-1"
             value={landSize}
             onChange={(e) => setLandSize(parseFloat(e.target.value))}
+          min={0}
           />
         </div>
         <div className="flex items-center">
@@ -139,14 +140,15 @@ export const FeedCalculator = () => {
         </div>
         {animal && (
           <div className="flex items-center">
-            <label className="w-40">Number of {animal}s:</label>
-            <input
-              type="number"
-              className="border p-1"
-              value={count}
-              onChange={(e) => setCount(parseInt(e.target.value))}
-            />
-          </div>
+          <label className="w-40">Number of {animal}s:</label>
+          <input
+            type="number"
+            className="border p-1"
+            value={count}
+            onChange={(e) => setCount(parseInt(e.target.value))}
+            min={0} // Add this line to set the minimum value to 0
+          />
+        </div>
         )}
         <button
           className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
