@@ -51,7 +51,7 @@ export const SeedCalculator = () => {
             type="number"
             className="border p-1"
             value={landSize}
-            onChange={handleLandSizeChange}
+            onChange={(e) => setLandSize(parseFloat(e.target.value))}
           />
         </div>
         <div className="flex items-center">
@@ -160,7 +160,7 @@ export const FeedCalculator = () => {
               type="number"
               className="border p-1"
               value={count}
-              onChange={handleCountChange}
+              onChange={(e) => setCount(parseInt(e.target.value))}
             />
           </div>
         )}
