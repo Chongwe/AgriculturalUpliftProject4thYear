@@ -42,7 +42,7 @@ export const SeedCalculator = () => {
   };
 
   return (
-    <div className="rounded-lg bg-gray-100 p-5">
+    <div className="rounded-lg p-5">
       <h1 className="text-2xl font-bold mb-5">Seed Planting Calculator</h1>
       <div className="flex flex-col gap-4">
         <div className="flex items-center">
@@ -51,7 +51,7 @@ export const SeedCalculator = () => {
             type="number"
             className="border p-1"
             value={landSize}
-            onChange={handleLandSizeChange}
+            onChange={(e) => setLandSize(parseFloat(e.target.value))}
           />
         </div>
         <div className="flex items-center">
@@ -135,7 +135,7 @@ export const FeedCalculator = () => {
   };
 
   return (
-    <div className="rounded-lg bg-gray-100 p-5">
+    <div className="rounded-lg p-5">
       <h1 className="text-2xl font-bold mb-5">Livestock Feed Calculator</h1>
       <div className="flex flex-col gap-4">
         <div className="flex items-center">
@@ -160,7 +160,7 @@ export const FeedCalculator = () => {
               type="number"
               className="border p-1"
               value={count}
-              onChange={handleCountChange}
+              onChange={(e) => setCount(parseInt(e.target.value))}
             />
           </div>
         )}

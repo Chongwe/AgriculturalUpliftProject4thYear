@@ -51,7 +51,7 @@ const CompostCalculator = () => {
           <input
             id="acres"
             type="number"
-            className="px-4 py-2 border border-gray-300 rounded-md"
+            className="px-4 py-2 border w-56 border-green-300 rounded-md"
             value={acres}
             onChange={handleAcresChange}
           />
@@ -62,7 +62,7 @@ const CompostCalculator = () => {
           <input
             id="manureAmount"
             type="number"
-            className="px-4 py-2 border border-gray-300 rounded-md"
+            className="px-4 py-2 border active:border-none w-56 border-green-300 rounded-md"
             value={manureAmount}
             onChange={handleManureAmountChange}
           />
