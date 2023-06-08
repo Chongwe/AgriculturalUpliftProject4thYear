@@ -32,7 +32,39 @@ export const forumDetailsQuery = (forumId) => {
 };
 
 export const postDetailQuery =(postId) => {
-  const query = `*[_type =="post" && _id == '${postId}']`;
+  const query = `*[_type =="post" && _id == '${postId}'] {
+    image{
+      asset -> {
+        url
+      }
+    },
+    _id,
+    _createdAt,
+    title,
+    content,
+    postedBy -> {
+      _id,
+      userName,
+      image
+    },
+    like[]{
+      _key,
+      postedBy->{
+        _id,
+        userName,
+        image
+      },
+    },
+    comments[]{
+      comment,
+      _key,
+      postedBy->{
+        _id,
+        userName,
+        image
+      },
+    },
+  }`;
   return query;
 };
 
@@ -52,6 +84,14 @@ export const postsQuery = `*[_type == "post"] | order(_createdAt desc) {
     image
   },
   like[]{
+    _key,
+    postedBy->{
+      _id,
+      userName,
+      image
+    },
+  },
+  comment[]{
     _key,
     postedBy->{
       _id,
