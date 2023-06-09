@@ -39,39 +39,37 @@ const ForumPage = () => {
     return <Spinner message="Loading Forum" />;
   }
   return (
-    <div className="flex flex-col h-screen mt-6 gap-12 md:flex-row bg-green-100">
+    <div className="flex flex-wrap mt-2 gap-4  bg-green-100">
       <div className="md:w-full  p-4">
-        <h1 className="text-3xl text-green-900 font-bold mb-4">
-          {forum.title}
-        </h1>
-        <h1 className=" text-goldenrod -mt-4 ">{forum.description}</h1>
-        <div className="p-4 gap-2 flex">
-          {/* Sidebar Section */}
-          <div className="h-80 w-[500px]  shadow-none">
-            <div className="container m-2 mx-auto pt-10"></div>
+          <div>
+            <div className="flex flex-row justify-between">
+              <div>
+                <h1 className="text-3xl text-green-900 font-bold mb-4">{forum.title}</h1>
+                <h1 className=" text-goldenrod -mt-4 ">{forum.description}</h1>
+             </div>
+          
+                {user !== null && user !== undefined && (
+                  <div className="m-4 text-center ">
+                      <Link to={`/create-post/${forum?._id}`}>
+                        <button class=" bg-green-500  hover:bg-goldenrod transition-all duration-100 hover:scale-95 py-2 justify-end px-4 ml-4  text-white  rounded-full focus:outline-none">
+                          Create a Post
+                        </button>
+                      </Link>
+                  </div>
+                )}
+            </div>
+            
+            <hr className="my-4 border-goldenrod" />
           </div>
-          {/* Posts Section */}
-          <div className="  ">
-            {user !== null && user !== undefined && (
-              <div className="m-4 text-center ">
-                <Link to={`/create-post/${forum?._id}`}>
-                  <button class=" bg-green-500 hover:bg-goldenrod transition-all duration-100 hover:scale-95 py-2 justify-center px-4 ml-4  text-white  rounded-full focus:outline-none">
-                    Create a Post
-                  </button>
-                  <hr className="my-4 border-goldenrod" />
-                </Link>
-              </div>
-            )}
+ 
+          <div className=" bg-green-50 rounded-xl p-2 ">
+           
             {forum?.post?.map((posts) => (
-              <div className="flex-wrap relative parent min-w-[570px] md:ml-12 justify-center w-max  mt-8 mb-2  flex rounded-xl  bg-green-50">
-                {/* <MasonryLayout posts={posts} /> */}
-                {/* <p>{posts.title}</p> */}
+              <div className="flex-wrap relative parent min-w-[570px]  justify-center w-max  mt-2 mb-2  flex rounded-xl ">
                 <Posts key={posts._id} post={posts} />
-                {/* <p>{posts.postedBy.userName} hey</p> */}
               </div>
             ))}
           </div>
-        </div>
       </div>
     </div>
   );
