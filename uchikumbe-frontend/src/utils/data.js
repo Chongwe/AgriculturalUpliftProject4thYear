@@ -9,7 +9,8 @@ export const userListQuery = `*[_type == "user"] | order(userName asc) {
   _id
 }`;
 
-export const messageListQuery = (senderId, receiverId) => `*[_type == "message" && ((sender.sub == "${senderId}" && receiver._id == "${receiverId}") || (sender.sub == "${receiverId}" && receiver._id == "${senderId}")) ] | order(_createdAt asc)`;
+export const messageListQuery = (senderId, receiverId) =>
+  `*[_type == "message" && ((sender.sub == "${senderId}" && receiver._id == "${receiverId}") || (sender.sub == "${receiverId}" && receiver._id == "${senderId}")) ] | order(_createdAt asc)`;
 
 export const userCreatedForumsQuery = (userId) => {
   const query = `*[_type == "subforum" && userId == '${userId}'] | order(title asc) {
@@ -59,4 +60,4 @@ export const postsQuery = `*[_type == "post"] | order(_createdAt desc) {
       image
     },
   },
-}`
+}`;

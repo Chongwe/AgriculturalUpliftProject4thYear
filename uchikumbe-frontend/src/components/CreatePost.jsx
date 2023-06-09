@@ -60,10 +60,12 @@ const CreatePost = () => {
         title,
         content,
         userId: user._id,
+        _key: uuidv4(),
         postedBy: {
           _type: "postedBy",
           _ref: user._id,
         },
+        _createdAt: new Date().toISOString(),
       };
 
       if (imageAsset) {
@@ -79,24 +81,11 @@ const CreatePost = () => {
       client
         .patch(forumId)
         .setIfMissing({ post: [] })
-        .insert("after", "post[-1]", [
-          {
-            doc,
-            _key: uuidv4(),
-            postedBy: {
-              _type: "postedBy",
-              _ref: user._id,
-            },
-          },
-        ])
+        .insert("after", "post[-1]", [doc])
         .commit()
         .then(() => {
           navigate(`/create-post/${forumId}`);
         });
-
-      // client.create(doc).then(() => {
-      //   navigate("/");
-      // });
     } else {
       setFields(true);
 
