@@ -62,11 +62,11 @@ const ForumPage = () => {
                 </Link>
               </div>
             )}
-            {forum?.post?.map((posts, i) => (
+            {forum?.post?.map((posts) => (
               <div className="flex-wrap relative parent min-w-[570px] md:ml-12 justify-center w-max  mt-8 mb-2  flex rounded-xl  bg-green-50">
                 {/* <MasonryLayout posts={posts} /> */}
                 {/* <p>{posts.title}</p> */}
-                <Posts key={i} post={posts} />
+                <Posts key={posts._id} post={posts} />
                 {/* <p>{posts.postedBy.userName} hey</p> */}
               </div>
             ))}

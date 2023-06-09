@@ -57,6 +57,7 @@ const CreatePost = () => {
     if (title && content) {
       const doc = {
         _type: "post",
+        _id: uuidv4(),
         title,
         content,
         userId: user._id,
@@ -84,7 +85,7 @@ const CreatePost = () => {
         .insert("after", "post[-1]", [doc])
         .commit()
         .then(() => {
-          navigate(`/create-post/${forumId}`);
+          navigate(`/forum-page/${forumId}`);
         });
     } else {
       setFields(true);

@@ -28,13 +28,25 @@ export const forumQuery = `*[_type == "subforum"] | order(title asc) {
 }`;
 
 export const forumDetailsQuery = (forumId) => {
-  const query = `*[_type == "subforum" && _id == '${forumId}']`;
+  const query = `*[_type == "subforum" && _id == '${forumId}'] {
+    _id,
+  title,
+  post[] {
+    title,
+    content,
+    image{
+      asset -> {
+        url
+      }
+    },
+    _createdAt,
+    postedBy->{_id, userName, image},
+  }
+  }`;
   return query;
 };
 
-
-
-export const postDetailQuery =(postId) => {
+export const postDetailQuery = (postId) => {
   const query = `*[_type =="post" && _id == '${postId}'] {
     image{
       asset -> {
@@ -71,6 +83,45 @@ export const postDetailQuery =(postId) => {
   return query;
 };
 
+export const postQueryforums = `*[_type == "subforum"] | order(post._createdAt desc) {
+  _id,
+  title,
+post[] {
+  image{
+    asset -> {
+      url
+    }
+  },
+  _id,
+  _createdAt,
+  title,
+  content,
+  postedBy -> {
+    _id,
+    userName,
+    image
+  },
+  like[]{
+    _key,
+    postedBy->{
+      _id,
+      userName,
+      image
+    },
+  },
+  comment[]{
+    _key,
+    postedBy->{
+      _id,
+      userName,
+      image
+    },
+    commentCount
+  },
+ 
+}
+} `;
+
 export const postsQuery = `*[_type == "post"] | order(_createdAt desc) {
   image{
     asset -> {
@@ -106,9 +157,9 @@ export const postsQuery = `*[_type == "post"] | order(_createdAt desc) {
  
 }`;
 
- export const commentCountQuery = (postId) => {
-    const query = `*[_type == "post" && _id == '${postId}'][0] {
+export const commentCountQuery = (postId) => {
+  const query = `*[_type == "post" && _id == '${postId}'][0] {
       "commentCount": count(comments)
     }`;
-    return query;
-  };
+  return query;
+};
