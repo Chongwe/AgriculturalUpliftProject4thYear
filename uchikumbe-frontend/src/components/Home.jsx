@@ -26,14 +26,14 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-    client.fetch(postQueryforums).then((data) => {
-      const flattenedPosts = data.reduce((accumulator, subforum) => {
-        if (subforum.post && subforum.post.length > 0) {
-          accumulator.push(...subforum.post);
-        }
-        return accumulator;
-      }, []);
-      setPosts(flattenedPosts);
+    client.fetch(postsQuery).then((data) => {
+      // const flattenedPosts = data.reduce((accumulator, subforum) => {
+      //   if (subforum.post && subforum.post.length > 0) {
+      //     accumulator.push(...subforum.post);
+      //   }
+      //   return accumulator;
+      // }, []);
+      setPosts(data);
       console.log(posts);
       setLoading(false);
     });

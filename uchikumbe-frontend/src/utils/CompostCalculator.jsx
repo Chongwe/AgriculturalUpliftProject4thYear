@@ -17,9 +17,9 @@ const CompostCalculator = () => {
     const plantResiduePercentage = 0.4;
     const virginSoilPercentage = 0.3;
 
-    const animalManureAmount = manureAmount * animalManurePercentage;
-    const plantResidueAmount = manureAmount * plantResiduePercentage;
-    const virginSoilAmount = manureAmount * virginSoilPercentage;
+    const animalManureAmount = (manureAmount * animalManurePercentage).toFixed(1);
+    const plantResidueAmount = (manureAmount * plantResiduePercentage).toFixed(1);
+    const virginSoilAmount = (manureAmount * virginSoilPercentage).toFixed(1);
     const waterNeedded = manureAmount * 0.35; // asumming 1kg = 1lt
 
     setResult(

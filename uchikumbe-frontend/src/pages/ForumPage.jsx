@@ -62,10 +62,10 @@ const ForumPage = () => {
             <hr className="my-4 border-goldenrod" />
           </div>
  
-          <div className=" bg-green-50 rounded-xl p-2 ">
+          <div className=" bg-green-50 flex-row  rounded-xl p-2 ">
            
             {forum?.post?.map((posts) => (
-              <div className="flex-wrap relative parent min-w-[570px]  justify-center w-max  mt-2 mb-2  flex rounded-xl ">
+              <div className="flex-row relative parent  min-w-[570px]  justify-center w-max  mt-2 mb-2  flex rounded-xl ">
                 <Posts key={posts._id} post={posts} />
               </div>
             ))}

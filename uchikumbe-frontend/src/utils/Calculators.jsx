@@ -46,7 +46,7 @@ export const SeedCalculator = () => {
       <h1 className="text-3xl  text-goldenrod font-bold mb-4">Seed Planting Calculator</h1>
       <div className="flex flex-col gap-4">
         <div className="flex items-center">
-          <label className="w-40">Land Size (hectares):</label>
+          <label className="w-40">Land Size (acres):</label>
           <input
             type="number"
             className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
