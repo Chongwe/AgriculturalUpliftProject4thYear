@@ -56,5 +56,10 @@ export default {
       type: 'array',
       of: [{type: 'comment'}],
     },
+    {
+      name: 'forumId',
+      title: 'ForumID',
+      type: 'string',
+    },
   ],
 }

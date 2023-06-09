@@ -34,6 +34,7 @@ const Home = () => {
         return accumulator;
       }, []);
       setPosts(flattenedPosts);
+      console.log(flattenedPosts);
       console.log(posts);
       setLoading(false);
     });
