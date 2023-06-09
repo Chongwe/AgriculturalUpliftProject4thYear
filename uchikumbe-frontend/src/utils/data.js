@@ -56,6 +56,7 @@ export const postDetailQueryFromForum = (forumId, postId) => {
     post[_id == '${postId}'] {
       _id,
       title,
+      image,
       content,
       forumId,  // Include the forumId field here
       postedBy -> {

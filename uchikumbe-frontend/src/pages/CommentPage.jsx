@@ -101,17 +101,20 @@ const CommentPage = () => {
             if (postIndex > -1) {
               const updatedPosts = [...subforum.post];
               const post = updatedPosts[postIndex];
-              post.comments = [
-                ...post.comments,
-                {
-                  content: comment,
-                  _key: uuidv4(),
-                  postedBy: {
-                    _type: "postedBy",
-                    _ref: user._id,
-                  },
+
+              // Handle the case where comments array is initially null or undefined
+              if (!post.comments) {
+                post.comments = [];
+              }
+
+              post.comments.push({
+                content: comment,
+                _key: uuidv4(),
+                postedBy: {
+                  _type: "postedBy",
+                  _ref: user._id,
                 },
-              ];
+              });
 
               client
                 .patch(subforum._id)
@@ -161,8 +164,8 @@ const CommentPage = () => {
             />
           </div>
 
-          <div className="flex flex-1 flex-col border-l-2 border-goldenrod gap-6 lg:pl-5 mt-5 w-full">
-            <div className="flex flex-row">
+          <div className="flex flex-1 flex-col border-l-2 pl-2 border-goldenrod gap-6 lg:pl-5 mt-5 w-full">
+            <div className="flex flex-row pl-4">
               <img
                 src={post?.postedBy?.image}
                 alt="user-profile"
