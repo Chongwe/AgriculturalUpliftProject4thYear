@@ -31,8 +31,8 @@ const FertilizerCalculator = () => {
   };
 
   return (
-    <div className="container border rounded-md min-w-[300px] border-green-400 mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4"> Maize Fertilizer Calculator</h1>
+    <div className="container border border-goldenrod rounded-lg p-2 mx-auto mt-8">
+      <h1 className="text-3xl  text-goldenrod font-bold mb-4"> Maize Fertilizer Calculator</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block mb-2">Number of Acres:</label>
@@ -40,7 +40,7 @@ const FertilizerCalculator = () => {
             type="number"
             value={acres}
             onChange={handleAcresChange}
-            className="border border-gray-300 rounded px-2 py-1"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             required
           />
         </div>
@@ -49,7 +49,7 @@ const FertilizerCalculator = () => {
           <select
             value={fertilizerType}
             onChange={handleFertilizerTypeChange}
-            className="border border-gray-300 rounded px-2 py-1"
+            className="px-4 py-2 border focus:outline-none w-56 border-green-300 rounded-md"
             required
           >
             <option value="">Select</option>
@@ -59,7 +59,7 @@ const FertilizerCalculator = () => {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2"
+          className="bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none"
         >
           Calculate
         </button>

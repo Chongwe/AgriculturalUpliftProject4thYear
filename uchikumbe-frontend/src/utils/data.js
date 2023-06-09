@@ -31,6 +31,7 @@ export const forumDetailsQuery = (forumId) => {
   const query = `*[_type == "subforum" && _id == '${forumId}'] {
     _id,
   title,
+  description,
   post[] {
     _id,
     title,

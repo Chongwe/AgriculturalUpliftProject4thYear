@@ -42,8 +42,8 @@ const CompostCalculator = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8">
-      <h1 className="text-3xl font-bold mb-4">Compost Manure Calculator</h1>
+    <div className="container border border-goldenrod rounded-lg p-2 mx-auto mt-8">
+      <h1 className="text-3xl  text-goldenrod font-bold mb-4">Compost Manure Calculator</h1>
 
       <div className="flex flex-col space-y-4">
         <div className="flex flex-col space-y-2">
@@ -51,7 +51,7 @@ const CompostCalculator = () => {
           <input
             id="acres"
             type="number"
-            className="px-4 py-2 border w-56 border-green-300 rounded-md"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             value={acres}
             onChange={handleAcresChange}
           />
@@ -62,7 +62,7 @@ const CompostCalculator = () => {
           <input
             id="manureAmount"
             type="number"
-            className="px-4 py-2 border active:border-none w-56 border-green-300 rounded-md"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             value={manureAmount}
             onChange={handleManureAmountChange}
           />
@@ -70,7 +70,7 @@ const CompostCalculator = () => {
 
         <div className="flex space-x-4">
           <button
-            className="px-4 py-2 bg-blue-500 text-white rounded-md"
+            className=" bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none"
             onClick={calculateManureNeeded}
             disabled={!acres}
           >
@@ -78,7 +78,7 @@ const CompostCalculator = () => {
           </button>
 
           <button
-            className="px-4 py-2 bg-blue-500 text-white rounded-md"
+            className=" bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none"
             onClick={calculateLandNeeded}
             disabled={!manureAmount}
           >
