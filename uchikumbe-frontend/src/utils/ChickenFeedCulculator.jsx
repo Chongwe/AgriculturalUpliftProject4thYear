@@ -76,11 +76,11 @@ const ChickenFeedCalculator = () => {
       {feedAmounts.length > 0 && (
         <div className="mt-4">
           <p className="font-bold">Feed Amounts per Week:</p>
-          <table className="w-full mt-2">
+          <table className="w-full mt-2 border border-collapse">
             <thead>
               <tr>
-                <th className="py-2">Week</th>
-                <th className="py-2">Amount (kg)</th>
+                <th className="py-2 font-bold">Weeks</th>
+                <th className="py-2 font-bold">Amount (kg)</th>
               </tr>
             </thead>
             <tbody>

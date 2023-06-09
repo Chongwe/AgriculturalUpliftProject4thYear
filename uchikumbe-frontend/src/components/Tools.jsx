@@ -67,7 +67,7 @@ export default function Example() {
   const initialValue = data[0].value; // Set the initial value to the value of the first tab
 
   return (
-    <div className="h-screen bg-green-50 rounded-xl p-2 m-4">
+    <div className=" flex bg-green-50 rounded-xl p-2 m-4">
       <Tabs value={initialValue} orientation="vertical">
         <TabsHeader className="w-60 bg-green-100">
           {data.map(({ label, value, icon }) => (
