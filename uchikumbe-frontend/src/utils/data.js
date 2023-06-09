@@ -31,6 +31,8 @@ export const forumDetailsQuery = (forumId) => {
   return query;
 };
 
+
+
 export const postDetailQuery =(postId) => {
   const query = `*[_type =="post" && _id == '${postId}'] {
     image{
@@ -98,5 +100,14 @@ export const postsQuery = `*[_type == "post"] | order(_createdAt desc) {
       userName,
       image
     },
+    commentCount
   },
-}`
+ 
+}`;
+
+ export const commentCountQuery = (postId) => {
+    const query = `*[_type == "post" && _id == '${postId}'][0] {
+      "commentCount": count(comments)
+    }`;
+    return query;
+  };
