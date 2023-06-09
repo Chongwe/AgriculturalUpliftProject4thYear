@@ -42,14 +42,14 @@ export const SeedCalculator = () => {
   };
 
   return (
-    <div className="rounded-lg p-5">
-      <h1 className="text-2xl font-bold mb-5">Seed Planting Calculator</h1>
+    <div className="container border border-goldenrod rounded-lg p-2 mx-auto mt-8">
+      <h1 className="text-3xl  text-goldenrod font-bold mb-4">Seed Planting Calculator</h1>
       <div className="flex flex-col gap-4">
         <div className="flex items-center">
           <label className="w-40">Land Size (hectares):</label>
           <input
             type="number"
-            className="border p-1"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             value={landSize}
             onChange={(e) => setLandSize(parseFloat(e.target.value))}
           />
@@ -57,7 +57,7 @@ export const SeedCalculator = () => {
         <div className="flex items-center">
           <label className="w-40">Select Seed Type:</label>
           <select
-            className="border p-1"
+            className="px-4 py-2  border focus:outline-none w-56 border-green-300 rounded-md"
             value={seedType}
             onChange={(e) => setSeedType(e.target.value)}
           >
@@ -72,7 +72,7 @@ export const SeedCalculator = () => {
         </div>
 
         <button
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
+          className="bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none"
           onClick={calculateSeedQuantity}
           disabled={!landSize || !seedType}
         >
@@ -135,13 +135,13 @@ export const FeedCalculator = () => {
   };
 
   return (
-    <div className="rounded-lg p-5">
-      <h1 className="text-2xl font-bold mb-5">Livestock Feed Calculator</h1>
+    <div className="container border border-goldenrod rounded-lg p-2 mx-auto mt-8">
+      <h1 className="text-3xl  text-goldenrod font-bold mb-4">Livestock Feed Calculator</h1>
       <div className="flex flex-col gap-4">
         <div className="flex items-center">
           <label className="w-40">Select an Animal:</label>
           <select
-            className="border p-1"
+            className="px-4 py-2 border focus:outline-none w-56 border-green-300 rounded-md"
             value={animal}
             onChange={(e) => setAnimal(e.target.value)}
           >
@@ -158,14 +158,14 @@ export const FeedCalculator = () => {
             <label className="w-40">Number of {animal}s:</label>
             <input
               type="number"
-              className="border p-1"
+              className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
               value={count}
               onChange={(e) => setCount(parseInt(e.target.value))}
             />
           </div>
         )}
         <button
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
+          className="bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none"
           onClick={calculateTotalFeed}
           disabled={!animal || count === 0}
         >
