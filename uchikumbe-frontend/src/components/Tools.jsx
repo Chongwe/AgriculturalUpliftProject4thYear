@@ -20,11 +20,15 @@ import {
 } from "../utils/Calculators";
 import CompostCalculator from "../utils/CompostCalculator";
 import MaizeFertilizerCalculator from "../utils/MaizeFertilizerCalculator"
+import ChickenFeedCalculator from "../utils/ChickenFeedCulculator";
+
+
 
 const feedCalculator = <FeedCalculator />;
 const seedCalculator = <SeedCalculator />;
 const maizeCalculator = <MaizeFertilizerCalculator/>
 const copostCalculator = <CompostCalculator />
+const chickenFeedCalculator = <ChickenFeedCalculator/> 
 
 export default function Example() {
   const data = [
@@ -51,6 +55,12 @@ export default function Example() {
       value: "maize-calculator",
       icon: Cog6ToothIcon,
       desc: maizeCalculator
+    },
+    {
+      label: "Chicken feed Calculator",
+      value: "chickenfeed-calculator",
+      icon: Cog6ToothIcon,
+      desc: chickenFeedCalculator
     },
   ];
 

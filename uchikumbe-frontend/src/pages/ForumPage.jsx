@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { client } from "../client";
 import Spinner from "../components/Spinner";
 import { userQuery } from "../utils/data";
+import MasonryLayout from "../components/MasonryLayout";
 
 const ForumPage = () => {
   const [forum, setForum] = useState(null);
@@ -61,12 +62,14 @@ const ForumPage = () => {
                 </Link>
               </div>
             )}
-
-            <div className="flex-shrink-0 w-1/4   md:block rounded-xl"></div>
-
-            <div className="flex-wrap relative parent  justify-center  flex rounded-xl  bg-green-50">
-              {/* <Corousel /> */}
-            </div>
+            {forum?.post?.map((posts, i) => (
+              <div className="flex-wrap relative parent min-w-[570px] md:ml-12 justify-center w-max  mt-8 mb-2  flex rounded-xl  bg-green-50">
+                {/* <MasonryLayout posts={posts} /> */}
+                {/* <p>{posts.title}</p> */}
+                <Posts key={i} post={posts} />
+                {/* <p>{posts.postedBy.userName} hey</p> */}
+              </div>
+            ))}
           </div>
         </div>
       </div>
