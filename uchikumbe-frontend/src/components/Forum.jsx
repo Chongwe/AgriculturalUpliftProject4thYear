@@ -51,7 +51,7 @@ const Forum = () => {
       {user !== null && user !== undefined && (
         <div className="m-4 text-center ">
           <Link to={`/create-forum/${user?._id}`}>
-            <button class=" bg-green-500  transition-all duration-200 hover:scale-95 hover:bg-goldenrod py-2 justify-center px-4 ml-4  text-white  rounded-full focus:outline-none">
+            <button className=" bg-green-500  transition-all duration-200 hover:scale-95 hover:bg-goldenrod py-2 justify-center px-4 ml-4  text-white  rounded-full focus:outline-none">
               Create a Forum
             </button>
             <hr className="my-4 border-goldenrod" />

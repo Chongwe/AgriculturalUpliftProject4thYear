@@ -221,7 +221,7 @@ const CommentPage = () => {
                 <button
                   type="button"
                   onClick={addComment}
-                  className="bg-green-900 hover:bg-goldenrod transition-all duration-500 hover:scale-95 text-white  p-2 rounded-full w-28 outline-none"
+                  className="bg-green-900 hover:bg-goldenrod text-sm transition-all duration-500 hover:scale-95 text-white  p-2 rounded-full w-28 outline-none"
                 >
                   {addingComment ? "Commenting..." : " Comment"}
                 </button>
