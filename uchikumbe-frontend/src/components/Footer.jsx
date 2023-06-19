@@ -2,7 +2,7 @@ import { Typography } from "@material-tailwind/react";
 import logo from "../assets/logo.svg"
 import { NavLink } from "react-router-dom";
  
-export default function Example() {
+export default function Footer() {
   return (
     <footer className="w-full min-w-[400px] rounded-t-2xl bg-white p-8">
       <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 text-center md:justify-between">
@@ -10,7 +10,6 @@ export default function Example() {
         <ul className="flex flex-wrap  items-center gap-y-2 gap-x-8">
           <li>
             <Typography
-              as="a"
               href="#"
               color="gray"
               className=" transition-colors text-goldenrod hover:text-green-500 focus:text-green-500"
@@ -21,7 +20,6 @@ export default function Example() {
          
           <li>
             <Typography
-              as="a"
               href="#"
               color="blue-gray"
               className="transition-colors text-goldenrod hover:text-green-500 focus:text-green-500"
@@ -32,7 +30,6 @@ export default function Example() {
           <li>
             <NavLink to="/contact"> 
               <Typography
-                as="a"
                 color="blue-gray"
                 className=" transition-colors text-goldenrod hover:text-green-500 focus:text-green-500"
               >

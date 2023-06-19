@@ -34,8 +34,8 @@ const Home = () => {
         return accumulator;
       }, []);
       setPosts(flattenedPosts);
-      console.log(flattenedPosts);
-      console.log(posts);
+      // console.log(flattenedPosts);
+      // console.log(posts);
       setLoading(false);
     });
   }, []);
@@ -50,7 +50,7 @@ const Home = () => {
           {/* <Posts key={posts._id} post={posts} /> */}
         </div>
 
-        <div className=" items-center justify-end hidden md:block rounded-xl">
+        <div className=" items-center justify-end hidden lg:block rounded-xl">
           <Sidebar />
         </div>
       </div>

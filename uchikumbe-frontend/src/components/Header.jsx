@@ -9,7 +9,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Navbar,
-  MobileNav,
+  Collapse,
   Typography,
   Popover,
   PopoverHandler,
@@ -115,7 +115,7 @@ export default function Fun({ user = null }) {
           <FontAwesomeIcon className="h-10" icon={faBars} />
         </IconButton>
       </div>
-      <MobileNav open={openNav}>
+      <Collapse open={openNav}>
         <div className="container items-center p-3  mx-auto">
           <span className="p-3"> {navList} </span>
           <div className="ml-auto justify-end ">
@@ -123,7 +123,7 @@ export default function Fun({ user = null }) {
             <Search />
           </div>
         </div>
-      </MobileNav>
+      </Collapse>
     </Navbar>
   );
 }

@@ -84,7 +84,7 @@ const Posts = ({
           </div>
         </div>
         <Link to={`/message/${postedBy._id}`}>
-          <IconButton variant="text" color="green" size="xl" className="">
+          <IconButton variant="text" color="green" size="lg" className="">
             <FontAwesomeIcon size="2x" icon={faEnvelope} />
           </IconButton>
         </Link>
@@ -108,7 +108,7 @@ const Posts = ({
       <div className=" flex mt-4 gap-8 justify-center">
         <div className="flex-1">
           <Link to={`/comments/${forumId}/${_id}`}>
-            <button class=" bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none">
+            <button className=" bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none">
               <FontAwesomeIcon size="lg" icon={faComment} /> Comment...{" "}
               {commentCount}
             </button>
