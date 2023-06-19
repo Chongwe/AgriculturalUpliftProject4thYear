@@ -10,52 +10,43 @@ import {
   Tab,
   TabPanel,
 } from "@material-tailwind/react";
-import {
-  Square3Stack3DIcon,
-  Cog6ToothIcon,
-} from "@heroicons/react/24/solid";
-import {
-  FeedCalculator,
-  SeedCalculator,
-} from "../utils/Calculators";
+import { Square3Stack3DIcon, Cog6ToothIcon } from "@heroicons/react/24/solid";
+import { FeedCalculator, SeedCalculator } from "../utils/Calculators";
 import CompostCalculator from "../utils/CompostCalculator";
-import MaizeFertilizerCalculator from "../utils/MaizeFertilizerCalculator"
+import MaizeFertilizerCalculator from "../utils/MaizeFertilizerCalculator";
 import ChickenFeedCalculator from "../utils/ChickenFeedCulculator";
-
-
 
 const feedCalculator = <FeedCalculator />;
 const seedCalculator = <SeedCalculator />;
-const maizeCalculator = <MaizeFertilizerCalculator/>
-const copostCalculator = <CompostCalculator />
-const chickenFeedCalculator = <ChickenFeedCalculator/> 
+const maizeCalculator = <MaizeFertilizerCalculator />;
+const copostCalculator = <CompostCalculator />;
+const chickenFeedCalculator = <ChickenFeedCalculator />;
 
 export default function Example() {
   const data = [
-   
     {
       label: "Seed Calculator",
       value: "seed-calculator",
       icon: Square3Stack3DIcon,
-      desc: seedCalculator
+      desc: seedCalculator,
     },
     {
       label: "Compost Calculator",
       value: "compost-calculator",
       icon: Square3Stack3DIcon,
-      desc: copostCalculator
+      desc: copostCalculator,
     },
     {
-      label: "Maize Calculator",
+      label: "Fertilizer Calculator",
       value: "maize-calculator",
       icon: Square3Stack3DIcon,
-      desc: maizeCalculator
+      desc: maizeCalculator,
     },
     {
       label: "Chicken feed Calculator",
       value: "chickenfeed-calculator",
       icon: Square3Stack3DIcon,
-      desc: chickenFeedCalculator
+      desc: chickenFeedCalculator,
     },
   ];
 

@@ -6,7 +6,7 @@ import RootLayout from "./Layout/RootLayout";
 import NotFound from "./others/NotFound";
 import CreatePost from "./components/CreatePost";
 import CommentPage from "./pages/CommentPage";
-import Tools from "./components/Tools"
+import Tools from "./components/Tools";
 
 //ROUTES
 import {
@@ -21,14 +21,14 @@ import EditProfile from "./config-pages/EditProfile";
 import AddFarm from "./config-pages/AddFarm";
 import CreateForum from "./components/createForum";
 import ForumPage from "./pages/ForumPage";
-import SendSMS from "./components/SendSMS"; 
+import SendSMS from "./components/SendSMS";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="forum-page/:forumId" element={<ForumPage />} />
-      <Route path="comments/:postId" element={<CommentPage />} />
+      <Route path="/comments/:forumId/:postId" element={<CommentPage />} />
       <Route path="people" element={<People />} />
       <Route path="news" element={<News />} />
       <Route path="tools" element={<Tools />} />
@@ -36,7 +36,7 @@ const router = createBrowserRouter(
       <Route path="create-forum/:userId" element={<CreateForum />} />
       <Route path="create-post/:forumId" element={<CreatePost />} />
       <Route path="add-farm" element={<AddFarm />} />
-      <Route path="message/:userId" element={<SendSMS/>} />
+      <Route path="message/:userId" element={<SendSMS />} />
       <Route path="edit-profile" element={<EditProfile />} />
       <Route path="user-profile/:userId" element={<UserProfile />}></Route>
       <Route path="*" element={<NotFound />} />

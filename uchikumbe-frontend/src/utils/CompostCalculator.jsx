@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const CompostCalculator = () => {
-  const [acres, setAcres] = useState('');
-  const [manureAmount, setManureAmount] = useState('');
-  const [result, setResult] = useState('');
+  const [acres, setAcres] = useState("");
+  const [manureAmount, setManureAmount] = useState("");
+  const [result, setResult] = useState("");
 
   const calculateManureNeeded = () => {
-    const manurePerAcre = 4589; // amount of manure per acre in kgs 
+    const manurePerAcre = 4589; // amount of manure per acre in kgs
     const manureNeeded = acres * manurePerAcre;
     const manureInTonnes = (manureNeeded / 907).toFixed(1); // 1 tonne = 907kgs
-    setResult(`${manureNeeded} kgs (${manureInTonnes} tonnes) of compost manure needed for ${acres} acres.`);
+    setResult(
+      `${manureNeeded} kgs (${manureInTonnes} tonnes) of compost manure needed for ${acres} acres.`
+    );
   };
 
   const calculateLandNeeded = () => {
@@ -17,9 +19,11 @@ const CompostCalculator = () => {
     const plantResiduePercentage = 0.4;
     const virginSoilPercentage = 0.3;
 
-    const animalManureAmount = (manureAmount * animalManurePercentage).toFixed(1);
-    const plantResidueAmount = (manureAmount * plantResiduePercentage).toFixed(1);
-    const virginSoilAmount = (manureAmount * virginSoilPercentage).toFixed(1);
+    const animalManureAmount = (manureAmount * animalManurePercentage).toFixed(
+      1
+    );
+    const plantResidueAmount = manureAmount * plantResiduePercentage;
+    const virginSoilAmount = manureAmount * virginSoilPercentage;
     const waterNeedded = manureAmount * 0.35; // asumming 1kg = 1lt
 
     setResult(
@@ -43,11 +47,15 @@ const CompostCalculator = () => {
 
   return (
     <div className="container border border-goldenrod rounded-lg p-2 mx-auto mt-8">
-      <h1 className="text-3xl  text-goldenrod font-bold mb-4">Compost Manure Calculator</h1>
+      <h1 className="text-3xl  text-goldenrod font-bold mb-4">
+        Compost Manure Calculator
+      </h1>
 
       <div className="flex flex-col space-y-4">
         <div className="flex flex-col space-y-2">
-          <label htmlFor="acres" className="font-semibold">Number of Acres:</label>
+          <label htmlFor="acres" className="font-semibold">
+            Number of Acres:
+          </label>
           <input
             id="acres"
             type="number"
@@ -58,7 +66,9 @@ const CompostCalculator = () => {
         </div>
 
         <div className="flex flex-col space-y-2">
-          <label htmlFor="manureAmount" className="font-semibold">Manure Amount (in kgs):</label>
+          <label htmlFor="manureAmount" className="font-semibold">
+            Manure Amount (in kgs):
+          </label>
           <input
             id="manureAmount"
             type="number"
@@ -82,7 +92,7 @@ const CompostCalculator = () => {
             onClick={calculateLandNeeded}
             disabled={!manureAmount}
           >
-            Calculate Material Composition 
+            Calculate Material Composition
           </button>
         </div>
 

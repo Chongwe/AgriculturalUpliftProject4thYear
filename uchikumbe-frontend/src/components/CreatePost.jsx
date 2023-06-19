@@ -61,6 +61,7 @@ const CreatePost = () => {
         title,
         content,
         userId: user._id,
+        forumId: forumId,
         _key: uuidv4(),
         postedBy: {
           _type: "postedBy",

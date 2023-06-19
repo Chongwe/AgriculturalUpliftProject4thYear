@@ -33,7 +33,9 @@ export const forumDetailsQuery = (forumId) => {
   title,
   description,
   post[] {
+    _id,
     title,
+    forumId, 
     content,
     image{
       asset -> {
@@ -44,6 +46,45 @@ export const forumDetailsQuery = (forumId) => {
     postedBy->{_id, userName, image},
   }
   }`;
+  return query;
+};
+
+export const postDetailQueryFromForum = (forumId, postId) => {
+  const query = `*[_type == "subforum" && _id == '${forumId}' ] {
+    _id,
+    title,
+    post[_id == '${postId}'] {
+      _id,
+      title,
+      image,
+      content,
+      forumId,  // Include the forumId field here
+      postedBy -> {
+        _id,
+        userName,
+        image
+      },
+      like[]{
+        _key,
+        postedBy->{
+          _id,
+          userName,
+          image
+        },
+      },
+      comments[]{
+        _key,
+        content,
+        postedBy->{
+          _id,
+          userName,
+          image,
+        },
+        commentCount
+      },
+    }
+  }[0]`;
+
   return query;
 };
 
@@ -97,6 +138,7 @@ post[] {
   _createdAt,
   title,
   content,
+  forumId,
   postedBy -> {
     _id,
     userName,
