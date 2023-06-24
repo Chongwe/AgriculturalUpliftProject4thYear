@@ -54,9 +54,9 @@ const Carousel = () => {
   const { title, description, image } = carouselData[currentIndex];
 
   return (
-    <div className=" ml-9 max-w-[250px]  hover:scale-95 fixed p-2 items-center transition-all h-[350px] duration-500 rounded-xl shadow-sm">
-      <div className=" ">
-            {image && <img src={urlFor(image).url() } className="flex rounded-xl  w-full mt-4"/>}
+    <div className=" ml-9 max-w-[250px]  hover:scale-95 fixed p-2 items-center transition-all h-[350px] duration-500 rounded-xl shadow-lg">
+      <div className="  max-w-56 overflow-hidden rounded-xl max-h-36">
+            {image && <img src={urlFor(image).url() } className="   w-full h-auto "/>}
 
       </div>
       <div className="">

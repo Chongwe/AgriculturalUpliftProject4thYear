@@ -44,13 +44,12 @@ const Home = () => {
 
   return (
     <div className=" ">
-      <div className="pt-4 bg-green-100  rounded-2xl sm:justify-start justify-center duration-75 ease-out flex">
-        <div className="flex-wrap relative parent min-w-[570px] md:ml-12 justify-center w-max  mt-8 mb-2  flex rounded-xl  bg-green-50">
+      <div className="pt-4 bg-green-100 justify-center rounded-2xl min-w-[500px] flex">
+        <div className="flex-wrap relative lg:-ml-56  mt-8 mb-2  flex rounded-xl  bg-green-50">
           {posts && <MasonryLayout posts={posts} />}
-          {/* <Posts key={posts._id} post={posts} /> */}
         </div>
 
-        <div className=" items-center justify-end hidden lg:block rounded-xl">
+        <div className="  ml-2 justify-end hidden  lg:block rounded-xl">
           <Sidebar />
         </div>
       </div>

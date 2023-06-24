@@ -1,7 +1,6 @@
 import React from 'react'
 import Masonry from 'react-masonry-css'
 import Posts from './Posts'
-// import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 const breakPointObj = {
     default: 4,
     1200: 3,
@@ -12,11 +11,14 @@ const breakPointObj = {
 }
 const MasonryLayout = ({ posts }) => {
   return (
-   <Masonry 
-   className="flex sm:flex-col md:flex-row  annimate-slide-fwd" 
-   breakpointcols={breakPointObj} > 
-      {posts?.map((post) => <Posts key={post._id} post={post} className="w-max"/>)}
-   </Masonry>
+  //  <Masonry 
+  //  className="flex sm:flex-col md:flex-row  annimate-slide-fwd" 
+  //  breakpointrows={breakPointObj} > 
+  //     {posts?.map((post) => <Posts key={post._id} post={post} className="w-max"/>)}
+  //  </Masonry>
+  <div>
+    {posts?.map((post) => <Posts key={post._id} post={post} className="w-max"/>)}
+  </div>
   )
 }
 

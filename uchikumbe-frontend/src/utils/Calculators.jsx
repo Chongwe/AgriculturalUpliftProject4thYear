@@ -42,7 +42,7 @@ export const SeedCalculator = () => {
   };
 
   return (
-    <div className="container border border-goldenrod rounded-lg p-2 mx-auto mt-8">
+    <div className="container border border-goldenrod rounded-lg p-4 mx-auto mt-8">
       <h1 className="text-3xl  text-goldenrod font-bold mb-4">Seed Planting Calculator</h1>
       <div className="flex flex-col gap-4">
         <div className="flex items-center">
@@ -72,8 +72,8 @@ export const SeedCalculator = () => {
         </div>
 
         <button
-          className="bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none"
-          onClick={calculateSeedQuantity}
+        className="bg-green-500 transition-all w-56 justify-end duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none"
+        onClick={calculateSeedQuantity}
           disabled={!landSize || !seedType}
         >
           Calculate Seed Quantity
@@ -135,7 +135,7 @@ export const FeedCalculator = () => {
   };
 
   return (
-    <div className="container border border-goldenrod rounded-lg p-2 mx-auto mt-8">
+    <div className="container border border-goldenrod rounded-lg p-4 mx-auto mt-8">
       <h1 className="text-3xl  text-goldenrod font-bold mb-4">Livestock Feed Calculator</h1>
       <div className="flex flex-col gap-4">
         <div className="flex items-center">
