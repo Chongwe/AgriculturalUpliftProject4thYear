@@ -9,6 +9,7 @@ import { client } from "../client";
 import Spinner from "../components/Spinner";
 import { userQuery } from "../utils/data";
 
+// Testing the deployment
 const ForumPage = () => {
   const [forum, setForum] = useState(null);
   // const navigate = useNavigate();
