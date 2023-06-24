@@ -1,171 +1,103 @@
+import React, { useState, useEffect } from 'react';
 import {
   Tabs,
   TabsHeader,
   TabsBody,
   Tab,
   TabPanel,
-  
-} from "@material-tailwind/react";
-import {
   Card,
   CardBody,
-  CardFooter,
   Typography,
   CardHeader,
   Button 
 } from "@material-tailwind/react";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import { urlFor, client } from "../client";
+import { mainNewsListQuery } from "../utils/data";
+import Spinner from "./Spinner";
 
-const randomImage = "https://source.unsplash.com/800x600/?farm,farm-animals";
- 
 export default function News() {
-  const data = [
-    {
-      label: "General News",
-      value: "General News",
-      desc: `It really matters and then like it really doesn't matter.
-      What matters is the people who are sparked by it. And the people 
-      who are like offended by it, it doesn't matter.`,
-    },
-   
-    {
-      label: "Agribusiness and Markets",
-      value: "Agribusiness and Markets",
-      desc: `We're not always in the position that we want to be at.
-      We're constantly growing. We're constantly making mistakes. We're
-      constantly trying to express ourselves and actualize our dreams.`,
-    },
-    {
-      label: "AgriTechology",
-      value: "AgriTechnology",
-      desc: `Because it's about motivating the doers. Because I'm here
-      to follow my dreams and inspire other people to follow their dreams, too.`,
-    },
-    {
-      label: "AgriPolicy",
-      value: "AgriPolicy",
-      desc: `We're not always in the position that we want to be at.
-      We're constantly growing. We're constantly making mistakes. We're
-      constantly trying to express ourselves and actualize our dreams.`,
-    },
-  ];
- 
-return (
- 
-<Tabs value="html" className="h-screen  ">
-  <TabsHeader className="bg-transparent pt-4 ">
-    {data.map(({ label, value }) => (
-      <Tab key={value} value={value}>
-        {label}
-      </Tab>
-    ))}
-  </TabsHeader>
-  <TabsBody >
-    {data.map(({ value, desc }) => (
-      <TabPanel key={value} value={value}>
-       
-        <div className="flex justify-center">
-              <Card className="w-full max-w-[48rem]">
-                <CardHeader
-                  shadow={false}
-                  floated={false}
-                  className="w-2/5 shrink-0 m-0 rounded-r-none"
-                >
-                  <img
-              src={randomImage}
-                    alt="image"
-                    className="w-full h-full object-cover"
-                  />
-                </CardHeader>
-                <CardBody>
-                  <Typography variant="h6" color="green" className="uppercase mb-4">
-                    startups
-                  </Typography>
-                  {desc}
-                  <Typography color="gray" className="font-normal mb-8">
-                    Like so many organizations these days, Autodesk is a company in transition.
-                    It was until recently a traditional boxed software company selling licenses.
-                    Yet its own business model disruption is only part of the story
-                  </Typography>
-                  <a href="#" className="inline-block ">
-                    <Button variant="text" className="flex items-center gap-2" color="green">
-                      Read More
-                      <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
-                    </Button>
-                  </a>
-                </CardBody>
-              </Card>
-            </div>
-<div className="flex justify-center pt-4">
-              <Card className="w-full max-w-[48rem]">
-                <CardHeader
-                  shadow={false}
-                  floated={false}
-                  className="w-2/5 shrink-0 m-0 rounded-r-none"
-                >
-                  <img
-              src={randomImage}
-                    alt="image"
-                    className="w-full h-full object-cover"
-                  />
-                </CardHeader>
-                <CardBody>
-                  <Typography variant="h6" color="green" className="uppercase mb-4">
-                    startups
-                  </Typography>
-                  {desc}
-                  <Typography color="gray" className="font-normal mb-8">
-                    Like so many organizations these days, Autodesk is a company in transition.
-                    It was until recently a traditional boxed software company selling licenses.
-                    Yet its own business model disruption is only part of the story
-                  </Typography>
-                  <a href="#" className="inline-block">
-                    <Button variant="text" className="flex items-center gap-2" color="green" >
-                      Read More
-                      <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
-                    </Button>
-                  </a>
-                </CardBody>
-              </Card>
-            </div> 
-            <div className="flex justify-center pt-4">
-              <Card className="w-full max-w-[48rem]">
-                <CardHeader
-                  shadow={false}
-                  floated={false}
-                  className="w-2/5 shrink-0 m-0 rounded-r-none"
-                >
-                  <img
-              src={randomImage}
-                    alt="image"
-                    className="w-full h-full object-cover"
-                  />
-                </CardHeader>
-                <CardBody>
-                  <Typography variant="h6" color="green" className="uppercase mb-4">
-                    startups
-                  </Typography>
-                  {desc}
-                  <Typography color="gray" className="font-normal mb-8">
-                    Like so many organizations these days, Autodesk is a company in transition.
-                    It was until recently a traditional boxed software company selling licenses.
-                    Yet its own business model disruption is only part of the story
-                  </Typography>
-                  <a href="#" className="inline-block">
-                    <Button variant="text" className="flex items-center gap-2" color="green">
-                      Read More
-                      <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
-                    </Button>
-                  </a>
-                </CardBody>
-              </Card>
-            </div>    
-   
+  const [listNews, setListNews] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-    
-      </TabPanel>
-    ))}
-  </TabsBody>
-</Tabs>
-); }
- 
+  useEffect(() => {
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const data = await client.fetch(mainNewsListQuery);
+        setListNews(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching news data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <Spinner message="Loading News" />;
+  }
+
+  if (!listNews) {
+    return <h2>No news data available.</h2>;
+  }
+
+  const categories = [
+    { title: "General News", value: "general-news" },
+    { title: "Agribusiness and Markets", value: "agribusiness-and-markets" },
+    { title: "AgriTechnology", value: "agritechnology" },
+    { title: "AgriPolicy", value: "agripolicy" },
+  ];
+
+  return (
+    <Tabs value={categories[0].value} className="h-screen">
+      <TabsHeader className="bg-transparent pt-4">
+        {categories.map(({ title, value }) => (
+          <Tab key={value} value={value}>
+            {title}
+          </Tab>
+        ))}
+      </TabsHeader>
+      <TabsBody>
+        <div className="overflow-y-auto h-screen" style={{ scrollbarWidth: 'none' }}>
+          {listNews.map((news) => (
+            <TabPanel key={news._id} value={news.category}>
+              <div className="flex justify-center pt-4">
+                <Card className="w-full max-w-[48rem]">
+                  <CardHeader
+                    shadow={false}
+                    floated={false}
+                    className="w-2/5 shrink-0 m-0 rounded-r-none"
+                  >
+                    {/* <div className=" ">
+                      {news.image && (
+                        <img src={urlFor(news.image).url()} className="flex rounded-xl w-full mt-4" alt={news.title} />
+                      )}
+                    </div> */}
+                  </CardHeader>
+                  <CardBody>
+                    <Typography variant="h6" color="green" className="uppercase mb-4">
+                      {news.title}
+                    </Typography>
+                    <Typography color="gray" className="font-normal mb-8">
+                      {news.description}
+                    </Typography>
+                    <a href="#" className="inline-block">
+                      <Button variant="text" className="flex items-center gap-2" color="green">
+                        Read More
+                        <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
+                      </Button>
+                    </a>
+                  </CardBody>
+                </Card>
+              </div>
+            </TabPanel>
+          ))}
+        </div>
+      </TabsBody>
+    </Tabs>
+  );
+}

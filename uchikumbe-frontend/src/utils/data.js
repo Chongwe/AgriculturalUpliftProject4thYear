@@ -206,3 +206,14 @@ export const commentCountQuery = (postId) => {
     }`;
   return query;
 };
+
+
+export const mainNewsListQuery = `*[_type == "main_news"] {
+  title,
+  description,
+  content,
+  category,
+  image
+}`;
+
+
