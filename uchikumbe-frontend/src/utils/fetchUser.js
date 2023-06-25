@@ -1,3 +1,4 @@
+// testing the deploy
 export const fetchUser = () => {
   const userInfo =
     localStorage.getItem("user") !== "underfined"
