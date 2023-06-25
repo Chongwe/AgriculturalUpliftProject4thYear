@@ -52,7 +52,7 @@ export default function Example() {
   const initialValue = data[0].value; // Set the initial value to the value of the first tab
 
   return (
-    <div className="flex min-w-[500px] items-center justify-center">
+    <div className="flex min-w-[320px] items-center justify-center">
       <div className="mb-96  flex items-center bg-green-100 rounded-xl p-2 m-4">
       <Tabs value={initialValue} >
       <TabsHeader

@@ -44,7 +44,7 @@ export default function Fun({ user = null }) {
         <PopoverHandler>
           <Button
             color="green"
-            className="flex gap-2 hover:bg-green-900 rounded-full text-white"
+            className="flex gap-2 hover:bg-green-900 justify-center rounded-full w-32 text-white"
           >
             <FontAwesomeIcon
               icon={faUser}
@@ -116,7 +116,7 @@ export default function Fun({ user = null }) {
         </>
         <IconButton
           variant="text"
-          className="ml-auto h-10 w-10 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+          className="ml-auto h-10 w-10 sm:-ml-4 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
           ripple={true}
           onClick={() => setOpenNav(!openNav)}
         >
