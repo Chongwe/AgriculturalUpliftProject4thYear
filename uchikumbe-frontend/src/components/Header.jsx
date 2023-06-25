@@ -120,7 +120,7 @@ export default function Fun({ user = null }) {
           ripple={true}
           onClick={() => setOpenNav(!openNav)}
         >
-          <FontAwesomeIcon className=" " icon={faBars} />
+          <FontAwesomeIcon className="h-5" icon={faBars} />
         </IconButton>
       </div>
       <Collapse open={openNav}>
