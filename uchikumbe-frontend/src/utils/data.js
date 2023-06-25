@@ -213,7 +213,9 @@ export const mainNewsListQuery = `*[_type == "main_news"] {
   description,
   content,
   category,
-  image
+  image,
+  datetime
 }`;
+
 
 
