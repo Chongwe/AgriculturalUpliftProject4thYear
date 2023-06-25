@@ -90,13 +90,13 @@ const CommentPage = () => {
       client
         .fetch(`*[_type == "subforum" && _id == $forumId][0]`, { forumId })
         .then((subforum) => {
-          console.log("Fetched subforum:", subforum);
+          // console.log("Fetched subforum:", subforum);
 
           if (subforum) {
             const postIndex = subforum.post.findIndex(
               (post) => post._id === postId
             );
-            console.log("Post index:", postIndex);
+            // console.log("Post index:", postIndex);
 
             if (postIndex > -1) {
               const updatedPosts = [...subforum.post];
@@ -160,11 +160,11 @@ const CommentPage = () => {
           <div className=" p-3 flex-0.7 rounded-2xl w-full">
             <img
               src={post?.image && urlFor(post.image).url()}
-              className="flex rounded-t-2xl rounded-b-sm w-full mt-2"
+              className="flex rounded-t-xl rounded-b-xl w-full mt-2"
             />
           </div>
 
-          <div className="flex flex-1 flex-col border-l-2 pl-2 border-goldenrod gap-6 lg:pl-5 mt-5 w-full">
+          <div className="flex flex-1 flex-col pl-2  gap-6 lg:pl-5 mt-5 w-full">
             <div className="flex flex-row pl-4">
               <img
                 src={post?.postedBy?.image}

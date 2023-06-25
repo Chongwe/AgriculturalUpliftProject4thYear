@@ -46,7 +46,7 @@ const CompostCalculator = () => {
   };
 
   return (
-    <div className="container border border-goldenrod rounded-lg p-2 mx-auto mt-8">
+    <div className="container  border border-goldenrod rounded-lg p-4 mx-auto mt-8">
       <h1 className="text-3xl  text-goldenrod font-bold mb-4">
         Compost Manure Calculator
       </h1>

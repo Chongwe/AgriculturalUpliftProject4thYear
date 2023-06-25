@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Group from "./Group";
 import { fetchUser } from "../utils/fetchUser";
-import {
-  forumQuery,
-  userCreatedForums,
-  userCreatedForumsQuery,
-  userQuery,
-} from "../utils/data";
+import { forumQuery, userCreatedForumsQuery, userQuery } from "../utils/data";
 import { client } from "../client";
 import JoinedGroups from "./JoinedGroups";
-import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Spinner from "./Spinner";
 
@@ -44,6 +38,17 @@ const Forum = () => {
       setLoading(false);
     });
   }, []);
+
+  // const joinForum = () => {
+  //   const doc = {
+  //     _type: "memberOf",
+  //     postedBy: {
+  //       _type: "postedByBy",
+  //       _ref: user._id,
+  //     },
+  //   };
+  // };
+
   if (loading) return <Spinner message="Looking for Forums" />;
 
   return (

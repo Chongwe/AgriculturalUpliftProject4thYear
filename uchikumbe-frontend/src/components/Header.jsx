@@ -29,6 +29,10 @@ export default function Fun({ user = null }) {
     );
   }, []);
 
+  const handleLinkClick = () => {
+    setOpenNav(false);
+  };
+
   const signInSignUp = (
     <div className=" flex justify-end gap-5 ">
       <Popover
@@ -55,14 +59,14 @@ export default function Fun({ user = null }) {
       </Popover>
     </div>
   );
-  const navList = <NavLinks />;
+  const navList = <NavLinks onClick={handleLinkClick} />;
   // console.log(user._id);
   return (
     <Navbar
-      className="mx-auto sticky   min-w-[500px] dulation-75 p-0 top-0 z-50 max-w-screen-xl
+      className="mx-auto sticky min-w-[500px] dulation-75 p-0 top-0 z-50 max-w-screen-xl
       bg-opacity-70 backdrop-filter backdrop-blur-md pt-2
       bg-green-900 text-white px-8 lg:px-8 lg:py-0"
-      >
+    >
       <div className="container mx-auto flex items-center  justify-between text-white">
         <Typography
           as="a"
@@ -84,7 +88,11 @@ export default function Fun({ user = null }) {
         <>
           {user !== null && user !== undefined && (
             <div>
-              <Link to={`user-profile/${user._id}`} className="hidden md:block">
+              <Link
+                to={`user-profile/${user._id}`}
+                className="hidden md:block"
+                onClick={handleLinkClick}
+              >
                 <Tooltip
                   content={user.userName}
                   animate={{

@@ -35,7 +35,7 @@ const ChickenFeedCalculator = () => {
   };
 
   return (
-    <div className="container border border-goldenrod rounded-lg p-2 mx-auto mt-2">
+    <div className="container border border-goldenrod rounded-lg p-4 mx-auto mt-2">
       <h1 className="text-3xl  text-goldenrod font-bold mb-4">Chicken Feed Calculator</h1>
 
       <div className="mb-4">
@@ -78,20 +78,20 @@ const ChickenFeedCalculator = () => {
           <p className="font-bold text-green-900 ">Feed Amounts per Week:</p>
           <hr className="my-4 border-goldenrod" />
 
-          <table className="w-full mt-2 border border-collapse">
+          <table className="w-full mt-2  shadow-xl rounded-xl border-collapse">
             <thead className='items-center'>
               <tr>
-                <th className="py-2 -px-4 font-bold">Weeks</th>
-                <th className="py-2 -px-4 font-bold">Amount (kg)</th>
+                <th className="py-2 -ml-4 font-bold">Weeks</th>
+                <th className="py-2 -ml-4 font-bold">Amount (kg)</th>
               </tr>
               
 
             </thead>
             <tbody className='items-center'>
               {feedAmounts.map(({ week, amount }) => (
-                <tr key={week} >
-                  <td className=" px-12 py-2">{week}</td>
-                  <td className="px-12 py-2">{amount}</td>
+                <tr key={week} className='' >
+                  <td className=" px-16 py-2">{week}</td>
+                  <td className="px-16 py-2">{amount}</td>
                 </tr>
               ))}
             </tbody>

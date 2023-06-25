@@ -57,7 +57,7 @@ const Posts = ({
   }, [postCreatedAt]);
 
   return (
-    <div className="m-8 transition-all overflow-wrap break-word  duration-500 hover:scale-105 p-4 bg-white rounded-xl  flex-wrap max-w-[350px] w-96">
+    <div className=" max-w-[740px] m-12 transition-all pt-4 overflow-wrap break-word  duration-500 hover:scale-105 p-4 bg-white rounded-xl  flex-wrap  w-160">
       <div className="shadow-none justify-between space-x-4 flex  ">
         <div className="flex items-center space-x-2">
           {postedBy?.image ? (
@@ -91,9 +91,9 @@ const Posts = ({
       </div>
       <div className="">
         <div className="mt-2   ">
-          <div className="max-w-[340px] overflow-hidden ">
+          <div className=" overflow-hidden ">
             <h3 className="text-green-900"> {title}</h3>
-            <p className="border-l   duration-75 p-2 border-spacing-2 border-goldenrod">
+            <p className="border-l  flex duration-75 p-2 border-spacing-2 border-goldenrod">
               {content}
             </p>
           </div>
