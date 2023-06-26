@@ -39,15 +39,26 @@ const Forum = () => {
     });
   }, []);
 
-  // const joinForum = () => {
-  //   const doc = {
-  //     _type: "memberOf",
-  //     postedBy: {
-  //       _type: "postedByBy",
-  //       _ref: user._id,
-  //     },
-  //   };
-  // };
+  const joinForum = (forumId) => {
+    const doc = {
+      _type: "memberOf",
+      _key: user._id,
+      postedBy: {
+        _type: "postedByBy",
+        _ref: user._id,
+      },
+      userId: user._id,
+    };
+
+    client
+      .patch(forumId)
+      .setIfMissing({ memberOf: [] })
+      .insert("after", "memberOf[-1]", [doc])
+      .commit()
+      .then(() => {
+        window.location.reload();
+      });
+  };
 
   if (loading) return <Spinner message="Looking for Forums" />;
 
@@ -82,7 +93,14 @@ const Forum = () => {
           <div className="  max-w-[500px] rounded-xl">
             {forums?.map((forum) => (
               <Link to={`/forum-page/${forum._id}`}>
-                <Group name={forum.title} members="70 Member" />
+                <Group
+                  name={forum.title}
+                  members={forum.memberOf?.length}
+                  isUserMember={forum.memberOf?.some(
+                    (member) => member.userId === user?._id
+                  )}
+                  onJoin={() => joinForum(forum._id)}
+                />
               </Link>
             ))}
           </div>

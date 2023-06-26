@@ -24,7 +24,12 @@ export const userCreatedForumsQuery = (userId) => {
 export const forumQuery = `*[_type == "subforum"] | order(title asc) {
   _id,
   title,
-  description
+  description,
+  memberOf[] {
+    _id,
+    postedBy->{_id, userName, image},
+    userId
+  }
 }`;
 
 export const forumDetailsQuery = (forumId) => {
@@ -44,6 +49,11 @@ export const forumDetailsQuery = (forumId) => {
     },
     _createdAt,
     postedBy->{_id, userName, image},
+  },
+  memberOf[] {
+    _id,
+    postedBy->{_id, userName, image},
+    userId
   }
   }`;
   return query;
@@ -207,7 +217,6 @@ export const commentCountQuery = (postId) => {
   return query;
 };
 
-
 export const mainNewsListQuery = `*[_type == "main_news"] {
   title,
   description,
@@ -216,6 +225,3 @@ export const mainNewsListQuery = `*[_type == "main_news"] {
   image,
   datetime
 }`;
-
-
-
