@@ -63,7 +63,7 @@ const Forum = () => {
   if (loading) return <Spinner message="Looking for Forums" />;
 
   return (
-    <div className=" min-w-[500px]">
+    <div className=" min-w-screen-sm">
       {user !== null && user !== undefined && (
         <div className="m-4 text-center ">
           <Link to={`/create-forum/${user?._id}`}>

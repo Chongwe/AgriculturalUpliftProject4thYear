@@ -13,7 +13,7 @@ function Group(props) {
   };
 
   return (
-    <div className="bg-white w-[450px]  rounded-lg p-2">
+    <div className="bg-white min-w-screen-sm lg:w-[450px] rounded-lg p-2">
       <div className="  ">
         <div className="flex my-2 justify-between space-x-4 border-b border-grey-500">
           <div className="flex">
