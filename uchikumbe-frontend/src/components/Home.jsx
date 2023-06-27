@@ -44,7 +44,7 @@ const Home = () => {
 
   return (
     <div className=" ">
-      <div className="lg:w-full pt-4 bg-green-100 justify-center rounded-2xl min-w-[500px] flex">
+      <div className="lg:w-full w-full pt-4 bg-green-100 justify-center rounded-2xl min-w-[500px] flex">
         <div className="flex-wrap relative lg:-ml-56  mt-8 mb-2  flex rounded-xl  bg-green-50">
           {posts && <MasonryLayout posts={posts} />}
         </div>

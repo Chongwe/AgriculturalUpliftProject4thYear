@@ -63,7 +63,7 @@ export default function Fun({ user = null }) {
   // console.log(user._id);
   return (
     <Navbar
-    className="sm:rounded-lg rounded-none mx-auto sticky min-w-[500px] duration-75 p-0 top-0 z-50 max-w-screen-xl bg-opacity-70 backdrop-filter backdrop-blur-md pt-2 bg-green-900 text-white px-8 lg:px-8 lg:py-0 "
+    className="lg:w-full w-full sm:rounded-lg rounded-none mx-auto sticky min-w-[500px] duration-75 p-0 top-0 z-50 max-w-screen-xl bg-opacity-70 backdrop-filter backdrop-blur-md pt-2 bg-green-900 text-white px-8 lg:px-8 lg:py-0 "
 
     >
       <div className="container mx-auto flex items-center  justify-between text-white">
