@@ -16,6 +16,7 @@ import animalchoice from './animalChoice'
 import cropChoice from './cropChoice'
 import pestsChoice from './pestsChoice'
 import equipmentChoice from './equipmentChoice'
+import main_news from './main_news'
 
 export const schemaTypes = [
   user,
@@ -36,4 +37,5 @@ export const schemaTypes = [
   cropChoice,
   pestsChoice,
   equipmentChoice,
+  main_news,
 ]

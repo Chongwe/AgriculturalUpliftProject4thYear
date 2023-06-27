@@ -9,10 +9,8 @@ import { client } from "../client";
 import Spinner from "../components/Spinner";
 import { userQuery } from "../utils/data";
 
-// Testing the deployment again
 const ForumPage = () => {
   const [forum, setForum] = useState(null);
-  // const navigate = useNavigate();
   const { forumId } = useParams();
 
   const [user, setUser] = useState(null);
@@ -35,25 +33,31 @@ const ForumPage = () => {
     });
   }, [forumId]);
 
-  // const joinForum = () => {
-  //   const doc = {
-  //     _type: "memberOf",
-  //     postedBy: {
-  //       _type: "postedByBy",
-  //       _ref: user._id,
-  //     },
-  //     userId: user._id,
-  //   };
+  const isMember =
+    user &&
+    forum &&
+    forum.memberOf?.some((member) => member.userId === user._id);
 
-  //   client
-  //     .patch(forumId)
-  //     .setIfMissing({ memberOf: [] })
-  //     .insert("after", "memberOf[-1]", [doc])
-  //     .commit()
-  //     .then(() => {
-  //       navigate(`/forum-page/${forumId}`);
-  //     });
-  // };
+  const joinForum = () => {
+    const doc = {
+      _type: "memberOf",
+      _key: user._id,
+      postedBy: {
+        _type: "postedByBy",
+        _ref: user._id,
+      },
+      userId: user._id,
+    };
+
+    client
+      .patch(forumId)
+      .setIfMissing({ memberOf: [] })
+      .insert("after", "memberOf[-1]", [doc])
+      .commit()
+      .then(() => {
+        window.location.reload();
+      });
+  };
 
   if (!forum) {
     return <Spinner message="Loading Forum" />;
@@ -80,6 +84,17 @@ const ForumPage = () => {
               </div>
             )}
           </div>
+
+          {!isMember && (
+            <div className="m-4 text-center ">
+              <button
+                onClick={joinForum}
+                class=" bg-green-500  hover:bg-goldenrod transition-all duration-100 hover:scale-95 py-2 justify-end px-4 ml-4  text-white  rounded-full focus:outline-none"
+              >
+                Join Forum
+              </button>
+            </div>
+          )}
 
           <hr className="my-4 border-goldenrod" />
         </div>
