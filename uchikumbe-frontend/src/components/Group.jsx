@@ -13,11 +13,11 @@ function Group(props) {
   };
 
   return (
-    <div className="bg-white min-w-[500px] rounded-lg p-2">
+    <div className="bg-white w-[450px]  rounded-lg p-2">
       <div className="  ">
         <div className="flex my-2 justify-between space-x-4 border-b border-grey-500">
           <div className="flex">
-            <Avatar src={avatar} size="lg" className="mb-1" />
+            <Avatar src={avatar} variant="rounded" className="mb-1 h-10 w-10 " />
             <div className="ml-4">
               <h4 className="text-lg font-medium text-uchiGreen">{name}</h4>
               <p className="text-sm mb-1 text-goldenrod">{members} Members</p>

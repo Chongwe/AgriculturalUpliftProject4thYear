@@ -14,9 +14,7 @@ function Person(props) {
         <div className="flex items-center my-2 space-x-4 border-b border-grey-500">
           <Avatar
             src={props.avatar}
-            variant="circular"
-            size="lg"
-            className="mb-1"
+            className="mb-1 h-10 w-10"
           />
           <div className="flex-1">
             <h4 className="text-lg font-medium text-uchiGreen">{props.name}</h4>

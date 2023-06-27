@@ -63,7 +63,7 @@ const Forum = () => {
   if (loading) return <Spinner message="Looking for Forums" />;
 
   return (
-    <div className=" ">
+    <div className=" min-w-[500px]">
       {user !== null && user !== undefined && (
         <div className="m-4 text-center ">
           <Link to={`/create-forum/${user?._id}`}>
@@ -77,7 +77,7 @@ const Forum = () => {
 
       <div className="p-4 lg:flex-row  justify-center  gap-24 lg:flex flex-col  ">
         {user !== null && user !== undefined && (
-          <div className="  min-w-[500px] items-center p-4 bg-green-50 rounded-xl ">
+          <div className="  items-center p-4 bg-green-50 rounded-xl ">
             <h1 className="text-4xl mb-4  text-green-900">Your Forums</h1>
             <hr className="my-4 border-green-500 border-1" />
             {createdForums?.map((forum) => (
@@ -87,10 +87,10 @@ const Forum = () => {
             ))}
           </div>
         )}
-        <div className="p-4">
+        <div className="p-4 ">
           <h1 className="text-4xl mb-4  text-green-900">Other Forums</h1>
           <hr className="my-4 border-green-500 border-1" />
-          <div className="  min-w-[500px] rounded-xl">
+          <div className="   rounded-xl">
             {forums?.map((forum) => (
               <Link to={`/forum-page/${forum._id}`}>
                 <Group
