@@ -117,7 +117,7 @@ export default function Fun({ user = null }) {
         <IconButton
           variant="text"
           className="ml-auto h-10 w-10 sm:-ml-4 justify-center text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-          ripple={true}
+         
           onClick={() => setOpenNav(!openNav)}
         >
           <FontAwesomeIcon className="h-5" icon={faBars} />
