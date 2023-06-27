@@ -26,9 +26,11 @@ function Group(props) {
           <div className="flex items-center ml-auto">
             {/* {!props.isUserMember && <Button color="green">Join</Button>} */}
             {!isUserMember ? (
-              <Button color="green" onClick={handleJoin}>
+              
+              <button className=" bg-green-500  transition-all duration-200 hover:scale-95 hover:bg-goldenrod py-2 justify-center px-4 ml-4  text-white  rounded-full focus:outline-none " 
+              onClick={handleJoin}>
                 Join
-              </Button>
+              </button>
             ) : (
               <p className="text-green-500">Joined</p>
             )}

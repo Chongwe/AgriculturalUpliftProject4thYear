@@ -13,6 +13,7 @@ function Person(props) {
       <div className="md:px-40 sm:ml-8 sm:px-8 ">
         <div className="flex items-center my-2 space-x-4 border-b border-grey-500">
           <Avatar
+            variant="circular"
             src={props.avatar}
             className="mb-1 h-10 w-10"
           />

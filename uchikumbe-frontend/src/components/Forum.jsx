@@ -81,28 +81,38 @@ const Forum = () => {
             <h1 className="text-4xl mb-4  text-green-900">Your Forums</h1>
             <hr className="my-4 border-green-500 border-1" />
             {createdForums?.map((forum) => (
-              <Link to={`/forum-page/${forum._id}`}>
-                <JoinedGroups name={forum.title} members=" Members" />
-              </Link>
-            ))}
+                <div key={forum._id}>
+                  <JoinedGroups
+                    name={
+                      <Link to={`/forum-page/${forum._id}`} style={{ textDecoration: 'none' }}>
+                        {forum.title}
+                      </Link>
+                    }
+                    members=" Members"
+                  />
+                </div>
+              ))}
+
           </div>
         )}
         <div className="p-4 ">
           <h1 className="text-4xl mb-4  text-green-900">Other Forums</h1>
           <hr className="my-4 border-green-500 border-1" />
           <div className="   rounded-xl">
-            {forums?.map((forum) => (
-              <Link to={`/forum-page/${forum._id}`}>
-                <Group
-                  name={forum.title}
-                  members={forum.memberOf?.length}
-                  isUserMember={forum.memberOf?.some(
-                    (member) => member.userId === user?._id
-                  )}
-                  onJoin={() => joinForum(forum._id)}
-                />
-              </Link>
-            ))}
+          {forums?.map((forum) => (
+            <Group
+              key={forum._id}
+              name={
+                <Link to={`/forum-page/${forum._id}`} style={{ textDecoration: 'none' }}>
+                  {forum.title}
+                </Link>
+              }
+              members={forum.memberOf?.length}
+              isUserMember={forum.memberOf?.some((member) => member.userId === user?._id)}
+              onJoin={() => joinForum(forum._id)}
+            />
+          ))}
+
           </div>
         </div>
       </div>
