@@ -9,6 +9,7 @@ import MasonryLayout from "./MasonryLayout";
 import { fetchUser } from "../utils/fetchUser";
 import { Link } from "react-router-dom";
 import { userQuery } from "../utils/data";
+
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState(null);
@@ -44,7 +45,7 @@ const Home = () => {
 
   return (
     <div className=" ">
-      <div className="lg:w-full w-full pt-4 bg-green-100 justify-center rounded-2xl min-w-screen-sm flex">
+      <div className="lg:w-full w-full pt-4 bg-green-100 justify-center rounded-none sm:rounded-2xl min-w-screen-sm flex">
         <div className="flex-wrap  lg:-ml-56  mt-8 mb-2  flex rounded-xl bg-transparent sm:bg-green-50">
           {posts && <MasonryLayout posts={posts} />}
         </div>
