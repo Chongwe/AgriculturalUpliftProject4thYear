@@ -150,10 +150,10 @@ export default function Fun({ user = null }) {
         <React.Fragment>
         <IconButton
           variant="text"
-          className="ml-auto h-7 w-7  mr-4 justify-center text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+          className="ml-auto h-5  mr-4 justify-center text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
          onClick={openDrawer}
         >
-          <FontAwesomeIcon className="h-7 w-7   justify-center" icon={faBars} />
+          <FontAwesomeIcon className="h-5" icon={faBars} />
         </IconButton>
           <Drawer placement="right" className="lg:hidden  rounded-xl bg-transparent " open={open} onClose={closeDrawer}>
            
