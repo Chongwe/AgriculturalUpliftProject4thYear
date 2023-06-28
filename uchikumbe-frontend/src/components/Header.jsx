@@ -152,7 +152,7 @@ export default function Fun({ user = null }) {
           icon={faBars} />
 
         {open &&  <Drawer 
-          placement="right" 
+          placement="top" 
           unmountOnExit={true}
           rootClassName="fixed inset-y-0 right-0"
           className="lg:hidden  rounded-xl bg-transparent " 
