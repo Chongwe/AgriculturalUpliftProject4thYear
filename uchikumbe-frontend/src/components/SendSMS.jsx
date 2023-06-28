@@ -11,8 +11,9 @@ const SendSMS = () => {
   const [receiver, setReceiver] = useState(null);
   const [sendingMessage, setSendingMessage] = useState(false);
   const [receiverPhotoUrl, setReceiverPhotoUrl] = useState("");
+  const [notificationCount, setNotificationCount] = useState(0);
   const { userId } = useParams();
-  const userInfo = fetchUser(); // Replace with your implementation of fetchUser()
+  const userInfo = fetchUser();
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
@@ -33,9 +34,10 @@ const SendSMS = () => {
         receivedTime: null,
       };
       setChatMessages((prevState) => [...prevState, newMessage]);
+      setNotificationCount((prevCount) => prevCount + 1);
 
       client
-        .create(newMessage) // Replace with your implementation of sending the message to the server
+        .create(newMessage)
         .then((response) => {
           console.log("Message sent to Sanity:", response);
           setSendingMessage(false);
@@ -86,16 +88,17 @@ const SendSMS = () => {
 
   useEffect(() => {
     if (receiver && userInfo && chatMessages.length === 0) {
-      const senderId = userInfo.sub; // Replace with the actual sender ID
-      const receiverId = userId; // Replace with the actual receiver ID
+      const senderId = userInfo.sub;
+      const receiverId = userId;
 
       const chatQuery = messageListQuery(senderId, receiverId);
 
       client
-        .fetch(chatQuery) // Replace with your implementation of fetching the chat messages from the server
+        .fetch(chatQuery)
         .then((messages) => {
           console.log(messages);
           setChatMessages(messages);
+          setNotificationCount(messages.length);
         })
         .catch((error) => {
           console.error("Error fetching chat messages:", error);
@@ -104,7 +107,7 @@ const SendSMS = () => {
   }, [userInfo, receiver]);
 
   return (
-    <div className="flex flex-col pl-40 pr-40 h-96">
+    <div className="flex flex-col px-4 h-screen">
       <h2 className="text-2xl font-bold mb-4">
         {receiver ? (
           <div className="flex items-center">
@@ -113,7 +116,6 @@ const SendSMS = () => {
                 className="w-10 h-10 rounded-full object-cover"
                 src={receiverPhotoUrl}
                 alt="Receiver Avatar"
-                style={{ objectFit: "cover", width: "40px", height: "40px" }}
               />
             )}
             <span className="font-bold ml-2">{receiver.userName}</span>
@@ -122,53 +124,62 @@ const SendSMS = () => {
           "Loading..."
         )}
       </h2>
-      <Card className="flex-grow overflow-y-scroll h-80">
+      <p>Number of Messages Received: {notificationCount}</p>
+      <Card className="flex-grow overflow-y-scroll max-h-80">
         <CardBody className="space-y-4">
-          {chatMessages.map((chatMessage, index) => (
-            <Card
-              key={index}
-              className={`p-4 h-25 w-1/3 bg-light-green-100 ${
-                chatMessage.sender === userInfo.sub ? "self-end" : "self-start"
-              }`}
-            >
-              <div className="flex items-center">
-                <span>{chatMessage.content}</span>
-              </div>
-              <div className="flex items-end">
-                <span className="text-xs text-gray-500">
-                  {new Date(chatMessage.sentTime).toLocaleString()}
-                </span>
-              </div>
-              {chatMessage.receivedTime && (
-                <div className="flex items-end">
+          {chatMessages.map((chatMessage, index) => {
+            const isSender = chatMessage.sender === userInfo.sub;
+            return (
+              <Card
+                key={index}
+                className={`  p-4 bg-light-green-100 w-2/5 right-0 ${isSender ? " ml-0" : " ml-auto"}`}
+              >
+                <div className="flex items-center max-w-md">
+                  <span>{chatMessage.content}</span>
+                </div>
+                <div className="flex">
                   <span className="text-xs text-gray-500">
-                    Received: {new Date(chatMessage.receivedTime).toLocaleString()}
+                    {new Date(chatMessage.sentTime).toLocaleString()}
                   </span>
                 </div>
-              )}
-            </Card>
-          ))}
+                {chatMessage.receivedTime && (
+                  <div className="flex items-end">
+                    <span className="text-xs text-gray-500">
+                      Received: {new Date(chatMessage.receivedTime).toLocaleString()}
+                    </span>
+                  </div>
+                )}
+              </Card>
+            );
+          })}
         </CardBody>
       </Card>
-      <div className="flex justify-center mt-4">
-        <div className="flex items-center space-x-2">
-          <input
-            type="text"
-            placeholder="Type your message here"
-            className="px-20 py-3 w-full border rounded-lg"
-            value={message}
-            onChange={handleMessageChange}
-            disabled={!receiver}
-          />
-          <button
-            className="p-2 rounded-lg bg-green-900 text-white"
-            onClick={handleSendMessage}
-            disabled={!receiver || sendingMessage}
-          >
-            {sendingMessage ? "Sending..." : "Send"}
-          </button>
-        </div>
-      </div>
+     
+            
+      <div className="flex">
+  <input
+    className="flex-1 w-14 h-11 transition-all duration-500 hover:scale-95 border-2 p-2 text-sm focus:border-green-300 rounded-2xl border-green-100 outline-none"
+    type="text"
+    placeholder="Type your message here"
+    value={message}
+    onChange={handleMessageChange}
+    disabled={!receiver}
+  />
+  <button
+    className={`hover:scale-105 w-14 rounded-full bg-goldenrod text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out ${sendingMessage ? "opacity-50 cursor-not-allowed" : ""}`}
+    onClick={handleSendMessage}
+    disabled={!receiver || sendingMessage}
+  >
+    {sendingMessage ? "Sending..." : "Send"}
+  </button>
+</div>
+
+
+
+      
+
+       
+    
     </div>
   );
 };

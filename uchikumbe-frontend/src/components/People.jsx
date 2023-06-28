@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { client } from "../client";
 import { userListQuery } from "../utils/data";
 import Spinner from "./Spinner";
+import SendSMS from "./SendSMS";
 
-function People() {
+function People( props) {
   const [listUser, setListUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -24,8 +25,17 @@ function People() {
 
   return (
     <div className="mt-8 h-screen min-w-[400px]">
-      {listUser?.map((user) => (
-        <Person name={user.userName} avatar={user.image} user_id={user._id} />
+      {listUser.map((user) => (
+        <Person
+          key={user._id}
+          name={user.userName}
+          avatar={user.image}
+          user_id={user._id}
+          notificationCount={props.notificationCount}
+          
+          
+       
+        />
       ))}
     </div>
   );
