@@ -5,7 +5,7 @@ import { Avatar } from "@material-tailwind/react";
 function JoinedGroups(props){
     return(
       
-        <div className="bg-transparent w-[450px]  rounded-lg p-2">
+        <div className="bg-transparent min-w-screen-sm lg:w-[450px] rounded-lg p-2">
             
             <div className="  ">
                 <div className="flex items-center  my-2 space-x-4 border-b border-green-200">
