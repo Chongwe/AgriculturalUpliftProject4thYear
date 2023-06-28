@@ -5,6 +5,7 @@ import logo from "../assets/logo.svg";
 import Search from "../utils/Search";
 import NavLinks from "./NavLinks";
 import SignUp from "../utils/SignUp";
+import { NavLink } from "react-router-dom";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -26,13 +27,13 @@ import {
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
-  PresentationChartBarIcon,
   HomeIcon,
   NewspaperIcon,
   UserCircleIcon,
   UserGroupIcon,
   Square2StackIcon,
   PowerIcon,
+  
 } from "@heroicons/react/24/solid";
 
 export default function Fun({ user = null }) {
@@ -149,43 +150,59 @@ export default function Fun({ user = null }) {
 
         <React.Fragment>
       
-          <FontAwesomeIcon className="h-5 ml-auto mr-4 lg:hidden" onClick={openDrawer} icon={faBars} />
+          <FontAwesomeIcon 
+          className="h-7 ml-auto mr-4 lg:hidden" 
+          onClick={openDrawer} 
+          icon={faBars} />
           <Drawer placement="right" className="lg:hidden  rounded-xl bg-transparent " open={open} onClose={closeDrawer}>
            
-            <List className="bg-green-100 text-green-900 rounded-lg">
-                <div className="mr-2 flex  bg-transparent items-center justify-end ">
-                    <XMarkIcon  onClick={closeDrawer} strokeWidth={3} className="h-7 ml-auto mr-4 justify-center w-7" />
+            <List className="bg-green-200 text-green-900 rounded-lg">
+                <div className="mr-2 flex mt-5 bg-transparent items-center justify-end ">
+                    <XMarkIcon  
+                    onClick={closeDrawer} 
+                    strokeWidth={3} 
+                    className="h-7 ml-auto mr-4 justify-center w-7" />
                   </div>
+            <NavLink onClick={closeDrawer} to="/">    
               <ListItem>
                 <ListItemPrefix>
                   <HomeIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 Home
               </ListItem>
+            </NavLink> 
+            <NavLink onClick={closeDrawer} to="people">
               <ListItem>
                 <ListItemPrefix>
                   <UserCircleIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 People
               </ListItem>
+            </NavLink> 
+            <NavLink onClick={closeDrawer} to="news">
               <ListItem>
                 <ListItemPrefix>
                   <NewspaperIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 News
               </ListItem>
+            </NavLink>
+            <NavLink onClick={closeDrawer} to="forum">
               <ListItem>
                 <ListItemPrefix>
                   <UserGroupIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 Forum
               </ListItem>
+            </NavLink>
+            <NavLink onClick={closeDrawer} to="Tools">
               <ListItem>
                 <ListItemPrefix>
                   <Square2StackIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 Tools
               </ListItem>
+            </NavLink>
               <ListItem>
                 <ListItemPrefix>
                   <PowerIcon className="h-5 w-5" />
