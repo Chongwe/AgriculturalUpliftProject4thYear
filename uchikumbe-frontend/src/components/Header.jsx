@@ -27,10 +27,11 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   PresentationChartBarIcon,
-  ShoppingBagIcon,
+  HomeIcon,
+  NewspaperIcon,
   UserCircleIcon,
-  Cog6ToothIcon,
-  InboxIcon,
+  UserGroupIcon,
+  Square2StackIcon,
   PowerIcon,
 } from "@heroicons/react/24/solid";
 
@@ -152,54 +153,46 @@ export default function Fun({ user = null }) {
           className="ml-auto h-10 w-10 sm:-ml-4 justify-center text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
          onClick={openDrawer}
         >
-          <FontAwesomeIcon className="h-5" icon={faBars} />
+          <FontAwesomeIcon className="h-7 w-7 " icon={faBars} />
         </IconButton>
           <Drawer placement="right" className="lg:hidden  rounded-xl bg-transparent " open={open} onClose={closeDrawer}>
-            <div className="mb-2 flex  bg-transparent items-center justify-end p-4">
-             
-              <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
-                <XMarkIcon strokeWidth={3} className="h-7 w-7" />
-              </IconButton>
-            </div>
-            <List className="bg-green-100 rounded-lg">
+           
+            <List className="bg-green-100 text-green-900 rounded-lg">
+                <div className="mb-2 flex  bg-transparent items-center justify-end ">
+              
+                  <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
+                    <XMarkIcon strokeWidth={3} className="h-7 w-7" />
+                  </IconButton>
+                  </div>
               <ListItem>
                 <ListItemPrefix>
-                  <PresentationChartBarIcon className="h-5 w-5" />
+                  <HomeIcon className="h-5 w-5" />
                 </ListItemPrefix>
-                Dashboard
-              </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <ShoppingBagIcon className="h-5 w-5" />
-                </ListItemPrefix>
-                E-Commerce
-              </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <InboxIcon className="h-5 w-5" />
-                </ListItemPrefix>
-                Inbox
-                <ListItemSuffix>
-                  <Chip
-                    value="14"
-                    size="sm"
-                    variant="ghost"
-                    color="blue-gray"
-                    className="rounded-full"
-                  />
-                </ListItemSuffix>
+                Home
               </ListItem>
               <ListItem>
                 <ListItemPrefix>
                   <UserCircleIcon className="h-5 w-5" />
                 </ListItemPrefix>
-                Profile
+                People
               </ListItem>
               <ListItem>
                 <ListItemPrefix>
-                  <Cog6ToothIcon className="h-5 w-5" />
+                  <NewspaperIcon className="h-5 w-5" />
                 </ListItemPrefix>
-                Settings
+                News
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <UserGroupIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Forum
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <Square2StackIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Tools
               </ListItem>
               <ListItem>
                 <ListItemPrefix>
