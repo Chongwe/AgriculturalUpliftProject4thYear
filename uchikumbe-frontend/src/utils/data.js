@@ -16,7 +16,12 @@ export const userCreatedForumsQuery = (userId) => {
   const query = `*[_type == "subforum" && userId == '${userId}'] | order(title asc) {
     _id,
     title,
-    description
+    description,
+    memberOf[] {
+      _id,
+      postedBy->{_id, userName, image},
+      userId
+    }
   }`;
   return query;
 };
