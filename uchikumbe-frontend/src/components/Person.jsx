@@ -12,10 +12,10 @@ function Person(props) {
       <div className="flex items-center justify-between mb-2"></div>
       <div className="md:px-40 sm:ml-8 sm:px-8 ">
         <div className="flex items-center my-2 space-x-4 border-b border-grey-500">
-          <Avatar
-            variant="circular"
+          <img
+            alt="user image"
             src={props.avatar}
-            className="mb-1 h-10 w-10"
+            className="mb-1 rounded-full h-10 w-10"
           />
           <div className="flex-1">
             <h4 className="text-lg font-medium text-uchiGreen">{props.name}</h4>
