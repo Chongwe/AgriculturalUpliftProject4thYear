@@ -148,26 +148,13 @@ export default function Fun({ user = null }) {
         </IconButton> */}
 
         <React.Fragment>
-        <IconButton
-          variant="text"
-          className="ml-auto h-5  mr-4 justify-center text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-         onClick={openDrawer}
-        >
-          <FontAwesomeIcon className="h-5" icon={faBars} />
-        </IconButton>
+      
+          <FontAwesomeIcon className="h-5 ml-auto mr-4 lg:hidden" onClick={openDrawer} icon={faBars} />
           <Drawer placement="right" className="lg:hidden  rounded-xl bg-transparent " open={open} onClose={closeDrawer}>
            
             <List className="bg-green-100 text-green-900 rounded-lg">
                 <div className="mr-2 flex  bg-transparent items-center justify-end ">
-              
-                  <IconButton variant="text" 
-                  color="blue-gray"  
-                  onClick={closeDrawer}
-                  className="ml-auto h-7 w-7  mr-4 justify-center"
-                  >
-                  
-                    <XMarkIcon strokeWidth={3} className="h-7 w-7" />
-                  </IconButton>
+                    <XMarkIcon  onClick={closeDrawer} strokeWidth={3} className="h-7 ml-auto mr-4 justify-center w-7" />
                   </div>
               <ListItem>
                 <ListItemPrefix>
