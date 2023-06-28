@@ -17,10 +17,33 @@ import {
   Button,
   IconButton,
   Tooltip,
+  Drawer,
+  List,
+  ListItem,
+  ListItemPrefix,
+  ListItemSuffix,
+  Chip,
 } from "@material-tailwind/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  PresentationChartBarIcon,
+  ShoppingBagIcon,
+  UserCircleIcon,
+  Cog6ToothIcon,
+  InboxIcon,
+  PowerIcon,
+} from "@heroicons/react/24/solid";
 
 export default function Fun({ user = null }) {
   const [openNav, setOpenNav] = useState(false);
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [open, setOpen] = React.useState(false);
+  const openDrawer = () => setOpen(true);
+  const closeDrawer = () => setOpen(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
 
   useEffect(() => {
     window.addEventListener(
@@ -32,6 +55,8 @@ export default function Fun({ user = null }) {
   const handleLinkClick = () => {
     setOpenNav(false);
   };
+
+  
 
   const signInSignUp = (
     <div className=" flex justify-end gap-5 ">
@@ -112,14 +137,80 @@ export default function Fun({ user = null }) {
             <div className="hidden lg:block ">{signInSignUp}</div>
           )}
         </>
-        <IconButton
+        {/* <IconButton
           variant="text"
           className="ml-auto h-10 w-10 sm:-ml-4 justify-center text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
          
           onClick={() => setOpenNav(!openNav)}
         >
           <FontAwesomeIcon className="h-5" icon={faBars} />
+        </IconButton> */}
+
+        <React.Fragment>
+        <IconButton
+          variant="text"
+          className="ml-auto h-10 w-10 sm:-ml-4 justify-center text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+         onClick={openDrawer}
+        >
+          <FontAwesomeIcon className="h-5" icon={faBars} />
         </IconButton>
+          <Drawer placement="right" className="lg:hidden  rounded-xl bg-transparent " open={open} onClose={closeDrawer}>
+            <div className="mb-2 flex  bg-transparent items-center justify-end p-4">
+             
+              <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
+                <XMarkIcon strokeWidth={3} className="h-7 w-7" />
+              </IconButton>
+            </div>
+            <List className="bg-green-100 rounded-lg">
+              <ListItem>
+                <ListItemPrefix>
+                  <PresentationChartBarIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Dashboard
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <ShoppingBagIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                E-Commerce
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <InboxIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Inbox
+                <ListItemSuffix>
+                  <Chip
+                    value="14"
+                    size="sm"
+                    variant="ghost"
+                    color="blue-gray"
+                    className="rounded-full"
+                  />
+                </ListItemSuffix>
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <UserCircleIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Profile
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <Cog6ToothIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Settings
+              </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <PowerIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Log Out
+              </ListItem>
+            </List>
+          </Drawer>
+        </React.Fragment>
+
       </div>
       <Collapse open={openNav}>
         <div className="container items-center p-3  mx-auto">
