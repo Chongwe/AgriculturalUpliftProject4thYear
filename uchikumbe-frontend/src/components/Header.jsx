@@ -94,21 +94,16 @@ export default function Fun({ user = null }) {
   return (
     <Navbar
     className="lg:w-full  w-full sm:border-2 border-none sm:rounded-xl rounded-none mx-auto sticky min-w-screen-sm duration-75 p-0 top-0 z-50 max-w-screen-xl bg-opacity-70 backdrop-filter backdrop-blur-md pt-2 bg-green-900 text-white px-8 lg:px-8 lg:py-0">
-    
       <div className="container mx-auto flex items-center  justify-between text-white">
-        <Typography
-          as="a"
-          href="#"
-          variant="small"
-          className="mr-4 text-lg cursor-pointer items-center flex py-1.5 font-normal"
-        >
-          <img
-            alt="Uchikumbe logo"
-            className="object-center t mr-2 h-12 "
-            src={logo}
-          />
-          <span className="text-2xl  ">Uchikumbe</span>
-        </Typography>
+       
+        <NavLink to="/">
+            <div className="mr-4 text-lg  items-center flex py-1.5 font-normal">
+              <img alt="Uchikumbe logo" src={logo}
+                className="object-center  mr-2 h-12 "
+              />
+              <span className="text-2xl  ">Uchikumbe</span>
+            </div>
+        </NavLink>
         <div className="hidden lg:block">
           <Search />
           {navList}
@@ -142,10 +137,7 @@ export default function Fun({ user = null }) {
             <div className="hidden lg:block ">{signInSignUp}</div>
           )}
         </>
-
-
         <React.Fragment>
-      
           <FontAwesomeIcon 
           className="h-7 ml-auto lg:hidden" 
           onClick={openDrawer} 
@@ -222,39 +214,28 @@ export default function Fun({ user = null }) {
             </NavLink>
           
             { user === null && ( 
-            <NavLink onClick={signInSignUp}>  
-              <ListItem >
-                <ListItemPrefix>
-                  <ArrowRightCircleIcon className="w-5 h-5"/>
-                </ListItemPrefix>
-                <GoogleLogin
-                  onSuccess={(response) =>
-                    createOrGetUser(response).then(() => {
-                      window.location.reload();
-                    })
-                  }
-                  onError={() => {
-                    console.log("Login Failed");
-                  }}
-                />
-              </ListItem>
-            </NavLink> 
+                <NavLink onClick={signInSignUp}>  
+                  <ListItem >
+                    <ListItemPrefix>
+                      <ArrowRightCircleIcon className="w-5 h-5"/>
+                    </ListItemPrefix>
+                    <GoogleLogin
+                      onSuccess={(response) =>
+                        createOrGetUser(response).then(() => {
+                          window.location.reload();
+                        })
+                      }
+                      onError={() => {
+                        console.log("Login Failed");
+                      }}
+                    />
+                  </ListItem>
+                </NavLink> 
               )}
-              
             </List>
           </Drawer>}
         </React.Fragment>
-
       </div>
-      {/* <Collapse open={openNav}>
-        <div className="container items-center p-3  mx-auto">
-          <span className="p-3"> {navList} </span>
-          <div className="ml-auto justify-end ">
-            <span className="p-3 justify-right text-right">{signInSignUp}</span>
-            <Search />
-          </div>
-        </div>
-      </Collapse> */}
     </Navbar>
   );
 }

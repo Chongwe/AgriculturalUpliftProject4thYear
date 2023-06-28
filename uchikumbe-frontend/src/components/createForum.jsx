@@ -50,7 +50,7 @@ function CreateForum() {
   
 
   return (
-    <div className=" p-4 lg:flex-row shadow-lg rounded-3xl my-4 min-w-[400px] justify-center gap-24 lg:flex flex-col  mx-12 items-center">
+    <div className=" p-4 lg:flex-row shadow-lg rounded-3xl my-4 min-w-screen-sm justify-center gap-24 lg:flex flex-col  mx-12 items-center">
       <div className="">
         
         <div className=" flex flex-wrap gap-4">
@@ -67,8 +67,8 @@ function CreateForum() {
           Add forum information
         </Typography>
       </div>
-      <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96 lg:flex-row lg:flex flex-col gap-6">
-        <div className="mb-4 flex flex-col gap-6">
+      <form className="mt-8 mb-2 h-auto max-w-screen-lg min-w-screen-sm sm:w-96 lg:flex-row lg:flex flex-col gap-6">
+        <div className="mb-4 flex flex-col ">
           <Input
             size="lg"
             color="green"
@@ -76,7 +76,7 @@ function CreateForum() {
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <div className="mb-4 flex flex-col gap-6">
+        <div className="mb-4 flex flex-col ">
           <Textarea
             color="green"
             label="Tell us about your Forum"
