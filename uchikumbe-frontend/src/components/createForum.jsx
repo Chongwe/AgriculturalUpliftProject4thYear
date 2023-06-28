@@ -69,27 +69,28 @@ function CreateForum() {
       </div>
       <form className="mt-8 mb-2 h-auto max-w-screen-lg min-w-screen-sm sm:w-96 lg:flex-row lg:flex flex-col gap-6">
         <div className="mb-4 flex flex-col ">
-          <Input
-            size="lg"
-            color="green"
+          <input
+            type="text"
+            className="outline-none text-2xl sm:text-2xl placeholder-green-100 font-bold border-b-2 active:border-b-green-800 transition-all duration-500 hover:scale-95 border-green-200 p-2"
+            placeholder="Forum Name"
             label="Forum Name"
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="mb-4 flex flex-col ">
-          <Textarea
-            color="green"
-            label="Tell us about your Forum"
+          <textarea
+            type="text"
+            placeholder="Forum description"
+            className="outline-none transition-all placeholder-green-100 active:border-b-green-800 duration-500 hover:scale-95 text-base sm:text-lg border-b-2 border-green-200 p-2"
             onChange={(e) => setDesc(e.target.value)}
           />
-          <Button
-            color="green"
-            className="mt-6 rounded-full"
+          <button
+            type="button"
+            className="bg-green-900 w-full mt-4 hover:bg-goldenrod transition-all duration-500 hover:scale-95 text-white  p-2 rounded-xl  outline-none"
             onClick={saveForum}
-            fullWidth
           >
-            Submit
-          </Button>
+            Create
+          </button>
         </div>
       </form>
     </div>
