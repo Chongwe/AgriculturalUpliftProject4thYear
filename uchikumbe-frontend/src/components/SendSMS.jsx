@@ -106,6 +106,18 @@ const SendSMS = () => {
     }
   }, [userInfo, receiver]);
 
+  useEffect(() => {
+    // Disable scrolling on mount
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    // Enable scrolling on unmount
+    return () => {
+      document.documentElement.style.overflow = 'auto';
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   return (
     <div className="flex flex-col px-4 h-screen">
       <h2 className="text-2xl font-bold mb-4">
@@ -125,15 +137,17 @@ const SendSMS = () => {
         )}
       </h2>
       <p>Number of Messages Received: {notificationCount}</p>
-      <Card className="flex-grow overflow-y-scroll max-h-80">
-        <CardBody className="space-y-4">
-          {chatMessages.map((chatMessage, index) => {
-            const isSender = chatMessage.sender === userInfo.sub;
+      <Card className="flex-grow overflow-y-scroll max-h-96 space-y-4">
+        {/* Sender Messages */}
+        {chatMessages.map((chatMessage, index) => {
+          const isSender = chatMessage.sender === userInfo.sub;
+          if (isSender) {
             return (
               <Card
                 key={index}
-                className={`  p-4 bg-light-green-100 w-2/5 right-0 ${isSender ? " ml-0" : " ml-auto"}`}
+                className="p-4 bg-light-green-100 w-2/5 right-0 ml-0 "
               >
+                {/* Sender content */}
                 <div className="flex items-center max-w-md">
                   <span>{chatMessage.content}</span>
                 </div>
@@ -151,35 +165,67 @@ const SendSMS = () => {
                 )}
               </Card>
             );
-          })}
-        </CardBody>
+          }
+          return null; // Skip rendering if not a sender message
+        })}
+
+        {/* Receiver Messages */}
+        {chatMessages.map((chatMessage, index) => {
+          const isSender = chatMessage.sender === userInfo.sub;
+          if (!isSender) {
+            return (
+              <Card
+                key={index}
+                className="p-4 bg-light-green-100 w-2/5 right-0 ml-auto "
+              >
+                {/* Receiver content */}
+                <div className="flex items-center max-w-md">
+                  <span>{chatMessage.content}</span>
+                </div>
+                <div className="flex">
+                  <span className="text-xs text-gray-500">
+                    {new Date(chatMessage.sentTime).toLocaleString()}
+                  </span>
+                </div>
+                {chatMessage.receivedTime && (
+                  <div className="flex items-end">
+                    <span className="text-xs text-gray-500">
+                      Received: {new Date(chatMessage.receivedTime).toLocaleString()}
+                    </span>
+                  </div>
+                )}
+              </Card>
+            );
+          }
+          return null; // Skip rendering if not a receiver message
+        })}
       </Card>
-     
-            
-      <div className="flex">
-  <input
-    className="flex-1 w-14 h-11 transition-all duration-500 hover:scale-95 border-2 p-2 text-sm focus:border-green-300 rounded-2xl border-green-100 outline-none"
-    type="text"
-    placeholder="Type your message here"
-    value={message}
-    onChange={handleMessageChange}
-    disabled={!receiver}
-  />
-  <button
-    className={`hover:scale-105 w-14 rounded-full bg-goldenrod text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out ${sendingMessage ? "opacity-50 cursor-not-allowed" : ""}`}
-    onClick={handleSendMessage}
-    disabled={!receiver || sendingMessage}
-  >
-    {sendingMessage ? "Sending..." : "Send"}
-  </button>
-</div>
 
+      <div className="  ">
+        <input
+          className=" text-lg w-1/3 h-11 mt-4 border-2 p-2
+            focus:border-green-300 rounded-l-full
+            border-green-100 outline-none
+            transition-all duration-500 hover:scale-95"
+          type="text"
+          placeholder="Type your message here"
+          value={message}
+          onChange={handleMessageChange}
+          disabled={!receiver}
+        />
 
-
-      
-
-       
-    
+        <button
+          type="button"
+          onClick={handleSendMessage}
+          disabled={!receiver || sendingMessage}
+          className="mt-4 bg-green-900 hover:bg-goldenrod
+            text-lg transition-all duration-500 
+            hover:scale-95 text-white p-2 rounded-l-none
+            rounded-r-full w-24 outline-none"
+        >
+          {sendingMessage ? "Sending..." : "Send"}
+        </button>
+      </div>
     </div>
   );
 };
