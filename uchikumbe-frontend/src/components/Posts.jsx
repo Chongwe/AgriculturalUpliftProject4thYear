@@ -57,7 +57,7 @@ const Posts = ({
   }, [postCreatedAt]);
 
   return (
-    <div className=" lg:max-w-[600px] sm:m-12 mb-3 transition-all   overflow-wrap break-word  duration-500 hover:scale-105 p-4 bg-white rounded-xl  flex-wrap min-w-screen-sm ">
+    <div className=" lg:max-w-[600px] sm:m-12 mb-3 transition-all   overflow-wrap break-word  duration-500 lg:hover:scale-105 p-4 bg-white rounded-xl  flex-wrap min-w-screen-sm ">
       <div className="shadow-none justify-between space-x-4 flex  ">
         <div className="flex items-center space-x-2">
           {postedBy?.image ? (

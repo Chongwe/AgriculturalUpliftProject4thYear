@@ -50,7 +50,8 @@ function CreateForum() {
   
 
   return (
-    <div className=" p-4 lg:flex-row shadow-lg rounded-3xl my-4 min-w-screen-sm justify-center gap-24 lg:flex flex-col  mx-12 items-center">
+    <div className=" flex mb-96  m-4 rounded-lg mx-auto flex-col align-middle items-center  bg-white p-4  max-w-screen-sm">
+      <div className=" border-goldenrod border p-4 rounded-lg">
       <div className="">
         
         <div className=" flex flex-wrap gap-4">
@@ -67,8 +68,7 @@ function CreateForum() {
           Add forum information
         </Typography>
       </div>
-      <form className="mt-8 mb-2 h-auto max-w-screen-lg min-w-screen-sm sm:w-96 lg:flex-row lg:flex flex-col gap-6">
-        <div className="mb-4 flex flex-col ">
+      <div className="flex  flex-col gap-6 lg:pl-5 mt-5 w-screen-sm">
           <input
             type="text"
             className="outline-none text-2xl sm:text-2xl placeholder-green-100 font-bold border-b-2 active:border-b-green-800 transition-all duration-500 hover:scale-95 border-green-200 p-2"
@@ -76,8 +76,6 @@ function CreateForum() {
             label="Forum Name"
             onChange={(e) => setTitle(e.target.value)}
           />
-        </div>
-        <div className="mb-4 flex flex-col ">
           <textarea
             type="text"
             placeholder="Forum description"
@@ -86,13 +84,13 @@ function CreateForum() {
           />
           <button
             type="button"
-            className="bg-green-900 w-full mt-4 hover:bg-goldenrod transition-all duration-500 hover:scale-95 text-white  p-2 rounded-xl  outline-none"
+            className="bg-green-900 align-right mt-4 hover:bg-goldenrod transition-all duration-500 hover:scale-95 text-white  p-2 rounded-xl w-28 outline-none"
             onClick={saveForum}
           >
-            Create
+            Submit
           </button>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
