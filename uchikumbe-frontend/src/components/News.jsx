@@ -82,13 +82,13 @@ export default function News() {
                       className="w-2/5 shrink-0 m-0 rounded-r-none"
                     >
                       <div className="flex items-center space-x-2">
-                        {/* {news.image && (
+                        {news.image && (
                           <img
                             src={urlFor(news[0]?.image && [0]?.urlFor) .url()}
                             className="w-10 h-10 rounded-full object-cover"
                             alt="posted-by"
                           />
-                        )} */}
+                        )}
                       </div>
                     </CardHeader>
                     <CardBody className="py-2">
