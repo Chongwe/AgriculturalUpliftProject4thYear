@@ -8,10 +8,10 @@ import { Link, NavLink } from "react-router-dom";
 
 function Person(props) {
   return (
-    <div className="bg-white transition-all duration-200 hover:scale-95 mx-4 rounded-lg p-2">
+    <div className="bg-white transition-all lg:w-full min-w-screen-d pt-4  duration-200 hover:bg-green-100 mx-auto align-middle sm:p-4 rounded-lg p-2">
       <div className="flex items-center justify-between mb-2"></div>
-      <div className="md:px-40 sm:ml-8 sm:px-8 ">
-        <div className="flex items-center my-2 space-x-4 border-b border-grey-500">
+      <div className="md:px-8 sm:ml-8 sm:px-8 ">
+        <div className="flex items-center  space-x-4 border-b border-green-100">
           <img
             alt="user image"
             src={props.avatar}
@@ -22,9 +22,7 @@ function Person(props) {
           </div>
           <div className=" flex items-center ml-auto">
             <Link to={`/message/${props.user_id}`}>
-              <IconButton variant="text" color="green" size="xl" className="">
-                <FontAwesomeIcon size="2x" icon={faEnvelope} />
-              </IconButton>
+                <FontAwesomeIcon className="h-5 w-5 text-green-800 hover:text-goldenrod m-2" icon={faEnvelope} />
             </Link>
           </div>
         </div>
