@@ -90,7 +90,7 @@ export default function Fun({ user = null }) {
   // console.log(user._id);
   return (
     <Navbar
-    className="lg:w-full w-full sm:border-2 border-none sm:rounded-xl rounded-none mx-auto sticky min-w-screen-sm duration-75 p-0 top-0 z-50 max-w-screen-xl bg-opacity-70 backdrop-filter backdrop-blur-md pt-2 bg-green-900 text-white px-8 lg:px-8 lg:py-0">
+    className="lg:w-full  w-full sm:border-2 border-none sm:rounded-xl rounded-none mx-auto sticky min-w-screen-sm duration-75 p-0 top-0 z-50 max-w-screen-xl bg-opacity-70 backdrop-filter backdrop-blur-md pt-2 bg-green-900 text-white px-8 lg:px-8 lg:py-0">
     
       <div className="container mx-auto flex items-center  justify-between text-white">
         <Typography
@@ -139,14 +139,7 @@ export default function Fun({ user = null }) {
             <div className="hidden lg:block ">{signInSignUp}</div>
           )}
         </>
-        {/* <IconButton
-          variant="text"
-          className="ml-auto h-10 w-10 sm:-ml-4 justify-center text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-         
-          onClick={() => setOpenNav(!openNav)}
-        >
-          <FontAwesomeIcon className="h-5" icon={faBars} />
-        </IconButton> */}
+
 
         <React.Fragment>
       
@@ -154,7 +147,12 @@ export default function Fun({ user = null }) {
           className="h-7 ml-auto mr-4 lg:hidden" 
           onClick={openDrawer} 
           icon={faBars} />
-          <Drawer placement="right" className="lg:hidden  rounded-xl bg-transparent " open={open} onClose={closeDrawer}>
+        {open &&  <Drawer 
+          placement="right" 
+          unmountOnExit={true}
+          rootClassName="fixed inset-y-0 right-0"
+          className="lg:hidden  rounded-xl bg-transparent " 
+          open={open} onClose={closeDrawer}>
            
             <List className="bg-green-200 text-green-900 rounded-lg">
                 <div className="mr-2 flex mt-5 bg-transparent items-center justify-end ">
@@ -210,11 +208,11 @@ export default function Fun({ user = null }) {
                 Log Out
               </ListItem>
             </List>
-          </Drawer>
+          </Drawer>}
         </React.Fragment>
 
       </div>
-      <Collapse open={openNav}>
+      {/* <Collapse open={openNav}>
         <div className="container items-center p-3  mx-auto">
           <span className="p-3"> {navList} </span>
           <div className="ml-auto justify-end ">
@@ -222,7 +220,7 @@ export default function Fun({ user = null }) {
             <Search />
           </div>
         </div>
-      </Collapse>
+      </Collapse> */}
     </Navbar>
   );
 }
