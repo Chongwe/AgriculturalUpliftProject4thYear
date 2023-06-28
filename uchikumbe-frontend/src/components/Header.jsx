@@ -4,6 +4,8 @@ import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 import logo from "../assets/logo.svg";
 import Search from "../utils/Search";
 import NavLinks from "./NavLinks";
+import { createOrGetUser } from "../utils/index";
+import { GoogleLogin } from "@react-oauth/google";
 import SignUp from "../utils/SignUp";
 import { NavLink } from "react-router-dom";
 import React from "react";
@@ -33,6 +35,7 @@ import {
   UserGroupIcon,
   Square2StackIcon,
   PowerIcon,
+  ArrowRightCircleIcon,
   
 } from "@heroicons/react/24/solid";
 
@@ -67,7 +70,7 @@ export default function Fun({ user = null }) {
           mount: { scale: 1, y: 0 },
           unmount: { scale: 0, y: 25 },
         }}
-      >
+        >
         <PopoverHandler>
           <Button
             color="green"
@@ -76,7 +79,7 @@ export default function Fun({ user = null }) {
             <FontAwesomeIcon
               icon={faUser}
               className="h-4 w-4 space-x-1 mr-2 "
-            />{" "}
+            />
             Sign In
           </Button>
         </PopoverHandler>
@@ -144,9 +147,10 @@ export default function Fun({ user = null }) {
         <React.Fragment>
       
           <FontAwesomeIcon 
-          className="h-7 ml-auto mr-4 lg:hidden" 
+          className="h-7 ml-auto lg:hidden" 
           onClick={openDrawer} 
           icon={faBars} />
+
         {open &&  <Drawer 
           placement="right" 
           unmountOnExit={true}
@@ -154,13 +158,28 @@ export default function Fun({ user = null }) {
           className="lg:hidden  rounded-xl bg-transparent " 
           open={open} onClose={closeDrawer}>
            
-            <List className="bg-green-200 text-green-900 rounded-lg">
+            <List className=" text-green-50 rounded-xl  bg-opacity-90  bg-green-900 backdrop-blur-md backdrop-filter  ">
+          
                 <div className="mr-2 flex mt-5 bg-transparent items-center justify-end ">
                     <XMarkIcon  
                     onClick={closeDrawer} 
                     strokeWidth={3} 
                     className="h-7 ml-auto mr-4 justify-center w-7" />
-                  </div>
+                </div>
+           {user !== null && user !== undefined &&(       
+            <Link  to={`user-profile/${user._id}`} onClick={handleLinkClick && closeDrawer}>    
+              <ListItem>
+                <ListItemPrefix>
+                  <img
+                      src={user.image}
+                      alt="user"
+                      className="w-10 items-center  sm:ml-32 h-10 rounded-full "
+                  />
+                </ListItemPrefix>
+               {user.userName}
+              </ListItem>
+            </Link>  
+            )}   
             <NavLink onClick={closeDrawer} to="/">    
               <ListItem>
                 <ListItemPrefix>
@@ -201,12 +220,27 @@ export default function Fun({ user = null }) {
                 Tools
               </ListItem>
             </NavLink>
-              <ListItem>
+          
+            { user === null && ( 
+            <NavLink onClick={signInSignUp}>  
+              <ListItem >
                 <ListItemPrefix>
-                  <PowerIcon className="h-5 w-5" />
+                  <ArrowRightCircleIcon className="w-5 h-5"/>
                 </ListItemPrefix>
-                Log Out
+                <GoogleLogin
+                  onSuccess={(response) =>
+                    createOrGetUser(response).then(() => {
+                      window.location.reload();
+                    })
+                  }
+                  onError={() => {
+                    console.log("Login Failed");
+                  }}
+                />
               </ListItem>
+            </NavLink> 
+              )}
+              
             </List>
           </Drawer>}
         </React.Fragment>

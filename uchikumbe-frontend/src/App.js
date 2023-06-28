@@ -22,11 +22,13 @@ import AddFarm from "./config-pages/AddFarm";
 import CreateForum from "./components/createForum";
 import ForumPage from "./pages/ForumPage";
 import SendSMS from "./components/SendSMS";
+import SignUp from "./utils/SignUp";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
+      <Route path="sign-in" element={<SignUp />}/>
       <Route path="forum-page/:forumId" element={<ForumPage />} />
       <Route path="/comments/:forumId/:postId" element={<CommentPage />} />
       <Route path="people" element={<People />} />
