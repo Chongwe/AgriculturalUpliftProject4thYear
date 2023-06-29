@@ -64,7 +64,8 @@ const ForumPage = () => {
     return <Spinner message="Loading Forum" />;
   }
   return (
-    <div className="pt-4 mt-2 bg-green-100  rounded-2xl  min-w-screen-sm flex-col">
+    <div>
+    <div className="pt-4 mt-2 bg-green-200  rounded-2xl  min-w-screen-sm flex-col">
       <div className="flex p-2 w-full justify-between space-x-4 ">
         <div className=" ">
           <h1 className="text-3xl text-green-900 font-bold mb-4">
@@ -91,21 +92,25 @@ const ForumPage = () => {
           )}
         </div>
       </div>
-      <hr className="my-4 border-goldenrod" />
-
-      <div className=" justify-center">
-        <div className="pt-4 bg-green-50  justify-center rounded-2xl min-w-screen-sm flex-col ">
+  </div>
+      <div className=" mt-4 ">
+      <div className="lg:w-full w-full pt-4 bg-green-100 justify-center rounded-none sm:rounded-2xl min-w-screen-sm flex">
+       
+        <div className="flex-col  lg:-ml-56  mt-8 mb-2 lg:px-20 flex rounded-xl bg-transparent sm:bg-green-50">
+          <h2 className="text-3xl font-bold text-green-500 m-2">Posts in this forum</h2>
           {forum?.post?.map((posts) => (
-            <div className="flex-col relative   mt-8 mb-2  flex  ">
               <Posts key={posts._id} post={posts} />
-            </div>
           ))}
+          </div>
+
+        <div className="  ml-2 justify-end hidden  lg:block rounded-xl">
+              <Sidebar />
+        </div>
         </div>
 
-        {/* <div className="  ml-2 justify-end hidden  lg:block rounded-xl">
-              <Sidebar />
-            </div> */}
-      </div>
+        
+      
+    </div>
     </div>
   );
 };

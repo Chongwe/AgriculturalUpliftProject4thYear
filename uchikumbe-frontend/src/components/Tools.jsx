@@ -14,14 +14,12 @@ import FeedCalculators from "../utils/FeedCalculators.";
 import {
   SeedCalculator,
 } from "../utils/Calculators";
-import CompostCalculator from "../utils/CompostCalculator";
 import MaizeFertilizerCalculator from "../utils/MaizeFertilizerCalculator";
 import ChickenFeedCalculator from "../utils/ChickenFeedCulculator";
 import Planters from "../utils/Planters";
 
 const seedCalculator = <SeedCalculator />;
 const maizeCalculator = <MaizeFertilizerCalculator />;
-const compostCalculator = <CompostCalculator />;
 const feedCalculator = <FeedCalculators />;
 const planters = <Planters />
 
@@ -33,11 +31,7 @@ export default function Example() {
       value: "seed-calculator",
       desc: planters,
     },
-    {
-      label: "Compost Calculator",
-      value: "compost-calculator",
-      desc: compostCalculator,
-    },
+   
     {
       label: "Fertilizer Calculator",
       value: "maize-calculator",

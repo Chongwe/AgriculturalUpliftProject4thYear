@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 
 const VARIETIES = {
-  Chalimbana: { seedRate: 44.5, spacing: '75 by 15 1 seed' },
-  Chitembana: { seedRate: 28.9, spacing: '75 by 15 1 seed' },
-  GG7: { seedRate: 44.5, spacing: '75 by 15 1 seed' },
-  Nsinjiro: { seedRate: 40.5, spacing: '75 by 15 1 seed' },
-  Manipintar: { seedRate: 32.4, spacing: '75 by 15 1 seed' },
-  Mawanga: { seedRate: 32.4, spacing: '75 by 15 1 seed' },
-  RG1: { seedRate: 32.4, spacing: '75 by 15 1 seed' },
-  'Chalimbana 2005': { seedRate: 44.5, spacing: '75 by 15 1 seed' },
-  Malimba: { seedRate: 18.2, spacing: '75 by 10 1 seed' },
-  Kakoma: { seedRate: 24.3, spacing: '75 by 10 1 seed' },
-  Baka: { seedRate: 24.3, spacing: '75 by 10 1 seed' },
-  Chitala: { seedRate: 44.5, spacing: '75 by 10 1 seed' },
+  Chalimbana: { seedRate: 44.5, spacing: '75cm  by  15cm ' },
+  Chitembana: { seedRate: 28.9, spacing: '75cm  by  15cm ' },
+  GG7: { seedRate: 44.5, spacing: '75cm  by  15cm ' },
+  Nsinjiro: { seedRate: 40.5, spacing: '75cm  by  15cm ' },
+  Manipintar: { seedRate: 32.4, spacing: '75cm  by  15cm ' },
+  Mawanga: { seedRate: 32.4, spacing: '75cm  by 15cm ' },
+  RG1: { seedRate: 32.4, spacing: '75cm  byc  15cm ' },
+  'Chalimbana 2005': { seedRate: 44.5, spacing: '75cm  by  15cm ' },
+  Malimba: { seedRate: 18.2, spacing: '75cm  by  10cm ' },
+  Kakoma: { seedRate: 24.3, spacing: '75cm  by  10cm ' },
+  Baka: { seedRate: 24.3, spacing: '75cm  by  10cm ' },
+  Chitala: { seedRate: 44.5, spacing: '75cm  by  10cm ' },
 };
 
 function App() {
@@ -33,8 +33,8 @@ function App() {
   };
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-bold mb-4">Groundnut Planting Calculator</h1>
+    <div className="container border border-goldenrod rounded-lg p-4 mx-auto mt-2">
+    <h1 className="text-3xl  text-goldenrod font-bold mb-4">Groundnut Planting Calculator</h1>
 
       <div className="mb-4">
         <label htmlFor="fieldSize" className="font-bold">
@@ -43,7 +43,7 @@ function App() {
         <input
           type="number"
           id="fieldSize"
-          className="border p-2"
+          className="px-4 py-2 border focus:outline-none w-56 border-green-300 rounded-md"
           value={fieldSize}
           onChange={(e) => setFieldSize(parseFloat(e.target.value))}
         />
@@ -55,7 +55,7 @@ function App() {
         </label>
         <select
           id="variety"
-          className="border p-2"
+          className="px-4 py-2 border focus:outline-none w-56 border-green-300 rounded-md"
           value={variety}
           onChange={(e) => setVariety(e.target.value)}
         >
@@ -69,8 +69,8 @@ function App() {
       </div>
 
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={calculateSeedRequirement}
+          className="bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none"
+          onClick={calculateSeedRequirement}
       >
         Calculate
       </button>
@@ -78,14 +78,14 @@ function App() {
       {seedRequirement && (
         <div className="mt-4">
           <label className="font-bold">Seed Requirement:</label>
-          <div className="border p-2">{seedRequirement} kg</div>
+          <div className=" rounded-md font-bold  text-green-900 p-2">{seedRequirement} kg</div>
         </div>
       )}
 
       {recommendedSpacing && (
         <div className="mt-4">
-          <label className="font-bold">Recommended Spacing:</label>
-          <div className="border p-2">{recommendedSpacing}</div>
+          <label className="">Recommended Spacing (1 Seed/station) :</label>
+          <div className=" rounded-md font-bold  text-green-900 p-2">{recommendedSpacing}</div>
         </div>
       )}
     </div>

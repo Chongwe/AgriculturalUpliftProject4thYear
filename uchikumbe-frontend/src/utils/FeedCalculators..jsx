@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { calculateBroilerFeedFormulation, calculateLayersFeedFormulation } from './FeedFormulations';
 
-
 export const ChickenFeedCalculator = () => {
     const [chickenType, setChickenType] = useState('broilers');
     const [numChickens, setNumChickens] = useState(0);

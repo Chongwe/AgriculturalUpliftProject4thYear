@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import GroundNutsSeed from "./GroundNutsSeed"
+
 
 export const MaizeSeedCalculator = () => {
     const [fieldSize, setFieldSize] = useState('');
@@ -156,6 +158,7 @@ const Planters = () => {
       <div className="w-full flex-col h-auto min-w-screen-sm flex gap-4">
         <MaizeSeedCalculator />
         <CassavaStemCalculator />
+        <GroundNutsSeed />
 
       </div>
     </div>
