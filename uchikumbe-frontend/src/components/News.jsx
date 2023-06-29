@@ -1,23 +1,74 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {
+  Tabs,
+  TabsHeader,
+  Tab,
+  Card,
+  CardBody,
+  Typography,
+  CardHeader,
+  Button 
+} from "@material-tailwind/react";
+import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import { urlFor, client } from "../client";
+import { mainNewsListQuery } from "../utils/data";
 
-const NewsComponent = () => {
+export default function News() {
+  const [listNews, setListNews] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const data = await client.fetch(mainNewsListQuery);
+        setListNews(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching news data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (!listNews) {
+    return <p>No news data available.</p>;
+  }
+
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
-      <img
-        className="w-full"
-        src="https://via.placeholder.com/400x200"
-        alt="News"
-      />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">News Title</div>
-        <p className="text-gray-700 text-base">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-          felis vitae ex interdum consequat. Nullam eu sapien rutrum, dignissim
-          turpis at, lacinia tortor.
-        </p>
-      </div>
+    <div>
+      {listNews.map((news) => (
+        <div key={news._id}>
+          <div className="flex justify-center pt-4">
+            <Card className="w-full max-w-[48rem]">
+              <CardHeader
+                shadow={false}
+                floated={false}
+                className="w-2/5 shrink-0 m-0 rounded-r-none"
+              >
+                {/* <div className="max-w-56 overflow-hidden rounded-xl max-h-36">
+                  {news.image && <img src={urlFor(news.image).url()} className="w-full h-auto" />}
+                </div> */}
+              </CardHeader>
+              <CardBody>
+                <Typography variant="h6" color="green" className="uppercase mb-4">
+                  {news.title}
+                </Typography>
+                <Typography color="gray" className="font-normal mb-8">
+                  {news.description}
+                </Typography>
+              </CardBody>
+            </Card>
+          </div>
+        </div>
+      ))}
     </div>
   );
-};
-
-export default NewsComponent;
+}

@@ -157,15 +157,9 @@ const CommentPage = () => {
     <UserContext.Provider value={user}>
       <div className="flex flex-col justify-center items-center h-full mt-5 lg:h-4/5">
         <div className="flex lg:flex-row flex-col justify-center rounded-lg bg-green-100 lg:p-5 p-3 lg:w-4/5 w-full">
-          <div className=" p-3 flex-0.7 rounded-2xl w-full">
-            <img
-              src={post?.image && urlFor(post.image).url()}
-              className="flex rounded-t-xl rounded-b-xl w-full mt-2"
-            />
-          </div>
-
-          <div className="flex flex-1 flex-col pl-2  gap-6 lg:pl-5 mt-5 w-full">
-            <div className="flex flex-row pl-4">
+          <div className=" p-3 flex-0.7 shadow-lg rounded-2xl w-full">
+            <p className="pl-4 mb-2">Posted by:</p>
+          <div className="flex flex-row pl-4">
               <img
                 src={post?.postedBy?.image}
                 alt="user-profile"
@@ -175,6 +169,14 @@ const CommentPage = () => {
                 {post.postedBy?.userName}
               </h1>
             </div>
+            <img
+              src={post?.image && urlFor(post.image).url()}
+              className="flex rounded-t-xl rounded-b-xl w-full mt-2"
+            />
+          </div>
+
+          <div className="flex flex-1 flex-col pl-2  gap-6 lg:pl-5 mt-5 w-full">
+            
             <div className="rounded-xl bg-green-50 p-2">
               <h3 className="text-green-900 justify-normal text-2xl">
                 {post.title}
@@ -185,7 +187,7 @@ const CommentPage = () => {
             </div>
 
             <h1 className="text-goldenrod -mb-4 text-2xl">
-              Comments ({commentCount})
+              Comments 
             </h1>
             <hr className="mb-2 border-goldenrod" />
             <div className="max-h-370 overflow-y-auto ">
