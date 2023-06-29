@@ -5,9 +5,9 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'uchikumbe-backend-boosted-free',
+  title: 'uchikumbe2',
 
-  projectId: 'l5ke8e6u',
+  projectId: '49jww4zd',
   dataset: 'production',
 
   plugins: [deskTool(), visionTool()],

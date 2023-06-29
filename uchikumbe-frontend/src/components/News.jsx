@@ -2,32 +2,31 @@ import React, { useState, useEffect } from 'react';
 import {
   Tabs,
   TabsHeader,
-  div,
   Tab,
   Card,
   CardBody,
   Typography,
   CardHeader,
-  Button 
-} from "@material-tailwind/react";
-import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
-import { urlFor, client } from "../client";
-import { mainNewsListQuery } from "../utils/data";
+} from '@material-tailwind/react';
+import { ArrowLongRightIcon } from '@heroicons/react/outline';
+import { client } from '../client';
+import { mainNewsListQuery } from '../utils/data';
+import imageUrlBuilder from '@sanity/image-url';
+import Spinner from "./Spinner";
 
 export default function News() {
-  const [listNews, setListNews] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [listNews, setListNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const builder = imageUrlBuilder(client);
 
   useEffect(() => {
-    setLoading(true);
-
     const fetchData = async () => {
       try {
         const data = await client.fetch(mainNewsListQuery);
         setListNews(data);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching news data:", error);
+        console.error('Error fetching news data:', error);
         setLoading(false);
       }
     };
@@ -36,15 +35,19 @@ export default function News() {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Spinner message="Looking for News" />
   }
 
-  if (!listNews) {
+  if (listNews.length === 0) {
     return <p>No news data available.</p>;
   }
 
+  function urlFor(news) {
+    return builder.image(news.image).url();
+  }
+
   return (
-    <div>
+    <div className="bg-green-100">
       {listNews.map((news) => (
         <div key={news._id}>
           <div className="flex justify-center pt-4">
@@ -54,19 +57,27 @@ export default function News() {
                 floated={false}
                 className="w-2/5 shrink-0 m-0 rounded-r-none"
               >
-                {/* <div className="max-w-56 overflow-hidden rounded-xl max-h-36">
+                <div className="max-w-56 overflow-hidden rounded-xl max-h-36">
                   {news.image && (
-                    <img src={urlFor(news.image).url()} className="w-full h-auto" alt={news.title} />
+                    <img
+                      src={urlFor(news)}
+                      className="w-full h-auto"
+                      alt={news.title}
+                    />
                   )}
-                </div> */}
+                </div>
               </CardHeader>
               <CardBody>
-                <Typography variant="h6" color="green" className="uppercase mb-4">
+                <Typography variant="h6" color="green" className="uppercase mb-4  border-b focus:border-green-300 
+            border-green-100 outline-none">
                   {news.title}
                 </Typography>
-                <Typography color="gray" className="font-normal mb-8">
+                <Typography color="gray" className="font-normal mb-2">
                   {news.description}
                 </Typography>
+                <Card color="none" className="text-sm rounded-md ml-auto w-1/5 ">
+                Posted on: {new Date(news.time).toLocaleString()}
+              </Card>
               </CardBody>
             </Card>
           </div>

@@ -229,7 +229,7 @@ export const mainNewsListQuery = `*[_type == "main_news"] {
   title,
   description,
   content,
-  image,
+  "imageUrl": image.asset->url,
 
 }`;
 

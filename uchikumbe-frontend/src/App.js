@@ -23,7 +23,7 @@ import CreateForum from "./components/createForum";
 import ForumPage from "./pages/ForumPage";
 import SendSMS from "./components/SendSMS";
 import SignUp from "./utils/SignUp";
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from "./pages/AdminPages/AdminDashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
