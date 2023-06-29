@@ -12,6 +12,7 @@ import { ArrowLongRightIcon } from '@heroicons/react/outline';
 import { client } from '../client';
 import { mainNewsListQuery } from '../utils/data';
 import imageUrlBuilder from '@sanity/image-url';
+import Spinner from "./Spinner";
 
 export default function News() {
   const [listNews, setListNews] = useState([]);
@@ -34,7 +35,7 @@ export default function News() {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Spinner message="Looking for News" />
   }
 
   if (listNews.length === 0) {
@@ -42,11 +43,11 @@ export default function News() {
   }
 
   function urlFor(news) {
-    return builder.image(news).url();
+    return builder.image(news.image).url();
   }
 
   return (
-    <div>
+    <div className="bg-green-100">
       {listNews.map((news) => (
         <div key={news._id}>
           <div className="flex justify-center pt-4">
@@ -59,7 +60,7 @@ export default function News() {
                 <div className="max-w-56 overflow-hidden rounded-xl max-h-36">
                   {news.image && (
                     <img
-                      src={urlFor(news.image)}
+                      src={urlFor(news)}
                       className="w-full h-auto"
                       alt={news.title}
                     />
@@ -67,12 +68,16 @@ export default function News() {
                 </div>
               </CardHeader>
               <CardBody>
-                <Typography variant="h6" color="green" className="uppercase mb-4">
+                <Typography variant="h6" color="green" className="uppercase mb-4  border-b focus:border-green-300 
+            border-green-100 outline-none">
                   {news.title}
                 </Typography>
-                <Typography color="gray" className="font-normal mb-8">
+                <Typography color="gray" className="font-normal mb-2">
                   {news.description}
                 </Typography>
+                <Card color="none" className="text-sm rounded-md ml-auto w-1/5 ">
+                Posted on: {new Date(news.time).toLocaleString()}
+              </Card>
               </CardBody>
             </Card>
           </div>
