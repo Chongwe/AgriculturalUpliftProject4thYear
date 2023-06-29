@@ -42,12 +42,12 @@ const ForumPage = () => {
   const joinForum = () => {
     const doc = {
       _type: "memberOf",
-      _key: user._id,
+      _key: user?._id,
       postedBy: {
         _type: "postedByBy",
-        _ref: user._id,
+        _ref: user?._id,
       },
-      userId: user._id,
+      userId: user?._id,
     };
 
     client
@@ -72,10 +72,10 @@ const ForumPage = () => {
                 </h1>
                 <h1 className=" text-goldenrod -mt-4 ">{forum.description}</h1>
               </div>
-              <div className="  ">
+              <div className=" gap-2 ">
                 {user !== null && user !== undefined && (
                   <Link to={`/create-post/${forum?._id}`}>
-                    <button className=" bg-green-500  hover:bg-goldenrod transition-all duration-100 hover:scale-95 py-2  px-4 ml-4  text-white  rounded-md focus:outline-none">
+                    <button className=" bg-green-500 m-2 hover:bg-goldenrod transition-all duration-100 hover:scale-95 py-2  px-4 ml-4  text-white  rounded-md focus:outline-none">
                       Create a Post
                     </button>
                   </Link>
@@ -83,8 +83,7 @@ const ForumPage = () => {
 
                 {!isMember && (
                     <button onClick={joinForum} 
-                    className=" bg-green-500  hover:bg-goldenrod transition-all duration-100 hover:scale-95 py-2  px-4 ml-4  text-white  rounded-md focus:outline-none">
-                    
+                    className=" bg-green-500 m-2 hover:bg-goldenrod transition-all duration-100 hover:scale-95 py-2  px-4 ml-4  text-white  rounded-md focus:outline-none">
                   Join 
                   </button>
                 )}
@@ -102,9 +101,9 @@ const ForumPage = () => {
               ))}
             </div>
 
-            <div className="  ml-2 justify-end hidden  lg:block rounded-xl">
+            {/* <div className="  ml-2 justify-end hidden  lg:block rounded-xl">
               <Sidebar />
-            </div>
+            </div> */}
           </div>
       </div>
   );
