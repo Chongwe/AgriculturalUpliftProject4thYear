@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { Card, CardBody } from "@material-tailwind/react";
-import { useParams } from "react-router-dom";
+import { useParams, useRoutes, } from "react-router-dom";
 import { fetchUser } from "../utils/fetchUser";
 import { userQuery, messageListQuery } from "../utils/data";
 import { client } from "../client";
+import { useNavigate } from "react-router-dom";
 
 const SendSMS = () => {
   const [message, setMessage] = useState("");
@@ -14,13 +15,15 @@ const SendSMS = () => {
   const [notificationCount, setNotificationCount] = useState(0);
   const { userId } = useParams();
   const userInfo = fetchUser();
+  const [redirectToSignup, setRedirectToSignup] = useState(false);
+  const navigate = useNavigate();
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
   };
 
   const handleSendMessage = () => {
-    if (message && receiver) {
+    if (message && receiver && userInfo) {
       setMessage("");
       setSendingMessage(true);
 
@@ -50,8 +53,19 @@ const SendSMS = () => {
           setMessage(message);
           setSendingMessage(false);
         });
+    } else if (!userInfo) {
+      // Redirect user to signup page
+     alert("sing-in first")
+      //setRedirectToSignup(true);
     }
   };
+
+  useEffect(() => {
+    if (redirectToSignup) {
+      navigate("/sign-in"); // Replace "/signup" with the actual route to your signup page
+    }
+  }, [redirectToSignup, navigate]);
+
 
   useEffect(() => {
     const query = userQuery(userId);
@@ -97,6 +111,7 @@ const SendSMS = () => {
         .fetch(chatQuery)
         .then((messages) => {
           console.log(messages);
+          
           setChatMessages(messages);
           setNotificationCount(messages.length);
         })
@@ -119,8 +134,8 @@ const SendSMS = () => {
   }, []);
 
   return (
-    <div className="flex flex-col px-4 h-screen">
-      <h2 className="text-2xl font-bold mb-4">
+    <div className="flex flex-col px-4 h-screen w-full items-center">
+      <h2 className="text-2xl font-bold mb-4 mt-4 text-green-800">
         {receiver ? (
           <div className="flex items-center">
             {receiverPhotoUrl && (
@@ -133,23 +148,28 @@ const SendSMS = () => {
             <span className="font-bold ml-2">{receiver.userName}</span>
           </div>
         ) : (
-          "Loading..."
+          "Loading..." 
         )}
       </h2>
-      <p>Number of Messages Received: {notificationCount}</p>
-      <Card className="flex-grow overflow-y-scroll max-h-96 space-y-4">
-        {/* Sender Messages */}
+      {/* <p>Number of Messages Received:  {notificationCount }</p>  */}
+      <Card className=" overflow-y-scroll max-h-96 h-full space-y-4 p-4 m-4 max-w-4xl w-full">
+        {/* Sender Messages */} 
         {chatMessages.map((chatMessage, index) => {
-          const isSender = chatMessage.sender === userInfo.sub;
+          const isSender = chatMessage.sender.email === userInfo.email;
+          console.log(chatMessage.sender)
+          console.log(userInfo)
           if (isSender) {
             return (
+
+              
               <Card
+          
                 key={index}
-                className="p-4 bg-light-green-100 w-2/5 right-0 ml-0 "
+                className="p-4 w-1/5 right-0 ml-auto  "
               >
                 {/* Sender content */}
-                <div className="flex items-center max-w-md">
-                  <span>{chatMessage.content}</span>
+                <div className="flex items-center overflow-clip text-lg"> 
+                  <span>{chatMessage.content} </span>
                 </div>
                 <div className="flex">
                   <span className="text-xs text-gray-500">
@@ -159,6 +179,34 @@ const SendSMS = () => {
                 {chatMessage.receivedTime && (
                   <div className="flex items-end">
                     <span className="text-xs text-gray-500">
+                      Received: {new Date(chatMessage.receivedTime).toLocaleString()}
+                      
+                    </span>
+                  </div>
+                )}
+              </Card>
+            );
+          } 
+          if (!isSender) {
+            return (  
+              <Card
+              
+                key={index}
+                className="p-4 bg-green-300 text-center text-white w-26 right-0 mr-auto border-t bourder-green-700 "
+              >
+                
+                {/* Receiver content */}
+                <div className="flex items-center text-lg">
+                  <span>{chatMessage.content}</span>
+                </div>
+                <div className="flex">
+                  <span className="text-md text-end text-white flex">
+                    {new Date(chatMessage.sentTime).toLocaleString()}
+                  </span>
+                </div>
+                {chatMessage.receivedTime && (
+                  <div className="flex items-end text-green-800">
+                    <span className="">
                       Received: {new Date(chatMessage.receivedTime).toLocaleString()}
                     </span>
                   </div>
@@ -171,39 +219,16 @@ const SendSMS = () => {
 
         {/* Receiver Messages */}
         {chatMessages.map((chatMessage, index) => {
-          const isSender = chatMessage.sender === userInfo.sub;
-          if (!isSender) {
-            return (
-              <Card
-                key={index}
-                className="p-4 bg-light-green-100 w-2/5 right-0 ml-auto "
-              >
-                {/* Receiver content */}
-                <div className="flex items-center max-w-md">
-                  <span>{chatMessage.content}</span>
-                </div>
-                <div className="flex">
-                  <span className="text-xs text-gray-500">
-                    {new Date(chatMessage.sentTime).toLocaleString()}
-                  </span>
-                </div>
-                {chatMessage.receivedTime && (
-                  <div className="flex items-end">
-                    <span className="text-xs text-gray-500">
-                      Received: {new Date(chatMessage.receivedTime).toLocaleString()}
-                    </span>
-                  </div>
-                )}
-              </Card>
-            );
-          }
+          const isSender = chatMessage.sender.email === userInfo.email;
+          console.log(userInfo)
+          
           return null; // Skip rendering if not a receiver message
         })}
       </Card>
 
-      <div className="  ">
+      <div className="">
         <input
-          className=" text-lg w-1/3 h-11 mt-4 border-2 p-2
+          className=" text-lg w-96 h-11 mt-4 border-2 p-2
             focus:border-green-300 rounded-l-full
             border-green-100 outline-none
             transition-all duration-500 hover:scale-95"
