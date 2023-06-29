@@ -1,7 +1,7 @@
 import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 
-// attempted deploy
+// attempted deploy 2
 export const client = createClient({
   projectId: process.env.REACT_APP_SANITY_PROJECT_ID,
   dataset: "production",
