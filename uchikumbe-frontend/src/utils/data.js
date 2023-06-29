@@ -16,7 +16,12 @@ export const userCreatedForumsQuery = (userId) => {
   const query = `*[_type == "subforum" && userId == '${userId}'] | order(title asc) {
     _id,
     title,
-    description
+    description,
+    memberOf[] {
+      _id,
+      postedBy->{_id, userName, image},
+      userId
+    }
   }`;
   return query;
 };
@@ -135,10 +140,10 @@ export const postDetailQuery = (postId) => {
   return query;
 };
 
-export const postQueryforums = `*[_type == "subforum"] | order(_createdAt desc) {
+export const postQueryforums = `*[_type == "subforum"] {
   _id,
   title,
-post[] {
+post[] | order(_createdAt desc) {
   image{
     asset -> {
       url
@@ -221,7 +226,14 @@ export const mainNewsListQuery = `*[_type == "main_news"] {
   title,
   description,
   content,
-  category,
+<<<<<<< Updated upstream
   image,
+
+=======
+  category,
+  "imageUrl": image.asset->url
   datetime
+>>>>>>> Stashed changes
 }`;
+
+

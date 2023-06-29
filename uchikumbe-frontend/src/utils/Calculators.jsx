@@ -46,18 +46,18 @@ export const SeedCalculator = () => {
       <h1 className="text-3xl  text-goldenrod font-bold mb-4">Seed Planting Calculator</h1>
       <div className="flex flex-col gap-4">
         <div className="flex items-center">
-          <label className="w-40">Land Size (acres):</label>
+          <label className=" ">Land Size (acres):</label>
           <input
             type="number"
-            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
+            className="px-4 py-2  ml-4 transition-all duration-500 hover:scale-95 border focus:outline-none w-32 border-green-300 rounded-md"
             value={landSize}
             onChange={(e) => setLandSize(parseFloat(e.target.value))}
           />
         </div>
         <div className="flex items-center">
-          <label className="w-40">Select Seed Type:</label>
+          <label className=" ">Select Seed Type:</label>
           <select
-            className="px-4 py-2  border focus:outline-none w-56 border-green-300 rounded-md"
+            className="px-4 py-2 w-32 ml-4 border focus:outline-none  border-green-300 rounded-md"
             value={seedType}
             onChange={(e) => setSeedType(e.target.value)}
           >
@@ -81,10 +81,10 @@ export const SeedCalculator = () => {
 
         {seedType && (
           <div className="flex items-center">
-            <label className="w-40">Seed Quantity (kg):</label>
+            <label className=" ">Seed Quantity (kg):</label>
             <input
               type="number"
-              className="border p-1"
+              className="border w-36 ml-3 p-1"
               value={seedQuantity}
               readOnly
             />

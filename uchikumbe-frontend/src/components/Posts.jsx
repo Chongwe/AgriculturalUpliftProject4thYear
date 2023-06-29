@@ -12,6 +12,7 @@ import { urlFor, client } from "../client";
 import React, { useEffect, useState } from "react";
 import { formatDistanceToNow, parseISO, isYesterday } from "date-fns";
 import CommentPage from "../pages/CommentPage";
+import { HandThumbUpIcon } from "@heroicons/react/24/solid";
 
 //
 
@@ -57,7 +58,7 @@ const Posts = ({
   }, [postCreatedAt]);
 
   return (
-    <div className=" lg:max-w-[600px] sm:m-12 mb-3 transition-all   overflow-wrap break-word  duration-500 hover:scale-105 p-4 bg-white rounded-xl  flex-wrap min-w-screen-sm ">
+    <div className=" lg:max-w-[600px] sm:m-12 mb-3 transition-all   overflow-wrap break-word  duration-500 lg:hover:scale-105 p-4 bg-white rounded-xl  flex-wrap min-w-screen-sm ">
       <div className="shadow-none justify-between space-x-4 flex  ">
         <div className="flex items-center space-x-2">
           {postedBy?.image ? (
@@ -84,9 +85,7 @@ const Posts = ({
           </div>
         </div>
         <Link to={`/message/${postedBy._id}`}>
-          <IconButton variant="text" color="green" size="lg" className="">
-            <FontAwesomeIcon size="2x" icon={faEnvelope} />
-          </IconButton>
+            <FontAwesomeIcon className="h-7 mr-6 text-green-800 p-2 w-7" icon={faEnvelope} />
         </Link>
       </div>
       <div className="">
@@ -116,9 +115,7 @@ const Posts = ({
         </div>
         <div className=" rounded-full justify-end">
           <Link to="/message">
-            <IconButton variant="text" color="green">
-              <FontAwesomeIcon size="2x" color="goldenrod" icon={faThumbsUp} />
-            </IconButton>
+              <HandThumbUpIcon className="h-7 w-7  mr-6 text-goldenrod " />
           </Link>
         </div>
       </div>

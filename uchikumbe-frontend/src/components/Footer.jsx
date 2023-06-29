@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
  
 export default function Footer() {
   return (
-    <footer className="w-full min-w-[400px] rounded-t-2xl bg-white p-8">
+    <footer className="lg:w-full sm:min-w-screen-sm rounded-t-2xl bg-white p-8">
       <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 text-center md:justify-between">
         <img src={logo} alt="Uchikumbe logo" className="w-12 text-center" />
         <ul className="flex flex-wrap  items-center gap-y-2 gap-x-8">
