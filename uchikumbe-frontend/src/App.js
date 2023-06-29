@@ -23,12 +23,13 @@ import CreateForum from "./components/createForum";
 import ForumPage from "./pages/ForumPage";
 import SendSMS from "./components/SendSMS";
 import SignUp from "./utils/SignUp";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
-      <Route path="sign-in" element={<SignUp />}/>
+      <Route path="sign-in" element={<SignUp />} />
       <Route path="forum-page/:forumId" element={<ForumPage />} />
       <Route path="/comments/:forumId/:postId" element={<CommentPage />} />
       <Route path="people" element={<People />} />
@@ -41,6 +42,7 @@ const router = createBrowserRouter(
       <Route path="message/:userId" element={<SendSMS />} />
       <Route path="edit-profile" element={<EditProfile />} />
       <Route path="user-profile/:userId" element={<UserProfile />}></Route>
+      <Route path="admin-dashboard" element={<AdminDashboard />}></Route>
       <Route path="*" element={<NotFound />} />
     </Route>
   )
