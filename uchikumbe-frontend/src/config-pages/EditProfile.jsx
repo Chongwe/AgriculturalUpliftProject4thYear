@@ -1,23 +1,52 @@
 import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    Card,
-    Input,
-    Button,
-    Typography,
-    Textarea,
-    Select,
-    Option
-  } from "@material-tailwind/react";
-  import {React, useState } from 'react';
-
-  
-
-   
-  function EditProfile() {
+import {Typography,} from "@material-tailwind/react";
+import {React, useState, useEffect } from 'react';
+import { client } from "../client";
+import { userQuery } from "../utils/data";
+import { useNavigate, useParams } from "react-router-dom";
 
 
+
+ const EditProfile = () => {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [location, setLocation] = useState("");
+    const [bio, setBio] = useState("");
+    const navigate = useNavigate();
+    const { userId } = useParams();
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const query = userQuery(userId);
     
+        client.fetch(query).then((data) => {
+          setUser(data[0]);
+        });
+      }, [userId]);
+
+
+    const updateProfile = () =>{
+        const doc = {
+            _type: "user",
+            firstName,
+            lastName,
+            bio,
+            location,
+            userId: user._id,
+
+        };
+        client
+        .patch(userId)
+        .commit()
+        .then(() => {
+          navigate(`/user-profile/${userId}`);
+        });
+   
+    
+    }
+   
+
   const malawiDistricts = [
     'Balaka',
     'Blantyre',
@@ -47,13 +76,8 @@ import {
     'Thyolo',
     'Zomba'
   ];
-  
- 
     return (
-
-        
         <div className=" p-4 lg:flex-row shadow-lg rounded-3xl my-4 min-w-screen-sm justify-center gap-24 lg:flex flex-col  mx-12 items-center"> 
-            
                 <div className="">
                     <div className=" flex flex-wrap gap-4"> 
                         <FontAwesomeIcon icon={faUserEdit}  className="text-goldenrod " size="2x" /> 
@@ -72,15 +96,21 @@ import {
                             type="text"
                             className="px-4 py-2 transition-all w-auto duration-500 flex hover:scale-95 border focus:outline-none  border-green-300 rounded-md"
                             required
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
                         />    
                         <input
                             type="text"
                             placeholder="Last Name"
                             className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none  border-green-300 rounded-md"
                             required
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
                         />        
 
-                        <select  
+                        <select 
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)} 
                         menuProps={{ className: "h-48" }} 
                         className="px-4 py-2 transition-all duration-500  border focus:outline-none  border-green-300 rounded-md"
                         >
@@ -90,8 +120,11 @@ import {
                                 {district}
                             </option>
                             ))}
+                            
                         </select>
                         <textarea
+                            value={bio}
+                            onChange={(e) => setBio(e.target.value)}
                             type="text"
                             placeholder="Tell us about yourself"
                             className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none  border-green-300 rounded-md"
@@ -101,6 +134,7 @@ import {
                     </div>
                 
                     <button
+                        onClick={updateProfile}
                         type="submit"
                         className="bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl w-full focus:outline-none"
                         >
@@ -113,4 +147,5 @@ import {
       </div>
     );
   }
-  export default EditProfile
+
+  export default EditProfile;
