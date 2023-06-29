@@ -1,10 +1,8 @@
-import React from "@material-tailwind/react";
-import avatar from "../assets/avata.jpg";
-import { Avatar } from "@material-tailwind/react";
-import { IconButton } from "@material-tailwind/react";
+import React from "react";
+import { Avatar, IconButton } from "@material-tailwind/react";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Person(props) {
   return (
