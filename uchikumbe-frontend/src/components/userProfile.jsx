@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { googleLogout } from "@react-oauth/google";
 import { Chip } from "@material-tailwind/react";
 
@@ -51,7 +51,7 @@ const UserProfile = () => {
           <div className="flex flex-col justify-center items-center">
             <img
               src={cover}
-              className="w-full  2xl:h-600 rounded-t-3xl shadow-lg object-cover"
+              className="w-full  2xl:h-700 rounded-t-3xl shadow-lg object-cover"
               alt="banner-pic"
             />
             <div className="w-23 h-23 rounded-full -mt-10 bg-white">
@@ -96,12 +96,40 @@ const UserProfile = () => {
               )}
             </div>
           </div>
+
+          <div className="container mx-auto p-4">
+
+            <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+              <div className="p-4">
+                <div className="mb-4">
+                  <label className="text-gray-700 font-bold">First Name:</label>
+                  <div className="text-gray-900">{/* First name value */}</div>
+                </div>
+
+                <div className="mb-4">
+                  <label className="text-gray-700 font-bold">Last Name:</label>
+                  <div className="text-gray-900">{/* Last name value */}</div>
+                </div>
+
+                <div className="mb-4">
+                  <label className="text-gray-700 font-bold">Bio:</label>
+                  <div className="text-gray-900">{/* Bio value */}</div>
+                </div>
+
+                <div className="mb-4">
+                  <label className="text-gray-700 font-bold">Location:</label>
+                  <div className="text-gray-900">{/* Location value */}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="flex flex-wrap relative parent justify-center gap-4">
-            <ProfileCard
-              name="Edit Profile"
-              link="/edit-profile"
-              icon={faUserEdit}
-            />
+              <ProfileCard
+                link={`/edit-profile/${userId}`}
+                name="Edit Profile"
+                icon={faUserEdit}
+              />
             <ProfileCard name="Add Farm" link="/add-farm" icon={faPlusCircle} />
             <ProfileCard name="Posts" link="posts" icon={faNoteSticky} />
             {user.isAdmin && (

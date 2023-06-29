@@ -2,6 +2,9 @@ export const userQuery = (userId) => {
   const query = `*[_type == "user" && _id == '${userId}']`;
   return query;
 };
+// export const userDetailQuery = (userId) => {
+//   const query = `[]`
+// }
 
 export const userListQuery = `*[_type == "user"] | order(userName asc) {
   userName,

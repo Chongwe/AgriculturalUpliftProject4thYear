@@ -38,7 +38,7 @@ export const calculateBroilerFeedFormulation = (age, feedAmount) => {
   
     if (age >= 1 && age <= 4) {
       formulation = {
-        maize: +(0.46 * feedAmount).toFixed(2),
+        Maize: +(0.46 * feedAmount).toFixed(2),
         riceBran: +(0.13 * feedAmount).toFixed(2),
         ricePollard: +(0.1 * feedAmount).toFixed(2),
         sunflowerMeal: +(0.25 * feedAmount).toFixed(2),
