@@ -24,14 +24,19 @@ function People( props) {
   if (!listUser?.length) return <h2>No users found</h2>;
 
   return (
-    <div className="mt-8 h-screen min-w-[400px]">
+    <div className="mt-8 sm:mx-4 min-w-screen-sm justify-center mx-auto align-middle">
+      <h2 className="text-2xl justify-center ml-20 text-goldenrod" >Members of uchikumbe</h2>
+
       {listUser.map((user) => (
         <Person
           key={user._id}
           name={user.userName}
           avatar={user.image}
           user_id={user._id}
-          notificationCount={3}
+    
+          
+          
+       
         />
       ))}
     </div>

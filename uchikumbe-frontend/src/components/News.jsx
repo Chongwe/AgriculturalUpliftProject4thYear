@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Tabs,
   TabsHeader,
+  div,
   Tab,
   Card,
   CardBody,
@@ -54,7 +55,9 @@ export default function News() {
                 className="w-2/5 shrink-0 m-0 rounded-r-none"
               >
                 {/* <div className="max-w-56 overflow-hidden rounded-xl max-h-36">
-                  {news.image && <img src={urlFor(news.image).url()} className="w-full h-auto" />}
+                  {news.image && (
+                    <img src={urlFor(news.image).url()} className="w-full h-auto" alt={news.title} />
+                  )}
                 </div> */}
               </CardHeader>
               <CardBody>
