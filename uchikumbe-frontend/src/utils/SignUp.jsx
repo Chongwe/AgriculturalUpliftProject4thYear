@@ -19,11 +19,11 @@ import { createOrGetUser } from ".";
 */
 const SignUp = () => {
   return (
-    <Card className="w-full m-3 max-w-[18rem]">
+    <Card className="w-full m-3 shadow-lg max-w-[15rem]">
       <CardHeader
         floated={false}
         shadow={false}
-        className="m-0 grid bg-green-900 place-items-center rounded-b-none py-8 px-4 text-center"
+        className="m-0 grid bg-green-900 border-b-4 border-goldenrod  place-items-center rounded-b-none py-8 px-4 text-center"
       >
         <img src={logo} alt="Uchikumbe Logo" className="h-12" />
         <Typography variant="h4" color="white">
@@ -31,15 +31,21 @@ const SignUp = () => {
         </Typography>
       </CardHeader>
 
-      <div className="mt-1 mb-2 m-3 place-items-center text-center ">
-        <Typography variant="h4" className="text-green-900">
-          Sign Up
-        </Typography>
-        <Typography color="gray" className="mt-1 mb-4 font-normal">
-          Sign In with your Gmail account
-        </Typography>
-        <div className="items-center">
+      <div className="mt-1 mb-2 m-3 place-items-center justify-center text-center ">
+        <div className=" rounded-lg m-2 bg-green-50 p-2">
+            <Typography variant="h4" className="text-green-900 ">
+              Sign Up
+            </Typography>
+            <Typography  className="mt-1 ">
+              Sign In with your Gmail account
+            </Typography>
+            <Typography  className="mt-1  bg-green-100 rounded-md p-2 text-goldenrod text-xs">
+              Only use accounts that end with *@gmail.com 
+            </Typography>
+        </div>
+        <div className="justify-center items-center">
           <GoogleLogin
+            className="justify-center"
             onSuccess={(response) =>
               createOrGetUser(response).then(() => {
                 window.location.reload();

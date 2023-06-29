@@ -83,7 +83,7 @@ export default function Fun({ user = null }) {
             Sign In
           </Button>
         </PopoverHandler>
-        <PopoverContent>
+        <PopoverContent className="bg-transparent border-none shadow-none">
           <SignUp />
         </PopoverContent>
       </Popover>
