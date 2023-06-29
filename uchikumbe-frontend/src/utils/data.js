@@ -226,7 +226,8 @@ export const mainNewsListQuery = `*[_type == "main_news"] {
   title,
   description,
   content,
-  category,
   image,
-  datetime
+
 }`;
+
+
