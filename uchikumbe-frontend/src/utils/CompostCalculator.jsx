@@ -1,132 +1,309 @@
 import React, { useState } from 'react';
-import { calculateBroilerFeedFormulation, calculateLayersFeedFormulation } from './FeedFormulations';
 
-const FeedFormulationCalculator = () => {
-  const [chickenType, setChickenType] = useState('');
-  const [age, setAge] = useState('');
-  const [feedAmount, setFeedAmount] = useState('');
-  const [result, setResult] = useState('');
+const VARIETIES = {
+  Chalimbana: { seedRate: 44.5, spacing: '75 by 15 1 seed' },
+  Chitembana: { seedRate: 28.9, spacing: '75 by 15 1 seed' },
+  GG7: { seedRate: 44.5, spacing: '75 by 15 1 seed' },
+  Nsinjiro: { seedRate: 40.5, spacing: '75 by 15 1 seed' },
+  Manipintar: { seedRate: 32.4, spacing: '75 by 15 1 seed' },
+  Mawanga: { seedRate: 32.4, spacing: '75 by 15 1 seed' },
+  RG1: { seedRate: 32.4, spacing: '75 by 15 1 seed' },
+  'Chalimbana 2005': { seedRate: 44.5, spacing: '75 by 15 1 seed' },
+  Malimba: { seedRate: 18.2, spacing: '75 by 10 1 seed' },
+  Kakoma: { seedRate: 24.3, spacing: '75 by 10 1 seed' },
+  Baka: { seedRate: 24.3, spacing: '75 by 10 1 seed' },
+  Chitala: { seedRate: 44.5, spacing: '75 by 10 1 seed' },
+};
 
-  const handleChickenTypeChange = (event) => {
-    setChickenType(event.target.value);
-  };
+function App() {
+  const [fieldSize, setFieldSize] = useState('');
+  const [variety, setVariety] = useState('');
+  const [seedRequirement, setSeedRequirement] = useState('');
+  const [recommendedSpacing, setRecommendedSpacing] = useState('');
 
-  const handleAgeChange = (event) => {
-    setAge(event.target.value);
-  };
-
-  const handleFeedAmountChange = (event) => {
-    setFeedAmount(event.target.value);
-  };
-
-  const calculateFeedFormulation = () => {
-    if (!chickenType || !age || !feedAmount) {
-      setResult('Please fill in all fields.');
-      return;
+  const calculateSeedRequirement = () => {
+    if (fieldSize && variety) {
+      const selectedVariety = VARIETIES[variety];
+      const seedRate = selectedVariety.seedRate;
+      const spacing = selectedVariety.spacing;
+      const calculatedSeedRequirement = (fieldSize * seedRate).toFixed(2);
+      setSeedRequirement(calculatedSeedRequirement);
+      setRecommendedSpacing(spacing);
     }
-
-    const parsedAge = parseInt(age, 10);
-    const parsedFeedAmount = parseFloat(feedAmount);
-
-    if (isNaN(parsedAge) || isNaN(parsedFeedAmount)) {
-      setResult('Please enter valid numeric values.');
-      return;
-    }
-
-    let formulation;
-
-    if (chickenType === 'broilers') {
-      formulation = calculateBroilerFeedFormulation(parsedAge, parsedFeedAmount);
-    } else if (chickenType === 'layers') {
-      formulation = calculateLayersFeedFormulation(parsedAge, parsedFeedAmount);
-    } else {
-      setResult('Invalid chicken type selected.');
-      return;
-    }
-
-    setResult(formatFormulationResult(formulation));
-  };
-
-  const formatFormulationResult = (formulation) => {
-    const tableRows = Object.entries(formulation).map(([key, value]) => (
-      <tr key={key}>
-        <td>{key}</td>
-        <td>{value.toFixed(2)} kg</td>
-      </tr>
-    ));
-
-    return (
-      <table className="mt-4">
-        <thead>
-          <tr>
-            <th>Ingredient</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableRows}
-        </tbody>
-      </table>
-    );
   };
 
   return (
-    <div className="container mx-auto mt-8 px-4">
-      <h1 className="text-3xl font-semibold mb-4">Chicken Feed Formulation Calculator</h1>
+    <div className="container mx-auto py-8">
+      <h1 className="text-2xl font-bold mb-4">Groundnut Planting Calculator</h1>
+
       <div className="mb-4">
-        <label className="block">
-          Chicken Type:
-          <select
-            className="form-select mt-1"
-            value={chickenType}
-            onChange={handleChickenTypeChange}
-          >
-            <option value="">Select</option>
-            <option value="broilers">Broilers</option>
-            <option value="layers">Layers</option>
-          </select>
+        <label htmlFor="fieldSize" className="font-bold">
+          Field Size (in acres):
         </label>
+        <input
+          type="number"
+          id="fieldSize"
+          className="border p-2"
+          value={fieldSize}
+          onChange={(e) => setFieldSize(parseFloat(e.target.value))}
+        />
       </div>
+
       <div className="mb-4">
-        <label className="block">
-          Age (in weeks):
-          <input
-            type="number"
-            className="form-input mt-1"
-            value={age}
-            onChange={handleAgeChange}
-          />
+        <label htmlFor="variety" className="font-bold">
+          Groundnut Variety:
         </label>
+        <select
+          id="variety"
+          className="border p-2"
+          value={variety}
+          onChange={(e) => setVariety(e.target.value)}
+        >
+          <option value="">Select a variety</option>
+          {Object.keys(VARIETIES).map((variety) => (
+            <option key={variety} value={variety}>
+              {variety}
+            </option>
+          ))}
+        </select>
       </div>
-      <div className="mb-4">
-        <label className="block">
-          Feed Amount (in kilograms):
-          <input
-            type="number"
-            step="0.01"
-            className="form-input mt-1"
-            value={feedAmount}
-            onChange={handleFeedAmountChange}
-          />
-        </label>
-      </div>
+
       <button
-        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded"
-        onClick={calculateFeedFormulation}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={calculateSeedRequirement}
       >
         Calculate
       </button>
-      {result && (
+
+      {seedRequirement && (
         <div className="mt-4">
-          <h2 className="text-lg font-semibold mb-2">Feed Formulation:</h2>
-          {result}
+          <label className="font-bold">Seed Requirement:</label>
+          <div className="border p-2">{seedRequirement} kg</div>
+        </div>
+      )}
+
+      {recommendedSpacing && (
+        <div className="mt-4">
+          <label className="font-bold">Recommended Spacing:</label>
+          <div className="border p-2">{recommendedSpacing}</div>
         </div>
       )}
     </div>
   );
-};
+}
 
-export default FeedFormulationCalculator;
+export default App;
+
+
+
+
+// import React, { useState } from 'react';
+
+// const VARIETIES = {
+//   Chalimbana: 44.5,
+//   Chitembana: 28.9,
+//   GG7: 44.5,
+//   Nsinjiro: 40.5,
+//   Manipintar: 32.4,
+//   Mawanga: 32.4,
+//   RG1: 32.4,
+//   'Chalimbana 2005': 44.5,
+//   Malimba: 18.2,
+//   Kakoma: 24.3,
+//   Baka: 24.3,
+//   Chitala: 44.5,
+// };
+
+// function App() {
+//   const [fieldSize, setFieldSize] = useState('');
+//   const [variety, setVariety] = useState('');
+
+//   const calculateSeedRequirement = () => {
+//     if (fieldSize && variety) {
+//       const seedRate = VARIETIES[variety];
+//       const seedRequirement = fieldSize * seedRate;
+//       return `${seedRequirement.toFixed(2)} kg`;
+//     }
+//     return '';
+//   };
+
+//   return (
+//     <div className="container mx-auto py-8">
+//       <h1 className="text-2xl font-bold mb-4">Groundnut Planting Calculator</h1>
+
+//       <div className="mb-4">
+//         <label htmlFor="fieldSize" className="font-bold">
+//           Field Size (in acres):
+//         </label>
+//         <input
+//           type="number"
+//           id="fieldSize"
+//           className="border p-2"
+//           value={fieldSize}
+//           onChange={(e) => setFieldSize(parseFloat(e.target.value))}
+//         />
+//       </div>
+
+//       <div className="mb-4">
+//         <label htmlFor="variety" className="font-bold">
+//           Groundnut Variety:
+//         </label>
+//         <select
+//           id="variety"
+//           className="border p-2"
+//           value={variety}
+//           onChange={(e) => setVariety(e.target.value)}
+//         >
+//           <option value="">Select a variety</option>
+//           {Object.keys(VARIETIES).map((variety) => (
+//             <option key={variety} value={variety}>
+//               {variety}
+//             </option>
+//           ))}
+//         </select>
+//       </div>
+
+//       <div>
+//         <label className="font-bold">Seed Requirement:</label>
+//         <div className="border p-2">{calculateSeedRequirement()}</div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+// import React, { useState } from 'react';
+// import { calculateBroilerFeedFormulation, calculateLayersFeedFormulation } from './FeedFormulations';
+
+// const FeedFormulationCalculator = () => {
+//   const [chickenType, setChickenType] = useState('');
+//   const [age, setAge] = useState('');
+//   const [feedAmount, setFeedAmount] = useState('');
+//   const [result, setResult] = useState('');
+
+//   const handleChickenTypeChange = (event) => {
+//     setChickenType(event.target.value);
+//   };
+
+//   const handleAgeChange = (event) => {
+//     setAge(event.target.value);
+//   };
+
+//   const handleFeedAmountChange = (event) => {
+//     setFeedAmount(event.target.value);
+//   };
+
+//   const calculateFeedFormulation = () => {
+//     if (!chickenType || !age || !feedAmount) {
+//       setResult('Please fill in all fields.');
+//       return;
+//     }
+
+//     const parsedAge = parseInt(age, 10);
+//     const parsedFeedAmount = parseFloat(feedAmount);
+
+//     if (isNaN(parsedAge) || isNaN(parsedFeedAmount)) {
+//       setResult('Please enter valid numeric values.');
+//       return;
+//     }
+
+//     let formulation;
+
+//     if (chickenType === 'broilers') {
+//       formulation = calculateBroilerFeedFormulation(parsedAge, parsedFeedAmount);
+//     } else if (chickenType === 'layers') {
+//       formulation = calculateLayersFeedFormulation(parsedAge, parsedFeedAmount);
+//     } else {
+//       setResult('Invalid chicken type selected.');
+//       return;
+//     }
+
+//     setResult(formatFormulationResult(formulation));
+//   };
+
+//   const formatFormulationResult = (formulation) => {
+//     const tableRows = Object.entries(formulation).map(([key, value]) => (
+//       <tr key={key}>
+//         <td>{key}</td>
+//         <td>{value.toFixed(2)} kg</td>
+//       </tr>
+//     ));
+
+//     return (
+//       <table className="mt-4">
+//         <thead>
+//           <tr>
+//             <th>Ingredient</th>
+//             <th>Amount</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {tableRows}
+//         </tbody>
+//       </table>
+//     );
+//   };
+
+//   return (
+//     <div className="container mx-auto mt-8 px-4">
+//       <h1 className="text-3xl font-semibold mb-4">Chicken Feed Formulation Calculator</h1>
+//       <div className="mb-4">
+//         <label className="block">
+//           Chicken Type:
+//           <select
+//             className="form-select mt-1"
+//             value={chickenType}
+//             onChange={handleChickenTypeChange}
+//           >
+//             <option value="">Select</option>
+//             <option value="broilers">Broilers</option>
+//             <option value="layers">Layers</option>
+//           </select>
+//         </label>
+//       </div>
+//       <div className="mb-4">
+//         <label className="block">
+//           Age (in weeks):
+//           <input
+//             type="number"
+//             className="form-input mt-1"
+//             value={age}
+//             onChange={handleAgeChange}
+//           />
+//         </label>
+//       </div>
+//       <div className="mb-4">
+//         <label className="block">
+//           Feed Amount (in kilograms):
+//           <input
+//             type="number"
+//             step="0.01"
+//             className="form-input mt-1"
+//             value={feedAmount}
+//             onChange={handleFeedAmountChange}
+//           />
+//         </label>
+//       </div>
+//       <button
+//         className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded"
+//         onClick={calculateFeedFormulation}
+//       >
+//         Calculate
+//       </button>
+//       {result && (
+//         <div className="mt-4">
+//           <h2 className="text-lg font-semibold mb-2">Feed Formulation:</h2>
+//           {result}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default FeedFormulationCalculator;
 
 
 
