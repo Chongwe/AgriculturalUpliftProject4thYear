@@ -5,11 +5,12 @@ import { googleLogout } from "@react-oauth/google";
 import { Chip } from "@material-tailwind/react";
 
 import {
+  faCog,
   faNoteSticky,
   faPlusCircle,
   faUserEdit,
 } from "@fortawesome/free-solid-svg-icons";
-import cover from "../assets/uchikumbe cover.jpg"
+import cover from "../assets/uchikumbe cover.jpg";
 
 import { userQuery } from "../utils/data";
 import { client } from "../client";
@@ -27,8 +28,6 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
 
-  console.log(userId);
-
   useEffect(() => {
     const query = userQuery(userId);
 
@@ -36,8 +35,6 @@ const UserProfile = () => {
       setUser(data[0]);
     });
   }, [userId]);
-
-  //   console.log(user.userName);
 
   const logout = () => {
     localStorage.clear();
@@ -68,14 +65,15 @@ const UserProfile = () => {
               <h1 className="font-bold text-3xl text-green-900 text-center mt-3 ">
                 {user.userName}
               </h1>
-              <Chip   
-              onClick={() => {
-                      googleLogout();
-                      logout();
-                    }} 
-              value="Log out" 
-              className="mt-4 cursor-pointer hover:bg-goldenrod bg-green-700 items-center justify-center text-white" variant="ghost" 
-              icon={<AiOutlineLogout className="text-white" fontSize={21} />} 
+              <Chip
+                onClick={() => {
+                  googleLogout();
+                  logout();
+                }}
+                value="Log out"
+                className="mt-4 cursor-pointer hover:bg-goldenrod bg-green-700 items-center justify-center text-white"
+                variant="ghost"
+                icon={<AiOutlineLogout className="text-white" fontSize={21} />}
               />
             </div>
             <div className="absolute top-0 z-1 right-0 p-5">
@@ -99,11 +97,21 @@ const UserProfile = () => {
             </div>
           </div>
           <div className="flex flex-wrap relative parent justify-center gap-4">
-            <ProfileCard name="Edit Profile" link="/edit-profile" icon={faUserEdit}/>
+            <ProfileCard
+              name="Edit Profile"
+              link="/edit-profile"
+              icon={faUserEdit}
+            />
             <ProfileCard name="Add Farm" link="/add-farm" icon={faPlusCircle} />
             <ProfileCard name="Posts" link="posts" icon={faNoteSticky} />
+            {user.isAdmin && (
+              <ProfileCard
+                name="Admin Dashboard"
+                link="/admin-dashboard"
+                icon={faCog}
+              />
+            )}
           </div>
-
         </div>
       </div>
     </div>
