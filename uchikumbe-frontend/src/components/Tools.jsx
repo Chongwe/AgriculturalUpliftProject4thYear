@@ -10,27 +10,28 @@ import {
   Square3Stack3DIcon,
   Cog6ToothIcon,
 } from "@heroicons/react/24/solid";
+import FeedCalculators from "../utils/FeedCalculators.";
 import {
-  FeedCalculator,
   SeedCalculator,
 } from "../utils/Calculators";
 import CompostCalculator from "../utils/CompostCalculator";
 import MaizeFertilizerCalculator from "../utils/MaizeFertilizerCalculator";
 import ChickenFeedCalculator from "../utils/ChickenFeedCulculator";
+import Planters from "../utils/Planters";
 
-const feedCalculator = <FeedCalculator />;
 const seedCalculator = <SeedCalculator />;
 const maizeCalculator = <MaizeFertilizerCalculator />;
 const compostCalculator = <CompostCalculator />;
-const chickenFeedCalculator = <ChickenFeedCalculator />;
+const feedCalculator = <FeedCalculators />;
+const planters = <Planters />
 
 export default function Example() {
   const [activeTab, setActiveTab] = React.useState("html");
   const data = [
     {
-      label: "Seed Calculator",
+      label: "Planters",
       value: "seed-calculator",
-      desc: seedCalculator,
+      desc: planters,
     },
     {
       label: "Compost Calculator",
@@ -43,9 +44,9 @@ export default function Example() {
       desc: maizeCalculator,
     },
     {
-      label: "Chicken feed Calculator",
+      label: "Feed Calculators",
       value: "chickenfeed-calculator",
-      desc: chickenFeedCalculator,
+      desc: feedCalculator,
     },
   ];
 
@@ -53,7 +54,7 @@ export default function Example() {
 
   return (
     <div className="flex min-w-screen-sm items-center justify-center">
-      <div className="mb-96  flex items-center bg-green-100 rounded-xl p-2 m-4">
+      <div className="mb-96  flex items-center bg-green-100 h-auto rounded-xl p-2 m-4">
       <Tabs value={initialValue} >
       <TabsHeader
         className="rounded-xl bg-white p-4 border-green-900  "

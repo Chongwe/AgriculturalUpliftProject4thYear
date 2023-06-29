@@ -6,10 +6,13 @@ import { Link } from "react-router-dom";
 
 function Person(props) {
   return (
-    <div className="bg-white transition-all lg:w-full min-w-screen-d pt-4  duration-200 hover:bg-green-100 mx-auto align-middle sm:p-4 rounded-lg p-2">
+    <div className="bg-white transition-all lg:w-full min-w-screen-d pt-4  duration-200
+     hover:bg-green-100 mx-auto align-middle sm:p-4 rounded-lg p-2 ">
       <div className="flex items-center justify-between mb-2"></div>
-      <div className="md:px-8 sm:ml-8 sm:px-8 ">
-        <div className="flex items-center  space-x-4 border-b border-green-100">
+      <div className="md:px-8 sm:ml-8 sm:px-8 hover:text ">
+        <div className="flex items-center  space-x-4 border-b focus:border-green-300 
+            border-green-100 outline-none
+           ">
           <img
             alt="user image"
             src={props.avatar}

@@ -33,5 +33,11 @@ export default {
       title: 'Location',
       type: 'string',
     },
+    {
+      name: 'isAdmin',
+      title: 'IsAdmin',
+      type: 'boolean',
+      validation: (Rule) => Rule.required(),
+    },
   ],
 }

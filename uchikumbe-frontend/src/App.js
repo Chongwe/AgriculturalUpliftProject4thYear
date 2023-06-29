@@ -23,7 +23,7 @@ import CreateForum from "./components/createForum";
 import ForumPage from "./pages/ForumPage";
 import SendSMS from "./components/SendSMS";
 import SignUp from "./utils/SignUp";
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from "./pages/AdminPages/AdminDashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,7 +40,7 @@ const router = createBrowserRouter(
       <Route path="create-post/:forumId" element={<CreatePost />} />
       <Route path="add-farm" element={<AddFarm />} />
       <Route path="message/:userId" element={<SendSMS />} />
-      <Route path="edit-profile" element={<EditProfile />} />
+      <Route path="edit-profile/:userId" element={<EditProfile />} />
       <Route path="user-profile/:userId" element={<UserProfile />}></Route>
       <Route path="admin-dashboard" element={<AdminDashboard />}></Route>
       <Route path="*" element={<NotFound />} />

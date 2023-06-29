@@ -2,6 +2,9 @@ export const userQuery = (userId) => {
   const query = `*[_type == "user" && _id == '${userId}']`;
   return query;
 };
+// export const userDetailQuery = (userId) => {
+//   const query = `[]`
+// }
 
 export const userListQuery = `*[_type == "user"] | order(userName asc) {
   userName,
@@ -226,14 +229,8 @@ export const mainNewsListQuery = `*[_type == "main_news"] {
   title,
   description,
   content,
-<<<<<<< Updated upstream
-  image,
+  "imageUrl": image.asset->url,
 
-=======
-  category,
-  "imageUrl": image.asset->url
-  datetime
->>>>>>> Stashed changes
 }`;
 
 
