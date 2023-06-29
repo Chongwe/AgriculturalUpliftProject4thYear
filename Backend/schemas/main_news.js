@@ -1,7 +1,7 @@
 export default {
   name: 'main_news',
   type: 'document',
-  title: 'News',
+  title: 'Main_news',
   fields: [
       {
           name: 'title',
