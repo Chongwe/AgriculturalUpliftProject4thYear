@@ -121,17 +121,17 @@ const SendSMS = () => {
     }
   }, [userInfo, receiver]);
 
-  useEffect(() => {
-    // Disable scrolling on mount
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
+  // useEffect(() => {
+  //   // Disable scrolling on mount
+  //   document.documentElement.style.overflow = 'hidden';
+  //   document.body.style.overflow = 'hidden';
 
-    // Enable scrolling on unmount
-    return () => {
-      document.documentElement.style.overflow = 'auto';
-      document.body.style.overflow = 'auto';
-    };
-  }, []);
+  //   // Enable scrolling on unmount
+  //   return () => {
+  //     document.documentElement.style.overflow = 'auto';
+  //     document.body.style.overflow = 'auto';
+  //   };
+  // }, []);
 
   return (
     <div className="flex flex-col px-4 h-screen w-full items-center bg-green-200">
