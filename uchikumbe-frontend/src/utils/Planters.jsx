@@ -16,13 +16,13 @@ export const MaizeSeedCalculator = () => {
     };
   
     return (
-      <div className="max-w-md mx-auto mt-8 p-4 bg-white shadow-lg rounded-lg">
+      <div className="container border border-goldenrod rounded-lg p-4 mx-auto mt-2">
         <h2 className="text-2xl font-bold mb-4">Maize Seed Calculator</h2>
         <div className="mb-4">
           <label className="block font-medium">Field Size (in acres):</label>
           <input
             type="number"
-            className="w-full rounded-lg border border-gray-300 py-2 px-3"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             value={fieldSize}
             onChange={(e) => setFieldSize(e.target.value)}
           />
@@ -31,7 +31,7 @@ export const MaizeSeedCalculator = () => {
           <label className="block font-medium">Row Spacing (in meters):</label>
           <input
             type="number"
-            className="w-full rounded-lg border border-gray-300 py-2 px-3"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             value={rowSpacing}
             onChange={(e) => setRowSpacing(e.target.value)}
           />
@@ -40,7 +40,7 @@ export const MaizeSeedCalculator = () => {
           <label className="block font-medium">Station Spacing (in meters):</label>
           <input
             type="number"
-            className="w-full rounded-lg border border-gray-300 py-2 px-3"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             value={stationSpacing}
             onChange={(e) => setStationSpacing(e.target.value)}
           />
@@ -49,13 +49,13 @@ export const MaizeSeedCalculator = () => {
           <label className="block font-medium">Seeds per Station:</label>
           <input
             type="number"
-            className="w-full rounded-lg border border-gray-300 py-2 px-3"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             value={seedsPerStation}
             onChange={(e) => setSeedsPerStation(e.target.value)}
           />
         </div>
         <button
-          className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+          className="bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none"
           onClick={calculateSeeds}
         >
           Calculate
@@ -82,18 +82,18 @@ export const CassavaStemCalculator = () => {
       const totalStations = (areaInSquareMeters / rowSpacing) * (1 / stationSpacing);
       const totalStems = totalStations * stemsPerStation;
       const totalStemSize = totalStems * stemSize;
-      const resultInKilograms = (totalStemSize / 100) / 50;
-      setResult(resultInKilograms.toFixed(2));
+      const resultInKilograms = (totalStemSize / 100);
+      setResult(resultInKilograms.toFixed(0));
     };
   
     return (
-      <div className="max-w-md mx-auto mt-8 p-4 bg-white shadow-lg rounded-lg">
+      <div className="container border border-goldenrod rounded-lg p-4 mx-auto mt-2">
         <h2 className="text-2xl font-bold mb-4">Cassava Stem Calculator</h2>
         <div className="mb-4">
           <label className="block font-medium">Field Size (in acres):</label>
           <input
             type="number"
-            className="w-full rounded-lg border border-gray-300 py-2 px-3"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             value={fieldSize}
             onChange={(e) => setFieldSize(e.target.value)}
           />
@@ -102,7 +102,7 @@ export const CassavaStemCalculator = () => {
           <label className="block font-medium">Row Spacing (in meters):</label>
           <input
             type="number"
-            className="w-full rounded-lg border border-gray-300 py-2 px-3"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             value={rowSpacing}
             onChange={(e) => setRowSpacing(e.target.value)}
           />
@@ -111,7 +111,7 @@ export const CassavaStemCalculator = () => {
           <label className="block font-medium">Station Spacing (in meters):</label>
           <input
             type="number"
-            className="w-full rounded-lg border border-gray-300 py-2 px-3"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             value={stationSpacing}
             onChange={(e) => setStationSpacing(e.target.value)}
           />
@@ -120,29 +120,29 @@ export const CassavaStemCalculator = () => {
           <label className="block font-medium">Stems per Station:</label>
           <input
             type="number"
-            className="w-full rounded-lg border border-gray-300 py-2 px-3"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             value={stemsPerStation}
             onChange={(e) => setStemsPerStation(e.target.value)}
           />
         </div>
         <div className="mb-4">
-          <label className="block font-medium">Stem Size:</label>
+          <label className="block font-medium">Stem Size in metres:</label>
           <input
             type="number"
-            className="w-full rounded-lg border border-gray-300 py-2 px-3"
+            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none w-56 border-green-300 rounded-md"
             value={stemSize}
             onChange={(e) => setStemSize(e.target.value)}
           />
         </div>
         <button
-          className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+          className="bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none"
           onClick={calculateSeeds}
         >
           Calculate
         </button>
         {result && (
           <div className="mt-4">
-            <p>Number of bundles Required: {result} bundles of 50, 1 meter stems </p>
+            <p className=''>Number of Required stems:<span className='font-bold text-lg text-green-900'> {result}  one meter stems</span> </p>
           </div>
         )}
       </div>
