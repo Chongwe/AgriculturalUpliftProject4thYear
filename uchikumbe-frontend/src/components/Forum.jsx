@@ -68,7 +68,7 @@ const Forum = () => {
         <div className="m-4 text-center ">
           <Link to={`/create-forum/${user?._id}`}>
             <button className=" bg-green-500  transition-all duration-200 hover:scale-95 hover:bg-goldenrod py-2 justify-center px-4 ml-4  text-white  rounded-full focus:outline-none">
-              Create a Forum
+              Want To Create A Forum?
             </button>
             <hr className="my-4 border-goldenrod" />
           </Link>
@@ -98,7 +98,7 @@ const Forum = () => {
           </div>
         )}
         <div className="p-4 ">
-          <h1 className="text-4xl mb-4  text-green-900">Other Forums</h1>
+          <h1 className="text-4xl mb-4  text-green-900">Forums</h1>
           <hr className="my-4 border-green-500 border-1" />
           <div className="   rounded-xl">
             {forums?.map((forum) => (

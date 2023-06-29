@@ -11,6 +11,7 @@ export const createOrGetUser = async (reponse) => {
     _type: "user",
     userName: name,
     image: picture,
+    isAdmin: false,
   };
 
   client.createIfNotExists(doc);

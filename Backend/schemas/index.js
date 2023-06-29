@@ -17,25 +17,27 @@ import cropChoice from './cropChoice'
 import pestsChoice from './pestsChoice'
 import equipmentChoice from './equipmentChoice'
 import messages from './messages'
+import forumRequest from './forumRequest'
 
 export const schemaTypes = [
-  user,
-  postedBy,
-  news,
-  memberOf,
-  comment,
-  dislike,
-  messages,
-  like,
-  subforum,
-  posts,
-  animals,
-  crops,
-  equipment,
-  farms,
-  pests,
   animalchoice,
+  animals,
+  comment,
+  crops,
   cropChoice,
-  pestsChoice,
+  dislike,
+  equipment,
   equipmentChoice,
+  farms,
+  forumRequest,
+  like,
+  memberOf,
+  messages,
+  news,
+  pests,
+  pestsChoice,
+  postedBy,
+  posts,
+  subforum,
+  user,
 ]

@@ -19,7 +19,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import UserProfile from "./components/userProfile";
 import EditProfile from "./config-pages/EditProfile";
 import AddFarm from "./config-pages/AddFarm";
-import CreateForum from "./components/createForum";
+import SubmiteForumRequestPage from "./components/createForum";
 import ForumPage from "./pages/ForumPage";
 import SendSMS from "./components/SendSMS";
 import SignUp from "./utils/SignUp";
@@ -36,7 +36,10 @@ const router = createBrowserRouter(
       <Route path="news" element={<News />} />
       <Route path="tools" element={<Tools />} />
       <Route path="forum" element={<Forum />} />
-      <Route path="create-forum/:userId" element={<CreateForum />} />
+      <Route
+        path="create-forum/:userId"
+        element={<SubmiteForumRequestPage />}
+      />
       <Route path="create-post/:forumId" element={<CreatePost />} />
       <Route path="add-farm" element={<AddFarm />} />
       <Route path="message/:userId" element={<SendSMS />} />
