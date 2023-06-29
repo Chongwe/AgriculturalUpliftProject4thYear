@@ -1,7 +1,7 @@
 export default {
-  name: 'news',
+  name: 'main_news',
   type: 'document',
-  title: 'News',
+  title: 'Main News',
   fields: [
     {
       name: 'title',
@@ -30,9 +30,9 @@ export default {
       },
     },
     {
-      name: 'time',
+      name: 'timestamp',
       type: 'datetime',
-      title: 'Time',
+      title: 'Timestamp',
       validation: (Rule) => Rule.required(),
     },
   ],
