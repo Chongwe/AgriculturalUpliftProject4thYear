@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { client } from "../client";
 import { userListQuery } from "../utils/data";
 import Spinner from "./Spinner";
+import SendSMS from "./SendSMS";
 
-function People() {
+function People( props) {
   const [listUser, setListUser] = useState(null);
   const [loading, setLoading] = useState(false);
 

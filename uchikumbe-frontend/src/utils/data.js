@@ -226,8 +226,14 @@ export const mainNewsListQuery = `*[_type == "main_news"] {
   title,
   description,
   content,
+<<<<<<< Updated upstream
   image,
 
+=======
+  category,
+  "imageUrl": image.asset->url
+  datetime
+>>>>>>> Stashed changes
 }`;
 
 
