@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
@@ -10,18 +10,35 @@ import styles from "../index.css";
 import { client } from "../client";
 import Spinner from "./Spinner";
 import { isPast } from "date-fns";
+import { forumDetailsQuery } from "../utils/data";
+import PageBlocked from "../others/PageBlocked";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { forumId } = useParams();
+  const [forum, setForum] = useState(null);
   const [fields, setFields] = useState();
   const [imageAsset, setImageAsset] = useState();
   const [wrongImageType, setWrongImageType] = useState(false);
   const user = useContext(UserContext);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const query = forumDetailsQuery(forumId);
+
+    client.fetch(query).then((data) => {
+      setForum(data[0]);
+      setLoading(false);
+    });
+  }, [forumId]);
+
+  const isMember =
+    user &&
+    forum &&
+    forum.memberOf?.some((member) => member.userId === user._id);
 
   const uploadImage = (e) => {
     const selectedFile = e.target.files[0];
@@ -96,6 +113,15 @@ const CreatePost = () => {
       }, 2000);
     }
   };
+
+  if (loading) {
+    return <Spinner message={"loading forum"} />;
+  }
+
+  if (!isMember) {
+    return <PageBlocked />;
+  }
+
   return (
     <div className="flex flex-col justify-center items-center mt-5 lg:h-4/5">
       <div className=" flex lg:flex-row flex-col justify-center items-center bg-white lg:p-5 p-3 lg:w-4/5  w-full">
