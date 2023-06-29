@@ -67,9 +67,9 @@ const FertilizerCalculator = () => {
       {fertilizerResult && (
         <div className="mt-4">
           <h2 className="text-lg font-semibold mb-2">Fertilizer Amounts:</h2>
-          <p>NPK - Wokulutsa: {fertilizerResult.npk} kg</p>
-          <p>Urea - Wobeleketsa: {fertilizerResult.urea} kg</p>
-          <p>CAN - Wobeleketsa: {fertilizerResult.can} kg</p>
+          <p>NPK  {fertilizerResult.npk} kg</p>
+          <p>Urea  {fertilizerResult.urea} kg</p>
+          <p>CAN  {fertilizerResult.can} kg</p>
         </div>
       )}
     </div>
