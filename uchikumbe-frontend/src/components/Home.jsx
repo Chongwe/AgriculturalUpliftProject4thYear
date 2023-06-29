@@ -34,7 +34,14 @@ const Home = () => {
         }
         return accumulator;
       }, []);
-      setPosts(flattenedPosts);
+      // Sort the posts by _createdAt in descending order
+      const sortedPosts = flattenedPosts.sort(
+        (a, b) => new Date(b._createdAt) - new Date(a._createdAt)
+      );
+
+      setPosts(sortedPosts);
+      // console.log(flattenedPosts);
+      // console.log(posts);
       setLoading(false);
     });
   }, []);

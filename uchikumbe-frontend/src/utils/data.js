@@ -140,10 +140,10 @@ export const postDetailQuery = (postId) => {
   return query;
 };
 
-export const postQueryforums = `*[_type == "subforum"] | order(_createdAt desc) {
+export const postQueryforums = `*[_type == "subforum"] {
   _id,
   title,
-post[] {
+post[] | order(_createdAt desc) {
   image{
     asset -> {
       url
