@@ -52,7 +52,7 @@ import {
     return (
 
         
-        <div className=" p-4 lg:flex-row shadow-lg rounded-3xl my-4 min-w-[400px] justify-center gap-24 lg:flex flex-col  mx-12 items-center"> 
+        <div className=" p-4 lg:flex-row shadow-lg rounded-3xl my-4 min-w-screen-sm justify-center gap-24 lg:flex flex-col  mx-12 items-center"> 
             
                 <div className="">
                     <div className=" flex flex-wrap gap-4"> 
@@ -65,25 +65,47 @@ import {
                     Update your profile information
                     </Typography> 
                 </div>
-                <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+                <form className="mt-8 mb-2 min-w-screen-sm max-w-screen-lg sm:w-96">
                     <div className="mb-4 flex flex-col gap-6">
-                        <Input size="lg" color="green" label="First Name" />
-                        <Input size="lg" color="green" label="Last Name" />
-                        <Select color="green" menuProps={{ className: "h-48" }} label="Select District">
-                            {malawiDistricts.map((district) => (
-                            <Option key={district} value={district}>
-                                {district}
-                            </Option>
-                            ))}
-                        </Select>
-                        <Textarea color="green" label="Tell us about yourself" />
+                        <input
+                            placeholder="First Name"
+                            type="text"
+                            className="px-4 py-2 transition-all w-auto duration-500 flex hover:scale-95 border focus:outline-none  border-green-300 rounded-md"
+                            required
+                        />    
+                        <input
+                            type="text"
+                            placeholder="Last Name"
+                            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none  border-green-300 rounded-md"
+                            required
+                        />        
 
+                        <select  
+                        menuProps={{ className: "h-48" }} 
+                        className="px-4 py-2 transition-all duration-500  border focus:outline-none  border-green-300 rounded-md"
+                        >
+                            <option>Select District</option>
+                            {malawiDistricts.map((district) => (
+                            <option key={district} value={district}>
+                                {district}
+                            </option>
+                            ))}
+                        </select>
+                        <textarea
+                            type="text"
+                            placeholder="Tell us about yourself"
+                            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none  border-green-300 rounded-md"
+                            required
+                        /> 
 
                     </div>
                 
-                <Button color="green" className="mt-6 rounded-full" fullWidth>
-                    Update your data
-                </Button>
+                    <button
+                        type="submit"
+                        className="bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl w-full focus:outline-none"
+                        >
+                        Update Profile
+                    </button>
                 
                 </form>
            
