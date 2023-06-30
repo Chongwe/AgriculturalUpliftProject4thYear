@@ -1,7 +1,7 @@
 import Avata from "../../assets/avata.jpg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Typography, IconButton } from "@material-tailwind/react";
+import { Typography, IconButton, Button } from "@material-tailwind/react";
 import {
   faComment,
   faEnvelope,
@@ -31,7 +31,7 @@ const Posts = ({
 }) => {
   const postId = _id;
 
-  console.log(comments);
+  // console.log(comments);
   const [postCreatedAt, setPostCreatedAt] = useState(null);
   const [timeDifference, setTimeDifference] = useState(null);
   const [user, setUser] = useState(null);
@@ -56,6 +56,30 @@ const Posts = ({
       }
     }
   }, [postCreatedAt]);
+
+  const alreadyLiked = !!like?.filter((item) => item.postedBy._id === user?.sub)
+    ?.length;
+
+  const likePost = (id) => {
+    const doc = {
+      _type: "like",
+      _key: user?._id,
+      postedBy: {
+        _type: "postedByBy",
+        _ref: user?._id,
+      },
+      userId: user?._id,
+    };
+
+    client
+      .patch(id)
+      .setIfMissing({ like: [] })
+      .insert("after", "like[-1]", [doc])
+      .commit()
+      .then(() => {
+        window.location.reload();
+      });
+  };
 
   return (
     <div className=" lg:max-w-[600px] sm:m-12 mb-3 transition-all   overflow-wrap break-word  duration-500 lg:hover:scale-105 p-4 bg-white rounded-xl  flex-wrap min-w-screen-sm ">

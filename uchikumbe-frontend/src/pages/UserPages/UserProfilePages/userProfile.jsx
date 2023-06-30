@@ -63,7 +63,7 @@ const UserProfile = () => {
   }
 
   const { firstName, lastName, bio, location } = userData;
-  console.log(bio);
+  // console.log(bio);
   if (!user) {
     return <Spinner message="Loading Profile" />;
   }

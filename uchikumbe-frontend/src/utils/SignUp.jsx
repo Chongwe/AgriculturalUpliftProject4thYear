@@ -33,15 +33,15 @@ const SignUp = () => {
 
       <div className="mt-1 mb-2 m-3 place-items-center justify-center text-center ">
         <div className=" rounded-lg m-2 bg-green-50 p-2">
-            <Typography variant="h4" className="text-green-900 ">
-              Sign Up
-            </Typography>
-            <Typography  className="mt-1 ">
-              Sign In with your Gmail account
-            </Typography>
-            <Typography  className="mt-1  bg-green-100 rounded-md p-2 text-goldenrod text-xs">
-              Only use accounts that end with *@gmail.com 
-            </Typography>
+          <Typography variant="h4" className="text-green-900 ">
+            Sign Up
+          </Typography>
+          <Typography className="mt-1 ">
+            Sign In with your Gmail account
+          </Typography>
+          <Typography className="mt-1  bg-green-100 rounded-md p-2 text-goldenrod text-xs">
+            Only use accounts that end with *@gmail.com
+          </Typography>
         </div>
         <div className="justify-center items-center">
           <GoogleLogin
@@ -52,7 +52,7 @@ const SignUp = () => {
               })
             }
             onError={() => {
-              console.log("Login Failed");
+              // console.log("Login Failed");
             }}
           />
         </div>
