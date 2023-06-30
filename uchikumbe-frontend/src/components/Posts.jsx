@@ -114,7 +114,7 @@ const Posts = ({
           </Link>
         </div>
         <div className=" rounded-full justify-end">
-          <Link to"">
+          <Link >
               <HandThumbUpIcon className="h-7 w-7  mr-6 text-goldenrod " />
           </Link>
         </div>
