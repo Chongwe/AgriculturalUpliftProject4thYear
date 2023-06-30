@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  postDetailQuery,
-  commentCountQuery,
-  userQuery,
-  postDetailQueryFromForum,
-} from "../../utils/data";
+import { userQuery, postDetailQueryFromForum } from "../../utils/data";
 import Spinner from "../../components/Spinner";
 import { fetchUser } from "../../utils/fetchUser";
 import { useNavigate, useParams } from "react-router-dom";
