@@ -32,11 +32,7 @@ export default function Example() {
       desc: planters,
     },
    
-    {
-      label: "Fertilizer Calculator",
-      value: "maize-calculator",
-      desc: maizeCalculator,
-    },
+
     {
       label: "Feed Calculators",
       value: "chickenfeed-calculator",
