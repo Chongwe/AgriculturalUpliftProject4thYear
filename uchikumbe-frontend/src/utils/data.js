@@ -12,6 +12,15 @@ export const userListQuery = `*[_type == "user"] | order(userName asc) {
   _id
 }`;
 
+export const submitForumRequestQuery = `*[_type == "forumRequest"] | order(_createdAtdesc) {
+  _id,
+  title,
+  description,
+  postedBy->{_id, userName},
+  isViewed,
+  isApproved
+}`;
+
 export const messageListQuery = (senderId, receiverId) =>
   `*[_type == "message" && ((sender.sub == "${senderId}" && receiver._id == "${receiverId}") || (sender.sub == "${receiverId}" && receiver._id == "${senderId}")) ] | order(_createdAt asc)`;
 
@@ -232,5 +241,3 @@ export const mainNewsListQuery = `*[_type == "main_news"] {
   "imageUrl": image.asset->url,
 
 }`;
-
-

@@ -24,6 +24,7 @@ import ForumPage from "./pages/ForumPage";
 import SendSMS from "./components/SendSMS";
 import SignUp from "./utils/SignUp";
 import AdminDashboard from "./pages/AdminPages/AdminDashboard";
+import CreateForumFromUserRequestPage from "./pages/AdminPages/CreateForumFromUserRequestPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +37,10 @@ const router = createBrowserRouter(
       <Route path="news" element={<News />} />
       <Route path="tools" element={<Tools />} />
       <Route path="forum" element={<Forum />} />
+      <Route
+        path="/create-forum"
+        element={<CreateForumFromUserRequestPage />}
+      />
       <Route
         path="create-forum/:userId"
         element={<SubmiteForumRequestPage />}
