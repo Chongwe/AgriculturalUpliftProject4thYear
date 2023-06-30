@@ -188,14 +188,7 @@ export default function Fun({ user = null }) {
                 People
               </ListItem>
             </NavLink> 
-            <NavLink onClick={closeDrawer} to="news">
-              <ListItem>
-                <ListItemPrefix>
-                  <NewspaperIcon className="h-5 w-5" />
-                </ListItemPrefix>
-                News
-              </ListItem>
-            </NavLink>
+           
             <NavLink onClick={closeDrawer} to="forum">
               <ListItem>
                 <ListItemPrefix>
