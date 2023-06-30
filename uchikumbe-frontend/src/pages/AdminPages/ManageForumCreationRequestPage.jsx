@@ -3,12 +3,9 @@ import ForumRequsetForum from "../../components/AdminComponents/ForumRequsetForu
 import { client } from "../../client";
 import { submitForumRequestQuery } from "../../utils/data";
 import { Spinner } from "@material-tailwind/react";
-import { useNavigate } from "react-router-dom";
-
 const ManageForumCreationRequestPage = () => {
   const [forumRequest, setForumRequest] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     client.fetch(submitForumRequestQuery).then((data) => {

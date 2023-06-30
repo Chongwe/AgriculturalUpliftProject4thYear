@@ -5,11 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import UserContext from "../../Layout/UserContext";
-import styles from "../../index.css";
 
 import { client } from "../../client";
 import Spinner from "../../components/Spinner";
-import { isPast } from "date-fns";
 import { forumDetailsQuery } from "../../utils/data";
 import PageBlocked from "../../others/PageBlocked";
 

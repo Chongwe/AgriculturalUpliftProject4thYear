@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { googleLogout } from "@react-oauth/google";
 import { Chip } from "@material-tailwind/react";
 import { userDetailQuery } from "../../../utils/data";
@@ -18,11 +18,6 @@ import { client } from "../../../client";
 import Spinner from "../../../components/Spinner";
 import ProfileCard from "../../../components/Cards/profileCard";
 import { Tooltip } from "@material-tailwind/react";
-
-const activeBtnStyles =
-  "bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none";
-const notActiveBtnStyles =
-  "bg-primary mr-4 text-black font-bold p-2 rounded-full w-20 outline-none";
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -82,41 +77,26 @@ const UserProfile = () => {
               <img
                 className="rounded-full w-20 h-20 p-1  "
                 src={user.image}
-                alt="user image"
+                alt="user "
               />
             </div>
             <div className="justify-center items-center">
               <h1 className="font-bold text-3xl text-green-900 text-center mt-3 ">
                 {user.userName}
               </h1>
-              <Chip
-                onClick={() => {
-                  googleLogout();
-                  logout();
-                }}
-                value="Log out"
-                className="mt-4 cursor-pointer hover:bg-goldenrod bg-green-700 items-center justify-center text-white"
-                variant="ghost"
-                icon={<AiOutlineLogout className="text-white" fontSize={21} />}
-              />
-            </div>
-            <div className="absolute top-0 z-1 right-0 p-5">
               {userId === user._id && (
-                <Tooltip
-                  content="Log Out"
-                  className="rounded-full bg-white text-goldenrod"
-                  placement="bottom"
-                >
-                  <button
-                    className="bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
-                    onClick={() => {
-                      googleLogout();
-                      logout();
-                    }}
-                  >
-                    <AiOutlineLogout color="red" fontSize={21} />
-                  </button>
-                </Tooltip>
+                <Chip
+                  onClick={() => {
+                    googleLogout();
+                    logout();
+                  }}
+                  value="Log out"
+                  className="mt-4 cursor-pointer hover:bg-goldenrod bg-green-700 items-center justify-center text-white"
+                  variant="ghost"
+                  icon={
+                    <AiOutlineLogout className="text-white" fontSize={21} />
+                  }
+                />
               )}
             </div>
           </div>
@@ -124,22 +104,6 @@ const UserProfile = () => {
           <div className="container  mx-auto p-4">
             <div className="max-w-screen-lg bg-green-50 border border-green-200 min-w-screen-sm mx-auto  shadow-lg rounded-lg overflow-hidden">
               <div className="p-4">
-                <div className="mb-4 p-2 rounded-lg bg-green-100">
-                  <label className="text-goldenrod font-bold">
-                    First Name:
-                  </label>
-                  <div className="text-green-800 p-2 rounded-md bg-green-50">
-                    {firstName}
-                  </div>
-                </div>
-
-                <div className="mb-4 p-2 rounded-lg bg-green-100">
-                  <label className="text-goldenrod font-bold">Last Name:</label>
-                  <div className="text-green-800 p-2 rounded-md bg-green-50">
-                    {lastName}
-                  </div>
-                </div>
-
                 <div className="mb-4 p-2 rounded-lg bg-green-100">
                   <label className="text-goldenrod font-bold">Bio:</label>
                   <div className="text-green-800 p-2 rounded-md bg-green-50">

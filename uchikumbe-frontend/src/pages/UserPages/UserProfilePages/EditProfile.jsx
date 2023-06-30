@@ -20,6 +20,10 @@ const EditProfile = () => {
 
     client.fetch(query).then((data) => {
       setUser(data[0]);
+      setFirstName(data[0].firstName);
+      setLastName(data[0].lastName);
+      setLocation(data[0].location);
+      setBio(data[0].bio);
     });
   }, [userId]);
 
@@ -27,8 +31,6 @@ const EditProfile = () => {
     const doc = {
       _type: "user",
       _id: userId,
-      firstName: firstName,
-      lastName: lastName,
       bio: bio,
       location: location,
     };
@@ -95,23 +97,6 @@ const EditProfile = () => {
       </div>
       <form className="mt-8 mb-2 min-w-screen-sm max-w-screen-lg sm:w-96">
         <div className="mb-4 flex flex-col gap-6">
-          <input
-            placeholder="First Name"
-            type="text"
-            className="px-4 py-2 transition-all w-auto duration-500 flex hover:scale-95 border focus:outline-none  border-green-300 rounded-md"
-            required
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Last Name"
-            className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none  border-green-300 rounded-md"
-            required
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-
           <select
             value={location}
             onChange={(e) => setLocation(e.target.value)}

@@ -3,11 +3,9 @@ import "../styles.css";
 import Spinner from "../components/Spinner";
 import { client } from "../client";
 import { useEffect, useState } from "react";
-import { postQueryforums, postsQuery } from "../utils/data";
-import Posts from "../components/Cards/Posts";
+import { postQueryforums } from "../utils/data";
 import MasonryLayout from "../Layout/MasonryLayout";
 import { fetchUser } from "../utils/fetchUser";
-import { Link } from "react-router-dom";
 import { userQuery } from "../utils/data";
 
 const Home = () => {

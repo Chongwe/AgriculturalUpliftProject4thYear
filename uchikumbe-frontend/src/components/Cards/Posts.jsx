@@ -1,17 +1,12 @@
 import Avata from "../../assets/avata.jpg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Typography, IconButton, Button } from "@material-tailwind/react";
-import {
-  faComment,
-  faEnvelope,
-  faThumbsUp,
-} from "@fortawesome/free-solid-svg-icons";
-import { Link, NavLink } from "react-router-dom";
-import { urlFor, client } from "../../client";
+import { Typography } from "@material-tailwind/react";
+import { faComment, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { urlFor } from "../../client";
 import React, { useEffect, useState } from "react";
 import { formatDistanceToNow, parseISO, isYesterday } from "date-fns";
-import CommentPage from "../../pages/FourmPage/CommentPage";
 import { HandThumbUpIcon } from "@heroicons/react/24/solid";
 
 //
@@ -29,12 +24,9 @@ const Posts = ({
     forumId,
   },
 }) => {
-  const postId = _id;
-
   // console.log(comments);
   const [postCreatedAt, setPostCreatedAt] = useState(null);
   const [timeDifference, setTimeDifference] = useState(null);
-  const [user, setUser] = useState(null);
   // const alreadyLiked = !!(like?.filter((item)=>item.postedBy._id===user.googleId)).length;
 
   useEffect(() => {
@@ -43,8 +35,6 @@ const Posts = ({
 
   useEffect(() => {
     if (postCreatedAt) {
-      const currentTime = new Date();
-
       if (isYesterday(postCreatedAt)) {
         setTimeDifference("Yesterday");
       } else {
@@ -56,30 +46,6 @@ const Posts = ({
       }
     }
   }, [postCreatedAt]);
-
-  const alreadyLiked = !!like?.filter((item) => item.postedBy._id === user?.sub)
-    ?.length;
-
-  const likePost = (id) => {
-    const doc = {
-      _type: "like",
-      _key: user?._id,
-      postedBy: {
-        _type: "postedByBy",
-        _ref: user?._id,
-      },
-      userId: user?._id,
-    };
-
-    client
-      .patch(id)
-      .setIfMissing({ like: [] })
-      .insert("after", "like[-1]", [doc])
-      .commit()
-      .then(() => {
-        window.location.reload();
-      });
-  };
 
   return (
     <div className=" lg:max-w-[600px] sm:m-12 mb-3 transition-all   overflow-wrap break-word  duration-500 lg:hover:scale-105 p-4 bg-white rounded-xl  flex-wrap min-w-screen-sm ">
@@ -126,6 +92,7 @@ const Posts = ({
           {image && (
             <img
               src={urlFor(image).url()}
+              alt="post "
               className="flex rounded-b-2xl rounded-t-sm w-full mt-2"
             />
           )}

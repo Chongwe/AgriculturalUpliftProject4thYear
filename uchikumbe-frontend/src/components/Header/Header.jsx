@@ -12,42 +12,30 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Navbar,
-  Collapse,
-  Typography,
   Popover,
   PopoverHandler,
   PopoverContent,
   Button,
-  IconButton,
   Tooltip,
   Drawer,
   List,
   ListItem,
   ListItemPrefix,
-  ListItemSuffix,
-  Chip,
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   HomeIcon,
-  NewspaperIcon,
   UserCircleIcon,
   UserGroupIcon,
   Square2StackIcon,
-  PowerIcon,
   ArrowRightCircleIcon,
 } from "@heroicons/react/24/solid";
 
 export default function Fun({ user = null }) {
   const [openNav, setOpenNav] = useState(false);
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = React.useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
 
   useEffect(() => {
     window.addEventListener(

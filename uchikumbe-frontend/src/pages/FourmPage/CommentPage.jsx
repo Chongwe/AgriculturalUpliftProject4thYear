@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { userQuery, postDetailQueryFromForum } from "../../utils/data";
 import Spinner from "../../components/Spinner";
 import { fetchUser } from "../../utils/fetchUser";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { urlFor, client } from "../../client";
 import UserContext from "../../Layout/UserContext";
 import { v4 as uuidv4 } from "uuid";
@@ -123,6 +123,7 @@ const CommentPage = () => {
             </div>
             <img
               src={post?.image && urlFor(post.image).url()}
+              alt="post "
               className="flex rounded-t-xl rounded-b-xl w-full mt-2"
             />
           </div>
@@ -161,7 +162,11 @@ const CommentPage = () => {
             </div>
             <div className="flex flex-wrap gap-3 ">
               {user && (
-                <img src={user.image} className="w-10 h-10 p-2 rounded-full" />
+                <img
+                  src={user.image}
+                  className="w-10 h-10 p-2 rounded-full"
+                  alt="user "
+                />
               )}
               <input
                 className="flex-1 transition-all duration-500 hover:scale-95 border-2 p-2 focus:border-green-300 rounded-2xl border-green-100 outline-none"

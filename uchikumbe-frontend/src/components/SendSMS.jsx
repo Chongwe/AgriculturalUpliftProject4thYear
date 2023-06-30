@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useReducer } from "react";
-import { Card, CardBody } from "@material-tailwind/react";
-import { useParams, useRoutes } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Card } from "@material-tailwind/react";
+import { useParams } from "react-router-dom";
 import { fetchUser } from "../utils/fetchUser";
 import { userQuery, messageListQuery } from "../utils/data";
 import { client } from "../client";
@@ -42,11 +42,9 @@ const SendSMS = () => {
       client
         .create(newMessage)
         .then((response) => {
-          console.log("Message sent to Sanity:", response);
           setSendingMessage(false);
         })
         .catch((error) => {
-          console.error("Error sending message to Sanity:", error);
           setChatMessages((prevState) =>
             prevState.filter((msg) => msg !== newMessage)
           );
@@ -109,7 +107,7 @@ const SendSMS = () => {
       client
         .fetch(chatQuery)
         .then((messages) => {
-          console.log(messages);
+          // console.log(messages);
 
           setChatMessages(messages);
           setNotificationCount(messages.length);
@@ -139,7 +137,7 @@ const SendSMS = () => {
           <div className="flex items-center">
             {receiverPhotoUrl && (
               <img
-                alt="receiver image"
+                alt="receiver "
                 src={receiverPhotoUrl}
                 className="mb-1 rounded-full h-10 w-10"
               />
@@ -157,8 +155,7 @@ const SendSMS = () => {
         {/* Sender Messages */}
         {chatMessages.map((chatMessage, index) => {
           const isSender = chatMessage.sender.email === userInfo.email;
-          console.log(chatMessage.sender);
-          console.log(userInfo);
+
           if (isSender) {
             return (
               <div
@@ -209,7 +206,6 @@ const SendSMS = () => {
         {/* Receiver Messages */}
         {chatMessages.map((chatMessage, index) => {
           const isSender = chatMessage.sender.email === userInfo.email;
-          console.log(userInfo);
 
           return null; // Skip rendering if not a receiver message
         })}
