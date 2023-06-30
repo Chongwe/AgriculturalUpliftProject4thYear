@@ -1,4 +1,4 @@
-import Avata from "../assets/avata.jpg";
+import Avata from "../../assets/avata.jpg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Typography, IconButton } from "@material-tailwind/react";
@@ -8,10 +8,10 @@ import {
   faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
-import { urlFor, client } from "../client";
+import { urlFor, client } from "../../client";
 import React, { useEffect, useState } from "react";
 import { formatDistanceToNow, parseISO, isYesterday } from "date-fns";
-import CommentPage from "../pages/CommentPage";
+import CommentPage from "../../pages/FourmPage/CommentPage";
 import { HandThumbUpIcon } from "@heroicons/react/24/solid";
 
 //
@@ -85,7 +85,10 @@ const Posts = ({
           </div>
         </div>
         <Link to={`/message/${postedBy._id}`}>
-            <FontAwesomeIcon className="h-7 mr-6 text-green-800 p-2 w-7" icon={faEnvelope} />
+          <FontAwesomeIcon
+            className="h-7 mr-6 text-green-800 p-2 w-7"
+            icon={faEnvelope}
+          />
         </Link>
       </div>
       <div className="">
@@ -114,8 +117,8 @@ const Posts = ({
           </Link>
         </div>
         <div className=" rounded-full justify-end">
-          <Link >
-              <HandThumbUpIcon className="h-7 w-7  mr-6 text-goldenrod " />
+          <Link>
+            <HandThumbUpIcon className="h-7 w-7  mr-6 text-goldenrod " />
           </Link>
         </div>
       </div>

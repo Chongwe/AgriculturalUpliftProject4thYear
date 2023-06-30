@@ -1,10 +1,10 @@
 import React from "@material-tailwind/react";
-import Person from "./Person";
+import Person from "../../components/Cards/Person";
 import { useEffect, useState } from "react";
-import { client } from "../client";
-import { userListQuery } from "../utils/data";
-import Spinner from "./Spinner";
-import SendSMS from "./SendSMS";
+import { client } from "../../client";
+import { userListQuery } from "../../utils/data";
+import Spinner from "../../components/Spinner";
+import SendSMS from "../../components/SendSMS";
 
 function People(props) {
   const [listUser, setListUser] = useState(null);

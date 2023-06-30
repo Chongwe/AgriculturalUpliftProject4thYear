@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Spinner from "./Spinner";
-import { urlFor, client  } from "../client";
-
+import { urlFor, client } from "../client";
 
 const Carousel = () => {
   const [carouselData, setCarouselData] = useState([]);
@@ -44,11 +43,13 @@ const Carousel = () => {
   }, [carouselData]);
 
   if (isLoading) {
-    return <Spinner  />;
+    return <Spinner />;
   }
 
   if (carouselData.length === 0 || !carouselData[currentIndex]) {
-    return <p className=" fixed ml-9 text-goldenrod">No carousel data available.</p>;
+    return (
+      <p className=" fixed ml-9 text-goldenrod">No carousel data available.</p>
+    );
   }
 
   const { title, description, image } = carouselData[currentIndex];
@@ -56,15 +57,16 @@ const Carousel = () => {
   return (
     <div className=" ml-9 max-w-[250px]  hover:scale-95 fixed p-2 items-center transition-all h-auto duration-500 rounded-xl shadow-lg">
       <div className="  max-w-56 overflow-hidden rounded-xl max-h-36">
-            {image && <img src={urlFor(image).url() } className="   w-full h-auto "/>}
-
+        {image && (
+          <img src={urlFor(image).url()} className="   w-full h-auto " />
+        )}
       </div>
       <div className="">
         <h2 className="text-goldenrod mt-2 text-2xl">{title}</h2>
-        <p className="carousel-description whitespace-normal overflow-ellipsis ">{description}</p>
+        <p className="carousel-description whitespace-normal overflow-ellipsis ">
+          {description}
+        </p>
       </div>
-     
-     
     </div>
   );
 };

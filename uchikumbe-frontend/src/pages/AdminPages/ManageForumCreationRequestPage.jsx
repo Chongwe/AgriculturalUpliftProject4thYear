@@ -17,6 +17,18 @@ const ManageForumCreationRequestPage = () => {
     }, []);
   });
 
+  const handleDeny = (forumId) => {
+    try {
+      const forumToApprove = forumRequest.find(
+        (forum) => forum._id === forumId
+      );
+
+      client.patch(forumToApprove._id).set({ isApproved: false }).commit();
+    } catch (error) {
+      console.error("Error approving forum request:", error);
+    }
+  };
+
   const handleApprove = (forumId) => {
     try {
       const forumToApprove = forumRequest.find(
@@ -42,7 +54,7 @@ const ManageForumCreationRequestPage = () => {
             };
 
             client.create(doc).then(() => {
-              navigate("/forum");
+              window.location.reload();
             });
           })
           .catch((error) => {
@@ -76,6 +88,8 @@ const ManageForumCreationRequestPage = () => {
           username={forum.postedBy.userName}
           description={forum.description}
           handleApprove={() => handleApprove(forum._id)}
+          handleDeny={() => handleDeny(forum._id)}
+          isApproved={forum.isApproved}
         />
       ))}
 
@@ -86,6 +100,7 @@ const ManageForumCreationRequestPage = () => {
           name={forum.title}
           username={forum.postedBy.userName}
           description={forum.description}
+          isApproved={forum.isApproved}
         />
       ))}
 
@@ -96,6 +111,7 @@ const ManageForumCreationRequestPage = () => {
           name={forum.title}
           username={forum.postedBy.userName}
           description={forum.description}
+          isApproved={forum.isApproved}
         />
       ))}
     </div>

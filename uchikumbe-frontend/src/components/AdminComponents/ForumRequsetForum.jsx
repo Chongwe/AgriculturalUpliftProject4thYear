@@ -18,7 +18,8 @@ const ForumRequsetForum = (props) => {
     setOpen(!open);
   };
 
-  const { name, username, description, handleApprove, handleDeny } = props;
+  const { name, username, description, handleApprove, handleDeny, isApproved } =
+    props;
 
   return (
     <div className="bg-white transition-all lg:w-full mt-2 min-w-screen-d pt-4 duration-200 mx-auto align-middle sm:p-4 rounded-lg p-2">
@@ -41,15 +42,22 @@ const ForumRequsetForum = (props) => {
           <CardBody>
             <Typography>{username}</Typography>
             <Typography className="mt-4">{description}</Typography>
-            <button
-              onClick={handleApprove}
-              className="px-4 py-2 mt-7 mr-2 bg-green-500 text-white rounded-md"
-            >
-              Approve
-            </button>
-            <button className="px-4 py-2 bg-red-500 text-white rounded-md">
-              Deny
-            </button>
+            {isApproved === null && (
+              <>
+                <button
+                  onClick={handleApprove}
+                  className="px-4 py-2 mt-7 mr-2 bg-green-500 text-white rounded-md"
+                >
+                  Approve
+                </button>
+                <button
+                  onClick={handleDeny}
+                  className="px-4 py-2 bg-red-500 text-white rounded-md"
+                >
+                  Deny
+                </button>
+              </>
+            )}
           </CardBody>
         </Collapse>
       </div>

@@ -3,7 +3,7 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { googleLogout } from "@react-oauth/google";
 import { Chip } from "@material-tailwind/react";
-import { userDetailQuery } from "../utils/data";
+import { userDetailQuery } from "../../../utils/data";
 
 import {
   faCog,
@@ -11,12 +11,12 @@ import {
   faPlusCircle,
   faUserEdit,
 } from "@fortawesome/free-solid-svg-icons";
-import cover from "../assets/uchikumbe cover.jpg";
+import cover from "../../../assets/uchikumbe cover.jpg";
 
-import { userQuery } from "../utils/data";
-import { client } from "../client";
-import Spinner from "./Spinner";
-import ProfileCard from "./profileCard";
+import { userQuery } from "../../../utils/data";
+import { client } from "../../../client";
+import Spinner from "../../../components/Spinner";
+import ProfileCard from "../../../components/Cards/profileCard";
 import { Tooltip } from "@material-tailwind/react";
 
 const activeBtnStyles =
@@ -38,10 +38,9 @@ const UserProfile = () => {
         setUserData(response[0]);
         return response[0];
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error("Error fetching user data:", error);
       }
     };
-    
 
     fetchUserData();
   }, []);
@@ -63,8 +62,8 @@ const UserProfile = () => {
     return <Spinner />;
   }
 
-  const {  firstName, lastName, bio, location } = userData;
-console.log(bio)
+  const { firstName, lastName, bio, location } = userData;
+  console.log(bio);
   if (!user) {
     return <Spinner message="Loading Profile" />;
   }
@@ -126,23 +125,33 @@ console.log(bio)
             <div className="max-w-screen-lg bg-green-50 border border-green-200 min-w-screen-sm mx-auto  shadow-lg rounded-lg overflow-hidden">
               <div className="p-4">
                 <div className="mb-4 p-2 rounded-lg bg-green-100">
-                  <label className="text-goldenrod font-bold">First Name:</label>
-                  <div className="text-green-800 p-2 rounded-md bg-green-50">{firstName}</div>
+                  <label className="text-goldenrod font-bold">
+                    First Name:
+                  </label>
+                  <div className="text-green-800 p-2 rounded-md bg-green-50">
+                    {firstName}
+                  </div>
                 </div>
 
                 <div className="mb-4 p-2 rounded-lg bg-green-100">
                   <label className="text-goldenrod font-bold">Last Name:</label>
-                  <div className="text-green-800 p-2 rounded-md bg-green-50">{lastName}</div>
+                  <div className="text-green-800 p-2 rounded-md bg-green-50">
+                    {lastName}
+                  </div>
                 </div>
 
                 <div className="mb-4 p-2 rounded-lg bg-green-100">
                   <label className="text-goldenrod font-bold">Bio:</label>
-                  <div className="text-green-800 p-2 rounded-md bg-green-50">{bio}</div>
+                  <div className="text-green-800 p-2 rounded-md bg-green-50">
+                    {bio}
+                  </div>
                 </div>
 
                 <div className="mb-4 p-2 rounded-lg bg-green-100">
                   <label className="text-goldenrod font-bold">Location:</label>
-                  <div className="text-green-800 p-2 rounded-md bg-green-50">{location}</div>
+                  <div className="text-green-800 p-2 rounded-md bg-green-50">
+                    {location}
+                  </div>
                 </div>
               </div>
             </div>

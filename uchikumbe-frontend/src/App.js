@@ -1,11 +1,11 @@
-import Home from "./components/Home";
-import News from "./components/News";
-import People from "./components/People";
-import Forum from "./components/Forum";
+import Home from "./pages/Home";
+import News from "./pages/News";
+import People from "./pages/UserPages/People";
+import Forum from "./pages/FourmPage/Forum";
 import RootLayout from "./Layout/RootLayout";
 import NotFound from "./others/NotFound";
-import CreatePost from "./components/CreatePost";
-import CommentPage from "./pages/CommentPage";
+import CreatePost from "./pages/FourmPage/CreatePost";
+import CommentPage from "./pages/FourmPage/CommentPage";
 import Tools from "./components/Tools";
 
 //ROUTES
@@ -16,11 +16,11 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import UserProfile from "./components/userProfile";
-import EditProfile from "./config-pages/EditProfile";
-import AddFarm from "./config-pages/AddFarm";
-import SubmiteForumRequestPage from "./components/createForum";
-import ForumPage from "./pages/ForumPage";
+import UserProfile from "./pages/UserPages/UserProfilePages/userProfile";
+import EditProfile from "./pages/UserPages/UserProfilePages/EditProfile";
+import AddFarm from "./pages/UserPages/UserProfilePages/AddFarm";
+import SubmiteForumRequestPage from "./pages/FourmPage/createForum";
+import ForumPage from "./pages/FourmPage/ForumPage";
 import SendSMS from "./components/SendSMS";
 import SignUp from "./utils/SignUp";
 import AdminDashboard from "./pages/AdminPages/AdminDashboard";

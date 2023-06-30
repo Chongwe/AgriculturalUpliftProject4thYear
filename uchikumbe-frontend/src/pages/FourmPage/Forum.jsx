@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import Group from "./Group";
-import { fetchUser } from "../utils/fetchUser";
-import { forumQuery, userCreatedForumsQuery, userQuery } from "../utils/data";
-import { client } from "../client";
-import JoinedGroups from "./JoinedGroups";
+import Group from "../../components/Cards/Group";
+import { fetchUser } from "../../utils/fetchUser";
+import {
+  forumQuery,
+  userCreatedForumsQuery,
+  userQuery,
+} from "../../utils/data";
+import { client } from "../../client";
+import JoinedGroups from "../../components/Cards/JoinedGroups";
 import { Link } from "react-router-dom";
-import Spinner from "./Spinner";
+import Spinner from "../../components/Spinner";
 
 const Forum = () => {
   const [user, setUser] = useState(null);

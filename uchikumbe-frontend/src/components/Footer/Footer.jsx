@@ -1,7 +1,7 @@
 import { Typography } from "@material-tailwind/react";
-import logo from "../assets/logo.svg"
+import logo from "../../assets/logo.svg";
 import { NavLink } from "react-router-dom";
- 
+
 export default function Footer() {
   return (
     <footer className="lg:w-full sm:min-w-screen-sm rounded-t-2xl bg-white p-8">
@@ -17,7 +17,7 @@ export default function Footer() {
               About Us
             </Typography>
           </li>
-         
+
           <li>
             <Typography
               href="#"
@@ -28,7 +28,7 @@ export default function Footer() {
             </Typography>
           </li>
           <li>
-            <NavLink to="/contact"> 
+            <NavLink to="/contact">
               <Typography
                 color="blue-gray"
                 className=" transition-colors text-goldenrod hover:text-green-500 focus:text-green-500"

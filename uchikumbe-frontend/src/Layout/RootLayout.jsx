@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 import { fetchUser } from "../utils/fetchUser";
 import { useEffect, useState } from "react";
 import { userQuery } from "../utils/data";

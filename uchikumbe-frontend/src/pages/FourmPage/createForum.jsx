@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { userQuery } from "../utils/data";
-import { client } from "../client";
+import { userQuery } from "../../utils/data";
+import { client } from "../../client";
 import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchUser } from "../utils/fetchUser";
+import { fetchUser } from "../../utils/fetchUser";
 import { Typography } from "@material-tailwind/react";
 
 function SubmiteForumRequestPage() {

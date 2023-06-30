@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useReducer } from "react";
 import { Card, CardBody } from "@material-tailwind/react";
-import { useParams, useRoutes, } from "react-router-dom";
+import { useParams, useRoutes } from "react-router-dom";
 import { fetchUser } from "../utils/fetchUser";
 import { userQuery, messageListQuery } from "../utils/data";
 import { client } from "../client";
@@ -55,7 +55,7 @@ const SendSMS = () => {
         });
     } else if (!userInfo) {
       // Redirect user to signup page
-     alert("sing-in first")
+      alert("sing-in first");
       //setRedirectToSignup(true);
     }
   };
@@ -65,7 +65,6 @@ const SendSMS = () => {
       navigate("/sign-in"); // Replace "/signup" with the actual route to your signup page
     }
   }, [redirectToSignup, navigate]);
-
 
   useEffect(() => {
     const query = userQuery(userId);
@@ -111,7 +110,7 @@ const SendSMS = () => {
         .fetch(chatQuery)
         .then((messages) => {
           console.log(messages);
-          
+
           setChatMessages(messages);
           setNotificationCount(messages.length);
         })
@@ -139,36 +138,35 @@ const SendSMS = () => {
         {receiver ? (
           <div className="flex items-center">
             {receiverPhotoUrl && (
-               <img
-               alt="receiver image"
-               src={receiverPhotoUrl}
-               className="mb-1 rounded-full h-10 w-10"
-             />
+              <img
+                alt="receiver image"
+                src={receiverPhotoUrl}
+                className="mb-1 rounded-full h-10 w-10"
+              />
             )}
-            <span className=" font-semibold font-san ml-2 text-green-700">{receiver.userName}</span>
+            <span className=" font-semibold font-san ml-2 text-green-700">
+              {receiver.userName}
+            </span>
           </div>
         ) : (
-          "Loading..." 
+          "Loading..."
         )}
       </h2>
       {/* <p>Number of Messages Received:  {notificationCount }</p>  */}
       <Card className="overflow-y-scroll max-h-96 h-full space-y-4 p-4 m-4 max-w-4xl w-full">
-        {/* Sender Messages */} 
+        {/* Sender Messages */}
         {chatMessages.map((chatMessage, index) => {
           const isSender = chatMessage.sender.email === userInfo.email;
-          console.log(chatMessage.sender)
-          console.log(userInfo)
+          console.log(chatMessage.sender);
+          console.log(userInfo);
           if (isSender) {
             return (
-
-              
               <div
-                
                 key={index}
                 className="p-4 bg-green-200 rounded-md  min-w-[100px] right-0 ml-auto  "
               >
                 {/* Sender content */}
-                <div className="flex items-center  overflow-clip text-lg"> 
+                <div className="flex items-center  overflow-clip text-lg">
                   <span>{chatMessage.content} </span>
                 </div>
                 <div className="flex">
@@ -176,18 +174,15 @@ const SendSMS = () => {
                     {new Date(chatMessage.sentTime).toLocaleString()}
                   </span>
                 </div>
-                
               </div>
             );
-          } 
+          }
           if (!isSender) {
-            return (  
+            return (
               <div
-              
                 key={index}
                 className="p-4 bg-green-400 text-center rounded-md text-white w-26 right-0 mr-auto border-t bourder-green-700 "
               >
-                
                 {/* Receiver content */}
                 <div className="flex items-center text-lg">
                   <span>{chatMessage.content}</span>
@@ -200,7 +195,8 @@ const SendSMS = () => {
                 {chatMessage.receivedTime && (
                   <div className="flex items-end text-green-800 ml-auto">
                     <span className="">
-                      Received: {new Date(chatMessage.receivedTime).toLocaleString()}
+                      Received:{" "}
+                      {new Date(chatMessage.receivedTime).toLocaleString()}
                     </span>
                   </div>
                 )}
@@ -213,8 +209,8 @@ const SendSMS = () => {
         {/* Receiver Messages */}
         {chatMessages.map((chatMessage, index) => {
           const isSender = chatMessage.sender.email === userInfo.email;
-          console.log(userInfo)
-          
+          console.log(userInfo);
+
           return null; // Skip rendering if not a receiver message
         })}
       </Card>
@@ -244,9 +240,6 @@ const SendSMS = () => {
           {sendingMessage ? "Sending..." : "Send"}
         </button>
       </div>
-
-       
-    
     </div>
   );
 };

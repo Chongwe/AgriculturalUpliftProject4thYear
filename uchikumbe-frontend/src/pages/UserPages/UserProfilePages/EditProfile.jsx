@@ -1,9 +1,9 @@
 import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Typography } from "@material-tailwind/react";
-import React, { useState, useEffect } from 'react';
-import { client } from "../client";
-import { userQuery } from "../utils/data";
+import React, { useState, useEffect } from "react";
+import { client } from "../../../client";
+import { userQuery } from "../../../utils/data";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditProfile = () => {
@@ -23,7 +23,6 @@ const EditProfile = () => {
     });
   }, [userId]);
 
-
   const updateProfile = () => {
     const doc = {
       _type: "user",
@@ -42,46 +41,50 @@ const EditProfile = () => {
         navigate(`/user-profile/${userId}`);
       })
       .catch((error) => {
-        console.error('Error updating user data:', error);
+        console.error("Error updating user data:", error);
         // Handle the error or show an error message
       });
-  }
+  };
 
   const malawiDistricts = [
-    'Balaka',
-    'Blantyre',
-    'Chikwawa',
-    'Chiradzulu',
-    'Chitipa',
-    'Dedza',
-    'Dowa',
-    'Karonga',
-    'Kasungu',
-    'Likoma',
-    'Lilongwe',
-    'Machinga',
-    'Mangochi',
-    'Mchinji',
-    'Mulanje',
-    'Mwanza',
-    'Mzimba',
-    'Nkhata Bay',
-    'Nkhotakota',
-    'Nsanje',
-    'Ntcheu',
-    'Ntchisi',
-    'Phalombe',
-    'Rumphi',
-    'Salima',
-    'Thyolo',
-    'Zomba'
+    "Balaka",
+    "Blantyre",
+    "Chikwawa",
+    "Chiradzulu",
+    "Chitipa",
+    "Dedza",
+    "Dowa",
+    "Karonga",
+    "Kasungu",
+    "Likoma",
+    "Lilongwe",
+    "Machinga",
+    "Mangochi",
+    "Mchinji",
+    "Mulanje",
+    "Mwanza",
+    "Mzimba",
+    "Nkhata Bay",
+    "Nkhotakota",
+    "Nsanje",
+    "Ntcheu",
+    "Ntchisi",
+    "Phalombe",
+    "Rumphi",
+    "Salima",
+    "Thyolo",
+    "Zomba",
   ];
 
   return (
     <div className="p-4 lg:flex-row shadow-lg rounded-3xl my-4 min-w-screen-sm justify-center gap-24 lg:flex flex-col mx-12 items-center">
       <div className="">
         <div className="flex flex-wrap gap-4">
-          <FontAwesomeIcon icon={faUserEdit} className="text-goldenrod" size="2x" />
+          <FontAwesomeIcon
+            icon={faUserEdit}
+            className="text-goldenrod"
+            size="2x"
+          />
           <Typography variant="h4" className="text-goldenrod">
             Edit your profile
           </Typography>
@@ -121,7 +124,6 @@ const EditProfile = () => {
                 {district}
               </option>
             ))}
-
           </select>
           <textarea
             value={bio}
@@ -131,7 +133,6 @@ const EditProfile = () => {
             className="px-4 py-2 transition-all duration-500 hover:scale-95 border focus:outline-none  border-green-300 rounded-md"
             required
           />
-
         </div>
 
         <button
@@ -141,12 +142,9 @@ const EditProfile = () => {
         >
           Update Profile
         </button>
-
       </form>
-
-
     </div>
   );
-}
+};
 
 export default EditProfile;

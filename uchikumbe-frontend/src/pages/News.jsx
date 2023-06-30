@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Tabs,
   TabsHeader,
@@ -7,12 +7,12 @@ import {
   CardBody,
   Typography,
   CardHeader,
-} from '@material-tailwind/react';
-import { ArrowLongRightIcon } from '@heroicons/react/outline';
-import { client } from '../client';
-import { mainNewsListQuery } from '../utils/data';
-import imageUrlBuilder from '@sanity/image-url';
-import Spinner from "./Spinner";
+} from "@material-tailwind/react";
+import { ArrowLongRightIcon } from "@heroicons/react/outline";
+import { client } from "../client";
+import { mainNewsListQuery } from "../utils/data";
+import imageUrlBuilder from "@sanity/image-url";
+import Spinner from "../components/Spinner";
 
 export default function News() {
   const [listNews, setListNews] = useState([]);
@@ -26,7 +26,7 @@ export default function News() {
         setListNews(data);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching news data:', error);
+        console.error("Error fetching news data:", error);
         setLoading(false);
       }
     };
@@ -35,7 +35,7 @@ export default function News() {
   }, []);
 
   if (loading) {
-    return <Spinner message="Looking for News" />
+    return <Spinner message="Looking for News" />;
   }
 
   if (listNews.length === 0) {
@@ -68,16 +68,23 @@ export default function News() {
                 </div>
               </CardHeader>
               <CardBody>
-                <Typography variant="h6" color="green" className="uppercase mb-4  border-b focus:border-green-300 
-            border-green-100 outline-none">
+                <Typography
+                  variant="h6"
+                  color="green"
+                  className="uppercase mb-4  border-b focus:border-green-300 
+            border-green-100 outline-none"
+                >
                   {news.title}
                 </Typography>
                 <Typography color="gray" className="font-normal mb-2">
                   {news.description}
                 </Typography>
-                <Card color="none" className="text-sm rounded-md ml-auto w-1/5 ">
-                Posted on: {new Date(news.time).toLocaleString()}
-              </Card>
+                <Card
+                  color="none"
+                  className="text-sm rounded-md ml-auto w-1/5 "
+                >
+                  Posted on: {new Date(news.time).toLocaleString()}
+                </Card>
               </CardBody>
             </Card>
           </div>
