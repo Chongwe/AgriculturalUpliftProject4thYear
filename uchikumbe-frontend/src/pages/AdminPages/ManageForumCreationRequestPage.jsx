@@ -40,15 +40,21 @@ const ManageForumCreationRequestPage = () => {
           .set({ isApproved: true })
           .commit()
           .then(() => {
+            const doc2 = {
+              _type: "memberOf",
+              _key: forumToApprove.userId,
+              postedBy: {
+                _type: "postedByBy",
+                _ref: forumToApprove.userId,
+              },
+              userId: forumToApprove?.userId,
+            };
+
             const doc = {
               _type: "subforum",
               title: forumToApprove.title,
               description: forumToApprove.description,
               userId: forumToApprove.userId,
-              postedBy: {
-                _type: "postedBy",
-                _ref: forumToApprove.postedBy._id,
-              },
             };
 
             client.create(doc);
