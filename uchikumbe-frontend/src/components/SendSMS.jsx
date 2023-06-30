@@ -134,7 +134,7 @@ const SendSMS = () => {
   // }, []);
 
   return (
-    <div className="flex flex-col px-4 h-screen w-full items-center bg-green-200">
+    <div className="flex flex-col px-4 h-screen min-w-screen-sm items-center bg-green-100">
       <h2 className="text-2xl font-bold mb-4 mt-4 text-white">
         {receiver ? (
           <div className="flex items-center">
@@ -145,7 +145,7 @@ const SendSMS = () => {
                className="mb-1 rounded-full h-10 w-10"
              />
             )}
-            <span className=" font-semibold font-san ml-2 hover:text-green-700">{receiver.userName}</span>
+            <span className=" font-semibold font-san ml-2 text-green-700">{receiver.userName}</span>
           </div>
         ) : (
           "Loading..." 
@@ -162,10 +162,10 @@ const SendSMS = () => {
             return (
 
               
-              <Card
-          
+              <div
+                
                 key={index}
-                className="p-4 w-26 right-0 ml-auto  "
+                className="p-4 bg-green-200 rounded-md  min-w-[100px] right-0 ml-auto  "
               >
                 {/* Sender content */}
                 <div className="flex items-center  overflow-clip text-lg"> 
@@ -177,15 +177,15 @@ const SendSMS = () => {
                   </span>
                 </div>
                 
-              </Card>
+              </div>
             );
           } 
           if (!isSender) {
             return (  
-              <Card
+              <div
               
                 key={index}
-                className="p-4 bg-green-400 text-center text-white w-26 right-0 mr-auto border-t bourder-green-700 "
+                className="p-4 bg-green-400 text-center rounded-md text-white w-26 right-0 mr-auto border-t bourder-green-700 "
               >
                 
                 {/* Receiver content */}
@@ -204,7 +204,7 @@ const SendSMS = () => {
                     </span>
                   </div>
                 )}
-              </Card>
+              </div>
             );
           }
           return null; // Skip rendering if not a sender message
@@ -221,7 +221,7 @@ const SendSMS = () => {
 
       <div className="">
         <input
-          className=" text-lg w-96 h-11 mt-4 border-2 p-2
+          className=" text-lg w-[200px] h-11 mt-4 border-2 p-2
             focus:border-green-300 rounded-l-full
             border-green-100 outline-none
             transition-all duration-500 hover:scale-95"
@@ -239,7 +239,7 @@ const SendSMS = () => {
           className="mt-4 bg-green-900 hover:bg-goldenrod
             text-lg transition-all duration-500 
             hover:scale-95 text-white p-2 rounded-l-none
-            rounded-r-full w-24 outline-none"
+            rounded-r-full w-auto outline-none"
         >
           {sendingMessage ? "Sending..." : "Send"}
         </button>

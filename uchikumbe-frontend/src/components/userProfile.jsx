@@ -60,7 +60,7 @@ const UserProfile = () => {
   };
 
   if (!userData) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
 
   const {  firstName, lastName, bio, location } = userData;
