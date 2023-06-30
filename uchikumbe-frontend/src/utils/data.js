@@ -22,6 +22,7 @@ export const submitForumRequestQuery = `*[_type == "forumRequest"] | order(_crea
   _id,
   title,
   description,
+  userId,
   postedBy->{_id, userName},
   isViewed,
   isApproved

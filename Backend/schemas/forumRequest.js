@@ -23,6 +23,12 @@ export default {
       type: 'postedBy',
     },
     {
+      name: 'userId',
+      type: 'string',
+      title: 'UserID',
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'isViewed',
       type: 'boolean',
       title: 'IsViewed',

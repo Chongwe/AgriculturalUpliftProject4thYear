@@ -104,9 +104,9 @@ const ForumPage = () => {
             ))}
           </div>
 
-          <div className="  ml-2 justify-end hidden  lg:block rounded-xl">
+          {/* <div className="  ml-2 justify-end hidden  lg:block rounded-xl">
             <Sidebar />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

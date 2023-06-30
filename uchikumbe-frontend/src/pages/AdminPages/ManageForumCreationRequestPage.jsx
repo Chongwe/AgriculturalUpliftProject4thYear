@@ -44,15 +44,14 @@ const ManageForumCreationRequestPage = () => {
               _type: "subforum",
               title: forumToApprove.title,
               description: forumToApprove.description,
+              userId: forumToApprove.userId,
               postedBy: {
                 _type: "postedBy",
                 _ref: forumToApprove.postedBy._id,
               },
             };
 
-            client.create(doc).then(() => {
-              window.location.reload();
-            });
+            client.create(doc);
           })
           .catch((error) => {
             console.error("Error approving forum request:", error);

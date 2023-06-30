@@ -5,7 +5,7 @@ import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchUser } from "../../utils/fetchUser";
-import { Typography } from "@material-tailwind/react";
+import { Spinner, Typography } from "@material-tailwind/react";
 
 function SubmiteForumRequestPage() {
   const [user, setUser] = useState(null);
@@ -31,6 +31,7 @@ function SubmiteForumRequestPage() {
         _type: "forumRequest",
         title,
         description: desc,
+        userId: user._id,
         postedBy: {
           _type: "postedBy",
           _ref: user._id,
@@ -41,6 +42,8 @@ function SubmiteForumRequestPage() {
       });
     }
   };
+
+  if (!user) return <Spinner />;
 
   return (
     <div className=" flex mb-96  m-4 rounded-lg mx-auto flex-col align-middle items-center  bg-white p-4  max-w-screen-sm">
