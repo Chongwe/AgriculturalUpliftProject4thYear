@@ -121,38 +121,38 @@ const SendSMS = () => {
     }
   }, [userInfo, receiver]);
 
-  useEffect(() => {
-    // Disable scrolling on mount
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
+  // useEffect(() => {
+  //   // Disable scrolling on mount
+  //   document.documentElement.style.overflow = 'hidden';
+  //   document.body.style.overflow = 'hidden';
 
-    // Enable scrolling on unmount
-    return () => {
-      document.documentElement.style.overflow = 'auto';
-      document.body.style.overflow = 'auto';
-    };
-  }, []);
+  //   // Enable scrolling on unmount
+  //   return () => {
+  //     document.documentElement.style.overflow = 'auto';
+  //     document.body.style.overflow = 'auto';
+  //   };
+  // }, []);
 
   return (
-    <div className="flex flex-col px-4 h-screen w-full items-center">
-      <h2 className="text-2xl font-bold mb-4 mt-4 text-green-800">
+    <div className="flex flex-col px-4 h-screen min-w-screen-sm items-center bg-green-100">
+      <h2 className="text-2xl font-bold mb-4 mt-4 text-white">
         {receiver ? (
           <div className="flex items-center">
             {receiverPhotoUrl && (
-              <img
-                className="w-10 h-10 rounded-full object-cover"
-                src={receiverPhotoUrl}
-                alt="Receiver Avatar"
-              />
+               <img
+               alt="receiver image"
+               src={receiverPhotoUrl}
+               className="mb-1 rounded-full h-10 w-10"
+             />
             )}
-            <span className="font-bold ml-2">{receiver.userName}</span>
+            <span className=" font-semibold font-san ml-2 text-green-700">{receiver.userName}</span>
           </div>
         ) : (
           "Loading..." 
         )}
       </h2>
       {/* <p>Number of Messages Received:  {notificationCount }</p>  */}
-      <Card className=" overflow-y-scroll max-h-96 h-full space-y-4 p-4 m-4 max-w-4xl w-full">
+      <Card className="overflow-y-scroll max-h-96 h-full space-y-4 p-4 m-4 max-w-4xl w-full">
         {/* Sender Messages */} 
         {chatMessages.map((chatMessage, index) => {
           const isSender = chatMessage.sender.email === userInfo.email;
@@ -162,37 +162,30 @@ const SendSMS = () => {
             return (
 
               
-              <Card
-          
+              <div
+                
                 key={index}
-                className="p-4 w-1/5 right-0 ml-auto  "
+                className="p-4 bg-green-200 rounded-md  min-w-[100px] right-0 ml-auto  "
               >
                 {/* Sender content */}
-                <div className="flex items-center overflow-clip text-lg"> 
+                <div className="flex items-center  overflow-clip text-lg"> 
                   <span>{chatMessage.content} </span>
                 </div>
                 <div className="flex">
-                  <span className="text-xs text-gray-500">
+                  <span className="text-sm text-black ml-auto">
                     {new Date(chatMessage.sentTime).toLocaleString()}
                   </span>
                 </div>
-                {chatMessage.receivedTime && (
-                  <div className="flex items-end">
-                    <span className="text-xs text-gray-500">
-                      Received: {new Date(chatMessage.receivedTime).toLocaleString()}
-                      
-                    </span>
-                  </div>
-                )}
-              </Card>
+                
+              </div>
             );
           } 
           if (!isSender) {
             return (  
-              <Card
+              <div
               
                 key={index}
-                className="p-4 bg-green-300 text-center text-white w-26 right-0 mr-auto border-t bourder-green-700 "
+                className="p-4 bg-green-400 text-center rounded-md text-white w-26 right-0 mr-auto border-t bourder-green-700 "
               >
                 
                 {/* Receiver content */}
@@ -200,18 +193,18 @@ const SendSMS = () => {
                   <span>{chatMessage.content}</span>
                 </div>
                 <div className="flex">
-                  <span className="text-md text-end text-white flex">
+                  <span className="text-sm text-end text-white flex pb-1">
                     {new Date(chatMessage.sentTime).toLocaleString()}
                   </span>
                 </div>
                 {chatMessage.receivedTime && (
-                  <div className="flex items-end text-green-800">
+                  <div className="flex items-end text-green-800 ml-auto">
                     <span className="">
                       Received: {new Date(chatMessage.receivedTime).toLocaleString()}
                     </span>
                   </div>
                 )}
-              </Card>
+              </div>
             );
           }
           return null; // Skip rendering if not a sender message
@@ -228,7 +221,7 @@ const SendSMS = () => {
 
       <div className="">
         <input
-          className=" text-lg w-96 h-11 mt-4 border-2 p-2
+          className=" text-lg w-[200px] h-11 mt-4 border-2 p-2
             focus:border-green-300 rounded-l-full
             border-green-100 outline-none
             transition-all duration-500 hover:scale-95"
@@ -246,7 +239,7 @@ const SendSMS = () => {
           className="mt-4 bg-green-900 hover:bg-goldenrod
             text-lg transition-all duration-500 
             hover:scale-95 text-white p-2 rounded-l-none
-            rounded-r-full w-24 outline-none"
+            rounded-r-full w-auto outline-none"
         >
           {sendingMessage ? "Sending..." : "Send"}
         </button>

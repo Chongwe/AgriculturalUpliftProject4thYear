@@ -3,6 +3,7 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { googleLogout } from "@react-oauth/google";
 import { Chip } from "@material-tailwind/react";
+import { userDetailQuery } from "../utils/data";
 
 import {
   faCog,
@@ -27,6 +28,23 @@ const UserProfile = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const { userId } = useParams();
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const query = userDetailQuery(userId);
+        const response = await client.fetch(query, { userId }); // Pass userId as a parameter
+        setUserData(response[0]);
+        return response[0];
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+    
+
+    fetchUserData();
+  }, []);
 
   useEffect(() => {
     const query = userQuery(userId);
@@ -41,9 +59,16 @@ const UserProfile = () => {
     navigate("/");
   };
 
+  if (!userData) {
+    return <Spinner />;
+  }
+
+  const {  firstName, lastName, bio, location } = userData;
+console.log(bio)
   if (!user) {
     return <Spinner message="Loading Profile" />;
   }
+
   return (
     <div className=" pb-2 pt-2 h-full justify-center items-center">
       <div className="flex flex-col pb-5">
@@ -97,39 +122,38 @@ const UserProfile = () => {
             </div>
           </div>
 
-          <div className="container mx-auto p-4">
-
-            <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="container  mx-auto p-4">
+            <div className="max-w-screen-lg bg-green-50 border border-green-200 min-w-screen-sm mx-auto  shadow-lg rounded-lg overflow-hidden">
               <div className="p-4">
-                <div className="mb-4">
-                  <label className="text-gray-700 font-bold">First Name:</label>
-                  <div className="text-gray-900">{/* First name value */}</div>
+                <div className="mb-4 p-2 rounded-lg bg-green-100">
+                  <label className="text-goldenrod font-bold">First Name:</label>
+                  <div className="text-green-800 p-2 rounded-md bg-green-50">{firstName}</div>
                 </div>
 
-                <div className="mb-4">
-                  <label className="text-gray-700 font-bold">Last Name:</label>
-                  <div className="text-gray-900">{/* Last name value */}</div>
+                <div className="mb-4 p-2 rounded-lg bg-green-100">
+                  <label className="text-goldenrod font-bold">Last Name:</label>
+                  <div className="text-green-800 p-2 rounded-md bg-green-50">{lastName}</div>
                 </div>
 
-                <div className="mb-4">
-                  <label className="text-gray-700 font-bold">Bio:</label>
-                  <div className="text-gray-900">{/* Bio value */}</div>
+                <div className="mb-4 p-2 rounded-lg bg-green-100">
+                  <label className="text-goldenrod font-bold">Bio:</label>
+                  <div className="text-green-800 p-2 rounded-md bg-green-50">{bio}</div>
                 </div>
 
-                <div className="mb-4">
-                  <label className="text-gray-700 font-bold">Location:</label>
-                  <div className="text-gray-900">{/* Location value */}</div>
+                <div className="mb-4 p-2 rounded-lg bg-green-100">
+                  <label className="text-goldenrod font-bold">Location:</label>
+                  <div className="text-green-800 p-2 rounded-md bg-green-50">{location}</div>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="flex flex-wrap relative parent justify-center gap-4">
-              <ProfileCard
-                link={`/edit-profile/${userId}`}
-                name="Edit Profile"
-                icon={faUserEdit}
-              />
+            <ProfileCard
+              link={`/edit-profile/${userId}`}
+              name="Edit Profile"
+              icon={faUserEdit}
+            />
             <ProfileCard name="Add Farm" link="/add-farm" icon={faPlusCircle} />
             <ProfileCard name="Posts" link="posts" icon={faNoteSticky} />
             {user.isAdmin && (
