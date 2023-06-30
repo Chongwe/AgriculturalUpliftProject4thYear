@@ -185,7 +185,9 @@ const CommentPage = () => {
               </p>
             </div>
 
-            <h1 className="text-goldenrod -mb-4 text-2xl">Comments</h1>
+            <h1 className="text-goldenrod -mb-4 text-2xl">
+              Comment ({post?.comments?.length})
+            </h1>
             <hr className="mb-2 border-goldenrod" />
             <div className="max-h-370 overflow-y-auto ">
               {post?.comments?.map((comment, i) => (
