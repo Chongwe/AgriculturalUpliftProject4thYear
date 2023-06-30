@@ -45,6 +45,8 @@ const Home = () => {
       setLoading(false);
     });
   }, []);
+
+  const likePost = (id) => {};
   if (loading) return <Spinner message="Loading Posts" />;
   if (!posts?.length) return <h2>No posts found</h2>;
 

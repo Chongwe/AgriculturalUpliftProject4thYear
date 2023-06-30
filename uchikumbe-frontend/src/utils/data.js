@@ -185,7 +185,7 @@ post[] | order(_createdAt desc) {
       image
     },
   },
-  comment[]{
+  comments[]{
     _key,
     postedBy->{
       _id,

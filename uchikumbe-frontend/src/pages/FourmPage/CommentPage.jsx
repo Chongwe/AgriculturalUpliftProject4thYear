@@ -20,23 +20,12 @@ const CommentPage = () => {
   const [post, setPost] = useState(null);
   const { postId } = useParams();
   const { forumId } = useParams();
-  const [commentCount, setCommentCount] = useState(0);
 
-  // console.log(forumId);
-  // console.log(postId);
   const fetchPostData = async () => {
     try {
       const query = postDetailQueryFromForum(forumId, postId);
       const postData = await client.fetch(query);
       setPost(postData.post[0]);
-
-      // Fetch comment count using commentCountQuery
-      // const commentCountQueryResult = await client.fetch(
-      //   commentCountQuery(postId)
-      // );
-      // const count = commentCountQueryResult.commentCount || 0;
-      // setCommentCount(count);
-      console.log(post);
 
       return postData[0];
     } catch (error) {
@@ -53,36 +42,6 @@ const CommentPage = () => {
     });
   }, []);
 
-  // const addComment = () => {
-  //   if (comment && user) {
-  //     setAddingComment(true);
-  //     client
-  //       .patch(postId)
-  //       .setIfMissing({ comments: [] })
-  //       .insert("after", "comments[-1]", [
-  //         {
-  //           comment,
-  //           _key: uuidv4(),
-  //           type: "comment",
-  //           postedBy: {
-  //             _type: "postedBy",
-  //             _ref: user._id,
-  //           },
-  //         },
-  //       ])
-  //       .commit()
-  //       .then(() => {
-  //         fetchPostData().then((postData) => {
-  //           setComment("");
-  //           setAddingComment(false);
-  //           if (postData) {
-  //             setPost(postData);
-  //           }
-  //         });
-  //       });
-  //   }
-  // };
-
   const addComment = () => {
     if (comment && user) {
       setAddingComment(true);
@@ -90,8 +49,6 @@ const CommentPage = () => {
       client
         .fetch(`*[_type == "subforum" && _id == $forumId][0]`, { forumId })
         .then((subforum) => {
-          // console.log("Fetched subforum:", subforum);
-
           if (subforum) {
             const postIndex = subforum.post.findIndex(
               (post) => post._id === postId
@@ -186,7 +143,7 @@ const CommentPage = () => {
             </div>
 
             <h1 className="text-goldenrod -mb-4 text-2xl">
-              Comment ({post?.comments?.length})
+              Comments ({post?.comments?.length})
             </h1>
             <hr className="mb-2 border-goldenrod" />
             <div className="max-h-370 overflow-y-auto ">

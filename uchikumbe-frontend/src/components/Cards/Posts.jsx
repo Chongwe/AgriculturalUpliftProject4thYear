@@ -1,7 +1,7 @@
 import Avata from "../../assets/avata.jpg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Typography, IconButton } from "@material-tailwind/react";
+import { Typography, IconButton, Badge } from "@material-tailwind/react";
 import {
   faComment,
   faEnvelope,
@@ -20,8 +20,7 @@ const Posts = ({
   post: {
     image,
     content,
-    commentCount,
-    comment,
+    comments,
     _createdAt,
     like,
     title,
@@ -32,6 +31,7 @@ const Posts = ({
 }) => {
   const postId = _id;
 
+  console.log(comments);
   const [postCreatedAt, setPostCreatedAt] = useState(null);
   const [timeDifference, setTimeDifference] = useState(null);
   const [user, setUser] = useState(null);
@@ -110,10 +110,11 @@ const Posts = ({
       <div className=" flex mt-4 gap-8 justify-center">
         <div className="flex-1">
           <Link to={`/comments/${forumId}/${_id}`}>
-            <button className=" bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none">
-              <FontAwesomeIcon size="lg" icon={faComment} /> Comment...{" "}
-              {commentCount}
-            </button>
+            <Badge content={comments?.length} className="bg-goldenrod">
+              <button className=" bg-green-500 transition-all duration-500 hover:scale-95 hover:bg-goldenrod py-2 px-4  text-white  rounded-xl focus:outline-none">
+                <FontAwesomeIcon size="lg" icon={faComment} /> Comment
+              </button>
+            </Badge>
           </Link>
         </div>
         <div className=" rounded-full justify-end">
