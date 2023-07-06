@@ -60,7 +60,7 @@ const SendSMS = () => {
 
   useEffect(() => {
     if (redirectToSignup) {
-      navigate("/sign-in"); // Replace "/signup" with the actual route to your signup page
+      navigate("/sign-in"); 
     }
   }, [redirectToSignup, navigate]);
 
@@ -118,18 +118,6 @@ const SendSMS = () => {
     }
   }, [userInfo, receiver]);
 
-  // useEffect(() => {
-  //   // Disable scrolling on mount
-  //   document.documentElement.style.overflow = 'hidden';
-  //   document.body.style.overflow = 'hidden';
-
-  //   // Enable scrolling on unmount
-  //   return () => {
-  //     document.documentElement.style.overflow = 'auto';
-  //     document.body.style.overflow = 'auto';
-  //   };
-  // }, []);
-
   return (
     <div className="flex flex-col px-4 h-screen min-w-screen-sm items-center bg-green-100">
       <h2 className="text-2xl font-bold mb-4 mt-4 text-white">
@@ -150,7 +138,6 @@ const SendSMS = () => {
           "Loading..."
         )}
       </h2>
-      {/* <p>Number of Messages Received:  {notificationCount }</p>  */}
       <Card className="overflow-y-scroll max-h-96 h-full space-y-4 p-4 m-4 max-w-4xl w-full">
         {/* Sender Messages */}
         {chatMessages.map((chatMessage, index) => {
