@@ -6,6 +6,12 @@ import { userListQuery } from "../../utils/data";
 import Spinner from "../../components/Spinner";
 import SendSMS from "../../components/SendSMS";
 
+/**
+ * The People component represents a page that displays a list of users.
+ * It fetches the user list from the server and renders each user as a Person card.
+ *
+ * @component
+ */
 function People(props) {
   const [listUser, setListUser] = useState(null);
   const [loading, setLoading] = useState(false);

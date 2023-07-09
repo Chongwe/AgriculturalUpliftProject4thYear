@@ -10,35 +10,72 @@ import Spinner from "../../components/Spinner";
 import { userQuery } from "../../utils/data";
 import Sidebar from "../../components/Sidebar";
 
+/**
+ * The ForumPage component represents the forum page.
+ * Renders the forum details, including the forum title, description, and posts.
+ * Allows users to join the forum and create new posts if they are a member.
+ *
+ * @component
+ */
 const ForumPage = () => {
+  /**
+   * State variable for storing the forum details.
+   */
   const [forum, setForum] = useState(null);
+
+  /**
+   * Retrieves the `forumId` parameter from the URL.
+   */
   const { forumId } = useParams();
 
+  /**
+   * State variable for storing the user details.
+   */
   const [user, setUser] = useState(null);
 
+  /**
+   * State variable for storing the user details.
+   */
   const userInfo = fetchUser();
 
+  /**
+   * Fetches the user data based on the user ID.
+   * Updates the `user` state variable with the fetched data.
+   */
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
 
+    // Fetch user data based on the user ID
     client.fetch(query).then((data) => {
       setUser(data[0]);
     });
   });
 
+  /**
+   * Fetches the forum details based on the `forumId`.
+   * Updates the `forum` state variable with the fetched data.
+   */
   useEffect(() => {
     const query = forumDetailsQuery(forumId);
 
+    // Fetch the forum details based on the forum ID
     client.fetch(query).then((data) => {
       setForum(data[0]);
     });
   }, [forumId]);
 
+  /**
+   * Checks if the user is a member of the forum.
+   */
   const isMember =
     user &&
     forum &&
     forum.memberOf?.some((member) => member.userId === user._id);
 
+  /**
+   * Joins the forum by updating the `memberOf` array with the user's details.
+   * Reloads the page after joining the forum.
+   */
   const joinForum = () => {
     const doc = {
       _type: "memberOf",
@@ -50,6 +87,7 @@ const ForumPage = () => {
       userId: user?._id,
     };
 
+    // Join the forum by updating the memberOf array
     client
       .patch(forumId)
       .setIfMissing({ memberOf: [] })
@@ -60,9 +98,16 @@ const ForumPage = () => {
       });
   };
 
+  /**
+   * Renders a loading spinner while the forum details are being fetched.
+   */
   if (!forum) {
     return <Spinner message="Loading Forum" />;
   }
+
+  /**
+   * Renders the forum page.
+   */
   return (
     <div>
       <div className="pt-4 mt-2 bg-green-200  rounded-2xl  min-w-screen-sm flex-col">
@@ -103,10 +148,6 @@ const ForumPage = () => {
               <Posts key={posts._id} post={posts} />
             ))}
           </div>
-
-          {/* <div className="  ml-2 justify-end hidden  lg:block rounded-xl">
-            <Sidebar />
-          </div> */}
         </div>
       </div>
     </div>

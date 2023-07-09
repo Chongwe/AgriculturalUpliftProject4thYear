@@ -11,14 +11,39 @@ import JoinedGroups from "../../components/Cards/JoinedGroups";
 import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 
+/**
+ * The Forum component represents the forum page.
+ * Renders the forums created by the user and available forums to join.
+ *
+ * @component
+ */
 const Forum = () => {
+  /**
+   * State variable for storing the user details.
+   */
   const [user, setUser] = useState(null);
+
+  /**
+   * State variable for storing the forums created by the user.
+   */
   const [createdForums, setCreatedForums] = useState(null);
+
+  /**
+   * State variable for storing the available forums.
+   */
   const [forums, setForums] = useState(null);
+
+  /**
+   * State variable for tracking the loading state.
+   */
   const [loading, setLoading] = useState(false);
 
   const userInfo = fetchUser();
 
+  /**
+   * Fetches the user data based on the user ID.
+   * Updates the `user` state variable with the fetched data.
+   */
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
 
@@ -27,6 +52,10 @@ const Forum = () => {
     });
   });
 
+  /**
+   * Fetches the forums created by the user.
+   * Updates the `createdForums` state variable with the fetched data.
+   */
   useEffect(() => {
     const createdForumsQuery = userCreatedForumsQuery(userInfo?.sub);
 
@@ -35,6 +64,11 @@ const Forum = () => {
     });
   });
 
+  /**
+   * Fetches the available forums.
+   * Updates the `forums` state variable with the fetched data.
+   * Sets the `loading` state variable while fetching.
+   */
   useEffect(() => {
     setLoading(true);
     client.fetch(forumQuery).then((data) => {
@@ -43,6 +77,12 @@ const Forum = () => {
     });
   }, []);
 
+  /**
+   * Joins a forum by updating the `memberOf` array with the user's details.
+   * Reloads the page after joining the forum.
+   *
+   * @param {string} forumId - The ID of the forum to join.
+   */
   const joinForum = (forumId) => {
     const doc = {
       _type: "memberOf",
@@ -64,8 +104,14 @@ const Forum = () => {
       });
   };
 
+  /**
+   * Renders a loading spinner while the forums are being fetched.
+   */
   if (loading) return <Spinner message="Looking for Forums" />;
 
+  /**
+   * Renders the forum page.
+   */
   return (
     <div className=" min-w-screen-sm">
       {user !== null && user !== undefined && (

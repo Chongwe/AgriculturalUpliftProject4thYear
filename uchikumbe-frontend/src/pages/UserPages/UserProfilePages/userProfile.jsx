@@ -17,8 +17,14 @@ import { userQuery } from "../../../utils/data";
 import { client } from "../../../client";
 import Spinner from "../../../components/Spinner";
 import ProfileCard from "../../../components/Cards/profileCard";
-import { Tooltip } from "@material-tailwind/react";
 
+/**
+ * The UserProfile component represents a user's profile page.
+ * It displays the user's information, including bio, location, and profile picture.
+ * The component also provides options for editing profile, adding a farm, viewing posts, and accessing admin dashboard (if user is an admin).
+ *
+ * @component
+ */
 const UserProfile = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -38,7 +44,7 @@ const UserProfile = () => {
     };
 
     fetchUserData();
-  }, []);
+  });
 
   useEffect(() => {
     const query = userQuery(userId);
@@ -57,7 +63,7 @@ const UserProfile = () => {
     return <Spinner />;
   }
 
-  const { firstName, lastName, bio, location } = userData;
+  const { bio, location } = userData;
   // console.log(bio);
   if (!user) {
     return <Spinner message="Loading Profile" />;

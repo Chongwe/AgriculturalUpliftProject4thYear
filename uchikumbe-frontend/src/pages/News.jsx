@@ -14,6 +14,9 @@ import { mainNewsListQuery } from "../utils/data";
 import imageUrlBuilder from "@sanity/image-url";
 import Spinner from "../components/Spinner";
 
+/**
+ * The News component displays a list of news articles.
+ */
 export default function News() {
   const [listNews, setListNews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -42,6 +45,11 @@ export default function News() {
     return <p>No news data available.</p>;
   }
 
+  /**
+   * Returns the URL for the news article's image.
+   * @param {Object} news - The news article object.
+   * @returns {string} - The URL of the news article's image.
+   */
   function urlFor(news) {
     return builder.image(news.image).url();
   }

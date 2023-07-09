@@ -6,6 +6,11 @@ import { client } from "../../../client";
 import { userQuery } from "../../../utils/data";
 import { useNavigate, useParams } from "react-router-dom";
 
+/**
+ * The EditProfile component represents the page for editing user profile information.
+ *
+ * @component
+ */
 const EditProfile = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

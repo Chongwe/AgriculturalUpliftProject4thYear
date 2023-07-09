@@ -7,14 +7,41 @@ import { useNavigate, useParams } from "react-router-dom";
 import { fetchUser } from "../../utils/fetchUser";
 import { Spinner, Typography } from "@material-tailwind/react";
 
+/**
+ * The SubmiteForumRequestPage component represents the page for submitting a forum creation request.
+ * Users can enter the desired forum name and a brief description to submit their request.
+ * Upon submission, the request is saved to the database.
+ *
+ * @component
+ */
 function SubmiteForumRequestPage() {
+  /**
+   * State variable for storing the user details.
+   */
   const [user, setUser] = useState(null);
+
+  /**
+   * State variable to get userId from params to be used to fetch the user from the userQuery
+   */
   const { userId } = useParams();
+
+  /**
+   * State variable for storing the title of a forum.
+   */
   const [title, setTitle] = useState(null);
+
+  /**
+   * State variable for storing the description of a forum.
+   */
   const [desc, setDesc] = useState(null);
 
   const navigate = useNavigate();
 
+  /**
+   * This useEffect gets @param(userId)  to be passed into the userQuery to get the user from the sanity desk
+   * The Data is then stored into the user State variable and the user is changed with each new userId that comes from
+   * params
+   */
   useEffect(() => {
     const query = userQuery(userId);
 
@@ -23,8 +50,11 @@ function SubmiteForumRequestPage() {
     });
   }, [userId]);
 
-  // console.log(user._id);
-
+  /**
+   * Submits the forum creation request by creating a new document in the database.
+   * The request includes the provided title, description, and user ID.
+   * Upon successful submission, the user is navigated to the forum page.
+   */
   const submitForumRequest = () => {
     if (title && desc) {
       const doc = {
@@ -43,8 +73,10 @@ function SubmiteForumRequestPage() {
     }
   };
 
+  // Render a spinner while user data is being fetched
   if (!user) return <Spinner />;
 
+  // Render the SubmiteForumRequestPage component UI
   return (
     <div className=" flex mb-96  m-4 rounded-lg mx-auto flex-col align-middle items-center  bg-white p-4  max-w-screen-sm">
       <div className=" border-goldenrod border p-4 rounded-lg">
