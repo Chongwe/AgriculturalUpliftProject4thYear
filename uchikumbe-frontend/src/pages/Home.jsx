@@ -8,6 +8,10 @@ import MasonryLayout from "../Layout/MasonryLayout";
 import { fetchUser } from "../utils/fetchUser";
 import { userQuery } from "../utils/data";
 
+/**
+ * The Home component represents the home page of the website.
+ * It displays posts from different subforums in a masonry layout.
+ */
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState(null);
@@ -18,6 +22,7 @@ const Home = () => {
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
 
+    // Fetch user information based on the user ID
     client.fetch(query).then((data) => {
       setUser(data[0]);
     });
@@ -25,21 +30,23 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
+
+    // Fetch posts from different subforums
     client.fetch(postQueryforums).then((data) => {
+      // Combine all posts from different subforums into a single array
       const flattenedPosts = data.reduce((accumulator, subforum) => {
         if (subforum.post && subforum.post.length > 0) {
           accumulator.push(...subforum.post);
         }
         return accumulator;
       }, []);
+
       // Sort the posts by _createdAt in descending order
       const sortedPosts = flattenedPosts.sort(
         (a, b) => new Date(b._createdAt) - new Date(a._createdAt)
       );
 
       setPosts(sortedPosts);
-      // console.log(flattenedPosts);
-      // console.log(posts);
       setLoading(false);
     });
   }, []);

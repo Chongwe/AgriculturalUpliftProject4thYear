@@ -11,19 +11,68 @@ import Spinner from "../../components/Spinner";
 import { forumDetailsQuery } from "../../utils/data";
 import PageBlocked from "../../others/PageBlocked";
 
+/**
+ * Component for creating a new post in a forum.
+ * Renders a form with fields for the post title, content, and optional image upload.
+ * On submit, creates a new post with the provided data and redirects to the forum page.
+ * If the user is not a member of the forum, displays a blocked page.
+ *
+ * @component
+ */
 const CreatePost = () => {
+  /**
+   * State variable for the post title.
+   */
   const [title, setTitle] = useState("");
+
+  /**
+   * State variable for the post content.
+   */
   const [content, setContent] = useState("");
+
+  /**
+   * State variable for the loading state of the component.
+   */
   const [loading, setLoading] = useState(true);
+
+  /**
+   * Retrieves the `forumId` parameter from the URL.
+   */
   const { forumId } = useParams();
+
+  /**
+   * State variable for storing the details of the forum.
+   */
   const [forum, setForum] = useState(null);
+
+  /**
+   * State variable for indicating if the form fields are empty.
+   */
   const [fields, setFields] = useState();
+
+  /**
+   * State variable for storing the uploaded image asset.
+   */
   const [imageAsset, setImageAsset] = useState();
+
+  /**
+   * State variable for indicating if the selected image has a wrong file type.
+   */
   const [wrongImageType, setWrongImageType] = useState(false);
+
+  /**
+   * Retrieves the user object from the `UserContext`.
+   */
   const user = useContext(UserContext);
 
+  /**
+   * Navigation function provided by the `react-router-dom` library.
+   */
   const navigate = useNavigate();
 
+  /**
+   * Effect hook to fetch the forum details based on the `forumId`.
+   */
   useEffect(() => {
     const query = forumDetailsQuery(forumId);
 
@@ -33,11 +82,21 @@ const CreatePost = () => {
     });
   }, [forumId]);
 
+  /**
+   * Checks if the user is a member of the forum.
+   */
   const isMember =
     user &&
     forum &&
     forum.memberOf?.some((member) => member.userId === user._id);
 
+  /**
+   * Uploads the selected image file to the server.
+   * Sets the `imageAsset` state variable with the uploaded document.
+   * Sets the `loading` state variable during the upload process.
+   * Sets the `wrongImageType` state variable if the selected file has an unsupported type.
+   * @param {Object} e - The event object.
+   */
   const uploadImage = (e) => {
     const selectedFile = e.target.files[0];
     // uploading asset to sanity
@@ -68,6 +127,13 @@ const CreatePost = () => {
     }
   };
 
+  /**
+   * Creates a new post with the provided data.
+   * If an image was uploaded, includes it in the post object.
+   * Commits the new post to theSanity database using the `client.patch` method.
+   * Navigates to the forum page after successful creation of the post.
+   * If the title or content fields are empty, displays a validation message for 2 seconds.
+   */
   const createPost = () => {
     if (title && content) {
       const doc = {
@@ -112,14 +178,23 @@ const CreatePost = () => {
     }
   };
 
+  /**
+   * Renders a loading spinner while the forum details are being fetched.
+   */
   if (loading) {
     return <Spinner message={"loading forum"} />;
   }
 
+  /**
+   * Renders a blocked page if the user is not a member of the forum.
+   */
   if (!isMember) {
     return <PageBlocked />;
   }
 
+  /**
+   * Renders the create post form.
+   */
   return (
     <div className="flex flex-col justify-center items-center mt-5 lg:h-4/5">
       <div className=" flex lg:flex-row flex-col justify-center items-center bg-white lg:p-5 p-3 lg:w-4/5  w-full">
