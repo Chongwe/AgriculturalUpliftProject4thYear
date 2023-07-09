@@ -3,6 +3,9 @@ import ForumRequsetForum from "../../components/AdminComponents/ForumRequsetForu
 import { client } from "../../client";
 import { submitForumRequestQuery } from "../../utils/data";
 import { Spinner } from "@material-tailwind/react";
+
+/* The code is defining a functional component called `ManageForumCreationRequestPage`. This component
+is responsible for managing and displaying forum creation requests. */
 const ManageForumCreationRequestPage = () => {
   /* The code `const [forumRequest, setForumRequest] = useState(null);` is declaring a state variable
   called `forumRequest` and a corresponding setter function called `setForumRequest`. The initial
@@ -27,6 +30,8 @@ const ManageForumCreationRequestPage = () => {
   /**
    * The function `handleDeny` is used to deny a forum request by setting the `isApproved` property to
    * `false` for the specified forum ID.
+   *   @param {string} forumId - The ID of the forum creation request to approve.
+   * @returns {void}
    */
   const handleDeny = (forumId) => {
     try {
@@ -43,6 +48,8 @@ const ManageForumCreationRequestPage = () => {
   /**
    * The `handleApprove` function approves a forum request by updating the `isApproved` property of the
    * forum, creating a new subforum document, and handling any errors that occur.
+   *  @param {string} forumId - The ID of the forum creation request to approve.
+   * @returns {void}
    */
   const handleApprove = (forumId) => {
     try {
