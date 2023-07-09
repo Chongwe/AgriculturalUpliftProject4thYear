@@ -13,21 +13,22 @@ import SendSMS from "../../components/SendSMS";
  * @component
  */
 function People(props) {
-  const [listUser, setListUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [listUser, setListUser] = useState(null); // State to store the list of users
+  const [loading, setLoading] = useState(false); // State to track the loading state
 
   useEffect(() => {
     setLoading(true);
 
+    // Fetch the user list from the server
     client.fetch(userListQuery).then((data) => {
       setListUser(data);
       setLoading(false);
     });
   }, []);
 
-  if (loading) return <Spinner message="Looking for users" />;
+  if (loading) return <Spinner message="Looking for users" />; // Display a spinner while loading
 
-  if (!listUser?.length) return <h2>No users found</h2>;
+  if (!listUser?.length) return <h2>No users found</h2>; // Display a message if no users are found
 
   return (
     <div className="mt-8 sm:mx-4 min-w-screen-sm justify-center mx-auto align-middle">
