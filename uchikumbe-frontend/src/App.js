@@ -26,6 +26,10 @@ import SignUp from "./utils/SignUp";
 import AdminDashboard from "./pages/AdminPages/AdminDashboard";
 import CreateForumFromUserRequestPage from "./pages/AdminPages/CreateForumFromUserRequestPage";
 
+/**
+ * The code sets up a router for a React application with various routes and components.
+ * @returns The App component is being returned.
+ */
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>

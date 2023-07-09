@@ -7,13 +7,8 @@ import { urlFor, client } from "../../client";
 import UserContext from "../../Layout/UserContext";
 import { v4 as uuidv4 } from "uuid";
 
-/**
- * The CommentPage component represents the page for viewing and adding comments to a post.
- * Users can view the details of a specific post, including the post content and comments.
- * They can also add their own comments to the post.
- *
- * @component
- */
+/* The above code is a React component called `CommentPage`. It is responsible for rendering a page
+that displays a post and its comments. */
 const CommentPage = () => {
   /**
    * State variable for storing the user details.
@@ -51,8 +46,9 @@ const CommentPage = () => {
   const { forumId } = useParams();
 
   /**
-   * Fetches the post data from the database based on the forum ID and post ID.
-   * Updates the `post` state with the fetched data.
+   * The function fetches post data from a forum using a query and sets the post state with the fetched
+   * data.
+   * @returns The function `fetchPostData` is returning `postData[0]`.
    */
   const fetchPostData = async () => {
     try {
@@ -67,6 +63,9 @@ const CommentPage = () => {
     }
   };
 
+  /* The `useEffect` hook is used to perform side effects in a functional component. In this case, the
+`useEffect` hook is used to fetch user data based on the user ID and update the `user` state
+variable. */
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
 
@@ -77,9 +76,8 @@ const CommentPage = () => {
   }, []);
 
   /**
-   * Adds a new comment to the post.
-   * Creates a new comment document in the database and updates the post with the new comment.
-   * Updates the `post` state with the updated post data.
+   * The function `addComment` adds a comment to a post in a subforum, updating the subforum's post
+   * array and fetching the updated post data.
    */
   const addComment = () => {
     if (comment && user) {
