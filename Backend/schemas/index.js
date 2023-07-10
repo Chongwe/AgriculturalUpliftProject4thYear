@@ -19,6 +19,10 @@ import equipmentChoice from './equipmentChoice'
 import messages from './messages'
 import forumRequest from './forumRequest'
 
+/**
+ * An array containing all the schema types.
+ * @type {object[]}
+ */
 export const schemaTypes = [
   animalchoice,
   animals,

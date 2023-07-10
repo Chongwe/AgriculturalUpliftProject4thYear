@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>client.js - Documentation</title>
+    <title>App.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -37,7 +37,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">client.js</h1>
+    <h1 class="page-title">App.js</h1>
     
 
     
@@ -47,38 +47,75 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// Import the required packages from the "@sanity" namespace.
-import sanityClient from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
+            <pre class="prettyprint source linenums"><code>import Home from "./pages/Home";
+import News from "./pages/News";
+import People from "./pages/UserPages/People";
+import Forum from "./pages/FourmPage/Forum";
+import RootLayout from "./Layout/RootLayout";
+import NotFound from "./others/NotFound";
+import CreatePost from "./pages/FourmPage/CreatePost";
+import CommentPage from "./pages/FourmPage/CommentPage";
+import Tools from "./components/Tools";
 
-// Create a Sanity client instance.
-export const client = sanityClient({
-  // The project ID for your Sanity backend.
-  projectId: process.env.REACT_APP_SANITY_PROJECT_ID,
-
-  // The dataset to be used (e.g., "production").
-  dataset: "production",
-
-  // The API version to use (e.g., "2023-05-03").
-  apiVersion: "2023-05-03",
-
-  // Determine whether to use the Content Delivery Network (CDN) for fetching data.
-  useCdn: false,
-
-  // The token for authentication (if required).
-  token: process.env.REACT_APP_SANITY_TOKEN,
-});
-
-// Create an image URL builder using the Sanity client instance.
-const builder = imageUrlBuilder(client);
+//ROUTES
+import {
+  createBrowserRouter,
+  Route,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import UserProfile from "./pages/UserPages/UserProfilePages/userProfile";
+import EditProfile from "./pages/UserPages/UserProfilePages/EditProfile";
+import AddFarm from "./pages/UserPages/UserProfilePages/AddFarm";
+import SubmiteForumRequestPage from "./pages/FourmPage/createForum";
+import ForumPage from "./pages/FourmPage/ForumPage";
+import SendSMS from "./components/SendSMS";
+import SignUp from "./utils/SignUp";
+import AdminDashboard from "./pages/AdminPages/AdminDashboard";
+import CreateForumFromUserRequestPage from "./pages/AdminPages/CreateForumFromUserRequestPage";
 
 /**
- * Generate a URL for an image from the Sanity backend.
- *
- * @param {string} source - The source of the image (e.g., Sanity image asset reference).
- * @returns {string} - The URL of the image.
+ * The code sets up a router for a React application with various routes and components.
+ * @returns The App component is being returned.
  */
-export const urlFor = (source) => builder.image(source);
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    &lt;Route path="/" element={&lt;RootLayout />}>
+      &lt;Route index element={&lt;Home />} />
+      &lt;Route path="sign-in" element={&lt;SignUp />} />
+      &lt;Route path="forum-page/:forumId" element={&lt;ForumPage />} />
+      &lt;Route path="/comments/:forumId/:postId" element={&lt;CommentPage />} />
+      &lt;Route path="people" element={&lt;People />} />
+      &lt;Route path="news" element={&lt;News />} />
+      &lt;Route path="tools" element={&lt;Tools />} />
+      &lt;Route path="forum" element={&lt;Forum />} />
+      &lt;Route
+        path="/create-forum"
+        element={&lt;CreateForumFromUserRequestPage />}
+      />
+      &lt;Route
+        path="create-forum/:userId"
+        element={&lt;SubmiteForumRequestPage />}
+      />
+      &lt;Route path="create-post/:forumId" element={&lt;CreatePost />} />
+      &lt;Route path="add-farm" element={&lt;AddFarm />} />
+      &lt;Route path="message/:userId" element={&lt;SendSMS />} />
+      &lt;Route path="edit-profile/:userId" element={&lt;EditProfile />} />
+      &lt;Route path="user-profile/:userId" element={&lt;UserProfile />}>&lt;/Route>
+      &lt;Route path="admin-dashboard" element={&lt;AdminDashboard />}>&lt;/Route>
+      &lt;Route path="*" element={&lt;NotFound />} />
+    &lt;/Route>
+  )
+);
+function App() {
+  return (
+    &lt;GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}>
+      &lt;RouterProvider router={router} />
+    &lt;/GoogleOAuthProvider>
+  );
+}
+export default App;
 </code></pre>
         </article>
     </section>

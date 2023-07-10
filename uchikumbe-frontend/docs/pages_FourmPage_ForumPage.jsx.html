@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>pages/FourmPage/ForumPage.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AddFarm">AddFarm</a></li><li><a href="global.html#CreatePost">CreatePost</a></li><li><a href="global.html#EditProfile">EditProfile</a></li><li><a href="global.html#Forum">Forum</a></li><li><a href="global.html#ForumPage">ForumPage</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#People">People</a></li><li><a href="global.html#SubmiteForumRequestPage">SubmiteForumRequestPage</a></li><li><a href="global.html#UserProfile">UserProfile</a></li><li><a href="global.html#commentCountQuery">commentCountQuery</a></li><li><a href="global.html#createOrGetUser">createOrGetUser</a></li><li><a href="global.html#fetchUser">fetchUser</a></li><li><a href="global.html#forumDetailsQuery">forumDetailsQuery</a></li><li><a href="global.html#forumQuery">forumQuery</a></li><li><a href="global.html#mainNewsListQuery">mainNewsListQuery</a></li><li><a href="global.html#messageListQuery">messageListQuery</a></li><li><a href="global.html#postDetailQuery">postDetailQuery</a></li><li><a href="global.html#postDetailQueryFromForum">postDetailQueryFromForum</a></li><li><a href="global.html#postQueryforums">postQueryforums</a></li><li><a href="global.html#postsQuery">postsQuery</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#submitForumRequestQuery">submitForumRequestQuery</a></li><li><a href="global.html#urlFor">urlFor</a></li><li><a href="global.html#userCreatedForumsQuery">userCreatedForumsQuery</a></li><li><a href="global.html#userDetailQuery">userDetailQuery</a></li><li><a href="global.html#userListQuery">userListQuery</a></li><li><a href="global.html#userQuery">userQuery</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">pages/FourmPage/ForumPage.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useEffect, useState } from "react";
+import Posts from "../../components/Cards/Posts";
+import "../../styles.css";
+import { useParams } from "react-router-dom";
+import { forumDetailsQuery } from "../../utils/data";
+import { fetchUser } from "../../utils/fetchUser";
+import { Link } from "react-router-dom";
+import { client } from "../../client";
+import Spinner from "../../components/Spinner";
+import { userQuery } from "../../utils/data";
+import Sidebar from "../../components/Sidebar";
+
+/**
+ * The ForumPage component represents the forum page.
+ * Renders the forum details, including the forum title, description, and posts.
+ * Allows users to join the forum and create new posts if they are a member.
+ *
+ * @component
+ */
+const ForumPage = () => {
+  /**
+   * State variable for storing the forum details.
+   */
+  const [forum, setForum] = useState(null);
+
+  /**
+   * Retrieves the `forumId` parameter from the URL.
+   */
+  const { forumId } = useParams();
+
+  /**
+   * State variable for storing the user details.
+   */
+  const [user, setUser] = useState(null);
+
+  /**
+   * State variable for storing the user details.
+   */
+  const userInfo = fetchUser();
+
+  /**
+   * Fetches the user data based on the user ID.
+   * Updates the `user` state variable with the fetched data.
+   */
+  useEffect(() => {
+    const query = userQuery(userInfo?.sub);
+
+    // Fetch user data based on the user ID
+    client.fetch(query).then((data) => {
+      setUser(data[0]);
+    });
+  });
+
+  /**
+   * Fetches the forum details based on the `forumId`.
+   * Updates the `forum` state variable with the fetched data.
+   */
+  useEffect(() => {
+    const query = forumDetailsQuery(forumId);
+
+    // Fetch the forum details based on the forum ID
+    client.fetch(query).then((data) => {
+      setForum(data[0]);
+    });
+  }, [forumId]);
+
+  /**
+   * Checks if the user is a member of the forum.
+   */
+  const isMember =
+    user &amp;&amp;
+    forum &amp;&amp;
+    forum.memberOf?.some((member) => member.userId === user._id);
+
+  /**
+   * Joins the forum by updating the `memberOf` array with the user's details.
+   * Reloads the page after joining the forum.
+   */
+  const joinForum = () => {
+    const doc = {
+      _type: "memberOf",
+      _key: user?._id,
+      postedBy: {
+        _type: "postedByBy",
+        _ref: user?._id,
+      },
+      userId: user?._id,
+    };
+
+    // Join the forum by updating the memberOf array
+    client
+      .patch(forumId)
+      .setIfMissing({ memberOf: [] })
+      .insert("after", "memberOf[-1]", [doc])
+      .commit()
+      .then(() => {
+        window.location.reload();
+      });
+  };
+
+  /**
+   * Renders a loading spinner while the forum details are being fetched.
+   */
+  if (!forum) {
+    return &lt;Spinner message="Loading Forum" />;
+  }
+
+  /**
+   * Renders the forum page.
+   */
+  return (
+    &lt;div>
+      &lt;div className="pt-4 mt-2 bg-green-200  rounded-2xl  min-w-screen-sm flex-col">
+        &lt;div className="flex p-2 w-full justify-between space-x-4 ">
+          &lt;div className=" ">
+            &lt;h1 className="text-3xl text-green-900 font-bold mb-4">
+              {forum.title}
+            &lt;/h1>
+            &lt;h1 className=" text-goldenrod -mt-4 ">{forum.description}&lt;/h1>
+          &lt;/div>
+          &lt;div className=" gap-2 ">
+            {user !== null &amp;&amp; user !== undefined &amp;&amp; isMember &amp;&amp; (
+              &lt;Link to={`/create-post/${forum?._id}`}>
+                &lt;button className=" bg-green-500 m-2 hover:bg-goldenrod transition-all duration-100 hover:scale-95 py-2  px-4 ml-4  text-white  rounded-md focus:outline-none">
+                  Create a Post
+                &lt;/button>
+              &lt;/Link>
+            )}
+
+            {!isMember &amp;&amp; (
+              &lt;button
+                onClick={joinForum}
+                className=" bg-green-500 m-2 hover:bg-goldenrod transition-all duration-100 hover:scale-95 py-2  px-4 ml-4  text-white  rounded-md focus:outline-none"
+              >
+                Join
+              &lt;/button>
+            )}
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+      &lt;div className=" mt-4 ">
+        &lt;div className="lg:w-full w-full pt-4 bg-green-100 justify-center rounded-none sm:rounded-2xl min-w-screen-sm flex">
+          &lt;div className="flex-col  lg:-ml-56  mt-8 mb-2 lg:px-20 flex rounded-xl bg-transparent sm:bg-green-50">
+            &lt;h2 className="text-3xl font-bold text-green-500 m-2">
+              Posts in this forum
+            &lt;/h2>
+            {forum?.post?.map((posts) => (
+              &lt;Posts key={posts._id} post={posts} />
+            ))}
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  );
+};
+
+export default ForumPage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Sun Jul 09 2023 19:33:39 GMT+0200 (Central Africa Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>

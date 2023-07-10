@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>client.js - Documentation</title>
+    <title>pages/UserPages/People.jsx - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -37,7 +37,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">client.js</h1>
+    <h1 class="page-title">pages/UserPages/People.jsx</h1>
     
 
     
@@ -47,38 +47,57 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// Import the required packages from the "@sanity" namespace.
-import sanityClient from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
-
-// Create a Sanity client instance.
-export const client = sanityClient({
-  // The project ID for your Sanity backend.
-  projectId: process.env.REACT_APP_SANITY_PROJECT_ID,
-
-  // The dataset to be used (e.g., "production").
-  dataset: "production",
-
-  // The API version to use (e.g., "2023-05-03").
-  apiVersion: "2023-05-03",
-
-  // Determine whether to use the Content Delivery Network (CDN) for fetching data.
-  useCdn: false,
-
-  // The token for authentication (if required).
-  token: process.env.REACT_APP_SANITY_TOKEN,
-});
-
-// Create an image URL builder using the Sanity client instance.
-const builder = imageUrlBuilder(client);
+            <pre class="prettyprint source linenums"><code>import React from "@material-tailwind/react";
+import Person from "../../components/Cards/Person";
+import { useEffect, useState } from "react";
+import { client } from "../../client";
+import { userListQuery } from "../../utils/data";
+import Spinner from "../../components/Spinner";
+import SendSMS from "../../components/SendSMS";
 
 /**
- * Generate a URL for an image from the Sanity backend.
+ * The People component represents a page that displays a list of users.
+ * It fetches the user list from the server and renders each user as a Person card.
  *
- * @param {string} source - The source of the image (e.g., Sanity image asset reference).
- * @returns {string} - The URL of the image.
+ * @component
  */
-export const urlFor = (source) => builder.image(source);
+function People(props) {
+  const [listUser, setListUser] = useState(null); // State to store the list of users
+  const [loading, setLoading] = useState(false); // State to track the loading state
+
+  useEffect(() => {
+    setLoading(true);
+
+    // Fetch the user list from the server
+    client.fetch(userListQuery).then((data) => {
+      setListUser(data);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) return &lt;Spinner message="Looking for users" />; // Display a spinner while loading
+
+  if (!listUser?.length) return &lt;h2>No users found&lt;/h2>; // Display a message if no users are found
+
+  return (
+    &lt;div className="mt-8 sm:mx-4 min-w-screen-sm justify-center mx-auto align-middle">
+      &lt;h2 className="text-2xl justify-center ml-20 text-goldenrod">
+        Members of uchikumbe
+      &lt;/h2>
+
+      {listUser.map((user) => (
+        &lt;Person
+          key={user._id}
+          name={user.userName}
+          avatar={user.image}
+          user_id={user._id}
+        />
+      ))}
+    &lt;/div>
+  );
+}
+
+export default People;
 </code></pre>
         </article>
     </section>

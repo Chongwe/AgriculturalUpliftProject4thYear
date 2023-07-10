@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>pages/FourmPage/Forum.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AddFarm">AddFarm</a></li><li><a href="global.html#CreatePost">CreatePost</a></li><li><a href="global.html#EditProfile">EditProfile</a></li><li><a href="global.html#Forum">Forum</a></li><li><a href="global.html#ForumPage">ForumPage</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#People">People</a></li><li><a href="global.html#SubmiteForumRequestPage">SubmiteForumRequestPage</a></li><li><a href="global.html#UserProfile">UserProfile</a></li><li><a href="global.html#commentCountQuery">commentCountQuery</a></li><li><a href="global.html#createOrGetUser">createOrGetUser</a></li><li><a href="global.html#fetchUser">fetchUser</a></li><li><a href="global.html#forumDetailsQuery">forumDetailsQuery</a></li><li><a href="global.html#forumQuery">forumQuery</a></li><li><a href="global.html#mainNewsListQuery">mainNewsListQuery</a></li><li><a href="global.html#messageListQuery">messageListQuery</a></li><li><a href="global.html#postDetailQuery">postDetailQuery</a></li><li><a href="global.html#postDetailQueryFromForum">postDetailQueryFromForum</a></li><li><a href="global.html#postQueryforums">postQueryforums</a></li><li><a href="global.html#postsQuery">postsQuery</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#submitForumRequestQuery">submitForumRequestQuery</a></li><li><a href="global.html#urlFor">urlFor</a></li><li><a href="global.html#userCreatedForumsQuery">userCreatedForumsQuery</a></li><li><a href="global.html#userDetailQuery">userDetailQuery</a></li><li><a href="global.html#userListQuery">userListQuery</a></li><li><a href="global.html#userQuery">userQuery</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">pages/FourmPage/Forum.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect } from "react";
+import Group from "../../components/Cards/Group";
+import { fetchUser } from "../../utils/fetchUser";
+import {
+  forumQuery,
+  userCreatedForumsQuery,
+  userQuery,
+} from "../../utils/data";
+import { client } from "../../client";
+import JoinedGroups from "../../components/Cards/JoinedGroups";
+import { Link } from "react-router-dom";
+import Spinner from "../../components/Spinner";
+
+/**
+ * The Forum component represents the forum page.
+ * Renders the forums created by the user and available forums to join.
+ *
+ * @component
+ */
+const Forum = () => {
+  /**
+   * State variable for storing the user details.
+   */
+  const [user, setUser] = useState(null);
+
+  /**
+   * State variable for storing the forums created by the user.
+   */
+  const [createdForums, setCreatedForums] = useState(null);
+
+  /**
+   * State variable for storing the available forums.
+   */
+  const [forums, setForums] = useState(null);
+
+  /**
+   * State variable for tracking the loading state.
+   */
+  const [loading, setLoading] = useState(false);
+
+  const userInfo = fetchUser();
+
+  /**
+   * Fetches the user data based on the user ID.
+   * Updates the `user` state variable with the fetched data.
+   */
+  useEffect(() => {
+    const query = userQuery(userInfo?.sub);
+
+    client.fetch(query).then((data) => {
+      setUser(data[0]);
+    });
+  });
+
+  /**
+   * Fetches the forums created by the user.
+   * Updates the `createdForums` state variable with the fetched data.
+   */
+  useEffect(() => {
+    const createdForumsQuery = userCreatedForumsQuery(userInfo?.sub);
+
+    client.fetch(createdForumsQuery).then((data) => {
+      setCreatedForums(data);
+    });
+  });
+
+  /**
+   * Fetches the available forums.
+   * Updates the `forums` state variable with the fetched data.
+   * Sets the `loading` state variable while fetching.
+   */
+  useEffect(() => {
+    setLoading(true);
+    client.fetch(forumQuery).then((data) => {
+      setForums(data);
+      setLoading(false);
+    });
+  }, []);
+
+  /**
+   * Joins a forum by updating the `memberOf` array with the user's details.
+   * Reloads the page after joining the forum.
+   *
+   * @param {string} forumId - The ID of the forum to join.
+   */
+  const joinForum = (forumId) => {
+    const doc = {
+      _type: "memberOf",
+      _key: user._id,
+      postedBy: {
+        _type: "postedByBy",
+        _ref: user._id,
+      },
+      userId: user._id,
+    };
+
+    client
+      .patch(forumId)
+      .setIfMissing({ memberOf: [] })
+      .insert("after", "memberOf[-1]", [doc])
+      .commit()
+      .then(() => {
+        window.location.reload();
+      });
+  };
+
+  /**
+   * Renders a loading spinner while the forums are being fetched.
+   */
+  if (loading) return &lt;Spinner message="Looking for Forums" />;
+
+  /**
+   * Renders the forum page.
+   */
+  return (
+    &lt;div className=" min-w-screen-sm">
+      {user !== null &amp;&amp; user !== undefined &amp;&amp; (
+        &lt;div className="m-4 text-center ">
+          &lt;Link to={`/create-forum/${user?._id}`}>
+            &lt;button className=" bg-green-500  transition-all duration-200 hover:scale-95 hover:bg-goldenrod py-2 justify-center px-4 ml-4  text-white  rounded-full focus:outline-none">
+              Want To Create A Forum?
+            &lt;/button>
+            &lt;hr className="my-4 border-goldenrod" />
+          &lt;/Link>
+        &lt;/div>
+      )}
+
+      &lt;div className="p-4 lg:flex-row  justify-center  gap-24 lg:flex flex-col  ">
+        {user !== null &amp;&amp; user !== undefined &amp;&amp; (
+          &lt;div className="  items-center p-4 bg-green-50 rounded-xl ">
+            &lt;h1 className="text-4xl mb-4  text-green-900">Your Forums&lt;/h1>
+            &lt;hr className="my-4 border-green-500 border-1" />
+            {createdForums?.map((forum) => (
+              &lt;div key={forum._id}>
+                &lt;JoinedGroups
+                  name={
+                    &lt;Link
+                      to={`/forum-page/${forum._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {forum.title}
+                    &lt;/Link>
+                  }
+                  members={forum.memberOf?.length}
+                />
+              &lt;/div>
+            ))}
+          &lt;/div>
+        )}
+        &lt;div className="p-4 ">
+          &lt;h1 className="text-4xl mb-4  text-green-900">Forums&lt;/h1>
+          &lt;hr className="my-4 border-green-500 border-1" />
+          &lt;div className="   rounded-xl">
+            {forums?.map((forum) => (
+              &lt;Group
+                key={forum._id}
+                name={
+                  &lt;Link
+                    to={`/forum-page/${forum._id}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    {forum.title}
+                  &lt;/Link>
+                }
+                members={forum.memberOf?.length}
+                isUserMember={forum.memberOf?.some(
+                  (member) => member.userId === user?._id
+                )}
+                onJoin={() => joinForum(forum._id)}
+              />
+            ))}
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  );
+};
+
+export default Forum;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Sun Jul 09 2023 19:33:39 GMT+0200 (Central Africa Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>

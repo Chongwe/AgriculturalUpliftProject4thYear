@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>client.js - Documentation</title>
+    <title>pages/UserPages/UserProfilePages/AddFarm.jsx - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -37,7 +37,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">client.js</h1>
+    <h1 class="page-title">pages/UserPages/UserProfilePages/AddFarm.jsx</h1>
     
 
     
@@ -47,38 +47,70 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// Import the required packages from the "@sanity" namespace.
-import sanityClient from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
-
-// Create a Sanity client instance.
-export const client = sanityClient({
-  // The project ID for your Sanity backend.
-  projectId: process.env.REACT_APP_SANITY_PROJECT_ID,
-
-  // The dataset to be used (e.g., "production").
-  dataset: "production",
-
-  // The API version to use (e.g., "2023-05-03").
-  apiVersion: "2023-05-03",
-
-  // Determine whether to use the Content Delivery Network (CDN) for fetching data.
-  useCdn: false,
-
-  // The token for authentication (if required).
-  token: process.env.REACT_APP_SANITY_TOKEN,
-});
-
-// Create an image URL builder using the Sanity client instance.
-const builder = imageUrlBuilder(client);
+            <pre class="prettyprint source linenums"><code>import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  Card,
+  Input,
+  Button,
+  Typography,
+  Textarea,
+  Select,
+  Option,
+} from "@material-tailwind/react";
 
 /**
- * Generate a URL for an image from the Sanity backend.
+ * The AddFarm component represents the page for adding farm information.
  *
- * @param {string} source - The source of the image (e.g., Sanity image asset reference).
- * @returns {string} - The URL of the image.
+ * @component
  */
-export const urlFor = (source) => builder.image(source);
+function AddFarm() {
+  return (
+    &lt;div className=" p-4 lg:flex-row shadow-lg rounded-3xl my-4 min-w-[400px] justify-center gap-24 lg:flex flex-col  mx-12 items-center">
+      &lt;div className="">
+        &lt;div className=" flex flex-wrap gap-4">
+          &lt;FontAwesomeIcon
+            icon={faUserEdit}
+            className="text-goldenrod "
+            size="2x"
+          />
+          &lt;Typography variant="h4" className="text-goldenrod ">
+            Add your farm
+          &lt;/Typography>
+        &lt;/div>
+        &lt;Typography color="gray" className="mt-1 text-green-900 font-normal">
+          Add farm information
+        &lt;/Typography>
+      &lt;/div>
+      &lt;form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96 lg:flex-row lg:flex flex-col gap-6">
+        &lt;div className="mb-4 flex flex-col gap-6">
+          &lt;Input size="lg" color="green" label="Farm Name" />
+          &lt;Input size="lg" color="green" label="Location" />
+
+          &lt;Select label="Select animal" size="lg">
+            &lt;Option>Cattle&lt;/Option>
+            &lt;Option>Goat&lt;/Option>
+            &lt;Option>Chicken&lt;/Option>
+          &lt;/Select>
+          &lt;Select label="Select crop" size="lg">
+            &lt;Option>Maize&lt;/Option>
+            &lt;Option>Beans&lt;/Option>
+            &lt;Option>Groundnuts&lt;/Option>
+          &lt;/Select>
+        &lt;/div>
+        &lt;div className="mb-4 flex flex-col gap-6">
+          &lt;Textarea color="green" label="Tell us about your farm" />
+          &lt;Input size="lg" color="green" label="Size of farm" />
+
+          &lt;Button color="green" className="mt-6 rounded-full" fullWidth>
+            Submit
+          &lt;/Button>
+        &lt;/div>
+      &lt;/form>
+    &lt;/div>
+  );
+}
+export default AddFarm;
 </code></pre>
         </article>
     </section>

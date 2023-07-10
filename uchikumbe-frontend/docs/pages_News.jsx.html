@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>client.js - Documentation</title>
+    <title>pages/News.jsx - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -37,7 +37,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">client.js</h1>
+    <h1 class="page-title">pages/News.jsx</h1>
     
 
     
@@ -47,38 +47,109 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// Import the required packages from the "@sanity" namespace.
-import sanityClient from "@sanity/client";
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect } from "react";
+import {
+  Tabs,
+  TabsHeader,
+  Tab,
+  Card,
+  CardBody,
+  Typography,
+  CardHeader,
+} from "@material-tailwind/react";
+import { ArrowLongRightIcon } from "@heroicons/react/outline";
+import { client } from "../client";
+import { mainNewsListQuery } from "../utils/data";
 import imageUrlBuilder from "@sanity/image-url";
-
-// Create a Sanity client instance.
-export const client = sanityClient({
-  // The project ID for your Sanity backend.
-  projectId: process.env.REACT_APP_SANITY_PROJECT_ID,
-
-  // The dataset to be used (e.g., "production").
-  dataset: "production",
-
-  // The API version to use (e.g., "2023-05-03").
-  apiVersion: "2023-05-03",
-
-  // Determine whether to use the Content Delivery Network (CDN) for fetching data.
-  useCdn: false,
-
-  // The token for authentication (if required).
-  token: process.env.REACT_APP_SANITY_TOKEN,
-});
-
-// Create an image URL builder using the Sanity client instance.
-const builder = imageUrlBuilder(client);
+import Spinner from "../components/Spinner";
 
 /**
- * Generate a URL for an image from the Sanity backend.
- *
- * @param {string} source - The source of the image (e.g., Sanity image asset reference).
- * @returns {string} - The URL of the image.
+ * The News component displays a list of news articles.
  */
-export const urlFor = (source) => builder.image(source);
+export default function News() {
+  const [listNews, setListNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const builder = imageUrlBuilder(client);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await client.fetch(mainNewsListQuery);
+        setListNews(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching news data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return &lt;Spinner message="Looking for News" />;
+  }
+
+  if (listNews.length === 0) {
+    return &lt;p>No news data available.&lt;/p>;
+  }
+
+  /**
+   * Returns the URL for the news article's image.
+   * @param {Object} news - The news article object.
+   * @returns {string} - The URL of the news article's image.
+   */
+  function urlFor(news) {
+    return builder.image(news.image).url();
+  }
+
+  return (
+    &lt;div className="bg-green-100">
+      {listNews.map((news) => (
+        &lt;div key={news._id}>
+          &lt;div className="flex justify-center pt-4">
+            &lt;Card className="w-full max-w-[48rem]">
+              &lt;CardHeader
+                shadow={false}
+                floated={false}
+                className="w-2/5 shrink-0 m-0 rounded-r-none"
+              >
+                &lt;div className="max-w-56 overflow-hidden rounded-xl max-h-36">
+                  {news.image &amp;&amp; (
+                    &lt;img
+                      src={urlFor(news)}
+                      className="w-full h-auto"
+                      alt={news.title}
+                    />
+                  )}
+                &lt;/div>
+              &lt;/CardHeader>
+              &lt;CardBody>
+                &lt;Typography
+                  variant="h6"
+                  color="green"
+                  className="uppercase mb-4  border-b focus:border-green-300 
+            border-green-100 outline-none"
+                >
+                  {news.title}
+                &lt;/Typography>
+                &lt;Typography color="gray" className="font-normal mb-2">
+                  {news.description}
+                &lt;/Typography>
+                &lt;Card
+                  color="none"
+                  className="text-sm rounded-md ml-auto w-1/5 "
+                >
+                  Posted on: {new Date(news.time).toLocaleString()}
+                &lt;/Card>
+              &lt;/CardBody>
+            &lt;/Card>
+          &lt;/div>
+        &lt;/div>
+      ))}
+    &lt;/div>
+  );
+}
 </code></pre>
         </article>
     </section>
