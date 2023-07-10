@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>pages/UserPages/UserProfilePages/AddFarm.jsx - Documentation</title>
+    <title>others/NotFound.jsx - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -37,7 +37,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">pages/UserPages/UserProfilePages/AddFarm.jsx</h1>
+    <h1 class="page-title">others/NotFound.jsx</h1>
     
 
     
@@ -47,70 +47,25 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  Card,
-  Input,
-  Button,
-  Typography,
-  Textarea,
-  Select,
-  Option,
-} from "@material-tailwind/react";
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import Img from "../assets/Img.svg"
 
 /**
- * The AddFarm component represents the page for adding farm information.
- *
- * @component
+ * The NotFoundPage function returns a React component that displays a "Page Not Found" message with an
+ * image and a description.
+ * @returns The NotFoundPage component is returning a JSX element.
  */
-function AddFarm() {
+const NotFoundPage = () => {
   return (
-    &lt;div className=" p-4 lg:flex-row shadow-lg rounded-3xl my-4 min-w-[400px] justify-center gap-24 lg:flex flex-col  mx-12 items-center">
-      &lt;div className="">
-        &lt;div className=" flex flex-wrap gap-4">
-          &lt;FontAwesomeIcon
-            icon={faUserEdit}
-            className="text-goldenrod "
-            size="2x"
-          />
-          &lt;Typography variant="h4" className="text-goldenrod ">
-            Add your farm
-          &lt;/Typography>
-        &lt;/div>
-        &lt;Typography color="gray" className="mt-1 text-green-900 font-normal">
-          Add farm information
-        &lt;/Typography>
-      &lt;/div>
-      &lt;form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96 lg:flex-row lg:flex flex-col gap-6">
-        &lt;div className="mb-4 flex flex-col gap-6">
-          &lt;Input size="lg" color="green" label="Farm Name" />
-          &lt;Input size="lg" color="green" label="Location" />
-
-          &lt;Select label="Select animal" size="lg">
-            &lt;Option>Cattle&lt;/Option>
-            &lt;Option>Goat&lt;/Option>
-            &lt;Option>Chicken&lt;/Option>
-          &lt;/Select>
-          &lt;Select label="Select crop" size="lg">
-            &lt;Option>Maize&lt;/Option>
-            &lt;Option>Beans&lt;/Option>
-            &lt;Option>Groundnuts&lt;/Option>
-          &lt;/Select>
-        &lt;/div>
-        &lt;div className="mb-4 flex flex-col gap-6">
-          &lt;Textarea color="green" label="Tell us about your farm" />
-          &lt;Input size="lg" color="green" label="Size of farm" />
-
-          &lt;Button color="green" className="mt-6 rounded-full" fullWidth>
-            Submit
-          &lt;/Button>
-        &lt;/div>
-      &lt;/form>
+    &lt;div className="flex flex-col p-4 items-center justify-center h-screen bg-white">
+      &lt;img src={Img} alt="Not found" className='mt-2  h-40'/>
+      &lt;h1 className="text-6xl font-bold text-goldenrod">Page Not Found&lt;/h1>
+      &lt;p className="text-green-800 mt-4">The page you are looking for does not exist.&lt;/p>
     &lt;/div>
   );
-}
-export default AddFarm;
+};
+
+export default NotFoundPage;
 </code></pre>
         </article>
     </section>

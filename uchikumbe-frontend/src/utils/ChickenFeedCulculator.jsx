@@ -1,18 +1,41 @@
 import React, { useState } from 'react';
 
 const ChickenFeedCalculator = () => {
+/* The line `const [chickenType, setChickenType] = useState('broilers');` is using the `useState` hook
+in React to create a state variable called `chickenType` and a corresponding setter function called
+`setChickenType`. The initial value of `chickenType` is set to `'broilers'`. This hook allows you to
+add state to functional components in React. */
   const [chickenType, setChickenType] = useState('broilers');
+/* The line `const [numChickens, setNumChickens] = useState(0);` is using the `useState` hook in React
+to create a state variable called `numChickens` and a corresponding setter function called
+`setNumChickens`. The initial value of `numChickens` is set to `0`. This hook allows you to add
+state to functional components in React. */
   const [numChickens, setNumChickens] = useState(0);
+/* The line `const [feedAmounts, setFeedAmounts] = useState([]);` is using the `useState` hook in React
+to create a state variable called `feedAmounts` and a corresponding setter function called
+`setFeedAmounts`. The initial value of `feedAmounts` is set to an empty array `[]`. This hook allows
+you to add state to functional components in React. In this case, `feedAmounts` is used to store the
+calculated feed amounts per week for the chickens. */
   const [feedAmounts, setFeedAmounts] = useState([]);
 
+ /**
+  * The function `handleChickenTypeChange` updates the value of `chickenType` based on the value of the
+  * target element.
+  */
   const handleChickenTypeChange = (e) => {
     setChickenType(e.target.value);
   };
 
+ /**
+  * The function `handleNumChickensChange` updates the value of `numChickens` based on the value of the
+  * input field.
+  */
   const handleNumChickensChange = (e) => {
     setNumChickens(e.target.value);
   };
 
+  /* The `calculateFeedAmounts` function is responsible for calculating the feed amounts per week for
+  the chickens based on the selected chicken type and the number of chickens. */
   const calculateFeedAmounts = () => {
     const weeks = chickenType === 'broilers' ? 9 : 19;
     const feedQuantities = {
@@ -23,7 +46,11 @@ const ChickenFeedCalculator = () => {
       ],
     };
 
+/* The line `const feedPerChickenPerWeeks = feedQuantities[chickenType];` is retrieving the feed
+quantities per week for the selected chicken type from the `feedQuantities` object. */
     const feedPerChickenPerWeeks = feedQuantities[chickenType];
+/* calculating the feed amounts per week for the chickens based on the
+selected chicken type and the number of chickens. */
     const totalFeedAmounts = feedPerChickenPerWeeks
       .slice(0, weeks)
       .map((feedPerWeek, index) => ({
