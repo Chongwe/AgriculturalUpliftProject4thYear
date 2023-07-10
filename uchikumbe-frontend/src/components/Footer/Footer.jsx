@@ -1,6 +1,18 @@
-import { Typography } from "@material-tailwind/react";
 import logo from "../../assets/logo.svg";
-import { NavLink } from "react-router-dom";
+import {
+  Popover,
+  PopoverHandler,
+  PopoverContent,
+
+  Typography,
+  List,
+  ListItem,
+  ListItemPrefix
+} from "@material-tailwind/react";
+import {
+  EnvelopeIcon,
+  UserCircleIcon
+} from "@heroicons/react/24/solid";
 
 export default function Footer() {
   return (
@@ -8,14 +20,55 @@ export default function Footer() {
       <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 text-center md:justify-between">
         <img src={logo} alt="Uchikumbe logo" className="w-12 text-center" />
         <ul className="flex flex-wrap  items-center gap-y-2 gap-x-8">
+         
           <li>
-            <Typography
-              href="#"
-              color="gray"
-              className=" transition-colors text-goldenrod hover:text-green-500 focus:text-green-500"
-            >
-              About Us
-            </Typography>
+            <Popover placement="bottom">
+            <PopoverHandler>
+              <button
+                 className=" transition-colors text-goldenrod hover:text-green-500 focus:text-green-500"
+
+              >Dev Team</button>
+            </PopoverHandler>
+            <PopoverContent className="w-72">
+              
+              <List className="p-0">
+                
+                <a href="#" className="text-initial">
+                  <ListItem>
+                    <ListItemPrefix>
+                      <UserCircleIcon className="w-5 h-5" />
+                    </ListItemPrefix>
+                    Howard Kaira
+                  </ListItem>
+                </a>
+               
+                <a href="#" className="text-initial">
+                  <ListItem>
+                    <ListItemPrefix>
+                      <UserCircleIcon className="w-5 h-5" />
+                    </ListItemPrefix>
+                    Jimmy Maloya
+                  </ListItem>
+                </a>
+                <a href="#" className="text-initial">
+                  <ListItem>
+                    <ListItemPrefix>
+                      <UserCircleIcon className="w-5 h-5" />
+                    </ListItemPrefix>
+                    Dalitso Chongwe
+                  </ListItem>
+                </a>
+                <a href="#" className="text-initial">
+                  <ListItem>
+                    <ListItemPrefix>
+                      <UserCircleIcon className="w-5 h-5" />
+                    </ListItemPrefix>
+                    Emma Limbe
+                  </ListItem>
+                </a>
+              </List>
+            </PopoverContent>
+          </Popover>
           </li>
 
           <li>
@@ -28,14 +81,35 @@ export default function Footer() {
             </Typography>
           </li>
           <li>
-            <NavLink to="/contact">
-              <Typography
-                color="blue-gray"
+          <Popover  placement="bottom">
+            <PopoverHandler>
+              <button
                 className=" transition-colors text-goldenrod hover:text-green-500 focus:text-green-500"
-              >
-                Contact Us
-              </Typography>
-            </NavLink>
+
+              >Contact Uchikumbe</button>
+            </PopoverHandler>
+            <PopoverContent className="w-72 bg-green-800  ">
+              <div className="flex items-center gap-4 border-b border-blue-gray-50 pb-4 mb-4">
+                <img src={logo} className="h-10 w-10" alt="Uchikumbe Logo" />
+                <div>
+                  <Typography variant="h6" className="text-white" >Uchikumbe</Typography>
+                </div>
+              </div>
+              <List className="p-0">
+                
+                
+                <a href="#" className="text-initial">
+                  <ListItem className="text-white">
+                    <ListItemPrefix>
+                      <EnvelopeIcon className="w-5 text-white h-5" />
+                    </ListItemPrefix >
+                    uchikumbe@gmail.com
+                  </ListItem>
+                </a>
+              </List>
+            </PopoverContent>
+          </Popover>
+          
           </li>
         </ul>
       </div>

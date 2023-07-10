@@ -31,18 +31,19 @@ import {
   ArrowRightCircleIcon,
 } from "@heroicons/react/24/solid";
 
+/**  
+The above code is creating a navigation bar component using React and JavaScript. It includes a
+logo, search functionality, and various navigation links. It also includes a responsive menu icon
+that opens a drawer with additional navigation options when clicked. The navigation bar is styled
+using Tailwind CSS classes.
+*/
 export default function Header({ user = null }) {
   const [openNav, setOpenNav] = useState(false);
   const [open, setOpen] = React.useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
 
-  useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    );
-  }, []);
+ 
 
   const handleLinkClick = () => {
     setOpenNav(false);

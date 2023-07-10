@@ -5,7 +5,8 @@ import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchUser } from "../../utils/fetchUser";
-import { Spinner, Typography } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
+import Spinner from "../../components/Spinner";
 
 /**
  * The SubmiteForumRequestPage component represents the page for submitting a forum creation request.
@@ -74,7 +75,7 @@ function SubmiteForumRequestPage() {
   };
 
   // Render a spinner while user data is being fetched
-  if (!user) return <Spinner />;
+  if (!user) return <Spinner message="Hold on a sec..." />;
 
   // Render the SubmiteForumRequestPage component UI
   return (

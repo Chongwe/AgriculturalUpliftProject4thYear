@@ -8,13 +8,11 @@ const breakPointObj = {
   768: 2,
   576: 1,
 };
+/* The code is defining a functional component called `MasonryLayout` that takes in a prop called
+`posts`. Inside the component, it returns a JSX element that renders a `<div>` element. */
 const MasonryLayout = ({ posts }) => {
   return (
-    //  <Masonry
-    //  className="flex sm:flex-col md:flex-row  annimate-slide-fwd"
-    //  breakpointrows={breakPointObj} >
-    //     {posts?.map((post) => <Posts key={post._id} post={post} className="w-max"/>)}
-    //  </Masonry>
+   
     <div>
       {posts?.map((post) => (
         <Posts key={post._id} post={post} className="w-max" />
