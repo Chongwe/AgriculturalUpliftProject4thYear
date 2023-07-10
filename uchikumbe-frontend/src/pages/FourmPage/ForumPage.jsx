@@ -15,7 +15,7 @@ import Sidebar from "../../components/Sidebar";
  * Renders the forum details, including the forum title, description, and posts.
  * Allows users to join the forum and create new posts if they are a member.
  *
- * @component
+ * @class
  */
 const ForumPage = () => {
   /**
@@ -41,6 +41,11 @@ const ForumPage = () => {
   /**
    * Fetches the user data based on the user ID.
    * Updates the `user` state variable with the fetched data.
+   *
+   * @function
+   * @name fetchUserData
+   * @memberof ForumPage
+   * @returns {void}
    */
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
@@ -54,6 +59,11 @@ const ForumPage = () => {
   /**
    * Fetches the forum details based on the `forumId`.
    * Updates the `forum` state variable with the fetched data.
+   *
+   * @function
+   * @name fetchForumDetails
+   * @memberof ForumPage
+   * @returns {void}
    */
   useEffect(() => {
     const query = forumDetailsQuery(forumId);
@@ -66,6 +76,10 @@ const ForumPage = () => {
 
   /**
    * Checks if the user is a member of the forum.
+   * @function
+   * @name isMember
+   * @memberof ForumPage
+   * @returns {boolean} Whether the user is a member of the forum or not.
    */
   const isMember =
     user &&

@@ -23,7 +23,7 @@ import ProfileCard from "../../../components/Cards/profileCard";
  * It displays the user's information, including bio, location, and profile picture.
  * The component also provides options for editing profile, adding a farm, viewing posts, and accessing admin dashboard (if user is an admin).
  *
- * @component
+ * @class
  */
 const UserProfile = () => {
   const [user, setUser] = useState(null);

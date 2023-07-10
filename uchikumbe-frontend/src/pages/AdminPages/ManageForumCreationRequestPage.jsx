@@ -4,8 +4,10 @@ import { client } from "../../client";
 import { submitForumRequestQuery } from "../../utils/data";
 import { Spinner } from "@material-tailwind/react";
 
-/* The code is defining a functional component called `ManageForumCreationRequestPage`. This component
-is responsible for managing and displaying forum creation requests. */
+/**  The code is defining a functional component called `ManageForumCreationRequestPage`. This component
+is responsible for managing and displaying forum creation requests.
+* @class
+*/
 const ManageForumCreationRequestPage = () => {
   /* The code `const [forumRequest, setForumRequest] = useState(null);` is declaring a state variable
   called `forumRequest` and a corresponding setter function called `setForumRequest`. The initial
