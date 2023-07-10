@@ -19,7 +19,7 @@ import { createOrGetUser } from ".";
 */
 const SignUp = () => {
   return (
-    <Card className="w-full m-3 shadow-lg max-w-[15rem]">
+    <Card className="w-full m-3 shadow-lg max-w-[16rem]">
       <CardHeader
         floated={false}
         shadow={false}
@@ -45,7 +45,7 @@ const SignUp = () => {
         </div>
         <div className="justify-center items-center">
           <GoogleLogin
-            className="justify-center"
+            className="justify-center max-w-[10rem]"
             onSuccess={(response) =>
               createOrGetUser(response).then(() => {
                 window.location.reload();

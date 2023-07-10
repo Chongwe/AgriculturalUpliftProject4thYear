@@ -1,6 +1,11 @@
 import React from 'react';
 import Img from "../assets/Img.svg"
 
+/**
+ * The NotFoundPage function returns a React component that displays a "Page Not Found" message with an
+ * image and a description.
+ * @returns The NotFoundPage component is returning a JSX element.
+ */
 const NotFoundPage = () => {
   return (
     <div className="flex flex-col p-4 items-center justify-center h-screen bg-white">

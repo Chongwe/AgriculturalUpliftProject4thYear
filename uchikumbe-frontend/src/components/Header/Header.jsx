@@ -31,7 +31,7 @@ import {
   ArrowRightCircleIcon,
 } from "@heroicons/react/24/solid";
 
-export default function Fun({ user = null }) {
+export default function Header({ user = null }) {
   const [openNav, setOpenNav] = useState(false);
   const [open, setOpen] = React.useState(false);
   const openDrawer = () => setOpen(true);
@@ -48,6 +48,14 @@ export default function Fun({ user = null }) {
     setOpenNav(false);
   };
 
+  /**
+  The `signInSignUp` variable is a JSX element that represents a sign-in/sign-up component. It
+  includes a `Popover` component from the `@material-tailwind/react` library, which displays a
+  popover when clicked. Inside the popover, there is a `Button` component with the text "Sign In"
+  and an icon. When the button is clicked, it triggers the `SignUp` component, which is rendered
+  inside the `PopoverContent`. This component allows users to sign in or sign up for an account.*
+*
+*/
   const signInSignUp = (
     <div className=" flex justify-end gap-5 ">
       <Popover
@@ -57,17 +65,18 @@ export default function Fun({ user = null }) {
         }}
       >
         <PopoverHandler>
-          <Button
+          <button
             color="green"
-            className="flex gap-2 hover:bg-green-900 justify-center rounded-full w-32 text-white"
+            className="bg-green-900 align-right  hover:bg-goldenrod transition-all duration-500 hover:scale-95 text-white  p-2 rounded-xl w-28 outline-none"
           >
             <FontAwesomeIcon
               icon={faUser}
               className="h-4 w-4 space-x-1 mr-2 "
             />
             Sign In
-          </Button>
+          </button>
         </PopoverHandler>
+     
         <PopoverContent className="bg-transparent border-none shadow-none">
           <SignUp />
         </PopoverContent>
@@ -77,6 +86,10 @@ export default function Fun({ user = null }) {
   const navList = <NavLinks onClick={handleLinkClick} />;
   // console.log(user._id);
   return (
+  /* The above code is creating a navigation bar component using React and JavaScript. It includes a
+  logo, search functionality, and various navigation links. It also includes a responsive menu icon
+  that opens a drawer with additional navigation options when clicked. The navigation bar is styled
+  using Tailwind CSS classes. */
     <Navbar className="lg:w-full  w-full sm:border-2 border-none sm:rounded-xl rounded-none mx-auto sticky min-w-screen-sm duration-75 p-0 top-0 z-50 max-w-screen-xl bg-opacity-70 backdrop-filter backdrop-blur-md pt-2 bg-green-900 text-white px-8 lg:px-8 lg:py-0">
       <div className="container mx-auto flex items-center  justify-between text-white">
         <NavLink to="/">
@@ -129,6 +142,10 @@ export default function Fun({ user = null }) {
             icon={faBars}
           />
 
+         {/* a JSX code snippet written in JavaScript React. It is rendering a Drawer
+         component that is used for creating a side drawer menu. The drawer is conditionally
+         rendered based on the value of the "open" variable. When the drawer is open, it displays a
+         list of menu items.  */}
           {open && (
             <Drawer
               placement="right"
@@ -197,6 +214,7 @@ export default function Fun({ user = null }) {
                   </ListItem>
                 </NavLink>
 
+             
                 {user === null && (
                   <NavLink onClick={signInSignUp}>
                     <ListItem>
