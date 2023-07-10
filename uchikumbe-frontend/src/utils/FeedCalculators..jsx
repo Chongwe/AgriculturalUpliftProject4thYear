@@ -2,18 +2,32 @@ import React, { useState } from 'react';
 import { calculateBroilerFeedFormulation, calculateLayersFeedFormulation } from './FeedFormulations';
 
 export const ChickenFeedCalculator = () => {
+    /*  hooks from React to create state variables and their
+    corresponding setter functions. */
     const [chickenType, setChickenType] = useState('broilers');
     const [numChickens, setNumChickens] = useState(0);
     const [feedAmounts, setFeedAmounts] = useState([]);
   
+   /**
+    * The function `handleChickenTypeChange` updates the value of `chickenType` based on the value of
+    * the target element.
+    */
     const handleChickenTypeChange = (e) => {
       setChickenType(e.target.value);
     };
   
+   /**
+    * The function `handleNumChickensChange` updates the state variable `numChickens` with the value
+    * from an input field.
+    */
     const handleNumChickensChange = (e) => {
       setNumChickens(e.target.value);
     };
   
+    /**
+     * The function calculates the total feed amounts needed for a certain number of chickens over a
+     * specified number of weeks based on the type of chicken.
+     */
     const calculateFeedAmounts = () => {
       const weeks = chickenType === 'broilers' ? 9 : 19;
       const feedQuantities = {
@@ -35,6 +49,9 @@ export const ChickenFeedCalculator = () => {
       setFeedAmounts(totalFeedAmounts);
     };
   
+  /* The code block is defining a React functional component called `ChickenFeedCalculator`. This
+  component renders a form for calculating the amount of feed needed for a certain number of
+  chickens over a specified number of weeks. */
     return (
       <div className="container border border-goldenrod rounded-lg p-4 mx-auto mt-2">
         <h1 className="text-3xl  text-goldenrod font-bold mb-4">Chicken Feed Calculator</h1>
@@ -105,23 +122,41 @@ export const ChickenFeedCalculator = () => {
 
 
 export const FeedFormulationCalculator = () => {
+ /* `useState` hook from React to create state variables and their
+ corresponding setter functions. */
     const [chickenType, setChickenType] = useState('');
     const [age, setAge] = useState('');
     const [feedAmount, setFeedAmount] = useState('');
     const [result, setResult] = useState('');
   
+   /**
+    * The function `handleChickenTypeChange` updates the state variable `chickenType` with the value of
+    * the event target.
+    */
     const handleChickenTypeChange = (event) => {
       setChickenType(event.target.value);
     };
+  /**
+   * The handleAgeChange function updates the age state based on the value of the event target.
+   */
   
     const handleAgeChange = (event) => {
       setAge(event.target.value);
     };
   
+   /**
+    * The function `handleFeedAmountChange` updates the state variable `feedAmount` with the value from
+    * the event target.
+    */
     const handleFeedAmountChange = (event) => {
       setFeedAmount(event.target.value);
     };
   
+   /**
+    * The function calculates the feed formulation based on the chicken type, age, and feed amount
+    * provided.
+    * @returns The function `calculateFeedFormulation` returns nothing.
+    */
     const calculateFeedFormulation = () => {
       if (!chickenType || !age || !feedAmount) {
         setResult('Please fill in all fields.');
@@ -150,6 +185,12 @@ export const FeedFormulationCalculator = () => {
       setResult(formatFormulationResult(formulation));
     };
   
+   /* The `formatFormulationResult` function takes in a `formulation` object as a parameter. It then
+   maps over the entries of the `formulation` object and creates a table row for each entry. Each
+   table row consists of two table cells: one for the ingredient name (`key`) and one for the amount
+   (`value`). The ingredient name is displayed in goldenrod color and the amount is displayed in
+   bold green color. The amount is also formatted to have two decimal places using the `toFixed`
+   method. Finally, the function returns the table rows wrapped in a `<div>` element. */
     const formatFormulationResult = (formulation) => {
       const tableRows = Object.entries(formulation).map(([key, value]) => (
         <tr key={key}>
@@ -158,6 +199,8 @@ export const FeedFormulationCalculator = () => {
         </tr>
       ));
   
+   /* The code block is defining a function called `formatFormulationResult` that takes in a
+   `formulation` object as a parameter. */
       return (
         <div className=' shadow-lg m-2 rounded-lg p-2 items-center justify-center'>
             <table className="mt-4">
@@ -175,6 +218,11 @@ export const FeedFormulationCalculator = () => {
       );
     };
   
+  /* component that renders a form for calculating chicken feed formulation.
+  It includes input fields for selecting the chicken type, entering the age of the chicken in weeks,
+  and entering the feed amount in kilograms. There is also a "Calculate" button that triggers the
+  calculation of the feed formulation. The result of the calculation is displayed below the button
+  if there is a result available. */
     return (
       <div className="container  border border-goldenrod rounded-lg p-4  mx-auto mt-8 ">
         <h1 className="text-3xl  text-goldenrod font-bold mb-4  ">Chicken Feed Formulation </h1>
@@ -235,6 +283,14 @@ export const FeedFormulationCalculator = () => {
 
 
 
+/**
+ * The `FeedCalculator` component renders two child components, `ChickenFeedCalculator` and
+ * `FeedFormulationCalculator`, within a flex container.
+ * @returns The `FeedCalculator` component is returning a JSX element. It is a `div` element with the
+ * class name "flex justify-center items-center". Inside the `div`, there is another `div` element with
+ * the class name "w-full flex-col h-auto min-w-screen-sm flex gap-4". Inside this second `div`, there
+ * are two components rendered: `ChickenFeedCalculator` and
+ */
 const FeedCalculator = () => {
   return (
     <div className="flex justify-center items-center ">
