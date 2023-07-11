@@ -11,34 +11,45 @@ import { userQuery } from "../utils/data";
 /**
  * The Home component represents the home page of the website.
  * It displays posts from different subforums in a masonry layout.
+ *
+ * @component
+ * @category Pages
  */
 const Home = () => {
-  /* The line `const [loading, setLoading] = useState(false);` is using the `useState` hook to create a
-  state variable called `loading` and a corresponding setter function called `setLoading`. The
-  initial value of `loading` is set to `false`. This state variable is used to keep track of whether
-  the posts are currently being loaded or not. */
+  /**
+   * loading - State variable for keeping track of whether the posts are currently being loaded or not.
+   * @type {boolean}
+   */
   const [loading, setLoading] = useState(false);
 
-  /* The line `const [posts, setPosts] = useState(null);` is using the `useState` hook to create a
-  state variable called `posts` and a corresponding setter function called `setPosts`. The initial
-  value of `posts` is set to `null`. This state variable is used to store the posts fetched from
-  different subforums. The `setPosts` function can be used to update the value of `posts` later on. */
+  /**
+   * posts - State variable for storing the fetched posts from different subforums.
+   * @type {Array|null}
+   */
   const [posts, setPosts] = useState(null);
 
-  /* The line `const [user, setUser] = useState(null);` is using the `useState` hook to create a state
-  variable called `user` and a corresponding setter function called `setUser`. The initial value of
-  `user` is set to `null`. This state variable is used to store the user information fetched from
-  the server. The `setUser` function can be used to update the value of `user` later on. */
+  /**
+   * user - State variable for storing the user information fetched from the server.
+   * @type {Object|null}
+   */
   const [user, setUser] = useState(null);
 
-  /* The line `const userInfo = fetchUser();` is calling the `fetchUser` function and assigning its
-  return value to the `userInfo` constant. The `fetchUser` function is likely responsible for
-  fetching user information, possibly from an API or a database. The `userInfo` constant is then
-  used in the subsequent `useEffect` hook to fetch user information based on the user ID. */
+  /**
+   *  userInfo - User information fetched from the server.
+   * @type {Object|null}
+   */
   const userInfo = fetchUser();
 
-  /* The `useEffect` hook in the code is responsible for fetching user information based on the user
-  ID/sub. */
+  /**
+   * The `useEffect` hook is used to fetch user information based on the user ID.
+   *
+   * @memberof Home
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
+   */
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
 
@@ -48,8 +59,16 @@ const Home = () => {
     });
   }, [userInfo?.sub]);
 
-  /* The `useEffect` hook in the code is responsible for fetching posts from different subforums and
-updating the state variables `posts` and `loading`. */
+  /**
+   * The `useEffect` hook is used to fetch posts from different subforums and update the state variables `posts` and `loading`.
+   *
+   * @memberof Home
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
+   */
   useEffect(() => {
     setLoading(true);
 

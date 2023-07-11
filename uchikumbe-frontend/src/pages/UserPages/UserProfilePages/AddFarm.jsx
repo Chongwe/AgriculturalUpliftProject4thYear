@@ -14,6 +14,8 @@ import {
  * The AddFarm component represents the page for adding farm information.
  *
  * @component
+ * @category Pages
+ * @subcategory UserProfilePages
  */
 function AddFarm() {
   return (

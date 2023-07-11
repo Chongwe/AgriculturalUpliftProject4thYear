@@ -22,6 +22,8 @@ import PageBlocked from "../../others/PageBlocked";
 const CreatePost = () => {
   /**
    * State variable for the post title.
+   * @memberof CreatePost
+   * @alias title
    */
   const [title, setTitle] = useState("");
 

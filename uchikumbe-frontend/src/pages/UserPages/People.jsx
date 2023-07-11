@@ -11,12 +11,32 @@ import SendSMS from "../../components/SendSMS";
  * It fetches the user list from the server and renders each user as a Person card.
  *
  * @component
+ * @category Pages
+ * @subcategory UserPages
  */
 function People(props) {
-  const [listUser, setListUser] = useState(null); // State to store the list of users
-  const [loading, setLoading] = useState(false); // State to track the loading state
+  /**
+   * listUser - State variable for storing the list of users.
+   * @type {Array|null}
+   */
+  const [listUser, setListUser] = useState(null);
 
-  useEffect(() => {
+  /**
+   * loading - State variable for tracking the loading state.
+   * @type {boolean}
+   */
+  const [loading, setLoading] = useState(false);
+
+  /**
+   * The `useEffect` hook is used to fetch the user list from the server.
+   *
+   * @memberof People
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
+   */ useEffect(() => {
     setLoading(true);
 
     // Fetch the user list from the server

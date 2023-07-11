@@ -4,20 +4,22 @@ import { client } from "../../client";
 import { submitForumRequestQuery } from "../../utils/data";
 import { Spinner } from "@material-tailwind/react";
 
-/* The code is defining a functional component called `ManageForumCreationRequestPage`. This component
-is responsible for managing and displaying forum creation requests. */
+/** The code is defining a functional component called `ManageForumCreationRequestPage`. This component
+is responsible for managing and displaying forum creation requests. 
+* @class
+*/
 const ManageForumCreationRequestPage = () => {
-  /* The code `const [forumRequest, setForumRequest] = useState(null);` is declaring a state variable
+  /** The code `const [forumRequest, setForumRequest] = useState(null);` is declaring a state variable
   called `forumRequest` and a corresponding setter function called `setForumRequest`. The initial
   value of `forumRequest` is set to `null`. */
   const [forumRequest, setForumRequest] = useState(null);
-  /* The line `const [loading, setLoading] = useState(true);` is declaring a state variable called
+  /**  The line `const [loading, setLoading] = useState(true);` is declaring a state variable called
   `loading` and a corresponding setter function called `setLoading`. The initial value of `loading`
   is set to `true`. This variable is used to keep track of whether the data is still being loaded or
   not. */
   const [loading, setLoading] = useState(true);
 
-  /* The `useEffect` hook is used to perform side effects in a functional component. In this case, it
+  /** The `useEffect` hook is used to perform side effects in a functional component. In this case, it
   is fetching data from the server using the `client.fetch` method and updating the state variables
   `forumRequest` and `loading` accordingly. */
   useEffect(() => {

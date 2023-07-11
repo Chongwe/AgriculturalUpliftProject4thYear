@@ -20,6 +20,16 @@ const EditProfile = () => {
   const { userId } = useParams();
   const [user, setUser] = useState(null);
 
+  /**
+   * The `useEffect` hook is used to fetch user information based on the user ID and initialize the form fields with the user data.
+   *
+   * @memberof EditProfile
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
+   */
   useEffect(() => {
     const query = userQuery(userId);
 
@@ -32,6 +42,14 @@ const EditProfile = () => {
     });
   }, [userId]);
 
+  /**
+   * The `updateProfile` function is called when the form is submitted to update the user's profile information.
+   *
+   * @memberof EditProfile
+   * @function updateProfile
+   * @inner
+   * @returns {undefined}
+   */
   const updateProfile = () => {
     const doc = {
       _type: "user",

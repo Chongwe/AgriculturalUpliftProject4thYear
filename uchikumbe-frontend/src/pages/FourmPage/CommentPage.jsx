@@ -7,41 +7,65 @@ import { urlFor, client } from "../../client";
 import UserContext from "../../Layout/UserContext";
 import { v4 as uuidv4 } from "uuid";
 
-/* The above code is a React component called `CommentPage`. It is responsible for rendering a page
-that displays a post and its comments. */
+/**
+ * @typedef {Object} User - User details.
+ * @property {string} name - User name.
+ * @property {string} email - User email.
+ */
+
+/**
+ * @typedef {Object} Comment - Comment details.
+ * @property {string} content - Comment content.
+ * @property {string} userId - User ID of the commenter.
+ */
+
+/**
+ * The above code is a React component called `CommentPage`. It is responsible for rendering a page
+ * that displays a post and its comments.
+ *
+ *  @category Pages
+ * @subcategory ForumPages
+ * @component
+ */
 const CommentPage = () => {
   /**
-   * State variable for storing the user details.
+   * @type {User|null} - State variable for storing the user details.
    */
   const [user, setUser] = useState(null);
 
   /**
    * State variable for storing the comment that a user inputs.
+   * @type {string|null}
    */
   const [comment, setComment] = useState(null);
 
   /**
-   * state variable for the condition of the commenting as it is being sent to the backend.
+   * State variable for the condition of the commenting as it is being sent to the backend.
+   * @type {boolean}
    */
   const [addingComment, setAddingComment] = useState(false);
 
   /**
    * State variable for storing the user details.
+   * @type {Object|null}
    */
   const userInfo = fetchUser();
 
   /**
    * State variable for setting the posts.
+   * @type {Object|null}
    */
   const [post, setPost] = useState(null);
 
   /**
-   * Variable for the postId comming from the params.
+   * Variable for the postId coming from the params.
+   * @type {string}
    */
   const { postId } = useParams();
 
   /**
-   * variable for the forumId.
+   * Variable for the forumId.
+   * @type {string}
    */
   const { forumId } = useParams();
 
@@ -63,9 +87,18 @@ const CommentPage = () => {
     }
   };
 
-  /* The `useEffect` hook is used to perform side effects in a functional component. In this case, the
-`useEffect` hook is used to fetch user data based on the user ID and update the `user` state
-variable. */
+  /**
+   * The `useEffect` hook is used to perform side effects in a functional component. In this case, the
+   * `useEffect` hook is used to fetch user data based on the user ID and update the `user` state
+   * variable.
+   *
+   * @memberof CommentPage
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
+   */
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
 
@@ -78,6 +111,11 @@ variable. */
   /**
    * The function `addComment` adds a comment to a post in a subforum, updating the subforum's post
    * array and fetching the updated post data.
+   *
+   * @memberof CommentPage
+   * @function addComment
+   * @inner
+   * @returns {undefined}
    */
   const addComment = () => {
     if (comment && user) {
@@ -138,6 +176,17 @@ variable. */
     }
   };
 
+  /**
+   * The `useEffect` hook is used to fetch post data based on the `postId` when it changes.
+   * It calls the `fetchPostData` function to fetch the data.
+   *
+   * @memberof CommentPage
+   * @function
+   * @inner
+   * @name useEffect
+   * @param {Array} dependencies - An array of dependencies that trigger the effect when changed.
+   * @returns {undefined}
+   */
   useEffect(() => {
     fetchPostData();
   }, [postId]);

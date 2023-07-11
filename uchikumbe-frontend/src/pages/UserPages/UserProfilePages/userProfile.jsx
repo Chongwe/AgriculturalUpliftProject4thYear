@@ -24,13 +24,33 @@ import ProfileCard from "../../../components/Cards/profileCard";
  * The component also provides options for editing profile, adding a farm, viewing posts, and accessing admin dashboard (if user is an admin).
  *
  * @component
+ * @category Pages
+ * @subcategory UserProfilePages
  */
 const UserProfile = () => {
+  /**
+   * @type {Object|null} user - State variable for storing the user data.
+   */
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-  const { userId } = useParams();
+
+  /**
+   * @type {Object|null} userData - State variable for storing the user data fetched from the server.
+   */
   const [userData, setUserData] = useState(null);
 
+  const navigate = useNavigate();
+  const { userId } = useParams();
+
+  /**
+   * The `useEffect` hook is used to fetch the user data from the server.
+   *
+   * @memberof UserProfile
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
+   */
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -46,6 +66,16 @@ const UserProfile = () => {
     fetchUserData();
   });
 
+  /**
+   * The `useEffect` hook is used to fetch user information based on the user ID.
+   *
+   * @memberof UserProfile
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
+   */
   useEffect(() => {
     const query = userQuery(userId);
 
