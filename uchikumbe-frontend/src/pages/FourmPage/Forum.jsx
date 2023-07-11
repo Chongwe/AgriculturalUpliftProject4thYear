@@ -15,7 +15,7 @@ import Spinner from "../../components/Spinner";
  * The Forum component represents the forum page.
  * Renders the forums created by the user and available forums to join.
  *
- * @class
+ * @component
  */
 const Forum = () => {
   /**

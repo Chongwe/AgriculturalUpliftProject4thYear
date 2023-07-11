@@ -1,14 +1,14 @@
 {
-  "plugins": ["./customTags.js", "plugins/markdown"],
+  "plugins": ["plugins/markdown"],
   "recurseDepth": 10,
   "opts": {
-    "template": "node_modules/clean-jsdoc-theme",
+    "template": "node_modules/docdash",
     "destination": "./docs/",
     "recurse": true
   },
   "source": {
     "include": ["./src", "README.md"],
-    "includePattern": ".+\\.(js|jsx)(doc|x)?$",
+    "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "node_modules"
   },
   "sourceType": "module",

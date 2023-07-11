@@ -11,7 +11,6 @@ import { userQuery } from "../utils/data";
 /**
  * The Home component represents the home page of the website.
  * It displays posts from different subforums in a masonry layout.
- * @class
  */
 const Home = () => {
   /* The line `const [loading, setLoading] = useState(false);` is using the `useState` hook to create a

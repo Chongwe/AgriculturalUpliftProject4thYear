@@ -7,11 +7,8 @@ import { urlFor, client } from "../../client";
 import UserContext from "../../Layout/UserContext";
 import { v4 as uuidv4 } from "uuid";
 
-/**
- * The above code is a React component called `CommentPage`. It is responsible for rendering a page
- * that displays a post and its comments.
- * @class
- */
+/* The above code is a React component called `CommentPage`. It is responsible for rendering a page
+that displays a post and its comments. */
 const CommentPage = () => {
   /**
    * State variable for storing the user details.

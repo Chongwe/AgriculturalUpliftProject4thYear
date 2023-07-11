@@ -10,30 +10,11 @@ import {
 import ManageForumCreationRequestPage from "./ManageForumCreationRequestPage";
 import ManageUserPage from "./ManageUserPage";
 
-/**
- * The AdminDashboard component represents the dashboard page for the admin.
- * It displays tabs for managing forum creation requests and users.
- * @class
- */
+const manageForumCreationRequest = <ManageForumCreationRequestPage />;
+const manageUser = <ManageUserPage />;
+
 const AdminDashboard = () => {
-  /**
-   * State variable for storing the active tab value.
-   */
-  const [activeTab, setActiveTab] = React.useState("forum-request-submissions");
-
-  /**
-   * The ManageForumCreationRequestPage component.
-   */
-  const manageForumCreationRequest = <ManageForumCreationRequestPage />;
-
-  /**
-   * The ManageUserPage component.
-   */
-  const manageUser = <ManageUserPage />;
-
-  /**
-   * An array of tab data objects.
-   */
+  const [activeTab, setActiveTab] = React.useState("html");
   const data = [
     {
       label: "Manage Forum Creation Submission",
@@ -49,6 +30,7 @@ const AdminDashboard = () => {
 
   const initialValue = data[0].value; // Set the initial value to the value of the first tab
 
+
   return (
     <div className="flex min-w-screen-sm items-center justify-center">
       <div className="mb-96  flex items-center bg-green-100 rounded-xl p-2 m-4">
@@ -60,8 +42,8 @@ const AdminDashboard = () => {
                 "bg-transparent border-t-2 border-green-500 shadow-none rounded-none",
             }}
           >
-            {/* mapping over the `data` array and creating a set of `Tab`
-            components based on the values in the array. */}
+          /*  mapping over the `data` array and creating a set of `Tab`
+          components based on the values in the array. */
             {data.map(({ label, value }) => (
               <Tab
                 key={value}
@@ -74,8 +56,8 @@ const AdminDashboard = () => {
             ))}
           </TabsHeader>
           <TabsBody>
-            {/* mapping over the `data` array and creating a set of `TabPanel`
-            components based on the values in the array. */}
+            /* mapping over the `data` array and creating a set of `TabPanel`
+            components based on the values in the array. */
             {data.map(({ value, desc }) => (
               <TabPanel key={value} value={value}>
                 {desc}

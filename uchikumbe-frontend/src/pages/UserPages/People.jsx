@@ -10,7 +10,7 @@ import SendSMS from "../../components/SendSMS";
  * The People component represents a page that displays a list of users.
  * It fetches the user list from the server and renders each user as a Person card.
  *
- * @class
+ * @component
  */
 function People(props) {
   const [listUser, setListUser] = useState(null); // State to store the list of users

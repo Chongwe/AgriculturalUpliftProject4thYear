@@ -13,7 +13,7 @@ import Spinner from "../../components/Spinner";
  * Users can enter the desired forum name and a brief description to submit their request.
  * Upon submission, the request is saved to the database.
  *
- * @class
+ * @component
  */
 function SubmiteForumRequestPage() {
   /**

@@ -9,7 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 /**
  * The EditProfile component represents the page for editing user profile information.
  *
- * @class
+ * @component
  */
 const EditProfile = () => {
   const [firstName, setFirstName] = useState("");

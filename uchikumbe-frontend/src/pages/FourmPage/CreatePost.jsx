@@ -17,7 +17,7 @@ import PageBlocked from "../../others/PageBlocked";
  * On submit, creates a new post with the provided data and redirects to the forum page.
  * If the user is not a member of the forum, displays a blocked page.
  *
- * @class
+ * @component
  */
 const CreatePost = () => {
   /**
