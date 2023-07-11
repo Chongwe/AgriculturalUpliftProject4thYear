@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.e31bb21b.css",
-    "main.js": "/static/js/main.1e34dda3.js",
-    "static/js/787.9623a317.chunk.js": "/static/js/787.9623a317.chunk.js",
+    "main.css": "/static/css/main.df6ae833.css",
+    "main.js": "/static/js/main.c1e83f62.js",
+    "static/js/651.e1db30b9.chunk.js": "/static/js/651.e1db30b9.chunk.js",
+    "static/media/uchikumbe cover.jpg": "/static/media/uchikumbe cover.3926929f9079cbcd3be4.jpg",
     "static/media/Img.svg": "/static/media/Img.952134cb0acc3e6ede32e2833cd58d42.svg",
     "static/media/logo.svg": "/static/media/logo.09f35791e447ef4d79064b26b76b28e1.svg",
     "static/media/GIcon.svg": "/static/media/GIcon.68d847d654e7cc646ec9c42f3aacad75.svg",
     "index.html": "/index.html",
-    "main.e31bb21b.css.map": "/static/css/main.e31bb21b.css.map",
-    "main.1e34dda3.js.map": "/static/js/main.1e34dda3.js.map",
-    "787.9623a317.chunk.js.map": "/static/js/787.9623a317.chunk.js.map"
+    "main.df6ae833.css.map": "/static/css/main.df6ae833.css.map",
+    "main.c1e83f62.js.map": "/static/js/main.c1e83f62.js.map",
+    "651.e1db30b9.chunk.js.map": "/static/js/651.e1db30b9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e31bb21b.css",
-    "static/js/main.1e34dda3.js"
+    "static/css/main.df6ae833.css",
+    "static/js/main.c1e83f62.js"
   ]
 }
