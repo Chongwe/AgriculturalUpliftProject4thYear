@@ -15,7 +15,8 @@ import {
  * The NavLinks function returns a list of navigation links with corresponding icons.
  * @returns a JSX element, which is a div containing an unordered list (ul) with multiple list items
  * (li). Each list item contains a NavLink component with an icon and text.
- * @class
+ * @component
+ * @category Reusable components
  */
 export default function NavLinks() {
   return (

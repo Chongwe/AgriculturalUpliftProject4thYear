@@ -31,16 +31,16 @@ import {
   ArrowRightCircleIcon,
 } from "@heroicons/react/24/solid";
 
-/**  
-The above code is creating a navigation bar component using React and JavaScript. It includes a
-logo, search functionality, and various navigation links. It also includes a responsive menu icon
-that opens a drawer with additional navigation options when clicked. The navigation bar is styled
-using Tailwind CSS classes.
-* @class
- * @param {Object} props - The component props.
- * @param {Object} props.user - The user object containing user information.
+/**
+ * The above code is creating a navigation bar component using React and JavaScript. It includes a
+ * logo, search functionality, and various navigation links. It also includes a responsive menu icon
+ * that opens a drawer with additional navigation options when clicked. The navigation bar is styled
+ * using Tailwind CSS classes.
+ * @class
+ * @category Reusable component
  * @returns {JSX.Element} The rendered header component.
-*/
+ */
+
 export default function Header({ user = null }) {
   const [openNav, setOpenNav] = useState(false);
   const [open, setOpen] = React.useState(false);
@@ -57,6 +57,10 @@ export default function Header({ user = null }) {
    * popover when clicked. Inside the popover, there is a `Button` component with the text "Sign In"
    * and an icon. When the button is clicked, it triggers the `SignUp` component, which is rendered
    * inside the `PopoverContent`. This component allows users to sign in or sign up for an account.
+   * @memberof Header
+   * @function SignInSignUp
+   * @inner
+   * @returns {undefined}
    */
   const signInSignUp = (
     <div className=" flex justify-end gap-5 ">

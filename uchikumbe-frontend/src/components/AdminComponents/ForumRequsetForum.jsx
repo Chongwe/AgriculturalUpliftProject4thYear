@@ -11,6 +11,19 @@ import { Link } from "react-router-dom";
 import { client } from "../../client";
 import { useNavigate, useParams } from "react-router-dom";
 
+/**
+ *  The code defines a React functional component called `ForumRequsetForum`. It takes in a `props`
+ * object as a parameter.
+ * @component
+ * @category Reusable component
+ * @param {Object} props - The component props.
+ * @param {string} props.name - The name of the group.
+ * @param {string} props.username - The number of members in the group.
+ * @param {string} props.description - The number of members in the group.
+ * @param {Function} props.handleApprove - Callback function to handle approval of forum creation function.
+ * @param {Function} props.handleDeny - Callback function to handle deniel of forum creation function.
+ * @param {boolean} props.isApproved - Indicates whether the forum creation request is approved or pending.
+ */
 const ForumRequsetForum = (props) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();

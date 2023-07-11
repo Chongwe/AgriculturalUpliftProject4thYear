@@ -2,7 +2,8 @@ import React from "react";
 
 /**
  * The PageBlocked function returns a React component that displays a message indicating that the page
- * does not exist.
+ * does not exist
+ * @component .
  * @returns The PageBlocked component is returning a JSX element.
  */
 

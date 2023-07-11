@@ -11,7 +11,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /**
  * Represents a profile card component.
  *
- * @class
+ * @component
+ * @category Reusable component
  * @param {Object} props - The component props.
  * @param {string} props.link - The link to navigate when the card is clicked.
  * @param {string} props.icon - The icon to display on the card.

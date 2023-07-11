@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 /**
  * Represents a person component.
  *
- * @class
+ * @component
+ * @category Reuseable component
  * @param {Object} props - The component props.
  * @param {string} props.avatar - The URL of the person's avatar image.
  * @param {string} props.name - The name of the person.

@@ -1,32 +1,22 @@
 /**
- * Represents a ForumRequest document in the database.
- *
- * @typedef {object} ForumRequest
- * @property {string} name - The name of the forum request schema.
- * @property {string} title - The title of the forum request document.
- * @property {string} type - The type of the forum request document.
- * @property {Field[]} fields - The fields of the forum request document.
+ * Represents a forum request.
+ * @typedef {Object} ForumRequest
+ * @property {string} title - The title of the forum request.
+ * @property {string} description - The description of the forum request.
+ * @property {PostedBy} postedBy - The user who posted the forum request.
+ * @property {string} userId - The ID of the user who posted the forum request.
+ * @property {boolean} isViewed - Indicates if the forum request has been viewed.
+ * @property {boolean} isApproved - Indicates if the forum request has been approved.
  */
 
 /**
- * Represents a field in the ForumRequest document.
- *
- * @typedef {object} Field
- * @property {string} name - The name of the field.
- * @property {string} title - The title of the field.
- * @property {string} type - The type of the field.
- * @property {Validation} validation - The validation rules for the field.
- */
-
-/**
- * Represents the validation rules for a field.
- *
- * @typedef {Function} Validation
- * @param {object} Rule - The validation rule object.
- */
-
-/**
- * The ForumRequest schema.
+ * The Sanity schema for the 'forumRequest' document.
+ * Represents a forum request in the system.
+ * @type {Object}
+ * @property {string} name - The name of the document type.
+ * @property {string} title - The title of the document.
+ * @property {string} type - The type of the document.
+ * @property {Object[]} fields - The fields in the document.
  */
 export default {
   name: 'forumRequest',

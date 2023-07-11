@@ -31,7 +31,7 @@
     <input type="text" id="nav-search" placeholder="Search" />
     
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdminDashboard.html">AdminDashboard</a></li><li><a href="Group.html">Group</a></li><li><a href="JoinedGroups.html">JoinedGroups</a></li><li><a href="ManageForumCreationRequestPage.html">ManageForumCreationRequestPage</a><ul class='methods'><li data-type='method'><a href="ManageForumCreationRequestPage.html#~handleApprove">handleApprove</a></li><li data-type='method'><a href="ManageForumCreationRequestPage.html#~handleDeny">handleDeny</a></li></ul></li><li><a href="Person.html">Person</a></li><li><a href="Posts.html">Posts</a></li><li><a href="module.html#.exports">exports</a></li><li></li><li></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#AddFarm">AddFarm</a></li><li><a href="global.html#CommentPage">CommentPage</a></li><li><a href="global.html#CreateForumFromUserRequestPage">CreateForumFromUserRequestPage</a></li><li><a href="global.html#CreatePost">CreatePost</a></li><li><a href="global.html#EditProfile">EditProfile</a></li><li><a href="global.html#FeedCalculator">FeedCalculator</a></li><li><a href="global.html#Forum">Forum</a></li><li><a href="global.html#ForumPage">ForumPage</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#NotFoundPage">NotFoundPage</a></li><li><a href="global.html#PageBlocked">PageBlocked</a></li><li><a href="global.html#People">People</a></li><li><a href="global.html#SubmiteForumRequestPage">SubmiteForumRequestPage</a></li><li><a href="global.html#UserProfile">UserProfile</a></li><li><a href="global.html#commentCountQuery">commentCountQuery</a></li><li><a href="global.html#createOrGetUser">createOrGetUser</a></li><li><a href="global.html#fetchUser">fetchUser</a></li><li><a href="global.html#forumDetailsQuery">forumDetailsQuery</a></li><li><a href="global.html#forumQuery">forumQuery</a></li><li><a href="global.html#mainNewsListQuery">mainNewsListQuery</a></li><li><a href="global.html#messageListQuery">messageListQuery</a></li><li><a href="global.html#postDetailQuery">postDetailQuery</a></li><li><a href="global.html#postDetailQueryFromForum">postDetailQueryFromForum</a></li><li><a href="global.html#postQueryforums">postQueryforums</a></li><li><a href="global.html#postsQuery">postsQuery</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#submitForumRequestQuery">submitForumRequestQuery</a></li><li><a href="global.html#urlFor">urlFor</a></li><li><a href="global.html#userCreatedForumsQuery">userCreatedForumsQuery</a></li><li><a href="global.html#userDetailQuery">userDetailQuery</a></li><li><a href="global.html#userListQuery">userListQuery</a></li><li><a href="global.html#userQuery">userQuery</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddFarm.html">AddFarm</a></li><li><a href="AdminDashboard.html">AdminDashboard</a></li><li><a href="Carousel.html">Carousel</a></li><li><a href="CommentPage.html">CommentPage</a><ul class='methods'><li data-type='method'><a href="CommentPage.html#~addComment">addComment</a></li><li data-type='method'><a href="CommentPage.html#~fetchPostData">fetchPostData</a></li><li data-type='method'><a href="CommentPage.html#~useEffect">useEffect</a></li><li data-type='method'><a href="CommentPage.html#~useEffect">useEffect</a></li><li data-type='method'><a href="CommentPage.html#~useEffect">useEffect</a></li><li data-type='method'><a href="CommentPage.html#~useEffect">useEffect</a></li></ul></li><li><a href="CreateForumFromUserRequestPage.html">CreateForumFromUserRequestPage</a></li><li><a href="CreatePost.html">CreatePost</a><ul class='methods'><li data-type='method'><a href="CreatePost.html#~createPost">createPost</a></li><li data-type='method'><a href="CreatePost.html#~uploadImage">uploadImage</a></li><li data-type='method'><a href="CreatePost.html#~useEffect">useEffect</a></li></ul></li><li><a href="EditProfile.html">EditProfile</a><ul class='methods'><li data-type='method'><a href="EditProfile.html#~updateProfile">updateProfile</a></li><li data-type='method'><a href="EditProfile.html#~useEffect">useEffect</a></li></ul></li><li><a href="Forum.html">Forum</a><ul class='methods'><li data-type='method'><a href="Forum.html#.joinForum">joinForum</a></li><li data-type='method'><a href="Forum.html#~useEffect">useEffect</a></li><li data-type='method'><a href="Forum.html#~useEffect">useEffect</a></li><li data-type='method'><a href="Forum.html#~useEffect">useEffect</a></li></ul></li><li><a href="ForumPage.html">ForumPage</a><ul class='methods'><li data-type='method'><a href="ForumPage.html#~joinForum">joinForum</a></li><li data-type='method'><a href="ForumPage.html#~useEffect">useEffect</a></li></ul></li><li><a href="ForumRequsetForum.html">ForumRequsetForum</a></li><li><a href="Group.html">Group</a></li><li><a href="Home.html">Home</a><ul class='methods'><li data-type='method'><a href="Home.html#~useEffect">useEffect</a></li><li data-type='method'><a href="Home.html#~useEffect">useEffect</a></li></ul></li><li><a href="JoinedGroups.html">JoinedGroups</a></li><li><a href="ManageForumCreationRequestPage.html">ManageForumCreationRequestPage</a><ul class='methods'><li data-type='method'><a href="ManageForumCreationRequestPage.html#~handleApprove">handleApprove</a></li><li data-type='method'><a href="ManageForumCreationRequestPage.html#~handleDeny">handleDeny</a></li></ul></li><li><a href="NotFoundPage.html">NotFoundPage</a></li><li><a href="PageBlocked.html">PageBlocked</a></li><li><a href="People.html">People</a><ul class='methods'><li data-type='method'><a href="People.html#~useEffect">useEffect</a></li></ul></li><li><a href="Person.html">Person</a></li><li><a href="Posts.html">Posts</a></li><li><a href="Spinner.html">Spinner</a></li><li><a href="SubmiteForumRequestPage.html">SubmiteForumRequestPage</a><ul class='methods'><li data-type='method'><a href="SubmiteForumRequestPage.html#.submitForumRequest">submitForumRequest</a></li><li data-type='method'><a href="SubmiteForumRequestPage.html#~useEffect">useEffect</a></li></ul></li><li><a href="UserProfile.html">UserProfile</a><ul class='methods'><li data-type='method'><a href="UserProfile.html#~useEffect">useEffect</a></li><li data-type='method'><a href="UserProfile.html#~useEffect">useEffect</a></li><li data-type='method'><a href="UserProfile.html#~useEffect">useEffect</a></li></ul></li><li><a href="module.html#.exports">exports</a></li><li></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#ChickenFeedCalculator">ChickenFeedCalculator</a></li><li><a href="global.html#FeedCalculator">FeedCalculator</a></li><li><a href="global.html#Planters">Planters</a></li><li><a href="global.html#commentCountQuery">commentCountQuery</a></li><li><a href="global.html#createOrGetUser">createOrGetUser</a></li><li><a href="global.html#fetchUser">fetchUser</a></li><li><a href="global.html#forumDetailsQuery">forumDetailsQuery</a></li><li><a href="global.html#forumQuery">forumQuery</a></li><li><a href="global.html#mainNewsListQuery">mainNewsListQuery</a></li><li><a href="global.html#messageListQuery">messageListQuery</a></li><li><a href="global.html#postDetailQuery">postDetailQuery</a></li><li><a href="global.html#postDetailQueryFromForum">postDetailQueryFromForum</a></li><li><a href="global.html#postQueryforums">postQueryforums</a></li><li><a href="global.html#postsQuery">postsQuery</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html">submitForumRequest</a></li><li><a href="global.html#submitForumRequestQuery">submitForumRequestQuery</a></li><li><a href="global.html#urlFor">urlFor</a></li><li><a href="global.html">useEffect</a></li><li><a href="global.html#userCreatedForumsQuery">userCreatedForumsQuery</a></li><li><a href="global.html#userDetailQuery">userDetailQuery</a></li><li><a href="global.html#userListQuery">userListQuery</a></li><li><a href="global.html#userQuery">userQuery</a></li></ul>
     
 </nav>
 
@@ -82,7 +82,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Cards_profileCard.jsx.html">components/Cards/profileCard.jsx</a>, <a href="components_Cards_profileCard.jsx.html#line21">line 21</a>
+        <a href="components_Cards_profileCard.jsx.html">components/Cards/profileCard.jsx</a>, <a href="components_Cards_profileCard.jsx.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -387,7 +387,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Footer_Footer.jsx.html">components/Footer/Footer.jsx</a>, <a href="components_Footer_Footer.jsx.html#line19">line 19</a>
+        <a href="components_Footer_Footer.jsx.html">components/Footer/Footer.jsx</a>, <a href="components_Footer_Footer.jsx.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -528,266 +528,6 @@
 
     
 
-    <h4 class="name" id=".exports"><span class="type-signature"></span>new exports<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>The above code is creating a navigation bar component using React and JavaScript. It includes a
-logo, search functionality, and various navigation links. It also includes a responsive menu icon
-that opens a drawer with additional navigation options when clicked. The navigation bar is styled
-using Tailwind CSS classes.</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Header_Header.jsx.html">components/Header/Header.jsx</a>, <a href="components_Header_Header.jsx.html#line44">line 44</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>props</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The component props.</p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>user</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The user object containing user information.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The rendered header component.</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">JSX.Element</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-        </div>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2>
-        
-            exports
-        
-        </h2>
-        
-    
-</header>
-
-<article>
-    
-        <div class="container-overview">
-        
-            
-
-    
-
     <h4 class="name" id=".exports"><span class="type-signature"></span>new exports<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
@@ -804,7 +544,7 @@ using Tailwind CSS classes.</p></li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Nav_NavLinks.jsx.html">components/Nav/NavLinks.jsx</a>, <a href="components_Nav_NavLinks.jsx.html#line20">line 20</a>
+        <a href="components_Nav_NavLinks.jsx.html">components/Nav/NavLinks.jsx</a>, <a href="components_Nav_NavLinks.jsx.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -916,7 +656,7 @@ using Tailwind CSS classes.</p></li></ul></dd>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Tue Jul 11 2023 10:51:26 GMT+0200 (Central Africa Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Tue Jul 11 2023 16:31:15 GMT+0200 (Central Africa Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

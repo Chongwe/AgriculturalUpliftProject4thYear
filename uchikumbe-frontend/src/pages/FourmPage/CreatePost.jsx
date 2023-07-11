@@ -18,22 +18,27 @@ import PageBlocked from "../../others/PageBlocked";
  * If the user is not a member of the forum, displays a blocked page.
  *
  * @component
+ * @category Pages
+ * @subcategory ForumPages
  */
 const CreatePost = () => {
   /**
    * State variable for the post title.
    * @memberof CreatePost
    * @alias title
+   * @type {string}
    */
   const [title, setTitle] = useState("");
 
   /**
    * State variable for the post content.
+   * @type {string}
    */
   const [content, setContent] = useState("");
 
   /**
    * State variable for the loading state of the component.
+   * @type {boolean}
    */
   const [loading, setLoading] = useState(true);
 
@@ -44,21 +49,25 @@ const CreatePost = () => {
 
   /**
    * State variable for storing the details of the forum.
+   * @type {object | null}
    */
   const [forum, setForum] = useState(null);
 
   /**
    * State variable for indicating if the form fields are empty.
+   * @type {boolean}
    */
   const [fields, setFields] = useState();
 
   /**
    * State variable for storing the uploaded image asset.
+   * @type {object | null}
    */
-  const [imageAsset, setImageAsset] = useState();
+  const [imageAsset, setImageAsset] = useState(null);
 
   /**
    * State variable for indicating if the selected image has a wrong file type.
+   * @type {boolean}
    */
   const [wrongImageType, setWrongImageType] = useState(false);
 
@@ -74,6 +83,13 @@ const CreatePost = () => {
 
   /**
    * Effect hook to fetch the forum details based on the `forumId`.
+   *
+   * @memberof CreatePost
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
    */
   useEffect(() => {
     const query = forumDetailsQuery(forumId);
@@ -182,6 +198,9 @@ const CreatePost = () => {
 
   /**
    * Renders a loading spinner while the forum details are being fetched.
+   *
+   * @memberof CreatePost
+   * @returns {JSX.Element} Loading spinner component.
    */
   if (loading) {
     return <Spinner message={"loading forum"} />;
@@ -189,6 +208,9 @@ const CreatePost = () => {
 
   /**
    * Renders a blocked page if the user is not a member of the forum.
+   *
+   * @memberof CreatePost
+   * @returns {JSX.Element} Blocked page component.
    */
   if (!isMember) {
     return <PageBlocked />;
@@ -196,6 +218,9 @@ const CreatePost = () => {
 
   /**
    * Renders the create post form.
+   *
+   * @memberof CreatePost
+   * @returns {JSX.Element} Create post form component.
    */
   return (
     <div className="flex flex-col justify-center items-center mt-5 lg:h-4/5">

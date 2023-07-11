@@ -12,7 +12,8 @@ import { HandThumbUpIcon } from "@heroicons/react/24/solid";
 /**
  * Represents a post component.
  *
- * @class
+ * @component
+ * @category Reusable compoent
  * @param {Object} props - The component props.
  * @param {Object} props.post - The post data.
  * @param {string} props.post.image - The URL of the post image.
@@ -39,15 +40,29 @@ const Posts = ({
     forumId,
   },
 }) => {
-  // console.log(comments);
   const [postCreatedAt, setPostCreatedAt] = useState(null);
   const [timeDifference, setTimeDifference] = useState(null);
-  // const alreadyLiked = !!(like?.filter((item)=>item.postedBy._id===user.googleId)).length;
 
+  /**
+   *  The `useEffect` hook is used to perform side effects in a functional component. In this case, the
+   *   effect is triggered whenever the `_createdAt` value changes.
+   * @memberof Posts
+   * @function
+   * @inner
+   * @returns {undefined}
+   */
   useEffect(() => {
     setPostCreatedAt(parseISO(_createdAt));
   }, [_createdAt]);
 
+  /**
+   * The `useEffect` hook is used to perform side effects in a functional component. In this case, the
+   * effect is triggered whenever the `postCreatedAt` value changes.
+   * @memberof Posts
+   * @function
+   * @inner
+   * @returns {undefined}
+   */
   useEffect(() => {
     if (postCreatedAt) {
       if (isYesterday(postCreatedAt)) {

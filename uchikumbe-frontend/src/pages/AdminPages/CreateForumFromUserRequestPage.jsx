@@ -10,40 +10,47 @@ import { Typography } from "@material-tailwind/react";
  * Represents the CreateForumFromUserRequestPage component.
  * Renders a form to create a user forum request.
  * @component
+ * @category Admin Pages
  */
 const CreateForumFromUserRequestPage = () => {
-  /**  `const [user, setUser] = useState(null);` is declaring a state variable called `user` and a
-  function to update its value called `setUser`. The initial value of `user` is set to `null`. This
-  is a common pattern in React to manage state in functional components. */
+  /**
+   * State variable for setting user details
+   */
   const [user, setUser] = useState(null);
 
-  /** `const { userId } = useParams();` is using the `useParams` hook from React Router to extract the
-  value of the `userId` parameter from the current URL. It allows the component to access the
-  `userId` value that is passed as a parameter in the URL. */
+  /**
+   * Const for storing userId coming from the web address
+   */
   const { userId } = useParams();
 
-  /** `const [title, setTitle] = useState(null);` is declaring a state variable called `title` and a
-  function to update its value called `setTitle`. The initial value of `title` is set to `null`.
-  This is a common pattern in React to manage state in functional components. In this case, `title`
-  is used to store the value of the forum name input field. Whenever the value of the input field
-  changes, the `setTitle` function is called to update the value of `title`. */
+  /**
+   * State variable for storing the title for the subforum
+   */
   const [title, setTitle] = useState(null);
 
-  /** `const [desc, setDesc] = useState(null);` is declaring a state variable called `desc` and a
-  function to update its value called `setDesc`. The initial value of `desc` is set to `null`. This
-  is a common pattern in React to manage state in functional components. In this case, `desc` is
-  used to store the value of the forum description input field. Whenever the value of the input
-  field changes, the `setDesc` function is called to update the value of `desc`. */
+  /**
+   * Description of a subforum
+   * @param {any} null
+   * @returns {any}
+   */
   const [desc, setDesc] = useState(null);
 
-  /**  `const navigate = useNavigate();` is using the `useNavigate` hook from React Router to get a
-  function that can be used to navigate to different pages within the application. The `navigate`
-  function can be called with a path as an argument to navigate to that specific page. In this case,
-  it is used to navigate to the "/forum" page after the forum request is successfully submitted. */
+  /**
+   * navigation variable used to navigate to other pages
+   * @returns {any}
+   */
   const navigate = useNavigate();
 
   /**  The `useEffect` hook is used to perform side effects in a functional component. In this case, it
-  is used to fetch user data from the server and update the `user` state variable. */
+  is used to fetch user data from the server and update the `user` state variable.
+   * Description
+   * @memberof CommentPage
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
+   */
   useEffect(() => {
     const query = userQuery(userId);
 
@@ -55,6 +62,12 @@ const CreateForumFromUserRequestPage = () => {
   /**
    * The function `submitForumRequest` creates a new forum request and navigates to the forum page if
    * the title and description are provided.
+   *
+   * @function submitForumRequest
+   * @inner
+   * @param {string} title The title of the forum request.
+   * @param {string} desc The description of the forum request.
+   * @returns {void}
    */
   const submitForumRequest = () => {
     if (title && desc) {

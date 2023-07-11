@@ -14,34 +14,47 @@ import Spinner from "../../components/Spinner";
  * Upon submission, the request is saved to the database.
  *
  * @component
+ * @category Pages
  */
 function SubmiteForumRequestPage() {
   /**
    * State variable for storing the user details.
+   * @type {object | null}
    */
   const [user, setUser] = useState(null);
 
   /**
-   * State variable to get userId from params to be used to fetch the user from the userQuery
+   * State variable to get userId from params to be used to fetch the user from the userQuery.
    */
   const { userId } = useParams();
 
   /**
    * State variable for storing the title of a forum.
+   * @type {string | null}
    */
   const [title, setTitle] = useState(null);
 
   /**
    * State variable for storing the description of a forum.
+   * @type {string | null}
    */
   const [desc, setDesc] = useState(null);
 
+  /**
+   * Navigation function provided by the `react-router-dom` library.
+   */
   const navigate = useNavigate();
 
   /**
-   * This useEffect gets @param(userId)  to be passed into the userQuery to get the user from the sanity desk
-   * The Data is then stored into the user State variable and the user is changed with each new userId that comes from
-   * params
+   * This useEffect gets the `userId` from the `params` to be passed into the `userQuery` to get the user from the Sanity desk.
+   * The data is then stored into the `user` state variable, and the user is changed with each new `userId` that comes from the params.
+   *
+   * @memberof SubmiteForumRequestPage
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
    */
   useEffect(() => {
     const query = userQuery(userId);
@@ -55,6 +68,10 @@ function SubmiteForumRequestPage() {
    * Submits the forum creation request by creating a new document in the database.
    * The request includes the provided title, description, and user ID.
    * Upon successful submission, the user is navigated to the forum page.
+   *
+   * @memberof SubmiteForumRequestPage
+   * @function submitForumRequest
+   * @returns {undefined}
    */
   const submitForumRequest = () => {
     if (title && desc) {

@@ -13,7 +13,8 @@ import ManageUserPage from "./ManageUserPage";
 /**
  * The AdminDashboard component represents the dashboard page for the admin.
  * It displays tabs for managing forum creation requests and users.
- * @class
+ * @component
+ * @catergory Admin Pages
  */
 const AdminDashboard = () => {
   /**

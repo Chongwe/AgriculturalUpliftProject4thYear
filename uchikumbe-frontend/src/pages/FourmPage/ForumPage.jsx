@@ -12,14 +12,17 @@ import Sidebar from "../../components/Sidebar";
 
 /**
  * The ForumPage component represents the forum page.
- * Renders the forum details, including the forum title, description, and posts.
- * Allows users to join the forum and create new posts if they are a member.
+ * It renders the forum details, including the forum title, description, and posts.
+ * Users can join the forum and create new posts if they are a member.
  *
  * @component
+ * @category Pages
+ * @subcategory ForumPages
  */
 const ForumPage = () => {
   /**
    * State variable for storing the forum details.
+   * @type {object | null}
    */
   const [forum, setForum] = useState(null);
 
@@ -30,6 +33,7 @@ const ForumPage = () => {
 
   /**
    * State variable for storing the user details.
+   * @type {object | null}
    */
   const [user, setUser] = useState(null);
 
@@ -42,30 +46,53 @@ const ForumPage = () => {
    * Fetches the user data based on the user ID.
    * Updates the `user` state variable with the fetched data.
    */
+  /**
+   * Fetches the user data based on the user ID.
+   * Updates the `user` state variable with the fetched data.
+   *
+   * @memberof UserProfile
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
+   */
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
-
-    // Fetch user data based on the user ID
     client.fetch(query).then((data) => {
       setUser(data[0]);
     });
   });
 
   /**
-   * Fetches the forum details based on the `forumId`.
+   * Fetches the forum details based on the provided `forumId`.
    * Updates the `forum` state variable with the fetched data.
+   *
+   * @memberof ForumPage
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
    */
   useEffect(() => {
-    const query = forumDetailsQuery(forumId);
+    const fetchForumData = () => {
+      const query = forumDetailsQuery(forumId);
 
-    // Fetch the forum details based on the forum ID
-    client.fetch(query).then((data) => {
-      setForum(data[0]);
-    });
+      // Fetch the forum details based on the forum ID
+      client.fetch(query).then((data) => {
+        setForum(data[0]);
+      });
+    };
+
+    fetchForumData();
   }, [forumId]);
 
   /**
    * Checks if the user is a member of the forum.
+   *
+   * @memberof ForumPage
+   * @type {boolean}
    */
   const isMember =
     user &&
@@ -75,6 +102,11 @@ const ForumPage = () => {
   /**
    * Joins the forum by updating the `memberOf` array with the user's details.
    * Reloads the page after joining the forum.
+   *
+   * @memberof ForumPage
+   * @function joinForum
+   * @inner
+   * @returns {undefined}
    */
   const joinForum = () => {
     const doc = {

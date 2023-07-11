@@ -29,12 +29,14 @@ import ProfileCard from "../../../components/Cards/profileCard";
  */
 const UserProfile = () => {
   /**
-   * @type {Object|null} user - State variable for storing the user data.
+   * user - State variable for storing the user data.
+   * @type {Object|null}
    */
   const [user, setUser] = useState(null);
 
   /**
-   * @type {Object|null} userData - State variable for storing the user data fetched from the server.
+   * userData - State variable for storing the user data fetched from the server.
+   * @type {Object|null}
    */
   const [userData, setUserData] = useState(null);
 

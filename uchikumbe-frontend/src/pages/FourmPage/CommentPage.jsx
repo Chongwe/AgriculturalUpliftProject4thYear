@@ -29,7 +29,8 @@ import { v4 as uuidv4 } from "uuid";
  */
 const CommentPage = () => {
   /**
-   * @type {User|null} - State variable for storing the user details.
+   * - State variable for storing the user details.
+   * @type {User|null}
    */
   const [user, setUser] = useState(null);
 

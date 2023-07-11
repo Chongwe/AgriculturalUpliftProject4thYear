@@ -16,25 +16,30 @@ import Spinner from "../../components/Spinner";
  * Renders the forums created by the user and available forums to join.
  *
  * @component
+ * @category Pages
  */
 const Forum = () => {
   /**
    * State variable for storing the user details.
+   * @type {object | null}
    */
   const [user, setUser] = useState(null);
 
   /**
    * State variable for storing the forums created by the user.
+   * @type {Array | null}
    */
   const [createdForums, setCreatedForums] = useState(null);
 
   /**
    * State variable for storing the available forums.
+   * @type {Array | null}
    */
   const [forums, setForums] = useState(null);
 
   /**
    * State variable for tracking the loading state.
+   * @type {boolean}
    */
   const [loading, setLoading] = useState(false);
 
@@ -43,6 +48,13 @@ const Forum = () => {
   /**
    * Fetches the user data based on the user ID.
    * Updates the `user` state variable with the fetched data.
+   *
+   * @memberof Forum
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
    */
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
@@ -50,11 +62,18 @@ const Forum = () => {
     client.fetch(query).then((data) => {
       setUser(data[0]);
     });
-  });
+  }, []);
 
   /**
    * Fetches the forums created by the user.
    * Updates the `createdForums` state variable with the fetched data.
+   *
+   * @memberof Forum
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
    */
   useEffect(() => {
     const createdForumsQuery = userCreatedForumsQuery(userInfo?.sub);
@@ -62,12 +81,19 @@ const Forum = () => {
     client.fetch(createdForumsQuery).then((data) => {
       setCreatedForums(data);
     });
-  });
+  }, []);
 
   /**
    * Fetches the available forums.
    * Updates the `forums` state variable with the fetched data.
    * Sets the `loading` state variable while fetching.
+   *
+   * @memberof Forum
+   * @function useEffect
+   * @inner
+   * @param {function} effect - The effect function to be executed.
+   * @param {Array} deps - An array of dependencies to determine when the effect should re-run.
+   * @returns {undefined}
    */
   useEffect(() => {
     setLoading(true);
@@ -81,7 +107,10 @@ const Forum = () => {
    * Joins a forum by updating the `memberOf` array with the user's details.
    * Reloads the page after joining the forum.
    *
+   * @memberof Forum
+   * @function joinForum
    * @param {string} forumId - The ID of the forum to join.
+   * @returns {undefined}
    */
   const joinForum = (forumId) => {
     const doc = {
@@ -106,11 +135,17 @@ const Forum = () => {
 
   /**
    * Renders a loading spinner while the forums are being fetched.
+   *
+   * @memberof Forum
+   * @returns {JSX.Element} Loading spinner component.
    */
   if (loading) return <Spinner message="Looking for Forums" />;
 
   /**
    * Renders the forum page.
+   *
+   * @memberof Forum
+   * @returns {JSX.Element} Forum page component.
    */
   return (
     <div className=" min-w-screen-sm">

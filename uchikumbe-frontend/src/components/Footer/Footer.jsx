@@ -13,7 +13,8 @@ import { EnvelopeIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 /**
  * Represents the footer component of the website.
  *
- * @class
+ * @component
+ * @category Reusable component
  * @returns {JSX.Element} The rendered footer component.
  */
 export default function Footer() {

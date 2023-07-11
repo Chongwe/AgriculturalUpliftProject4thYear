@@ -1,9 +1,14 @@
 import React from "react";
 import * as Loader from "react-loader-spinner";
 
-/* The code defines a functional component called `Spinner` that takes a prop called `message`. Inside
-the component, it returns JSX code that renders a spinner animation using the `react-loader-spinner`
-library. */
+/** 
+ * The code defines a functional component called `Spinner` that takes a prop called `message`. Inside
+ * the component, it returns JSX code that renders a spinner animation using the `react-loader-spinner`
+ * library.
+ * @component 
+ * @category Reusable Components  
+
+*/
 const Spinner = ({ message }) => {
   return (
     <div

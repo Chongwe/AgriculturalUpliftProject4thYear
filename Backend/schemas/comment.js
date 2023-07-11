@@ -1,13 +1,34 @@
-/* The code is exporting an object that represents a comment document in a JavaScript module. The
-object has properties such as `name`, `title`, `type`, and `fields`, which define the structure and
-properties of the comment document. The `name` property specifies the name of the comment document,
-the `title` property specifies the title of the comment document, and the `type` property specifies
-the type of the comment document. The `fields` property is an array of objects that define the
-fields of the comment document. Each field object has properties such as `name`, `title`, and
-`type`, which define the name, title, and type of the field respectively. In this case, the comment
-document has fields such as `postedBy`, `content`, and `like`. The `postedBy` field is of type
-`postedBy`, the `content` field is of type `string`, and the `like` field is an array of objects of
-type `like`. */
+/**
+ * Represents a comment on a post or subforum.
+ * @typedef {Object} Comment
+ * @property {PostedBy} postedBy - The user who posted the comment.
+ * @property {string} content - The content of the comment.
+ * @property {Like[]} like - The array of likes on the comment.
+ */
+
+/**
+ * The Sanity schema for the 'comment' document.
+ * Represents a comment on a post or subforum.
+ * @type {Object}
+ * @property {string} name - The name of the document.
+ * @property {string} title - The title of the document.
+ * @property {string} type - The type of the document (always "document").
+ * @property {Object[]} fields - The fields of the document.
+ * @property {Object} fields.postedBy - The field representing the user who posted the comment.
+ * @property {string} fields.postedBy.name - The name of the field.
+ * @property {string} fields.postedBy.title - The title of the field.
+ * @property {string} fields.postedBy.type - The type of the field (always "postedBy").
+ * @property {Object} fields.content - The field representing the content of the comment.
+ * @property {string} fields.content.name - The name of the field.
+ * @property {string} fields.content.title - The title of the field.
+ * @property {string} fields.content.type - The type of the field (always "string").
+ * @property {Object} fields.like - The field representing the likes on the comment.
+ * @property {string} fields.like.name - The name of the field.
+ * @property {string} fields.like.title - The title of the field.
+ * @property {string} fields.like.type - The type of the field (always "array").
+ * @property {Object[]} fields.like.of - The array of objects allowed in the field.
+ * @property {Object} fields.like.of.type - The type of objects allowed in the field (always "like").
+ */
 export default {
   name: 'comment',
   title: 'Comment',

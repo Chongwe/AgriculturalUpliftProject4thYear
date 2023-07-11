@@ -6,7 +6,8 @@ import { Button } from "@material-tailwind/react";
 /**
  * Represents a group component.
  *
- * @class
+ * @component
+ * @category Reuseable component
  * @param {Object} props - The component props.
  * @param {string} props.name - The name of the group.
  * @param {number} props.members - The number of members in the group.
