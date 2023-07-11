@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 
+/**
+ * The ChickenFeedCalculator is a React component that calculates the amount of chicken feed needed
+ * based on the type of chicken and the number of chickens.
+ * The ChickenFeedCalculator component is being returned.
+ */
 const ChickenFeedCalculator = () => {
   /* The line `const [chickenType, setChickenType] = useState('broilers');` is using the `useState` hook
 in React to create a state variable called `chickenType` and a corresponding setter function called

@@ -4,6 +4,9 @@ import {
   calculateLayersFeedFormulation,
 } from "./FeedFormulations";
 
+
+/* The `FeedFormulationCalculator` component is a React functional component that represents a form for
+calculating chicken feed formulation. */
 const FeedFormulationCalculator = () => {
   /* The line `const [chickenType, setChickenType] = useState('');` is using the `useState` hook from
 React to declare a state variable called `chickenType` and a corresponding setter function called
@@ -32,10 +35,17 @@ value of the `feedAmount` state variable. */
     setChickenType(event.target.value);
   };
 
+  /**
+   * The handleAgeChange function updates the age state based on the value of the event target.
+   */
   const handleAgeChange = (event) => {
     setAge(event.target.value);
   };
 
+  /**
+   * The function `handleFeedAmountChange` updates the state variable `feedAmount` with the value from
+   * the event target.
+   */
   const handleFeedAmountChange = (event) => {
     setFeedAmount(event.target.value);
   };

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import GroundNutsSeed from "./GroundNutsSeed"
 
 
+/* The code defines a functional component called `MaizeSeedCalculator` using arrow function syntax. It
+uses the `useState` hook to define multiple state variables (`fieldSize`, `rowSpacing`,
+`stationSpacing`, `seedsPerStation`, `result`) and their corresponding setter functions. */
 export const MaizeSeedCalculator = () => {
     const [fieldSize, setFieldSize] = useState('');
     const [rowSpacing, setRowSpacing] = useState('');
@@ -71,6 +74,10 @@ export const MaizeSeedCalculator = () => {
     );
   };
 
+
+/* The `CassavaStemCalculator` component is a functional component in JavaScript React. It uses the
+`useState` hook to define multiple state variables (`fieldSize`, `rowSpacing`, `stationSpacing`,
+`stemsPerStation`, `stemSize`, `result`) and their corresponding setter functions. */
 export const CassavaStemCalculator = () => {
     const [fieldSize, setFieldSize] = useState('');
     const [rowSpacing, setRowSpacing] = useState('');
@@ -152,6 +159,14 @@ export const CassavaStemCalculator = () => {
   };
 
 
+/**
+ * The Planters component renders three different calculators for maize seeds, cassava stems, and
+ * ground nuts seeds.
+ * @returns The Planters component is returning a div element with the class name "flex justify-center
+ * items-center". Inside this div, there is another div with the class name "w-full flex-col h-auto
+ * min-w-screen-sm flex gap-4". Inside this second div, there are three components:
+ * MaizeSeedCalculator, CassavaStemCalculator, and GroundNutsSeed.
+ */
 const Planters = () => {
   return (
     <div className="flex justify-center items-center ">
