@@ -165,9 +165,6 @@ export default function Header({ user = null }) {
                     className="h-7 ml-auto mr-4 justify-center w-7"
                   />
                 </div>
-                {/* The code block `{user !== null && user !== undefined && (...)}` is a conditional
-                rendering statement in JSX. It checks if the `user` variable is not null and not
-                undefined. If the condition is true, it renders the JSX code inside the parentheses. */}
                 {user !== null && user !== undefined && (
                   <Link
                     to={`user-profile/${user._id}`}
@@ -225,14 +222,15 @@ export default function Header({ user = null }) {
                       <ListItemPrefix>
                         <ArrowRightCircleIcon className="w-5 h-5" />
                       </ListItemPrefix>
-
                       <GoogleLogin
                         onSuccess={(response) =>
                           createOrGetUser(response).then(() => {
                             window.location.reload();
                           })
                         }
-                        onError={() => {}}
+                        onError={() => {
+                          // console.log("Login Failed");
+                        }}
                       />
                     </ListItem>
                   </NavLink>

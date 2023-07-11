@@ -9,7 +9,6 @@ import {
   ListItemPrefix,
 } from "@material-tailwind/react";
 import { EnvelopeIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import { NavLink } from "react-router-dom";
 
 /**
  * Represents the footer component of the website.
@@ -21,9 +20,7 @@ export default function Footer() {
   return (
     <footer className="lg:w-full sm:min-w-screen-sm rounded-t-2xl bg-white p-8">
       <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 text-center md:justify-between">
-        <NavLink to="/">
-          <img src={logo} alt="Uchikumbe logo" className="w-12 text-center" />
-        </NavLink>
+        <img src={logo} alt="Uchikumbe logo" className="w-12 text-center" />
         <ul className="flex flex-wrap  items-center gap-y-2 gap-x-8">
           <li>
             <Popover placement="bottom">
@@ -73,6 +70,15 @@ export default function Footer() {
           </li>
 
           <li>
+            <Typography
+              href="#"
+              color="blue-gray"
+              className="transition-colors text-goldenrod hover:text-green-500 focus:text-green-500"
+            >
+              Contribute
+            </Typography>
+          </li>
+          <li>
             <Popover placement="bottom">
               <PopoverHandler>
                 <button className=" transition-colors text-goldenrod hover:text-green-500 focus:text-green-500">
@@ -105,7 +111,7 @@ export default function Footer() {
       </div>
       <hr className="my-8 border-goldenrod" />
       <Typography color="green" className="text-center  font-normal">
-        &copy; Uchikumbe 2023.
+        &copy; 2023 Uchikumbe Systems Inc.
       </Typography>
     </footer>
   );
