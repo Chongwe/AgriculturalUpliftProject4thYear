@@ -3,6 +3,17 @@ import avatar from "../../assets/GIcon.svg";
 import { Avatar } from "@material-tailwind/react";
 import { Button } from "@material-tailwind/react";
 
+/**
+ * Represents a group component.
+ *
+ * @class
+ * @param {Object} props - The component props.
+ * @param {string} props.name - The name of the group.
+ * @param {number} props.members - The number of members in the group.
+ * @param {boolean} props.isUserMember - Indicates whether the current user is a member of the group.
+ * @param {Function} props.onJoin - The callback function to handle the join action.
+ * @returns {JSX.Element} The rendered group component.
+ */
 function Group(props) {
   const { name, members, isUserMember, onJoin } = props;
 

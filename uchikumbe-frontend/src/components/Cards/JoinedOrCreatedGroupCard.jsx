@@ -2,6 +2,15 @@ import React from "@material-tailwind/react";
 import avatar from "../../assets/GIcon.svg";
 import { Avatar } from "@material-tailwind/react";
 
+/**
+ * Represents a joined groups component.
+ *
+ * @class
+ * @param {Object} props - The component props.
+ * @param {string} props.name - The name of the group.
+ * @param {number} props.members - The number of members in the group.
+ * @returns {JSX.Element} The rendered joined groups component.
+ */
 function JoinedGroups(props) {
   return (
     <div className="bg-transparent min-w-screen-sm lg:w-[450px] rounded-lg p-2">
