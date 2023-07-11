@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 
+/* The `VARIETIES` constant is an object that stores information about different groundnut varieties.
+Each variety is represented as a key-value pair, where the key is the variety name and the value is
+an object containing the seed rate and spacing information for that variety. The seed rate is the
+amount of seed required per acre, and the spacing is the recommended distance between plants in the
+field. */
 const VARIETIES = {
   Chalimbana: { seedRate: 44.5, spacing: '75cm  by  15cm ' },
   Chitembana: { seedRate: 28.9, spacing: '75cm  by  15cm ' },
@@ -15,12 +20,18 @@ const VARIETIES = {
   Chitala: { seedRate: 44.5, spacing: '75cm  by  10cm ' },
 };
 
+/* The `App` function is a React component that represents the main application. It uses the `useState`
+hook to define and manage the state of the application. */
 function App() {
   const [fieldSize, setFieldSize] = useState('');
   const [variety, setVariety] = useState('');
   const [seedRequirement, setSeedRequirement] = useState('');
   const [recommendedSpacing, setRecommendedSpacing] = useState('');
 
+  /**
+   * The function calculates the seed requirement and recommended spacing based on the field size and
+   * selected variety.
+   */
   const calculateSeedRequirement = () => {
     if (fieldSize && variety) {
       const selectedVariety = VARIETIES[variety];

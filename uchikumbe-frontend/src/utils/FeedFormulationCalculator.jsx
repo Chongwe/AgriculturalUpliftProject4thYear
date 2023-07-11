@@ -1,24 +1,43 @@
 import React, { useState } from 'react';
 import { calculateBroilerFeedFormulation, calculateLayersFeedFormulation } from './FeedFormulations';
 
+
+/* The `FeedFormulationCalculator` component is a React functional component that represents a form for
+calculating chicken feed formulation. */
 const FeedFormulationCalculator = () => {
   const [chickenType, setChickenType] = useState('');
   const [age, setAge] = useState('');
   const [feedAmount, setFeedAmount] = useState('');
   const [result, setResult] = useState('');
 
+  /**
+   * The function `handleChickenTypeChange` updates the value of `chickenType` based on the value of
+   * the event target.
+   */
   const handleChickenTypeChange = (event) => {
     setChickenType(event.target.value);
   };
 
+  /**
+   * The handleAgeChange function updates the age state based on the value of the event target.
+   */
   const handleAgeChange = (event) => {
     setAge(event.target.value);
   };
 
+  /**
+   * The function `handleFeedAmountChange` updates the state variable `feedAmount` with the value from
+   * the event target.
+   */
   const handleFeedAmountChange = (event) => {
     setFeedAmount(event.target.value);
   };
 
+  /**
+   * The function calculates the feed formulation based on the chicken type, age, and feed amount
+   * provided.
+   * @returns The function `calculateFeedFormulation` returns nothing.
+   */
   const calculateFeedFormulation = () => {
     if (!chickenType || !age || !feedAmount) {
       setResult('Please fill in all fields.');
