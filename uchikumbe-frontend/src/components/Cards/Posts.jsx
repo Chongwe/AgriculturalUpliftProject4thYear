@@ -9,8 +9,23 @@ import React, { useEffect, useState } from "react";
 import { formatDistanceToNow, parseISO, isYesterday } from "date-fns";
 import { HandThumbUpIcon } from "@heroicons/react/24/solid";
 
-//
-
+/**
+ * Represents a post component.
+ *
+ * @class
+ * @param {Object} props - The component props.
+ * @param {Object} props.post - The post data.
+ * @param {string} props.post.image - The URL of the post image.
+ * @param {string} props.post.content - The content of the post.
+ * @param {Array} props.post.comments - The comments of the post.
+ * @param {string} props.post._createdAt - The creation date of the post.
+ * @param {Array} props.post.like - The likes of the post.
+ * @param {string} props.post.title - The title of the post.
+ * @param {string} props.post._id - The unique ID of the post.
+ * @param {Object} props.post.postedBy - The user who posted the post.
+ * @param {string} props.post.forumId - The ID of the forum.
+ * @returns {JSX.Element} The rendered post component.
+ */
 const Posts = ({
   post: {
     image,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Group from "../../components/Cards/Group";
+import Group from "../../components/Cards/groupCard";
 import { fetchUser } from "../../utils/fetchUser";
 import {
   forumQuery,
@@ -7,7 +7,7 @@ import {
   userQuery,
 } from "../../utils/data";
 import { client } from "../../client";
-import JoinedGroups from "../../components/Cards/JoinedGroups";
+import JoinedGroups from "../../components/Cards/JoinedOrCreatedGroupCard";
 import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 
